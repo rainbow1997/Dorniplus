@@ -20,5 +20,11 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+Route::get('/captcha',function(){
+    return view('helpers/captcha_show');
+});
+Route::get('/captcha2',function(){
+    return captchaMaking();
+});
 
-require __DIR__.'/auth.php';
+require __DIR__.'/auth.php';//By Starter kit.
