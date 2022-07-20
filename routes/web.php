@@ -26,5 +26,8 @@ Route::get('/captcha',function(){
 Route::get('/captcha2',function(){
     return captchaMaking();
 });
+Route::get('/information',function(){
+    return phpinfo();
+});
 
 require __DIR__.'/auth.php';//By Starter kit.

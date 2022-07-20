@@ -4,7 +4,6 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-
         <title>درنی پلاس </title>
 
         <!-- Fonts -->
@@ -12,13 +11,16 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-
-        <!-- Scripts -->
-        <script src="{{ asset('js/app.js') }}" defer></script>
+        @stack('custom-styles')
     </head>
     <body>
         <div class="font-sans text-gray-900 antialiased">
             {{ $slot }}
         </div>
+        
+        <!-- Scripts -->
+        <script src="{{ asset('js/app.js') }}"></script>
+        @stack('custom-scripts')
+        
     </body>
 </html>

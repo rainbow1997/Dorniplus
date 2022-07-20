@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use App\Enum\Gender;
+use App\Models\Province;
+use Verta;
 class RegisteredUserController extends Controller
 {
     /**
@@ -20,7 +22,8 @@ class RegisteredUserController extends Controller
      */
     public function create()
     {
-        return view('auth.register');
+        $regions = Province::with('cities')->get();
+        return view('auth.register',['regions'=>$regions]);
     }
 
     /**
@@ -34,7 +37,10 @@ class RegisteredUserController extends Controller
     protected function userValidating(Request $request)
     {
         $self = $this;
-        $request->validate([
+        $tenYearsAgo = new Verta('-10 year');
+        $tenYearsAgo = $tenYearsAgo->format('Y/m/d');
+        $request->merge(['birth' => persianizeNumber($request->input('birth'))]);
+        return $request->validate([
             'fname' => ['required', 'string', 'max:455'],
             'lname' => ['required', 'string', 'max:455'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
@@ -44,11 +50,11 @@ class RegisteredUserController extends Controller
                         $fail('The'.$attribute.'is invalid.');
                 }
                                ],
-            'phone' => ['required','digits_between:9,10'],
-            'gender' => ['required',new Enum(Gender::class)],//if it gets much time ,remove it and use string
-            'birth' => ['required','date','date_format:Y-m-d','before:2012-01-01'],
-            'users' => ['required','alpha_num','not_regex:^[^0-9]'],
-            'military_status' => ['nullable','required_if:gender,man'],
+            'phone' => ['required','digits_between:10,11'],
+            'gender' => ['required','in:male,female'],//if it gets much time ,remove it and use string
+            'birth' => ['required','jdate','jdate_after:'.$tenYearsAgo],
+            'username' => ['required','alpha_num','regex:/^[^0-9]/'],
+            'military_status' => ['nullable','required_if:gender,male'],
             'post_image' => ['nullable','mimes:png,jpg,jpeg','max:200'],
             'province_id' => ['nullable','numeric','exists:provinces'],
             'city_id' => ['nullable','numeric','exists:cities'],
@@ -56,9 +62,9 @@ class RegisteredUserController extends Controller
     }
     public function store(Request $request)
     {
-       
-        $this->userValidating($request);
-        $user = User::create($request->validated());
+        
+        $validData = $this->userValidating($request);
+        $user = User::create($validData);
 
         event(new Registered($user));
 
@@ -66,7 +72,6 @@ class RegisteredUserController extends Controller
 
         return redirect(RouteServiceProvider::HOME);
     }
-    
     protected function nationalCodeChecking($code)
     {
         if(!preg_match('/^[0-9]{10}$/',$code))
