@@ -24,7 +24,7 @@
   });
 </script>
 @endpush
-<form method="POST" action="{{ route('register')}}" class="rtl text-right" style="font-family:'Shabnam'">
+<form method="POST" action="{{ route('register')}}" class="rtl text-right" enctype="multipart/form-data" style="font-family:'Shabnam'">
     @csrf
 
     <!-- Name -->
@@ -103,7 +103,7 @@
     </div>
     <div class="">
         <x-label value="کد بالا را با دقت وارد کنید"></x-label>
-    <x-input id="captcha_code" class="block mt-1 w-full" type="number" name="captcha_code" required autofocus />
+    <x-input id="captcha_code" class="block mt-1 w-full" type="number" name="captcha_num" required autofocus />
 
     </div>
     <input type="submit" class="btn btn-success" value="ارسال">

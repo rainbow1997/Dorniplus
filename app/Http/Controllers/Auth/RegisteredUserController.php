@@ -11,8 +11,11 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use App\Enum\Gender;
+use App\Enum\MilitaryStatus;
 use App\Models\Province;
 use Verta;
+use Image;
+use Illuminate\Support\Collection;
 class RegisteredUserController extends Controller
 {
     /**
@@ -52,19 +55,51 @@ class RegisteredUserController extends Controller
                                ],
             'phone' => ['required','digits_between:10,11'],
             'gender' => ['required','in:male,female'],//if it gets much time ,remove it and use string
-            'birth' => ['required','jdate','jdate_after:'.$tenYearsAgo],
+            'birth' => ['required','jdate','jdate_before:'.$tenYearsAgo],
             'username' => ['required','alpha_num','regex:/^[^0-9]/'],
-            'military_status' => ['nullable','required_if:gender,male'],
+            'military_status' => ['nullable','required_if:gender,male',
+            'in:permanent_exemption,temporary_exemption,done'],
             'post_image' => ['nullable','mimes:png,jpg,jpeg','max:200'],
-            'province_id' => ['nullable','numeric','exists:provinces'],
-            'city_id' => ['nullable','numeric','exists:cities'],
+            'province_id' => ['nullable','numeric','exists:provinces,id'],
+            'city_id' => ['nullable','numeric','exists:cities,id'],
+            'avatar' => ['nullable'],
+            'captcha_num' => ['required','numeric',function($attribute,$value,$fail){
+                if(session('captcha_num') != $value)
+                    $fail('The'.$attribute.'is incorrect.');
+            }]
         ]);
+    }
+    protected function uploadAvatar(Request $request)
+    {
+        $uploadedFile = $request->file('avatar');
+        $filePath = $uploadedFile->store('avatars');
+       // dd($filePath);
+        //$filename = time().$uploadedFile->getClientOriginalName();
+        //$file = Storage::disk('local')->putFileAs(('avatars/'.$filename),$uploadedFile,$filename);
+        $this->imageSizeOptimizer($filePath);
+    }
+    protected function imageSizeOptimizer($file)
+    {
+        $file = \Storage::path($file);//for confidence
+        $image = Image::make($file);
+        $image->resize(400,400,function($const){
+            $const->aspectRatio();
+        })->save();
+        return $image;
+    }
+    private function securePassword(Collection $validData)
+    {
+        $validData['password'] = Hash::make($validData['password']);
+        return $validData;
     }
     public function store(Request $request)
     {
         
         $validData = $this->userValidating($request);
-        $user = User::create($validData);
+        $validData = collect($validData);
+        $this->securePassword($validData);
+        $this->uploadAvatar($request);
+        $user = User::create($validData->toArray());
 
         event(new Registered($user));
 

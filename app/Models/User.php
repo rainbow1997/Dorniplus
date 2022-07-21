@@ -31,7 +31,7 @@ class User extends Authenticatable
         'city_id',
         'email',
         'password',
-        ''
+        'is_email_verified'
     ];
 
     /**
@@ -53,6 +53,7 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
         'birth' =>  'date',
-        'gender' => \App\Enum\Gender::class
+        'gender' => \App\Enum\Gender::class,
+        'military_status' => \App\Enum\MilitaryStatus::class
     ];
 }

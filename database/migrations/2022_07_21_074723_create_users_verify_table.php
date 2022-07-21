@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCategoriesTable extends Migration
+class CreateUsersVerifyTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,15 @@ class CreateCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('categories', function (Blueprint $table) {
+        Schema::create('users_verify', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('title');
+            $table->foreignId('user_id');
+            $table->string('token');
+
+        });
+        Schema::table('users',function(Blueprint $table){
+            $table->boolean('is_email_verified')->default(0);
         });
     }
 
@@ -27,6 +32,6 @@ class CreateCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('categories');
+        Schema::dropIfExists('users_verify');
     }
 }

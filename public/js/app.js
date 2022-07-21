@@ -5279,8 +5279,19 @@ __webpack_require__.r(__webpack_exports__);
       selectedProvince: {
         "title": "انتخاب کنید"
       },
+      nProvince: {},
       selectedCity: {}
     };
+  },
+  methods: {
+    provinceChange: function provinceChange(event) {
+      console.log('hi -> province is :');
+      var t = this.provinces.filter(function (province) {
+        console.log(province.cities);
+        if (province.id == event.target.value) return province;
+      });
+      this.cities = t[0].cities;
+    }
   },
   watch: {
     gender: function gender(newGender, oldGender) {
@@ -5385,17 +5396,17 @@ var render = function render() {
       id: "military_status_1",
       name: "military_status",
       type: "radio",
-      value: "معاف"
+      value: "permanent_exemption"
     },
     domProps: {
-      checked: _vm._q(_vm.military_status, "معاف")
+      checked: _vm._q(_vm.military_status, "permanent_exemption")
     },
     on: {
       change: function change($event) {
-        _vm.military_status = "معاف";
+        _vm.military_status = "permanent_exemption";
       }
     }
-  }), _vm._v("معاف\n      "), _c("input", {
+  }), _vm._v("معاف دائم\n      "), _c("input", {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -5406,17 +5417,38 @@ var render = function render() {
       id: "military_status_2",
       name: "military_status",
       type: "radio",
-      value: "مشمول"
+      value: "temporary_exemption"
     },
     domProps: {
-      checked: _vm._q(_vm.military_status, "مشمول")
+      checked: _vm._q(_vm.military_status, "temporary_exemption")
     },
     on: {
       change: function change($event) {
-        _vm.military_status = "مشمول";
+        _vm.military_status = "temporary_exemption";
       }
     }
-  }), _vm._v("مشمول \n  ")]), _vm._v(" "), _c("div", {
+  }), _vm._v("معاف موقت\n      "), _c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.military_status,
+      expression: "military_status"
+    }],
+    attrs: {
+      id: "military_status_3",
+      name: "military_status",
+      type: "radio",
+      value: "done"
+    },
+    domProps: {
+      checked: _vm._q(_vm.military_status, "done")
+    },
+    on: {
+      change: function change($event) {
+        _vm.military_status = "done";
+      }
+    }
+  }), _vm._v("انجام شده \n  ")]), _vm._v(" "), _c("div", {
     staticClass: "mt-4"
   }, [_c("label", [_vm._v(" استان محل سکونت  ")]), _vm._v(" "), _c("select", {
     directives: [{
@@ -5425,8 +5457,11 @@ var render = function render() {
       value: _vm.selectedProvince,
       expression: "selectedProvince"
     }],
+    attrs: {
+      name: "province_id"
+    },
     on: {
-      change: function change($event) {
+      change: [function ($event) {
         var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
           return o.selected;
         }).map(function (o) {
@@ -5434,12 +5469,14 @@ var render = function render() {
           return val;
         });
         _vm.selectedProvince = $event.target.multiple ? $$selectedVal : $$selectedVal[0];
-      }
+      }, function ($event) {
+        return _vm.provinceChange($event);
+      }]
     }
   }, _vm._l(_vm.provinces, function (item) {
     return _c("option", {
       domProps: {
-        value: item
+        value: item.id
       }
     }, [_vm._v(_vm._s(item.title))]);
   }), 0), _vm._v(" "), _c("select", {
@@ -5454,6 +5491,9 @@ var render = function render() {
       value: _vm.selectedCity,
       expression: "selectedCity"
     }],
+    attrs: {
+      name: "city_id"
+    },
     on: {
       change: function change($event) {
         var $$selectedVal = Array.prototype.filter.call($event.target.options, function (o) {
@@ -5465,7 +5505,7 @@ var render = function render() {
         _vm.selectedCity = $event.target.multiple ? $$selectedVal : $$selectedVal[0];
       }
     }
-  }, _vm._l(_vm.selectedProvince.cities, function (item) {
+  }, _vm._l(_vm.cities, function (item) {
     return _c("option", {
       domProps: {
         value: item.id

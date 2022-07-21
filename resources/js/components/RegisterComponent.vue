@@ -9,16 +9,17 @@
     </div>
     <div class="mt-4" v-show="gender == 'male'">
         <label for="military_status" value="وضعیت نظام وظیفه" />
-        <input id="military_status_1" name="military_status" type="radio" value="معاف" v-model="military_status">معاف
-        <input id="military_status_2" name="military_status" type="radio" value="مشمول" v-model="military_status">مشمول 
+        <input id="military_status_1" name="military_status" type="radio" value="permanent_exemption" v-model="military_status">معاف دائم
+        <input id="military_status_2" name="military_status" type="radio" value="temporary_exemption" v-model="military_status">معاف موقت
+        <input id="military_status_3" name="military_status" type="radio" value="done" v-model="military_status">انجام شده 
     </div>
     <div class="mt-4">
     <label> استان محل سکونت  </label>
-    <select v-model="selectedProvince">
-        <option v-for="item in provinces" :value="item">{{item.title}}</option>
+    <select v-model="selectedProvince" name="province_id" @change="provinceChange($event)">
+        <option v-for="item in provinces" :value="item.id">{{item.title}}</option>
     </select>
-    <select v-show="selectedProvince" v-model="selectedCity">
-        <option v-for="item in selectedProvince.cities" :value="item.id">{{item.title}}</option>
+    <select v-show="selectedProvince" v-model="selectedCity" name="city_id">
+        <option v-for="item in cities" :value="item.id">{{item.title}}</option>
     </select>
     </div>
 
@@ -39,9 +40,22 @@
                 selectedProvince:{
                     "title":"انتخاب کنید"
                 },
+                nProvince:{},
                 selectedCity:{},
 
 
+            }
+        },
+        methods:{
+            provinceChange(event){
+                console.log('hi -> province is :');
+                let t = this.provinces.filter(function(province){
+                    console.log(province.cities);
+                    if(province.id == event.target.value)
+                        return province;
+                });
+                this.cities = t[0].cities;
+                              
             }
         },
         watch: {
