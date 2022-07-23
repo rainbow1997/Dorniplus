@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Middleware;
-
+use Closure;
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
 
 class Authenticate extends Middleware
@@ -12,6 +12,15 @@ class Authenticate extends Middleware
      * @param  \Illuminate\Http\Request  $request
      * @return string|null
      */
+    public function handle($request,Closure $next,...$guards)
+    {
+        if(\Auth::check())
+            if(!$request->user()->is_email_verified)
+                return redirect()->route('code_verification');
+            else
+                return $next($request);
+        return abort(403);
+    }
     protected function redirectTo($request)
     {   
         

@@ -15,7 +15,11 @@ use App\Enum\MilitaryStatus;
 use App\Models\Province;
 use Verta;
 use Image;
+use \App\Models\UserVerify;
 use Illuminate\Support\Collection;
+
+use Inertia\Inertia;
+
 class RegisteredUserController extends Controller
 {
     /**
@@ -26,7 +30,7 @@ class RegisteredUserController extends Controller
     public function create()
     {
         $regions = Province::with('cities')->get();
-        return view('auth.register',['regions'=>$regions]);
+        return Inertia::render('Auth/Register',['regions'=>$regions]);
     }
 
     /**
@@ -98,8 +102,15 @@ class RegisteredUserController extends Controller
         $validData = $this->userValidating($request);
         $validData = collect($validData);
         $this->securePassword($validData);
-        $this->uploadAvatar($request);
+        if($request->hasFile('avatar'))
+            $this->uploadAvatar($request);
+
+      
         $user = User::create($validData->toArray());
+        $userVerify = new UserVerify;
+        $userVerify->setToken();
+        $user->emailVerificationCode()->save($userVerify);
+        $user->save();
 
         event(new Registered($user));
 
@@ -122,4 +133,5 @@ class RegisteredUserController extends Controller
             return true;
         return false;
     }
+    
 }

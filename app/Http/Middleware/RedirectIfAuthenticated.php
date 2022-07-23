@@ -19,8 +19,9 @@ class RedirectIfAuthenticated
      */
     public function handle(Request $request, Closure $next, ...$guards)
     {
-        if(!$request->user()->is_email_verified)
-            return route('code_verification');
+        
+     
+        
         $guards = empty($guards) ? [null] : $guards;
 
         foreach ($guards as $guard) {
