@@ -8,9 +8,13 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use \App\Models\UserVerify;
-class User extends Authenticatable
+use Verta;
+use \App\Notification\RegisterNotification;
+use Spatie\Permission\Traits\HasRoles;
+
+class User extends Authenticatable implements MustVerifyEmail, \Illuminate\Contracts\Auth\CanResetPassword
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasRoles,HasFactory, Notifiable, \Illuminate\Auth\Passwords\CanResetPassword;
 
     /**
      * The attributes that are mass assignable.
@@ -52,13 +56,21 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'birth' =>  'date',
+        'birth' =>  'datetime:Y/m/d',
         'gender' => \App\Enum\Gender::class,
         'military_status' => \App\Enum\MilitaryStatus::class
+    
     ];
 
     public function emailVerificationCode()
     {
         return $this->hasOne(UserVerify::class);
     }
+    //it is cast to jalali
+    public function getCreatedAtAttribute($value)
+    {
+        
+        return (verta($value))->format('Y/m/d');
+    }
+
 }

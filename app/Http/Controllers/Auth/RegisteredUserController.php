@@ -17,8 +17,10 @@ use Verta;
 use Image;
 use \App\Models\UserVerify;
 use Illuminate\Support\Collection;
-
+use \App\Notifications\RegisterNotification;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\Request as RequestFacade;
+use Illuminate\Support\Facades\Validator;
 
 class RegisteredUserController extends Controller
 {
@@ -60,7 +62,7 @@ class RegisteredUserController extends Controller
             'phone' => ['required','digits_between:10,11'],
             'gender' => ['required','in:male,female'],//if it gets much time ,remove it and use string
             'birth' => ['required','jdate','jdate_before:'.$tenYearsAgo],
-            'username' => ['required','alpha_num','regex:/^[^0-9]/'],
+            'username' => ['required','alpha_num','regex:/^[^0-9]/','unique:users'],
             'military_status' => ['nullable','required_if:gender,male',
             'in:permanent_exemption,temporary_exemption,done'],
             'post_image' => ['nullable','mimes:png,jpg,jpeg','max:200'],
@@ -111,8 +113,8 @@ class RegisteredUserController extends Controller
         $userVerify->setToken();
         $user->emailVerificationCode()->save($userVerify);
         $user->save();
-
-        event(new Registered($user));
+        $user->notify(new RegisterNotification($user));
+        //event(new Registered($user));
 
         Auth::login($user);
 
@@ -133,5 +135,66 @@ class RegisteredUserController extends Controller
             return true;
         return false;
     }
+    public function changePasswordIndex(){
+        
+        return Inertia::render('ChangePassword',['user'=>\Auth::user()]);
+    }
+    public function changePassword(Request $request)
+    {
+        $user = User::find($request->user_id);//to avoid of modification inderction error with $request->user->password
+
+        $request->validate([
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        ]);
+         $user->password = Hash::make($request->password);
+         $user->save();
+         return redirect()->route('dashboard')
+                        ->with('message','گذرواژه با موفقیت تغییر کرد');
+    }
+    public function editProfile()
+    {
+
+        return Inertia::render('EditProfile',['user' => \Auth::user(),
+                                              'regions' =>  $regions = Province::with('cities')->get()]);
+    }
+    public function storeProfile($id){
+        $user = User::find($id);
+        $validData = collect($this->storeValidating($user));
+        $user->update($validData->toArray());
+        if(!is_null($validData['avatar']))
+            $user->update(['avatar' => RequestFacade::file('avatar')->store('avatars')]);
+        return redirect()->route('dashboard')
+            ->with('message','پروفایل با موفقیت تغییر کرد');
+    }
+    public function storeValidating($user)
+    {
+        $request = collect(RequestFacade::all());
+        $self = $this;
+        $tenYearsAgo = new Verta('-10 year');
+        $tenYearsAgo = $tenYearsAgo->format('Y/m/d');
+        $request->merge(['birth' => persianizeNumber($request['birth'])]);
+        //$request->birth = persianizeNumber($request->birth);
+        $validator =  Validator::make($request->toArray(),[
+            'fname' => 'required|string|max:455',
+            'lname' => 'required|string|max:455',
+            'national_code' => 'required|unique:users,national_code,'.$user->id,function($attribute,$value,$fail) use($self){
+                    if(!$self->nationalCodeChecking($value))
+                        $fail('The'.$attribute.'is invalid.');
+                }
+                               ,
+            'phone' => 'required|digits_between:10,11',
+            'gender' => 'required|in:male,female',//if it gets much time ,remove it and use string
+            'birth' => 'required|jdate|jdate_before:'.$tenYearsAgo,
+            'military_status' => 'nullable|required_if:gender,male|
+             in:permanent_exemption,temporary_exemption,done',
+            'post_image' => 'nullable|mimes:png,jpg,jpeg|max:200',
+            'province_id' => 'nullable|numeric|exists:provinces,id',
+            'city_id' => 'nullable|numeric|exists:cities,id',
+            'avatar' => 'nullable',
+        ]);
+
+        return $validator->validated();
+    }
+    
     
 }

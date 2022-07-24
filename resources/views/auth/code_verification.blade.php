@@ -11,7 +11,6 @@
 <form action="{{route('checking_verification')}}" method="post">
     @csrf
 <input type="text" name="token" >
-<input type="submit" class="btn btn-warning text-white" value="ثبت">
-
+<input type="submit" class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" value="ثبت" />
 </form>
 </x-app-layout>

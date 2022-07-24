@@ -36,9 +36,9 @@ class NewPasswordController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
+
     public function store(Request $request)
     {
-        return ('injaeim ddsh');
         $request->validate([
             'token' => 'required',
             'email' => 'required|email',

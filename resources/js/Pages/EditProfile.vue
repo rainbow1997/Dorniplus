@@ -2,11 +2,13 @@
 import BreezeButton from '@/Components/Button.vue';
 import BreezeGuestLayout from '@/Layouts/Guest.vue';
 import BreezeInput from '@/Components/Input.vue';
+import BreezeCheckbox from '@/Components/Checkbox.vue';
 import BreezeLabel from '@/Components/Label.vue';
 import BreezeValidationErrors from '@/Components/ValidationErrors.vue';
-import './persian-datepicker.js';// in another time,use modules.env not this statically manner.
-import './persian-datepicker.min.css';
+import './Auth/persian-datepicker.js';// in another time,use modules.env not this statically manner.
+import './Auth/persian-datepicker.min.css';
 import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
+
 
 export default {
     components:{
@@ -24,26 +26,23 @@ data(){
     return{
         cities:{},
         form : this.$inertia.form({
-            fname: '',
-            lname: '',
-            national_code: '',
-            phone:'',
-            birth:'',
-            gender:'',
-            military_status:'',
-            email: '',
-            avatar:'',
-            username:'',
-            password: '',
-            password_confirmation: '',
-            province_id:'',
-            city_id:'',
+            method:'put',
+            fname: this.user.fname,
+            lname: this.user.lname,
+            national_code: this.user.national_code,
+            phone: this.user.phone,
+            birth: this.user.birth,
+            gender:this.user.gender,
+            military_status:this.user.military_status,
+            avatar: this.user.avatar,
+            province_id:this.user.province_id,
+            city_id:this.user.city_id,
             terms: false,
-            captcha_num:null
 })
   
 }},
 props: {
+    user :{},//afterwards, delete it and use Inertia attr
     regions:{}
 },
 watch:{
@@ -73,7 +72,7 @@ methods: {
             this.form.military_status = null;
     },
      submit() {
-      this.$inertia.post('/register', this.form)
+      this.$inertia.put('/storeProfile/'+this.user.id, this.form)
     }
 },
 mounted() {
@@ -83,6 +82,7 @@ mounted() {
             format: 'YYYY/MM/DD'
         });
   });
+ 
 },
 };
 
@@ -95,7 +95,7 @@ mounted() {
 
 <template>
     <BreezeGuestLayout>
-        <Head title="ثبت نام" />
+        <Head title="ویرایش پروفایل" />
 
         <BreezeValidationErrors class="mb-4" />
 
@@ -126,24 +126,21 @@ mounted() {
                 <div class="flex flex-row-reverse content-around ">
                 <div class="px-3">
                 <BreezeLabel for ="genderMale" value="مذکر" />
-                <BreezeInput id="genderMale" name="gender" type="radio" class="mt-1 " v-model="form.gender" required autofocus autocomplete="gender" value="male" @change="genderChange($event)"/>
+                <BreezeInput id="genderMale" name="gender" type="radio" class="mt-1 " v-model="form.gender" required autofocus autocomplete="gender" value="male" @change="genderChange($event)" v-on:checked="gender == 'male'"/>
                 </div>
                 <div>
                 <BreezeLabel for ="genderFemale" value="مونث" />
-                <BreezeInput id="genderFemale" name="gender" type="radio" class="mt-1" v-model="form.gender" required autofocus autocomplete="gender" value="female" @change="genderChange($event)"/>
+                <BreezeInput id="genderFemale" name="gender" type="radio" class="mt-1" v-model="form.gender" required autofocus autocomplete="gender" value="female" @change="genderChange($event)" v-on:checked="gender == 'female' "/>
                 </div>
                 </div>
             </div>
             <div v-show="form.gender == 'male'" class="flex flex-row-reverse content-around flex-wrap">
                 <BreezeLabel  value="وضعیت نظام وظیفه" class=" flex-1" />
-                <BreezeInput id="military_status" name="military_status" type="radio" class="" v-model="form.military_status"  autofocus autocomplete="military_status" value="permanent_exemption" />معاف دائم
+                <BreezeInput id="military_status" name="military_status" type="checkbox" class="" v-model="form.military_status"  autofocus autocomplete="military_status" value="permanent_exemption" />معاف دائم
                 <BreezeInput id="military_status2" name="military_status" type="radio" class="" v-model="form.military_status"  autofocus autocomplete="military_status" value="temporary_exemption" />معاف موقت
                 <BreezeInput id="military_status3" name="military_status" type="radio" class="" v-model="form.military_status"  autofocus autocomplete="military_status" value="done" />پایان خدمت
             </div>
-             <div class="mt-4">
-                <BreezeLabel for="email" value="*ایمیل" />
-                <BreezeInput id="email" type="email" class="mt-1 block w-full" v-model="form.email" required autocomplete="username" />
-            </div>
+            
             <div>
                 <BreezeLabel for="avatar" value="عکس" />
                 <input type="file" @input="form.avatar = $event.target.files[0]" />
@@ -151,18 +148,7 @@ mounted() {
                    {{ form.progress.percentage }}%
                 </progress>
             </div>
-             <div>
-                <BreezeLabel for="username" value="*نام کاربری" />
-                <BreezeInput id="username" type="text" class="mt-1 block w-full" v-model="form.username" required autofocus autocomplete="username" />
-            </div>
-            <div class="mt-4">
-                <BreezeLabel for="password" value="*رمز عبور" />
-                <BreezeInput id="password" type="password" class="mt-1 block w-full" v-model="form.password" required autocomplete="new-password" />
-            </div>
-             <div class="mt-4">
-                <BreezeLabel for="password_confirmation" value="*تکرار رمز عبور" />
-                <BreezeInput id="password_confirmation" type="password" class="mt-1 block w-full" v-model="form.password_confirmation" required autocomplete="new-password" />
-            </div>
+            
            <div class="mt-4">
                 <BreezeLabel for="province" value="استان " />
                 <select v-show="form.province_id!=null" v-model="form.city_id" name="city_id">
@@ -174,25 +160,14 @@ mounted() {
 
                 
             </div>
-            <div class="mt-4">
-                <BreezeLabel for="captcha" value="کد امنیتی*" />
-
-                <img id="captcha" class="" src="/captcha2">
-
-
-             </div>
-            <div class="">
-                 <BreezeLabel value="کد بالا را با دقت وارد کنید"></BreezeLabel>
-                 <BreezeInput id="captcha_code" v-model="form.captcha_num" class="block mt-1 w-full" type="number" name="captcha_num" required autofocus />
-
-             </div>
+            
             <div class="flex items-center justify-end mt-4">
-                <Link :href="route('login')" class="underline text-sm text-gray-600 hover:text-gray-900">
-                    پیش از این ثبت نام کرده اید؟ برای ورود کلیک کنید.
+                <Link :href="route('dashboard')" class="underline text-sm text-gray-600 hover:text-gray-900">
+                    بازگشت به داشبورد
                 </Link>
 
                 <BreezeButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    ثبت نام
+                    ثبت
                 </BreezeButton>
             </div>
         </form>

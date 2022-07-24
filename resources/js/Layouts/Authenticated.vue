@@ -23,13 +23,15 @@ const showingNavigationDropdown = ref(false);
                                 <Link :href="route('dashboard')">
                                     <BreezeApplicationLogo class="block h-9 w-auto" />
                                 </Link>
+                                 
                             </div>
 
                             <!-- Navigation Links -->
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                                 <BreezeNavLink :href="route('dashboard')" :active="route().current('dashboard')">
-                                    Dashboard
+                                    داشبورد
                                 </BreezeNavLink>
+                         
                             </div>
                         </div>
 
@@ -50,8 +52,14 @@ const showingNavigationDropdown = ref(false);
                                     </template>
 
                                     <template #content>
-                                        <BreezeDropdownLink :href="route('logout')" method="post" as="button">
-                                            Log Out
+                                         <BreezeDropdownLink :href="route('editProfile')" method="get" as="button"  :active="route().current('editProfile')">
+                                           ویرایش پروفایل
+                                        </BreezeDropdownLink>
+                                        <BreezeDropdownLink :href="route('changePassword')" method="get" as="button"  :active="route().current('changePassword')">
+                                           تغییر رمز عبور
+                                        </BreezeDropdownLink>
+                                            <BreezeDropdownLink :href="route('logout')" method="post" as="button">
+                                            خروج
                                         </BreezeDropdownLink>
                                     </template>
                                 </BreezeDropdown>
@@ -74,7 +82,7 @@ const showingNavigationDropdown = ref(false);
                 <div :class="{'block': showingNavigationDropdown, 'hidden': ! showingNavigationDropdown}" class="sm:hidden">
                     <div class="pt-2 pb-3 space-y-1">
                         <BreezeResponsiveNavLink :href="route('dashboard')" :active="route().current('dashboard')">
-                            Dashboard
+                            داشبورد
                         </BreezeResponsiveNavLink>
                     </div>
 
@@ -87,7 +95,7 @@ const showingNavigationDropdown = ref(false);
 
                         <div class="mt-3 space-y-1">
                             <BreezeResponsiveNavLink :href="route('logout')" method="post" as="button">
-                                Log Out
+                                خروج
                             </BreezeResponsiveNavLink>
                         </div>
                     </div>

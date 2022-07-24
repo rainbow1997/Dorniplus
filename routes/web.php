@@ -5,8 +5,9 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\Auth\NewPasswordController;
-
-
+use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Models\User;
+use App\Models\Post;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,17 +20,16 @@ use App\Http\Controllers\Auth\NewPasswordController;
 */
 
 Route::get('/', function () {
+   
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
+        'posts' => Post::with(['category','writerPerson'])->get() //for test *
     ]);
 });
-Route::get('/reset-password',[NewPasswordController::class,'create'])
-    ->middleware('auth');
-Route::post('/reset-password',[NewPasswordController::class,'store'])
-    ->middleware('auth')->name('password.update');
+
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -41,6 +41,18 @@ Route::get('/code_verification',function(){
 Route::post('/checking_verification',[VerifyEmailController::class,'checkingCode'])
 ->name('checking_verification')
 ->withoutMiddleware(['auth']);
+
+Route::get('/changePassword',[RegisteredUserController::class,'changePasswordIndex'])
+    ->middleware(['auth', 'verified','password.confirm'])->name('changePassword');
+
+Route::post('/changePassword',[RegisteredUserController::class,'changePassword'])
+    ->middleware(['auth', 'verified','password.confirm'])->name('changePassword.save');
+
+Route::get('/editProfile',[RegisteredUserController::class,'editProfile'])
+    ->middleware(['auth', 'verified','can:see-edit-profile-page'])->name('editProfile');
+
+Route::put('/storeProfile/{id}',[RegisteredUserController::class,'storeProfile'])
+    ->middleware(['auth', 'verified','can:see-edit-profile-page'])->name('storeProfile');
 
 
 Route::get('/captcha',function(){
