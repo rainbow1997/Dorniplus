@@ -19,3 +19,4 @@ createInertiaApp({
 });
 
 InertiaProgress.init({ color: '#4B5563' });
+window.document.body.setAttribute('dir','rtl');

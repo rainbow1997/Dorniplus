@@ -8,6 +8,13 @@ use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Models\User;
 use App\Models\Post;
+use App\Models\Province;
+use App\Http\Controllers\Auth\Admin\RegionController;
+use App\Http\Controllers\Auth\Admin\RoleController;
+use App\Http\Controllers\Auth\Admin\UserController;
+use App\Http\Controllers\Auth\Admin\LogController;
+use \App\Http\Controllers\Auth\Admin\PostController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -54,6 +61,45 @@ Route::get('/editProfile',[RegisteredUserController::class,'editProfile'])
 Route::put('/storeProfile/{id}',[RegisteredUserController::class,'storeProfile'])
     ->middleware(['auth', 'verified','can:see-edit-profile-page'])->name('storeProfile');
 
+Route::get('/regions',[RegionController::class,'index'])
+    ->middleware(['auth','verified'])->name('regions.index');
+Route::get('/regions/province/{province}',[RegionController::class,'showProvince'])
+    ->middleware(['auth','verified'])->name('regions.province.show');
+
+Route::get('province/create',[RegionController::class,'createProvince'])
+    ->middleware(['auth','verified'])->name('regions.province.create');
+
+Route::post('/province/storeProvince',[RegionController::class,'storeProvince'])
+    ->middleware(['auth','verified'])->name('regions.province.store');
+    
+Route::get('/province/edit/{province}',[RegionController::class,'editProvince'])
+    ->middleware(['auth','verified'])->name('regions.province.edit');
+
+Route::get('/province/update/{province}',[RegionController::class,'updateProvince'])
+    ->middleware(['auth','verified'])->name('regions.province.update');
+
+Route::delete('/province/destroy/{province}',[RegionController::class,'destroyProvince'])
+    ->middleware(['auth','verified'])->name('regions.province.destroy');
+
+Route::get('/city/create/{province}',[RegionController::class,'createCity'])
+    ->middleware(['auth','verified'])->name('regions.city.create');
+    
+Route::post('/city/storeCity/{province}',[RegionController::class,'storeCity'])
+    ->middleware(['auth','verified'])->name('regions.city.store');
+Route::delete('/city/destroy/{city}',[RegionController::class,'destroyCity'])
+    ->middleware(['auth','verified'])->name('regions.city.destroy');
+
+Route::group(['middleware' => ['auth','verified','role:Admin']], function() {
+        Route::resource('roles', RoleController::class);
+        Route::resource('users', UserController::class);
+        Route::resource('posts',PostController::class);
+        Route::get('/reporting/{method}',[UserController::class,'displayUsersReport'])->name('reporting');
+        Route::get('/chart',function(){
+            return view('/auth/users_charts');
+        });
+        Route::get('/logs',[LogController::class,'index']);
+        
+    });
 
 Route::get('/captcha',function(){
     return view('helpers/captcha_show');
@@ -62,6 +108,7 @@ Route::get('/captcha2',function(){
     return captchaMaking();
 });
 Route::get('/information',function(){
-    return phpinfo();
+  
+    //return $provinces;
 });
 require __DIR__.'/auth.php';

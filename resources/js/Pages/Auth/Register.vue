@@ -99,7 +99,8 @@ mounted() {
 
         <BreezeValidationErrors class="mb-4" />
 
-        <form @submit.prevent="submit" class="rtl text-right">
+        <form @submit.prevent="submit" class="rtl text-right" enctype="multipart/form-data">
+
             <div>
                 <BreezeLabel for="fname" value="*نام" />
                 <BreezeInput id="fname" type="text" class="mt-1 block w-full" v-model="form.fname" required autofocus autocomplete="fname" />

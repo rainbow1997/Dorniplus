@@ -11,10 +11,12 @@ use \App\Models\UserVerify;
 use Verta;
 use \App\Notification\RegisterNotification;
 use Spatie\Permission\Traits\HasRoles;
+use Laravel\Scout\Searchable;
+
 
 class User extends Authenticatable implements MustVerifyEmail, \Illuminate\Contracts\Auth\CanResetPassword
 {
-    use HasApiTokens, HasRoles,HasFactory, Notifiable, \Illuminate\Auth\Passwords\CanResetPassword;
+    use HasApiTokens, HasRoles,Searchable,HasFactory, Notifiable, \Illuminate\Auth\Passwords\CanResetPassword;
 
     /**
      * The attributes that are mass assignable.
@@ -46,7 +48,6 @@ class User extends Authenticatable implements MustVerifyEmail, \Illuminate\Contr
     protected $hidden = [
         'password',
         'remember_token',
-        'created_at'
     ];
 
     /**
@@ -61,7 +62,10 @@ class User extends Authenticatable implements MustVerifyEmail, \Illuminate\Contr
         'military_status' => \App\Enum\MilitaryStatus::class
     
     ];
-
+    public function searchableAs()
+    {
+        return 'users_index';
+    }
     public function emailVerificationCode()
     {
         return $this->hasOne(UserVerify::class);
@@ -71,6 +75,18 @@ class User extends Authenticatable implements MustVerifyEmail, \Illuminate\Contr
     {
         
         return (verta($value))->format('Y/m/d');
+    }
+    public function province()
+    {
+        return $this->belongsTo(Province::class);
+    }
+    public function city()
+    {
+        return $this->belongsTo('App\Models\City','city_id','id');
+    }
+    public function getCityName()
+    {
+        return $this->city->title;
     }
 
 }

@@ -36,6 +36,7 @@
         "jquery": "^3.6.0",
         "jquery-ui": "^1.13.2",
         "persian-datepicker": "^1.2.0",
+        "underscore": "^1.13.4",
         "vue-axios": "^3.4.1"
     }
 }

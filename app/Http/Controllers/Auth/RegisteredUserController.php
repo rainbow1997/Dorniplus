@@ -21,6 +21,7 @@ use \App\Notifications\RegisterNotification;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Request as RequestFacade;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
 
 class RegisteredUserController extends Controller
 {
@@ -78,20 +79,19 @@ class RegisteredUserController extends Controller
     protected function uploadAvatar(Request $request)
     {
         $uploadedFile = $request->file('avatar');
-        $filePath = $uploadedFile->store('avatars');
-       // dd($filePath);
-        //$filename = time().$uploadedFile->getClientOriginalName();
-        //$file = Storage::disk('local')->putFileAs(('avatars/'.$filename),$uploadedFile,$filename);
-        $this->imageSizeOptimizer($filePath);
+                                                                                                                       $this->imageSizeOptimizer($uploadedFile->getRealPath());
+        $filename = time().$uploadedFile->getClientOriginalName();
+        $file = Storage::disk('public')->putFileAs( 'avatars', $uploadedFile,$filename);
+        return $file;
     }
     protected function imageSizeOptimizer($file)
     {
-        $file = \Storage::path($file);//for confidence
+    
         $image = Image::make($file);
         $image->resize(400,400,function($const){
             $const->aspectRatio();
         })->save();
-        return $image;
+        //return $image;
     }
     private function securePassword(Collection $validData)
     {
@@ -105,9 +105,8 @@ class RegisteredUserController extends Controller
         $validData = collect($validData);
         $this->securePassword($validData);
         if($request->hasFile('avatar'))
-            $this->uploadAvatar($request);
+            $validData->put('avatar', $this->uploadAvatar($request));
 
-      
         $user = User::create($validData->toArray());
         $userVerify = new UserVerify;
         $userVerify->setToken();

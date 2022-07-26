@@ -42,16 +42,20 @@ defineProps({
                 </svg>
             </div>
             <!-- For testing -->
-            <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
-                <div class="flex flex-col">
-                <div class="" v-for="post in posts">
-                <img src="/{{post.post_image}}" alt="{{post.title}}">
-                <h4>{{post.title}}</h4>
-                <h5>{{post.category.title}}</h5>
-                <h6>نویسنده:{{ post.writerPerson.fname }}  {{ post.writerPerson.lname}} </h6>
-                <h6>زمان تقریبی مطالعه:{{post.estimated_time}}</h6>
+            <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg text-right">
+                <div class="flex flex-wrap flex-row-reverse justify-end">
+                <div class="text-right" v-for="post in posts">
+                <img :src="post.post_image" :alt="post.title" class="float-right m-2">
+                <h1 class="font-bold">{{post.title}}</h1>
+                <h6 class="font-light text-right rtl">
+                    نویسنده:
+                    {{ post.writer_person.fname }} {{ post.writer_person.lname}} </h6>
+                <h5 class="mt-1 font-medium">موضوع:{{post.category.title}}</h5>
+                <h6 class="mt-1 font-light">زمان تقریبی مطالعه:{{post.estimated_time}}</h6>
                 <hr/>
-                {{post.text}}
+                <div class="leading-loose m-1 mt-1">
+                    {{post.text}}
+                </div>
                 </div>
               </div>
             </div>

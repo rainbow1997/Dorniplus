@@ -11,7 +11,7 @@ const showingNavigationDropdown = ref(false);
 </script>
 
 <template>
-    <div>
+    <div class="text-right" direction="rtl">
         <div class="min-h-screen bg-gray-100">
             <nav class="bg-white border-b border-gray-100">
                 <!-- Primary Navigation Menu -->
@@ -27,9 +27,12 @@ const showingNavigationDropdown = ref(false);
                             </div>
 
                             <!-- Navigation Links -->
-                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                            <div class="hidden space-x-8 sm:-my-px sm:mr-10 sm:flex">
                                 <BreezeNavLink :href="route('dashboard')" :active="route().current('dashboard')">
                                     داشبورد
+                                </BreezeNavLink>
+                                 <BreezeNavLink :href="route('regions.index')" :active="route().current('dashboard')">
+                                    مناطق
                                 </BreezeNavLink>
                          
                             </div>
@@ -110,6 +113,8 @@ const showingNavigationDropdown = ref(false);
             </header>
 
             <!-- Page Content -->
+                                    {{$page.props.flash.message}}
+
             <main>
                 <slot />
             </main>
