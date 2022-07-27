@@ -56,10 +56,10 @@ Route::post('/changePassword',[RegisteredUserController::class,'changePassword']
     ->middleware(['auth', 'verified','password.confirm'])->name('changePassword.save');
 
 Route::get('/editProfile',[RegisteredUserController::class,'editProfile'])
-    ->middleware(['auth', 'verified','can:see-edit-profile-page'])->name('editProfile');
+    ->middleware(['auth', 'verified','permission:see-edit-profile-page'])->name('editProfile');
 
 Route::put('/storeProfile/{id}',[RegisteredUserController::class,'storeProfile'])
-    ->middleware(['auth', 'verified','can:see-edit-profile-page'])->name('storeProfile');
+    ->middleware(['auth', 'verified','permission:see-edit-profile-page'])->name('storeProfile');
 
 Route::get('/regions',[RegionController::class,'index'])
     ->middleware(['auth','verified'])->name('regions.index');
@@ -96,7 +96,7 @@ Route::group(['middleware' => ['auth','verified','role:Admin']], function() {
         Route::get('/reporting/{method}',[UserController::class,'displayUsersReport'])->name('reporting');
         Route::get('/chart',function(){
             return view('/auth/users_charts');
-        });
+        })->name('chart');
         Route::get('/logs',[LogController::class,'index']);
         
     });

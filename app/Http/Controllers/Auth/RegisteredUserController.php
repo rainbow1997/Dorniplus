@@ -66,10 +66,10 @@ class RegisteredUserController extends Controller
             'username' => ['required','alpha_num','regex:/^[^0-9]/','unique:users'],
             'military_status' => ['nullable','required_if:gender,male',
             'in:permanent_exemption,temporary_exemption,done'],
-            'post_image' => ['nullable','mimes:png,jpg,jpeg','max:200'],
+            'avatar' => ['nullable','mimes:png,jpg,jpeg','max:200'],
             'province_id' => ['nullable','numeric','exists:provinces,id'],
             'city_id' => ['nullable','numeric','exists:cities,id'],
-            'avatar' => ['nullable'],
+            
             'captcha_num' => ['required','numeric',function($attribute,$value,$fail){
                 if(session('captcha_num') != $value)
                     $fail('The'.$attribute.'is incorrect.');
@@ -79,7 +79,7 @@ class RegisteredUserController extends Controller
     protected function uploadAvatar(Request $request)
     {
         $uploadedFile = $request->file('avatar');
-                                                                                                                       $this->imageSizeOptimizer($uploadedFile->getRealPath());
+        $this->imageSizeOptimizer($uploadedFile->getRealPath());
         $filename = time().$uploadedFile->getClientOriginalName();
         $file = Storage::disk('public')->putFileAs( 'avatars', $uploadedFile,$filename);
         return $file;

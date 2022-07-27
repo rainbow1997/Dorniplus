@@ -43,9 +43,9 @@ defineProps({
             </div>
             <!-- For testing -->
             <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg text-right">
-                <div class="flex flex-wrap flex-row-reverse justify-end">
-                <div class="text-right" v-for="post in posts">
-                <img :src="post.post_image" :alt="post.title" class="float-right m-2">
+                <div class="flex flex-wrap flex-col-reverse justify-end" v-for="post in posts">
+                <div class="text-right" >
+                <img :src="'/storage/'+post.post_image" :alt="post.title" class="float-right m-2">
                 <h1 class="font-bold">{{post.title}}</h1>
                 <h6 class="font-light text-right rtl">
                     نویسنده:
@@ -54,10 +54,11 @@ defineProps({
                 <h6 class="mt-1 font-light">زمان تقریبی مطالعه:{{post.estimated_time}}</h6>
                 <hr/>
                 <div class="leading-loose m-1 mt-1">
-                    {{post.text}}
-                </div>
+                    <span v-html="post.text"></span>
+                                    </div>
                 </div>
               </div>
+              <hr/>
             </div>
 
             <div class="flex justify-center mt-4 sm:items-center sm:justify-between">

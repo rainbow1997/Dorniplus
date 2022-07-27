@@ -12,6 +12,7 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        <x-head.tinymce-config/>
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>

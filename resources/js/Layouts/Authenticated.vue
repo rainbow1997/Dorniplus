@@ -27,13 +27,26 @@ const showingNavigationDropdown = ref(false);
                             </div>
 
                             <!-- Navigation Links -->
-                            <div class="hidden space-x-8 sm:-my-px sm:mr-10 sm:flex">
+                            <div class="text-right hidden space-x-8 sm:-my-px sm:m-10 sm:flex">
                                 <BreezeNavLink :href="route('dashboard')" :active="route().current('dashboard')">
                                     داشبورد
                                 </BreezeNavLink>
-                                 <BreezeNavLink :href="route('regions.index')" :active="route().current('dashboard')">
+                                 <BreezeNavLink :href="route('regions.index')">
                                     مناطق
                                 </BreezeNavLink>
+                                 <BreezeNavLink :href="route('roles.index')">
+                                    دسترسی و نقش ها
+                                </BreezeNavLink>
+                                 <BreezeNavLink :href="route('users.index')">
+                                    کاربران
+                                </BreezeNavLink>
+                                 <BreezeNavLink :href="route('posts.index')">
+                                    مطالب
+                                </BreezeNavLink>
+                                 <BreezeNavLink :href="route('chart')">
+                                    نمودار
+                                </BreezeNavLink>
+                         
                          
                             </div>
                         </div>
@@ -41,9 +54,9 @@ const showingNavigationDropdown = ref(false);
                         <div class="hidden sm:flex sm:items-center sm:ml-6">
                             <!-- Settings Dropdown -->
                             <div class="ml-3 relative">
-                                <BreezeDropdown align="right" width="48">
+                                <BreezeDropdown align="left" width="48">
                                     <template #trigger>
-                                        <span class="inline-flex rounded-md">
+                                        <span class="text-right inline-flex rounded-md">
                                             <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
                                                 {{ $page.props.auth.user.name }}
 

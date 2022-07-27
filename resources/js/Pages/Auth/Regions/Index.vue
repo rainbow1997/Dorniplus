@@ -18,9 +18,7 @@
                                     px-6
                                     py-2
                                     mb-2
-                                    text-green-100
-                                    bg-green-500
-                                    rounded
+                                   text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700
                                 "
                                 :href="route('regions.province.create')"
                             >
@@ -42,21 +40,22 @@
                                     <td class="px-4 py-2">{{ province.id }}</td>
                                     <td class="px-4 py-2">{{ province.title }}</td>
                                     <td class="px-4 py-2 font-extrabold flex flex-row space-around">
+                                         <BreezeButton @click="chooseProvince(province.id)" class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" >
+                                            انتخاب 
+                                        </BreezeButton> <!-- remember that , link try to remount and it makes conflicts-->
+
                                         <Link
-                                            class="text-green-700"
+                                            class="text-white bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:focus:ring-yellow-900"
                                             :href="route('regions.province.edit', province.id)"
                                         >
                                             ویرایش
                                         </Link>
                                         <Link
                                             @click="destroy(province.id)"
-                                            class="text-red-700"
+                                            class="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
                                             >حذف</Link
                                         >  
-                                     <BreezeButton @click="chooseProvince(province.id)" class="mr-4" >
-                                            انتخاب 
-                                        </BreezeButton> <!-- remember that , link try to remount and it makes conflicts-->
-
+                                    
                                          
                                     </td>
                                 </tr>
@@ -70,16 +69,13 @@
                                 class="
                                     px-6
                                     py-2
-                                    
-                                    text-green-100
-                                    bg-green-500
-                                    rounded
+                                    text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700
                                 "
                                 :href="route('regions.city.create',(selectedProvince.id) ? selectedProvince.id:0)"
                             >
                                 افزودن شهر به این استان
                             </Link>
-                            <table class="mt-5">
+                            <table class="table-fixed mt-5">
                                 <thead class="font-bold bg-gray-300 border-b-2">
                                     <td class="px-4 py-2">شناسه</td>
                                     <td class="px-4 py-2">عنوان</td>
