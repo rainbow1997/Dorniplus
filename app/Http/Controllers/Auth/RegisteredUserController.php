@@ -66,7 +66,7 @@ class RegisteredUserController extends Controller
             'username' => ['required','alpha_num','regex:/^[^0-9]/','unique:users'],
             'military_status' => ['nullable','required_if:gender,male',
             'in:permanent_exemption,temporary_exemption,done'],
-            'avatar' => ['nullable','mimes:png,jpg,jpeg','max:200'],
+            'avatar' => ['nullable','image','mimes:png,jpg,jpeg','max:20000'],
             'province_id' => ['nullable','numeric','exists:provinces,id'],
             'city_id' => ['nullable','numeric','exists:cities,id'],
 
@@ -79,19 +79,20 @@ class RegisteredUserController extends Controller
     protected function uploadAvatar(Request $request)
     {
         $uploadedFile = $request->file('avatar');
-        $this->imageSizeOptimizer($uploadedFile->getRealPath());
         $filename = time().$uploadedFile->getClientOriginalName();
+
         $file = Storage::disk('public')->putFileAs( 'avatars', $uploadedFile,$filename);
+        $this->imageSizeOptimizer($file);
+
         return $file;
     }
     protected function imageSizeOptimizer($file)
     {
 
-        $image = Image::make($file);
+        $image = Image::make('storage/'.$file);
         $image->resize(400,400,function($const){
             $const->aspectRatio();
         })->save();
-        //return $image;
     }
     private function securePassword(Collection $validData)
     {
