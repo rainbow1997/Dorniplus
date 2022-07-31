@@ -170,6 +170,7 @@ return [
         PrettyRoutes\ServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
         Barryvdh\Snappy\ServiceProvider::class,
+        Khill\Lavacharts\Laravel\LavachartsServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -241,7 +242,7 @@ return [
         'PdfReport' => Jimmyjs\ReportGenerator\Facades\PdfReportFacade::class,
         'ExcelReport' => Jimmyjs\ReportGenerator\Facades\ExcelReportFacade::class,
         'CSVReport' => Jimmyjs\ReportGenerator\Facades\CSVReportFacade::class,
-        
+        'Lava' => Khill\Lavacharts\Laravel\LavachartsFacade::class
 
     ],
 

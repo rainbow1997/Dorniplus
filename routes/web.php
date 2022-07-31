@@ -14,7 +14,7 @@ use App\Http\Controllers\Auth\Admin\RoleController;
 use App\Http\Controllers\Auth\Admin\UserController;
 use App\Http\Controllers\Auth\Admin\LogController;
 use \App\Http\Controllers\Auth\Admin\PostController;
-
+use \App\Charts\UsersChart;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,7 +27,7 @@ use \App\Http\Controllers\Auth\Admin\PostController;
 */
 
 Route::get('/', function () {
-   
+
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
@@ -71,7 +71,7 @@ Route::get('province/create',[RegionController::class,'createProvince'])
 
 Route::post('/province/storeProvince',[RegionController::class,'storeProvince'])
     ->middleware(['auth','verified'])->name('regions.province.store');
-    
+
 Route::get('/province/edit/{province}',[RegionController::class,'editProvince'])
     ->middleware(['auth','verified'])->name('regions.province.edit');
 
@@ -83,7 +83,7 @@ Route::delete('/province/destroy/{province}',[RegionController::class,'destroyPr
 
 Route::get('/city/create/{province}',[RegionController::class,'createCity'])
     ->middleware(['auth','verified'])->name('regions.city.create');
-    
+
 Route::post('/city/storeCity/{province}',[RegionController::class,'storeCity'])
     ->middleware(['auth','verified'])->name('regions.city.store');
 Route::delete('/city/destroy/{city}',[RegionController::class,'destroyCity'])
@@ -94,13 +94,11 @@ Route::group(['middleware' => ['auth','verified','role:Admin']], function() {
         Route::resource('users', UserController::class);
         Route::resource('posts',PostController::class);
         Route::get('/reporting/{method}',[UserController::class,'displayUsersReport'])->name('reporting');
-        Route::get('/chart',function(){
-            return view('/auth/users_charts');
-        })->name('chart');
-        Route::get('/logs',[LogController::class,'index']);
-        
-    });
+        Route::get('/chart',[UsersChart::class,'showChart'])->name('chart');
 
+        Route::get('/logs',[LogController::class,'index']);
+
+    });
 Route::get('/captcha',function(){
     return view('helpers/captcha_show');
 });
@@ -108,7 +106,7 @@ Route::get('/captcha2',function(){
     return captchaMaking();
 });
 Route::get('/information',function(){
-  
+
     //return $provinces;
 });
 require __DIR__.'/auth.php';

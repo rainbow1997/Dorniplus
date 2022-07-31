@@ -69,7 +69,7 @@ class RegisteredUserController extends Controller
             'avatar' => ['nullable','mimes:png,jpg,jpeg','max:200'],
             'province_id' => ['nullable','numeric','exists:provinces,id'],
             'city_id' => ['nullable','numeric','exists:cities,id'],
-            
+
             'captcha_num' => ['required','numeric',function($attribute,$value,$fail){
                 if(session('captcha_num') != $value)
                     $fail('The'.$attribute.'is incorrect.');
@@ -86,7 +86,7 @@ class RegisteredUserController extends Controller
     }
     protected function imageSizeOptimizer($file)
     {
-    
+
         $image = Image::make($file);
         $image->resize(400,400,function($const){
             $const->aspectRatio();
@@ -100,7 +100,7 @@ class RegisteredUserController extends Controller
     }
     public function store(Request $request)
     {
-        
+
         $validData = $this->userValidating($request);
         $validData = collect($validData);
         $this->securePassword($validData);
@@ -135,7 +135,7 @@ class RegisteredUserController extends Controller
         return false;
     }
     public function changePasswordIndex(){
-        
+
         return Inertia::render('ChangePassword',['user'=>\Auth::user()]);
     }
     public function changePassword(Request $request)
@@ -194,6 +194,6 @@ class RegisteredUserController extends Controller
 
         return $validator->validated();
     }
-    
-    
+
+
 }

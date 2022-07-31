@@ -1,43 +1,49 @@
 <?php
 
-declare(strict_types = 1);
-
 namespace App\Charts;
-
-use Chartisan\PHP\Chartisan;
-use ConsoleTVs\Charts\BaseChart;
-use Illuminate\Http\Request;
+use Lava;
 use \App\Models\Province;
-class UsersChart extends BaseChart
+
+class UsersChart
 {
     protected $provincesTitles;
     protected $provincesCounts;
-    /**
-     * Handles the HTTP request for the given chart.
-     * It must always return an instance of Chartisan
-     * and never a string or an array.
-     */
-    public function __construct(){
-        $this->countsOfProvince();
-    }
-    public function handler(Request $request): Chartisan
+    public function __construct()
     {
-        
-        return Chartisan::build()
-            ->labels($this->provinces_titles)
-            ->dataset('استان ها',  $this->provinces_counts);
+        $this->provincesTitles = collect($this->provincesTitles);
+        $this->provincesCounts = collect($this->provincesCounts);
+        $this->countsOfProvince();
 
+    }
+
+    public function showChart()
+    {
+
+
+        $users = \Lava::DataTable();
+        $users->addStringColumn('استان ها');
+        $users->addNumberColumn('تعداد');
+        for($i=0;$i<$this->provincesTitles->count();$i++)
+                $users->addRow([$this->provincesTitles[$i],$this->provincesCounts[$i]]);
+
+
+        Lava::ColumnChart('Users', $users, [
+            'title' => 'کاربران استان ها',
+            'titleTextStyle' => [
+                'color'    => '#eb6b2c',
+                'fontSize' => 14
+            ]
+        ]);
+
+       return view('auth/users_charts');
     }
     public function countsOfProvince()
     {
-      
-        $i = 0;
+
         foreach(Province::all() as $province){
-            $this->provinces_titles[$i] = $province->title; 
-            $this->provinces_counts[$i] = $province->users()->count();
-            $i++;
+            $this->provincesTitles->push($province->title);
+            $this->provincesCounts->push( $province->users()->count() );
         }
-        
-        
+
     }
 }
