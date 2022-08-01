@@ -46,7 +46,8 @@ class RegisterNotification extends Notification
                     ->greeting('درنیپلاس')
                     ->line('از ثبت نام شما در درنیپلاس متشکریم')
                     ->line('برای احراز هویت کد زیر را پس از ورود به سیستم وارد نمائید.')
-                    ->line('کد احراز هویت شما'.$this->user->emailVerificationCode->token)
+                    ->line('کد احراز هویت شما:')
+                    ->line($this->user->emailVerificationCode->token)
                     ->action('ورود به صفحه احراز هویت', url('/login'));
     }
 

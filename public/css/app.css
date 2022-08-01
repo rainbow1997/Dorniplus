@@ -758,6 +758,9 @@ select {
 .float-right {
   float: right;
 }
+.m-3 {
+  margin: 0.75rem;
+}
 .m-1 {
   margin: 0.25rem;
 }
@@ -1685,6 +1688,11 @@ select {
   .dark\:text-gray-400 {
     --tw-text-opacity: 1;
     color: rgb(156 163 175 / var(--tw-text-opacity));
+  }
+
+  .dark\:text-gray-300 {
+    --tw-text-opacity: 1;
+    color: rgb(209 213 219 / var(--tw-text-opacity));
   }
 
   .dark\:text-gray-500 {

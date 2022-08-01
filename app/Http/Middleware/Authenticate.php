@@ -15,18 +15,20 @@ class Authenticate extends Middleware
     public function handle($request,Closure $next,...$guards)
     {
         if(\Auth::check())
-            if(!$request->user()->is_email_verified)
+            if(!$request->user()->is_email_verified) {
+
                 return redirect()->route('code_verification');
+            }
             else
                 return $next($request);
         return abort(403);
     }
     protected function redirectTo($request)
-    {   
-        
+    {
+
         if (! $request->expectsJson()) {
             return route('login');
         }
     }
-    
+
 }

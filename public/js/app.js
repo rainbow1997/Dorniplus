@@ -27759,8 +27759,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         onSubmit: _cache[21] || (_cache[21] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
           return $options.submit && $options.submit.apply($options, arguments);
         }, ["prevent"])),
-        "class": "rtl text-right",
-        enctype: "multipart/form-data"
+        "class": "rtl text-right"
       }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeLabel, {
         "for": "fname",
         value: "نام*"

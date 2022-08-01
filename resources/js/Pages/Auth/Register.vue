@@ -18,7 +18,7 @@ export default {
     BreezeInput,
     BreezeLabel,
     BreezeValidationErrors,
-    
+
 },
 data(){
     return{
@@ -41,7 +41,7 @@ data(){
             terms: false,
             captcha_num:null
 })
-  
+
 }},
 props: {
     regions:{}
@@ -66,7 +66,7 @@ methods: {
                         return province;
                 });
                 this.cities = t[0].cities;
-                              
+
             },
     genderChange(event){
         if(event.target.value != 'male')
@@ -99,7 +99,7 @@ mounted() {
 
         <BreezeValidationErrors class="mb-4" />
 
-        <form @submit.prevent="submit" class="rtl text-right" enctype="multipart/form-data">
+        <form @submit.prevent="submit" class="rtl text-right">
 
             <div class="mt-4">
                 <BreezeLabel for="fname" value="نام*" />
@@ -175,7 +175,7 @@ mounted() {
                 <select v-show="form.province_id!=null" v-model="form.city_id" name="city_id">
                     <option v-for="item in cities" :value="item.id">{{item.title}}</option>
                 </select>
-                
+
             </div>
             <div class="mt-4">
                 <BreezeLabel for="captcha" value="کد امنیتی*" />
@@ -199,6 +199,6 @@ mounted() {
                 </BreezeButton>
             </div>
         </form>
-        
+
     </BreezeGuestLayout>
 </template>
