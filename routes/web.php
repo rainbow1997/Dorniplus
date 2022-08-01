@@ -107,6 +107,7 @@ Route::get('/captcha2',function(){
 });
 Route::get('/information',function(){
 
+    return phpinfo();
     //return $provinces;
 });
 require __DIR__.'/auth.php';

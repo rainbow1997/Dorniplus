@@ -11,12 +11,11 @@ use \App\Models\UserVerify;
 use Verta;
 use \App\Notification\RegisterNotification;
 use Spatie\Permission\Traits\HasRoles;
-use Laravel\Scout\Searchable;
 
 
 class User extends Authenticatable implements MustVerifyEmail, \Illuminate\Contracts\Auth\CanResetPassword
 {
-    use HasApiTokens, HasRoles,Searchable,HasFactory, Notifiable, \Illuminate\Auth\Passwords\CanResetPassword;
+    use HasApiTokens, HasRoles,HasFactory, Notifiable, \Illuminate\Auth\Passwords\CanResetPassword;
 
     /**
      * The attributes that are mass assignable.
@@ -60,12 +59,9 @@ class User extends Authenticatable implements MustVerifyEmail, \Illuminate\Contr
         'birth' =>  'datetime:Y/m/d',
         'gender' => \App\Enum\Gender::class,
         'military_status' => \App\Enum\MilitaryStatus::class
-    
+
     ];
-    public function searchableAs()
-    {
-        return 'users_index';
-    }
+
     public function emailVerificationCode()
     {
         return $this->hasOne(UserVerify::class);
@@ -73,7 +69,7 @@ class User extends Authenticatable implements MustVerifyEmail, \Illuminate\Contr
     //it is cast to jalali
     public function getCreatedAtAttribute($value)
     {
-        
+
         return (verta($value))->format('Y/m/d');
     }
     public function province()

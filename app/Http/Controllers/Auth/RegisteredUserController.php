@@ -78,6 +78,7 @@ class RegisteredUserController extends Controller
     }
     protected function uploadAvatar(Request $request)
     {
+
         $uploadedFile = $request->file('avatar');
         $filename = time().$uploadedFile->getClientOriginalName();
 

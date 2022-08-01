@@ -1,9 +1,8 @@
 {
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
-    "/js/tinymce/CHANGELOG.md": "/js/tinymce/CHANGELOG.md",
-    "/js/tinymce/README.md": "/js/tinymce/README.md",
     "/js/tinymce/bower.json": "/js/tinymce/bower.json",
+    "/js/tinymce/CHANGELOG.md": "/js/tinymce/CHANGELOG.md",
     "/js/tinymce/composer.json": "/js/tinymce/composer.json",
     "/js/tinymce/icons/default/icons.js": "/js/tinymce/icons/default/icons.js",
     "/js/tinymce/icons/default/icons.min.js": "/js/tinymce/icons/default/icons.min.js",
@@ -104,6 +103,7 @@
     "/js/tinymce/plugins/wordcount/index.js": "/js/tinymce/plugins/wordcount/index.js",
     "/js/tinymce/plugins/wordcount/plugin.js": "/js/tinymce/plugins/wordcount/plugin.js",
     "/js/tinymce/plugins/wordcount/plugin.min.js": "/js/tinymce/plugins/wordcount/plugin.min.js",
+    "/js/tinymce/README.md": "/js/tinymce/README.md",
     "/js/tinymce/skins/content/dark/content.css": "/js/tinymce/skins/content/dark/content.css",
     "/js/tinymce/skins/content/dark/content.min.css": "/js/tinymce/skins/content/dark/content.min.css",
     "/js/tinymce/skins/content/default/content.css": "/js/tinymce/skins/content/default/content.css",
