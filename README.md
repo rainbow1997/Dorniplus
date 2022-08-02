@@ -10,7 +10,7 @@
 ## About Dorniplus
 <div class="flex flex-col leading-8">
 <div>
- Dorniplus is relatively an advanced user registration system. It is built with Laravel,Interia.js and Vuejs. To clone and use the project, it should be noted you must read about h4cc/wkhtmltopdf-amd64 0.12.x installation with composer and how to handle it. for example in Debian-based Linux you should run these commands after installing that:
+ Dorniplus is relatively an advanced user registration system. It is built with Laravel,Inertia.js and Vuejs. To clone and use the project, it should be noted you must read about h4cc/wkhtmltopdf-amd64 0.12.x installation with composer and how to handle it. for example in Debian-based Linux you should run these commands after installing that:
 </div>
 <div>
 Commands : 
@@ -19,7 +19,7 @@ Commands :
 2 - set database and email settings in the .env file first. (do not run any commands)
 3 - it would be best if you were sure you had installed PHP modules before. like :
     mysql,pdo_mysql,mbstring,fileinfo,curl,gd
-4 - run : php composer install
+4 - run : php composer install (if you have an error, run : rm composer.lock or delete composer.lock)
 5 - run : php composer key:generate
 6 - run : php artisan db:seed --force
 7 - run : npm install
