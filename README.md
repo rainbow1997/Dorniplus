@@ -20,7 +20,7 @@ Commands :
 3 - it would be best if you were sure you had installed PHP modules before. like :
     mysql,pdo_mysql,mbstring,fileinfo,curl,gd
 4 - run : php composer install (if you have an error, run : rm composer.lock or delete composer.lock)
-5 - run : php composer key:generate
+5 - run : php artisan key:generate
 6 - run : php artisan db:seed --force
 7 - run : npm install
 8 - run : npm run dev
