@@ -59,7 +59,9 @@ watch:{
 },
 methods: {
      provinceChange(event){
-                console.log('hi -> province is :');
+
+
+         console.log('hi -> province is :');
                 let t = this.regions.filter(function(province){
                     console.log(province.cities);
                     if(province.id == event.target.value)
@@ -72,7 +74,12 @@ methods: {
         if(event.target.value != 'male')
             this.form.military_status = null;
     },
+    setBirth(){
+         this.form.birth = this.$refs.settingBirth.value;//direct connection to DOM elements in Vuejs
+
+    },
      submit() {
+      this.setBirth();
       this.$inertia.post('/register', this.form)
     }
 },
@@ -120,7 +127,7 @@ mounted() {
             </div>
             <div class="mt-4">
                 <BreezeLabel for="birth" value="تاریخ تولد" />
-                <BreezeInput id="birth" type="tel" class="mt-1 block w-full datepicker" v-model="form.birth" required autofocus autocomplete="birth" />
+                <input type="text" id="birth" class="mt-1 block w-full datepicker" ref="settingBirth"  v-model="form.birth" required autofocus autocomplete="birth">
             </div>
             <div class="mt-4">
                 <BreezeLabel for="gender" value="جنسیت*" />

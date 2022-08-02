@@ -14,7 +14,7 @@ export default {
     BreezeInput,
     BreezeLabel,
     BreezeValidationErrors,
-    
+
 },
 data(){
     return{
@@ -60,7 +60,7 @@ methods: {
             </div>
             <div class="flex justify-end mt-4">
                 <BreezeButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Confirm
+                    تایید
                 </BreezeButton>
             </div>
         </form>

@@ -4,13 +4,28 @@
 
     <BreezeAuthenticatedLayout>
         <template #header>
+            <div class="flex flex-col">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 کاربران
             </h2>
+
+            <div class="my-2 flex flex-row justify-center space-around ">
+
+                <button class="mx-2 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                    <a :href="route('reporting','pdf')">
+                        گزارش گیری PDF
+                    </a>
+
+                </button>
+                <button class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                    <a :href="route('reporting','excel')"> گزارش گیری Excel</a>
+                </button>
+            </div>
+            </div>
         </template>
 
 
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto mt-5 sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 bg-white border-b border-gray-200">
                         <div class="flex flex-col space-y-8">
