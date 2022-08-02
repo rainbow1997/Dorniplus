@@ -21,11 +21,16 @@ Commands :
     mysql,pdo_mysql,mbstring,fileinfo,curl,gd
 4 - run : php composer install (if you have an error, run : rm composer.lock or delete composer.lock)
 5 - run : php artisan key:generate 
-6 - run : php artisan migrate
-7 - run : php artisan db:seed --force
-8 - run : npm install
-9 - run : npm run dev
-10 - run : php artisan serve
+6 - run : php artisan Storage:link
+7 - run : php artisan migrate
+8 - run : php artisan db:seed --force
+9 - run : npm install
+10 - run : npm run dev
+11 - download wkhtmltopdf software from under link based on your system:
+      11-1 :https://wkhtmltopdf.org/downloads.html
+    11-2 : go to config/snappy.php and edit binary element of pdf element 
+        in the file and set your whk installation path.
+12 - run : php artisan serve
 </pre>
 
 Programmer : Mostafa Jamali (https://mostafajamali.ir).
