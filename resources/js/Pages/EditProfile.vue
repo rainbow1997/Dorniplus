@@ -8,6 +8,7 @@ import BreezeValidationErrors from '@/Components/ValidationErrors.vue';
 import './Auth/persian-datepicker.js';// in another time,use modules.env not this statically manner.
 import './Auth/persian-datepicker.min.css';
 import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
+import * as moment from 'jalali-moment';
 
 
 export default {
@@ -20,7 +21,7 @@ export default {
     BreezeInput,
     BreezeLabel,
     BreezeValidationErrors,
-    
+
 },
 data(){
     return{
@@ -31,7 +32,7 @@ data(){
             lname: this.user.lname,
             national_code: this.user.national_code,
             phone: this.user.phone,
-            birth: this.user.birth,
+            birth: moment(this.user.birth, 'YYYY/MM/DD').locale('fa').format('YYYY/MM/DD'),
             gender:this.user.gender,
             military_status:this.user.military_status,
             avatar: this.user.avatar,
@@ -39,7 +40,7 @@ data(){
             city_id:this.user.city_id,
             terms: false,
 })
-  
+
 }},
 props: {
     user :{},//afterwards, delete it and use Inertia attr
@@ -65,14 +66,20 @@ methods: {
                         return province;
                 });
                 this.cities = t[0].cities;
-                              
+
             },
     genderChange(event){
         if(event.target.value != 'male')
             this.form.military_status = null;
     },
+    setBirth(){
+        this.form.birth = this.$refs.settingBirth.value;//direct connection to DOM elements in Vuejs
+
+    },
      submit() {
-      this.$inertia.put('/storeProfile/'+this.user.id, this.form)
+         this.setBirth();
+
+         this.$inertia.put('/storeProfile/'+this.user.id, this.form)
     }
 },
 mounted() {
@@ -82,7 +89,7 @@ mounted() {
             format: 'YYYY/MM/DD'
         });
   });
- 
+
 },
 };
 
@@ -117,21 +124,21 @@ mounted() {
                 <BreezeLabel for="phone" value="*شماره همراه" />
                 <BreezeInput id="phone" type="tel" class="mt-1 block w-full" v-model="form.phone" required autofocus autocomplete="phone" />
             </div>
-            <div>
+            <div class="mt-4">
                 <BreezeLabel for="birth" value="تاریخ تولد" />
-                <BreezeInput id="birth" type="tel" class="mt-1 block w-full datepicker" v-model="form.birth" required autofocus autocomplete="birth" />
+                <input type="text" id="birth" class="mt-1 block w-full datepicker bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" ref="settingBirth"  v-model="form.birth" required autofocus autocomplete="birth">
             </div>
-            <div class="mt-1">
-                <BreezeLabel for="gender" value="*جنسیت" />
-                <div class="flex flex-row-reverse content-around ">
-                <div class="px-3">
-                <BreezeLabel for ="genderMale" value="مذکر" />
-                <BreezeInput id="genderMale" name="gender" type="radio" class="mt-1 " v-model="form.gender" required autofocus autocomplete="gender" value="male" @change="genderChange($event)" v-on:checked="gender == 'male'"/>
-                </div>
-                <div>
-                <BreezeLabel for ="genderFemale" value="مونث" />
-                <BreezeInput id="genderFemale" name="gender" type="radio" class="mt-1" v-model="form.gender" required autofocus autocomplete="gender" value="female" @change="genderChange($event)" v-on:checked="gender == 'female' "/>
-                </div>
+            <div class="mt-4">
+                <BreezeLabel for="gender" value="جنسیت*" />
+                <div class="flex flex-row content-around ">
+                    <div class="px-3">
+                        <BreezeLabel for ="genderMale" value="مذکر" />
+                        <BreezeInput id="genderMale" name="gender" type="radio" class="mt-1 " v-model="form.gender" required autofocus autocomplete="gender" value="male" @change="genderChange($event)"/>
+                    </div>
+                    <div class="">
+                        <BreezeLabel for ="genderFemale" value="مونث" />
+                        <BreezeInput id="genderFemale" name="gender" type="radio" class="mt-1" v-model="form.gender" required autofocus autocomplete="gender" value="female" @change="genderChange($event)"/>
+                    </div>
                 </div>
             </div>
             <div v-show="form.gender == 'male'" class="flex flex-row-reverse content-around flex-wrap">
@@ -140,27 +147,29 @@ mounted() {
                 <BreezeInput id="military_status2" name="military_status" type="radio" class="" v-model="form.military_status"  autofocus autocomplete="military_status" value="temporary_exemption" />معاف موقت
                 <BreezeInput id="military_status3" name="military_status" type="radio" class="" v-model="form.military_status"  autofocus autocomplete="military_status" value="done" />پایان خدمت
             </div>
-            
-            <div>
-                <BreezeLabel for="avatar" value="عکس" />
-                <input type="file" @input="form.avatar = $event.target.files[0]" />
+
+            <div class="mt-4">
+
+                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" for="avatar">آپلود عکس</label>
+                <input type="file" @input="form.avatar = $event.target.files[0]" class="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="avatar_help" id="avatar">
+                <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="avatar_help">PNG, JPG, JPEG or GIF (MAX :200KB).</p>
+
                 <progress v-if="form.progress" :value="form.progress.percentage" max="100">
-                   {{ form.progress.percentage }}%
+                    {{ form.progress.percentage }}%
                 </progress>
             </div>
-            
            <div class="mt-4">
                 <BreezeLabel for="province" value="استان " />
-                <select v-show="form.province_id!=null" v-model="form.city_id" name="city_id">
-                    <option v-for="item in cities" :value="item.id">{{item.title}}</option>
-                </select>
+
                 <select v-model="form.province_id" name="province_id" @change="provinceChange($event)">
                     <option v-for="item in regions" :value="item.id">{{item.title}}</option>
                 </select>
+               <select v-show="form.province_id!=null" v-model="form.city_id" name="city_id">
+                   <option v-for="item in cities" :value="item.id">{{item.title}}</option>
+               </select>
 
-                
             </div>
-            
+
             <div class="flex items-center justify-end mt-4">
                 <Link :href="route('dashboard')" class="underline text-sm text-gray-600 hover:text-gray-900">
                     بازگشت به داشبورد
@@ -171,6 +180,6 @@ mounted() {
                 </BreezeButton>
             </div>
         </form>
-        
+
     </BreezeGuestLayout>
 </template>

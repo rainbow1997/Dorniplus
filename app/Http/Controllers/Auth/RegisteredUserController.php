@@ -57,7 +57,7 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'national_code' => ['required','unique:users',function($attribute,$value,$fail) use($self){
                     if(!$self->nationalCodeChecking($value))
-                        $fail('The'.$attribute.'is invalid.');
+                        $fail('فرمت کد ملی صحیح نمی باشد.');
                 }
                                ],
             'phone' => ['required','digits_between:10,11'],
@@ -72,7 +72,7 @@ class RegisteredUserController extends Controller
 
             'captcha_num' => ['required','numeric',function($attribute,$value,$fail){
                 if(session('captcha_num') != $value)
-                    $fail('The'.$attribute.'is incorrect.');
+                    $fail('کد امنیتی صحیح نمی باشد');
             }]
         ]);
     }

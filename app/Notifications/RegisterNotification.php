@@ -44,6 +44,9 @@ class RegisterNotification extends Notification
         return (new MailMessage)
                     ->subject('ثبت نام در درنیپلاس')
                     ->greeting('درنیپلاس')
+                    ->line("کاربر گرامی ثبت نام شما با نام کاربری:".
+                    $this->user->username.
+                    " با موفقیت انجام شد.")
                     ->line('از ثبت نام شما در درنیپلاس متشکریم')
                     ->line('برای احراز هویت کد زیر را پس از ورود به سیستم وارد نمائید.')
                     ->line('کد احراز هویت شما:')

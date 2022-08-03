@@ -15,6 +15,8 @@ use App\Http\Controllers\Auth\Admin\UserController;
 use App\Http\Controllers\Auth\Admin\LogController;
 use \App\Http\Controllers\Auth\Admin\PostController;
 use \App\Charts\UsersChart;
+use Illuminate\Support\Facades\Notification;
+use App\Notifications\RegisterNotification;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -56,10 +58,10 @@ Route::post('/changePassword',[RegisteredUserController::class,'changePassword']
     ->middleware(['auth', 'verified','password.confirm'])->name('changePassword.save');
 
 Route::get('/editProfile',[RegisteredUserController::class,'editProfile'])
-    ->middleware(['auth', 'verified','permission:see-edit-profile-page'])->name('editProfile');
+    ->middleware(['auth', 'verified'])->name('editProfile');
 
 Route::put('/storeProfile/{id}',[RegisteredUserController::class,'storeProfile'])
-    ->middleware(['auth', 'verified','permission:see-edit-profile-page'])->name('storeProfile');
+    ->middleware(['auth', 'verified'])->name('storeProfile');
 
 Route::get('/regions',[RegionController::class,'index'])
     ->middleware(['auth','verified'])->name('regions.index');
@@ -109,5 +111,10 @@ Route::get('/information',function(){
 
     return phpinfo();
     //return $provinces;
+});
+
+Route::get('/test-mail', function (){
+    Notification::route('mail', 'personal@mostafajamali.ir')->notify(new RegisterNotification(\Auth::user()));
+    return 'Sent';
 });
 require __DIR__.'/auth.php';

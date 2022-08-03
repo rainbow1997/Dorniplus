@@ -7,6 +7,7 @@ import { InertiaProgress } from '@inertiajs/progress';
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
 window.$ = window.jQuery = require('jquery');
 window.persianDate = require('persian-date');
+
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,
     resolve: (name) => require(`./Pages/${name}.vue`),

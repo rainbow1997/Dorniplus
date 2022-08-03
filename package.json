@@ -33,6 +33,7 @@
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
+        "jalali-moment": "^3.3.11",
         "jquery": "^3.6.0",
         "jquery-ui": "^1.13.2",
         "persian-datepicker": "^1.2.0",
