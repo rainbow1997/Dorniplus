@@ -13,8 +13,8 @@ use App\Http\Controllers\Auth\Admin\RegionController;
 use App\Http\Controllers\Auth\Admin\RoleController;
 use App\Http\Controllers\Auth\Admin\UserController;
 use App\Http\Controllers\Auth\Admin\LogController;
-use \App\Http\Controllers\Auth\Admin\PostController;
-use \App\Charts\UsersChart;
+use App\Http\Controllers\Auth\Admin\PostController;
+use App\Charts\UsersChart;
 use Illuminate\Support\Facades\Notification;
 use App\Notifications\RegisterNotification;
 /*
@@ -60,7 +60,7 @@ Route::post('/changePassword',[RegisteredUserController::class,'changePassword']
 Route::get('/editProfile',[RegisteredUserController::class,'editProfile'])
     ->middleware(['auth', 'verified'])->name('editProfile');
 
-Route::put('/storeProfile/{id}',[RegisteredUserController::class,'storeProfile'])
+Route::put('/storeProfile/{user}',[RegisteredUserController::class,'storeProfile'])
     ->middleware(['auth', 'verified'])->name('storeProfile');
 
 Route::get('/regions',[RegionController::class,'index'])
@@ -114,7 +114,7 @@ Route::get('/information',function(){
 });
 
 Route::get('/test-mail', function (){
-    Notification::route('mail', 'personal@mostafajamali.ir')->notify(new RegisterNotification(\Auth::user()));
+    Notification::route('mail', 'personal@mostafajamali.ir')->notify(new RegisterNotification(Auth::user()));
     return 'Sent';
 });
 require __DIR__.'/auth.php';

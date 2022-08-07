@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Auth\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
-use \App\Models\Province;
-use \App\Models\City;
+use App\Models\Province;
+use App\Models\City;
 class RegionController extends Controller
 {
     //
@@ -23,7 +23,7 @@ class RegionController extends Controller
     }
     public function storeProvince(Request $request)
     {
-        
+
         Province::create($this->validateProvince($request));
         return redirect()->route('regions.index')
         ->with('message','استان جدید با موفقیت افزوده شد.');
@@ -38,7 +38,7 @@ class RegionController extends Controller
     }
     public function storeCity(Request $request,Province $province)
     {
-        
+
         $province->cities()->create($this->validateCity($request));
         return redirect()->route('regions.index')
         ->with('message','شهر جدید با موفقیت افزوده شد.');
@@ -64,7 +64,7 @@ class RegionController extends Controller
     public function updateProvince(Request $request,Province $province)
     {
         $province->update($this->validateProvince($request));
-        
+
         return redirect()->route('regions.index')
         ->with('message','استان مورد نظر با موفقیت ویرایش گردید.');
     }
@@ -90,7 +90,7 @@ class RegionController extends Controller
     public function updateCity(Request $request,City $city)
     {
         $city->update($this->validateCity($request));
-        
+
         return redirect()->route('regions.index')
         ->with('message','شهر مورد نظر با موفقیت ویرایش گردید.');
     }

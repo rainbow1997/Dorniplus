@@ -2,7 +2,7 @@
 
 namespace App\Charts;
 use Lava;
-use \App\Models\Province;
+use App\Models\Province;
 
 class UsersChart
 {
@@ -20,7 +20,7 @@ class UsersChart
     {
 
 
-        $users = \Lava::DataTable();
+        $users = Lava::DataTable();
         $users->addStringColumn('استان ها');
         $users->addNumberColumn('تعداد');
         for($i=0;$i<$this->provincesTitles->count();$i++)

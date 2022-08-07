@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -13,22 +14,26 @@ use Illuminate\Validation\Rules;
 use App\Enum\Gender;
 use App\Enum\MilitaryStatus;
 use App\Models\Province;
-use Verta;
+use Illuminate\Validation\ValidationException;
+use Illuminate\View\View;
 use Image;
-use \App\Models\UserVerify;
+use App\Models\UserVerify;
 use Illuminate\Support\Collection;
-use \App\Notifications\RegisterNotification;
+use App\Notifications\RegisterNotification;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Request as RequestFacade;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
+use Morilog\Jalali\Jalalian;
+use Carbon\Carbon;
+use Hekmatinasser\Verta\Verta;
 
 class RegisteredUserController extends Controller
 {
     /**
      * Display the registration view.
      *
-     * @return \Illuminate\View\View
+     * @return View
      */
     public function create()
     {
@@ -39,17 +44,16 @@ class RegisteredUserController extends Controller
     /**
      * Handle an incoming registration request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @param Request $request
+     * @return RedirectResponse
      *
-     * @throws \Illuminate\Validation\ValidationException
+     * @throws ValidationException
      */
     protected function userValidating(Request $request)
     {
         $self = $this;
-        $tenYearsAgo = new Verta('-10 year');
-        $tenYearsAgo = $tenYearsAgo->format('Y/m/d');
-        $request->merge(['birth' => persianizeNumber($request->input('birth'))]);
+        $tenYearsAgo = Carbon::now()->subYear(10)->format('Y/m/d');
+        $request['birth'] = convertDateForDB($request['birth']);
         return $request->validate([
             'fname' => ['required', 'string', 'max:455'],
             'lname' => ['required', 'string', 'max:455'],
@@ -62,7 +66,7 @@ class RegisteredUserController extends Controller
                                ],
             'phone' => ['required','digits_between:10,11'],
             'gender' => ['required','in:male,female'],//if it gets much time ,remove it and use string
-            'birth' => ['required','jdate','jdate_before:'.$tenYearsAgo],
+            'birth' => ['required','date','before:'.$tenYearsAgo],
             'username' => ['required','alpha_num','regex:/^[^0-9]/','unique:users'],
             'military_status' => ['nullable','required_if:gender,male',
             'in:permanent_exemption,temporary_exemption,done'],
@@ -83,6 +87,7 @@ class RegisteredUserController extends Controller
         $filename = time().$uploadedFile->getClientOriginalName();
 
         $file = Storage::disk('public')->putFileAs( 'avatars', $uploadedFile,$filename);
+
         $this->imageSizeOptimizer($file);
 
         return $file;
@@ -100,6 +105,7 @@ class RegisteredUserController extends Controller
         $validData['password'] = Hash::make($validData['password']);
         return $validData;
     }
+
     public function store(Request $request)
     {
 
@@ -154,28 +160,34 @@ class RegisteredUserController extends Controller
     }
     public function editProfile()
     {
+       // dd(\Auth::user());
 
         return Inertia::render('EditProfile',['user' => \Auth::user(),
                                               'regions' =>  $regions = Province::with('cities')->get()]);
     }
-    public function storeProfile($id){
-        $user = User::find($id);
-        $validData = collect($this->storeValidating($user));
+    public function storeProfile(User $user,Request $request){
+
+        $validData = collect($this->storeValidating($user,$request));
+       // $validData = $this->convertDateForDB($validData);
+
+
+        if($request->hasFile('avatar')) {
+            removeFiles($user->avatar);
+            $validData['avatar'] = $this->uploadAvatar($request);
+        }
         $user->update($validData->toArray());
-        if(!is_null($validData['avatar']))
-            $user->update(['avatar' => RequestFacade::file('avatar')->store('avatars')]);
         return redirect()->route('dashboard')
             ->with('message','پروفایل با موفقیت تغییر کرد');
     }
-    public function storeValidating($user)
+
+    public function storeValidating(User $user,Request $request)
     {
-        $request = collect(RequestFacade::all());
+
+
         $self = $this;
-        $tenYearsAgo = new Verta('-10 year');
-        $tenYearsAgo = $tenYearsAgo->format('Y/m/d');
-        $request->merge(['birth' => persianizeNumber($request['birth'])]);
-        //$request->birth = persianizeNumber($request->birth);
-        $validator =  Validator::make($request->toArray(),[
+        $tenYearsAgo = Carbon::now()->subYear(10)->format('Y/m/d');
+        $request['birth'] = convertDateForDB($request['birth']);
+        return $request->validate([
             'fname' => 'required|string|max:455',
             'lname' => 'required|string|max:455',
             'national_code' => 'required|unique:users,national_code,'.$user->id,function($attribute,$value,$fail) use($self){
@@ -185,16 +197,15 @@ class RegisteredUserController extends Controller
                                ,
             'phone' => 'required|digits_between:10,11',
             'gender' => 'required|in:male,female',//if it gets much time ,remove it and use string
-            'birth' => 'required|jdate|jdate_before:'.$tenYearsAgo,
+            'birth' => 'required|date|before:'.$tenYearsAgo,
             'military_status' => 'nullable|required_if:gender,male|
              in:permanent_exemption,temporary_exemption,done',
-            'post_image' => 'nullable|mimes:png,jpg,jpeg|max:200',
+            'post_image' => 'nullable|mimes:png,jpg,jpeg|max:20000',
             'province_id' => 'nullable|numeric|exists:provinces,id',
             'city_id' => 'nullable|numeric|exists:cities,id',
             'avatar' => 'nullable',
         ]);
 
-        return $validator->validated();
     }
 
 

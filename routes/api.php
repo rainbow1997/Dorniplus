@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\Admin\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,4 +18,4 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::post('/users/search', [\App\Http\Controllers\Auth\Admin\UserController::class,'index'])->name('users.index.search');
+Route::post('/users/search', [UserController::class,'index'])->name('users.index.search');

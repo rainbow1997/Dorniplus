@@ -166,7 +166,6 @@ return [
          * Package Service Providers...
          */
         Intervention\Image\ImageServiceProvider::class,
-        Hekmatinasser\Verta\Laravel\VertaServiceProvider::class,
         PrettyRoutes\ServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
         Barryvdh\Snappy\ServiceProvider::class,
@@ -236,7 +235,6 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Image' => Intervention\Image\Facades\Image::class,
-        'Verta' => Hekmatinasser\Verta\Verta::class,
         'PDF' => Barryvdh\Snappy\Facades\SnappyPdf::class,
         'SnappyImage' => Barryvdh\Snappy\Facades\SnappyImage::class,
         'PdfReport' => Jimmyjs\ReportGenerator\Facades\PdfReportFacade::class,

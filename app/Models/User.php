@@ -2,20 +2,23 @@
 
 namespace App\Models;
 
+use App\Enum\Gender;
+use App\Enum\MilitaryStatus;
+use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-use \App\Models\UserVerify;
-use Verta;
-use \App\Notification\RegisterNotification;
+use App\Models\UserVerify;
+use App\Notification\RegisterNotification;
+use Morilog\Jalali\Jalalian;
 use Spatie\Permission\Traits\HasRoles;
-
+use Morilog\Jalali\CalendarUtils;
 
 class User extends Authenticatable implements MustVerifyEmail, \Illuminate\Contracts\Auth\CanResetPassword
 {
-    use HasApiTokens, HasRoles,HasFactory, Notifiable, \Illuminate\Auth\Passwords\CanResetPassword;
+    use HasApiTokens, HasRoles,HasFactory, Notifiable, CanResetPassword;
 
     /**
      * The attributes that are mass assignable.
@@ -56,9 +59,8 @@ class User extends Authenticatable implements MustVerifyEmail, \Illuminate\Contr
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'birth' =>  'datetime:Y/m/d',
-        'gender' => \App\Enum\Gender::class,
-        'military_status' => \App\Enum\MilitaryStatus::class
+        'gender' => Gender::class,
+        'military_status' => MilitaryStatus::class
 
     ];
 
@@ -69,8 +71,14 @@ class User extends Authenticatable implements MustVerifyEmail, \Illuminate\Contr
     //it is cast to jalali
     public function getCreatedAtAttribute($value)
     {
+        return CalendarUtils::strftime('Y/m/d', strtotime($value));
 
-        return (verta($value))->format('Y/m/d');
+
+    }
+    public function getBirthAttribute($value)
+    {
+
+        return CalendarUtils::strftime('Y/m/d', strtotime($value));
     }
     public function province()
     {

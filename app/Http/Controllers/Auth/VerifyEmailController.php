@@ -6,15 +6,17 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Verta;
+use Morilog\Jalali\Jalalian;
+use Carbon\Carbon;
 class VerifyEmailController extends Controller
 {
     /**
      * Mark the authenticated user's email address as verified.
      *
-     * @param  \Illuminate\Foundation\Auth\EmailVerificationRequest  $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @param EmailVerificationRequest $request
+     * @return RedirectResponse
      */
     public function __invoke(EmailVerificationRequest $request)
     {
@@ -31,9 +33,9 @@ class VerifyEmailController extends Controller
     public function checkingCode(Request $request)
     {
         $user = $request->user();
-        $request->validate(['token' 
+        $request->validate(['token'
             => ['required','numeric','exists:users_verify,token']]);
-       
+
         if($user->emailVerificationCode->token == $request->token){
             $this->setVerification($user);
             return redirect()->route('dashboard')
@@ -42,13 +44,13 @@ class VerifyEmailController extends Controller
                 return redirect()->route('dashboard')
             ->with('status','اکانت شما فعال سازی نگردید.');
 
-            
-    
+
+
 }
     public function setVerification($user)
     {
         $user->is_email_verified = 1;
-        $user->email_verified_at = Verta::now()->datetime();
+        $user->email_verified_at = Carbon::now();
         return $user->save();
     }
 }

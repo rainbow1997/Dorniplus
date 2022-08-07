@@ -25688,8 +25688,98 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     $(document).ready(function () {
       $(".datepicker").pDatepicker({
-        initialValue: false,
-        format: 'YYYY/MM/DD'
+        "inline": false,
+        "format": "L",
+        "viewMode": "year",
+        "initialValue": true,
+        "minDate": null,
+        "maxDate": 1660459870590,
+        "autoClose": true,
+        "position": "auto",
+        "altFormat": "l",
+        "altField": "#altfieldExample",
+        "onlyTimePicker": false,
+        "onlySelectOnDate": true,
+        "calendarType": "persian",
+        "inputDelay": 800,
+        "observer": true,
+        "calendar": {
+          "persian": {
+            "locale": "fa",
+            "showHint": true,
+            "leapYearMode": "algorithmic"
+          },
+          "gregorian": {
+            "locale": "en",
+            "showHint": false
+          }
+        },
+        "navigator": {
+          "enabled": true,
+          "scroll": {
+            "enabled": true
+          },
+          "text": {
+            "btnNextText": "<",
+            "btnPrevText": ">"
+          }
+        },
+        "toolbox": {
+          "enabled": true,
+          "calendarSwitch": {
+            "enabled": false,
+            "format": "MMMM"
+          },
+          "todayButton": {
+            "enabled": false,
+            "text": {
+              "fa": "امروز",
+              "en": "Today"
+            }
+          },
+          "submitButton": {
+            "enabled": true,
+            "text": {
+              "fa": "تایید",
+              "en": "Submit"
+            }
+          },
+          "text": {
+            "btnToday": "امروز"
+          }
+        },
+        "timePicker": {
+          "enabled": false,
+          "step": 1,
+          "hour": {
+            "enabled": false,
+            "step": null
+          },
+          "minute": {
+            "enabled": false,
+            "step": null
+          },
+          "second": {
+            "enabled": false,
+            "step": null
+          },
+          "meridian": {
+            "enabled": false
+          }
+        },
+        "dayPicker": {
+          "enabled": true,
+          "titleFormat": "YYYY MMMM"
+        },
+        "monthPicker": {
+          "enabled": true,
+          "titleFormat": "YYYY"
+        },
+        "yearPicker": {
+          "enabled": true,
+          "titleFormat": "YYYY"
+        },
+        "responsive": true
       });
     });
   }
@@ -25940,8 +26030,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Auth_persian_datepicker_js__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_Auth_persian_datepicker_js__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var _Auth_persian_datepicker_min_css__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Auth/persian-datepicker.min.css */ "./resources/js/Pages/Auth/persian-datepicker.min.css");
 /* harmony import */ var _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @inertiajs/inertia-vue3 */ "./node_modules/@inertiajs/inertia-vue3/dist/index.js");
-/* harmony import */ var jalali_moment__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! jalali-moment */ "./node_modules/jalali-moment/jalali-moment.js");
-/* harmony import */ var jalali_moment__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(jalali_moment__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+/* harmony import */ var jalali_moment__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! jalali-moment */ "./node_modules/jalali-moment/jalali-moment.js");
+/* harmony import */ var jalali_moment__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(jalali_moment__WEBPACK_IMPORTED_MODULE_11__);
 
 
 
@@ -25949,6 +26041,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
  // in another time,use modules.env not this statically manner.
+
+
 
 
 
@@ -25964,66 +26058,184 @@ __webpack_require__.r(__webpack_exports__);
     BreezeLabel: _Components_Label_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
     BreezeValidationErrors: _Components_ValidationErrors_vue__WEBPACK_IMPORTED_MODULE_5__["default"]
   },
-  data: function data() {
-    return {
-      cities: {},
-      form: this.$inertia.form({
-        method: 'put',
-        fname: this.user.fname,
-        lname: this.user.lname,
-        national_code: this.user.national_code,
-        phone: this.user.phone,
-        birth: jalali_moment__WEBPACK_IMPORTED_MODULE_9__(this.user.birth, 'YYYY/MM/DD').locale('fa').format('YYYY/MM/DD'),
-        gender: this.user.gender,
-        military_status: this.user.military_status,
-        avatar: this.user.avatar,
-        province_id: this.user.province_id,
-        city_id: this.user.city_id,
-        terms: false
-      })
-    };
-  },
   props: {
     user: {},
-    //afterwards, delete it and use Inertia attr
-    regions: {}
+    regions: {},
+    cities: {}
   },
-  watch: {
-    form: {
-      gender: function gender(newGen, oldGen) {
-        console.log('ali ali');
-        alert('hi');
-        if (newGender != 'male') this.military_status = null;
-      }
-    }
-  },
-  methods: {
-    provinceChange: function provinceChange(event) {
+  setup: function setup(props) {
+    //let datepickerValue;
+    var needs = (0,vue__WEBPACK_IMPORTED_MODULE_10__.reactive)({
+      ourProvince: {},
+      datepickerValue: {}
+    });
+    var form = (0,_inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_8__.useForm)('EditProfile', {
+      _method: 'put',
+      fname: props.user.fname,
+      lname: props.user.lname,
+      national_code: props.user.national_code,
+      phone: props.user.phone,
+      birth: props.user.birth,
+      gender: props.user.gender,
+      military_status: props.user.military_status,
+      avatar: props.user.avatar,
+      province_id: props.user.province_id,
+      city_id: props.user.city_id
+    });
+
+    var datepicker = function datepicker() {
+      $(document).ready(function () {
+        var pd = $("#birth").pDatepicker({
+          "inline": false,
+          "format": "L",
+          "viewMode": "year",
+          "initialValue": false,
+          "minDate": null,
+          "maxDate": 1660459870590,
+          "autoClose": true,
+          "position": "auto",
+          "altFormat": "l",
+          "altField": "#altfieldExample",
+          "onlyTimePicker": false,
+          "onlySelectOnDate": true,
+          "calendarType": "persian",
+          "inputDelay": 800,
+          "observer": true,
+          "calendar": {
+            "persian": {
+              "locale": "fa",
+              "showHint": true,
+              "leapYearMode": "algorithmic"
+            },
+            "gregorian": {
+              "locale": "en",
+              "showHint": false
+            }
+          },
+          "navigator": {
+            "enabled": true,
+            "scroll": {
+              "enabled": true
+            },
+            "text": {
+              "btnNextText": "<",
+              "btnPrevText": ">"
+            }
+          },
+          "toolbox": {
+            "enabled": true,
+            "calendarSwitch": {
+              "enabled": false,
+              "format": "MMMM"
+            },
+            "todayButton": {
+              "enabled": false,
+              "text": {
+                "fa": "امروز",
+                "en": "Today"
+              }
+            },
+            "submitButton": {
+              "enabled": true,
+              "text": {
+                "fa": "تایید",
+                "en": "Submit"
+              }
+            },
+            "text": {
+              "btnToday": "امروز"
+            }
+          },
+          "timePicker": {
+            "enabled": false,
+            "step": 1,
+            "hour": {
+              "enabled": false,
+              "step": null
+            },
+            "minute": {
+              "enabled": false,
+              "step": null
+            },
+            "second": {
+              "enabled": false,
+              "step": null
+            },
+            "meridian": {
+              "enabled": false
+            }
+          },
+          "dayPicker": {
+            "enabled": true,
+            "titleFormat": "YYYY MMMM"
+          },
+          "monthPicker": {
+            "enabled": true,
+            "titleFormat": "YYYY"
+          },
+          "yearPicker": {
+            "enabled": true,
+            "titleFormat": "YYYY"
+          },
+          "responsive": true
+        });
+        console.log(pd);
+        needs.datepickerValue = pd;
+      });
+    };
+
+    datepicker();
+
+    var provinceSetter = function provinceSetter() {
+      // alert("in ejra shod setprovince");
+      var tempProvinces = props.regions.filter(function (province) {
+        if (province.id == props.user.province_id) return province;
+      });
+      needs.ourProvince = tempProvinces[0];
+      form.province_id = needs.ourProvince.id;
+      var tempCities = needs.ourProvince.cities.filter(function (city) {
+        if (city.id == props.user.city_id) return city;
+      });
+      var ourCity = tempCities[0];
+    };
+
+    provinceSetter();
+
+    var provinceChange = function provinceChange(event) {
       console.log('hi -> province is :');
-      var t = this.regions.filter(function (province) {
+      var t = props.regions.filter(function (province) {
         console.log(province.cities);
         if (province.id == event.target.value) return province;
       });
-      this.cities = t[0].cities;
-    },
-    genderChange: function genderChange(event) {
-      if (event.target.value != 'male') this.form.military_status = null;
-    },
-    setBirth: function setBirth() {
-      this.form.birth = this.$refs.settingBirth.value; //direct connection to DOM elements in Vuejs
-    },
-    submit: function submit() {
-      this.setBirth();
-      this.$inertia.put('/storeProfile/' + this.user.id, this.form);
-    }
-  },
-  mounted: function mounted() {
-    $(document).ready(function () {
-      $(".datepicker").pDatepicker({
-        initialValue: false,
-        format: 'YYYY/MM/DD'
+      needs.ourProvince = t[0]; // alert('taghirkard');
+    };
+
+    var genderChange = function genderChange(event) {
+      if (event.target.value != 'male') form.military_status = null;
+    };
+
+    var setBirth = function setBirth() {
+      console.log(needs.datepickerValue.model.api.model.input.elem.value);
+      form.birth = needs.datepickerValue.model.api.model.input.elem.value; // form.birth = $refs.settingBirth.value;//direct connection to DOM elements in Vuejs
+    };
+
+    var submit = function submit() {
+      setBirth();
+      form.post("/storeProfile/".concat(props.user.id), {
+        onSuccess: function onSuccess() {
+          return form.reset('password', 'avatar');
+        },
+        preserveState: true
       });
-    });
+    };
+
+    return {
+      form: form,
+      provinceChange: provinceChange,
+      genderChange: genderChange,
+      submit: submit,
+      needs: needs
+    };
   }
 });
 
@@ -28498,61 +28710,84 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "mt-4"
+  "class": "mt-2"
 };
 var _hoisted_2 = {
-  "class": "mt-4"
+  "class": "mt-2"
 };
 var _hoisted_3 = {
-  "class": "flex flex-row content-around"
+  "class": "mt-2"
 };
 var _hoisted_4 = {
-  "class": "px-3"
+  "class": "mt-2"
 };
 var _hoisted_5 = {
-  "class": ""
+  "class": "mt-2"
 };
 var _hoisted_6 = {
-  "class": "flex flex-row-reverse content-around flex-wrap"
+  "class": "mt-2"
 };
-
-var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("معاف دائم ");
-
-var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("معاف موقت ");
-
-var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("پایان خدمت ");
-
+var _hoisted_7 = {
+  "class": "flex flex-row content-around"
+};
+var _hoisted_8 = {
+  "class": "px-3"
+};
+var _hoisted_9 = {
+  "class": ""
+};
 var _hoisted_10 = {
-  "class": "mt-4"
+  "class": "flex flex-row space-x-2 text-xs mt-2"
 };
 
-var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "معافیت دائم", -1
+/* HOISTED */
+);
+
+var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, " معاف موقت ", -1
+/* HOISTED */
+);
+
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, " پایان خدمت ", -1
+/* HOISTED */
+);
+
+var _hoisted_14 = {
+  "class": "mt-2"
+};
+
+var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300",
   "for": "avatar"
 }, "آپلود عکس", -1
 /* HOISTED */
 );
 
-var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
   "class": "mt-1 text-sm text-gray-500 dark:text-gray-300",
   id: "avatar_help"
 }, "PNG, JPG, JPEG or GIF (MAX :200KB).", -1
 /* HOISTED */
 );
 
-var _hoisted_13 = ["value"];
-var _hoisted_14 = {
-  "class": "mt-4"
+var _hoisted_17 = ["value"];
+var _hoisted_18 = {
+  key: 0,
+  "class": "flex flex-row mt-2"
 };
-var _hoisted_15 = ["value"];
-var _hoisted_16 = ["value"];
-var _hoisted_17 = {
-  "class": "flex items-center justify-end mt-4"
+var _hoisted_19 = ["src", "alt"];
+var _hoisted_20 = {
+  "class": "flex flex-col mt-4 justify-center"
+};
+var _hoisted_21 = ["value"];
+var _hoisted_22 = ["value", "selected"];
+var _hoisted_23 = {
+  "class": "flex items-center justify-end mt-2"
 };
 
-var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" بازگشت به داشبورد ");
+var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" بازگشت به داشبورد ");
 
-var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" ثبت ");
+var _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" ثبت ");
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Head = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Head");
@@ -28577,93 +28812,92 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "class": "mb-4"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
         onSubmit: _cache[16] || (_cache[16] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
-          return $options.submit && $options.submit.apply($options, arguments);
+          return $setup.submit && $setup.submit.apply($setup, arguments);
         }, ["prevent"])),
         "class": "rtl text-right"
-      }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeLabel, {
+      }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeLabel, {
         "for": "fname",
-        value: "*نام"
+        value: "نام*"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeInput, {
         id: "fname",
         type: "text",
         "class": "mt-1 block w-full",
-        modelValue: $data.form.fname,
+        modelValue: $setup.form.fname,
         "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
-          return $data.form.fname = $event;
+          return $setup.form.fname = $event;
         }),
         required: "",
         autofocus: "",
         autocomplete: "fname"
       }, null, 8
       /* PROPS */
-      , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeLabel, {
+      , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeLabel, {
         "for": "lname",
-        value: "*نام خانوادگی"
+        value: "نام خانوادگی*"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeInput, {
         id: "lname",
         type: "text",
         "class": "mt-1 block w-full",
-        modelValue: $data.form.lname,
+        modelValue: $setup.form.lname,
         "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
-          return $data.form.lname = $event;
+          return $setup.form.lname = $event;
         }),
         required: "",
         autofocus: "",
         autocomplete: "lname"
       }, null, 8
       /* PROPS */
-      , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeLabel, {
+      , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeLabel, {
         "for": "national_code",
-        value: "*کدملی"
+        value: "کدملی*"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeInput, {
         id: "national_code",
         type: "number",
         "class": "mt-1 block w-full",
-        modelValue: $data.form.national_code,
+        modelValue: $setup.form.national_code,
         "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
-          return $data.form.national_code = $event;
+          return $setup.form.national_code = $event;
         }),
         required: "",
         autofocus: "",
         autocomplete: "national_code"
       }, null, 8
       /* PROPS */
-      , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeLabel, {
+      , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeLabel, {
         "for": "phone",
-        value: "*شماره همراه"
+        value: "شماره همراه*"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeInput, {
         id: "phone",
         type: "tel",
         "class": "mt-1 block w-full",
-        modelValue: $data.form.phone,
+        modelValue: $setup.form.phone,
         "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
-          return $data.form.phone = $event;
+          return $setup.form.phone = $event;
         }),
         required: "",
         autofocus: "",
         autocomplete: "phone"
       }, null, 8
       /* PROPS */
-      , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeLabel, {
+      , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeLabel, {
         "for": "birth",
         value: "تاریخ تولد"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
         type: "text",
         id: "birth",
         "class": "mt-1 block w-full datepicker bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500",
-        ref: "settingBirth",
         "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
-          return $data.form.birth = $event;
+          return $setup.form.birth = $event;
         }),
         required: "",
         autofocus: "",
         autocomplete: "birth"
       }, null, 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.birth]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeLabel, {
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.form.birth]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeLabel, {
         "for": "gender",
         value: "جنسیت*"
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeLabel, {
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeLabel, {
         "for": "genderMale",
         value: "مذکر"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeInput, {
@@ -28671,20 +28905,21 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         name: "gender",
         type: "radio",
         "class": "mt-1",
-        modelValue: $data.form.gender,
+        modelValue: $setup.form.gender,
         "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
-          return $data.form.gender = $event;
+          return $setup.form.gender = $event;
         }),
+        checked: $setup.form.gender == 'male',
         required: "",
         autofocus: "",
         autocomplete: "gender",
         value: "male",
         onChange: _cache[6] || (_cache[6] = function ($event) {
-          return $options.genderChange($event);
+          return $setup.genderChange($event);
         })
       }, null, 8
       /* PROPS */
-      , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeLabel, {
+      , ["modelValue", "checked"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeLabel, {
         "for": "genderFemale",
         value: "مونث"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeInput, {
@@ -28692,124 +28927,140 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         name: "gender",
         type: "radio",
         "class": "mt-1",
-        modelValue: $data.form.gender,
+        modelValue: $setup.form.gender,
         "onUpdate:modelValue": _cache[7] || (_cache[7] = function ($event) {
-          return $data.form.gender = $event;
+          return $setup.form.gender = $event;
         }),
+        checked: $setup.form.gender == 'female',
         required: "",
         autofocus: "",
         autocomplete: "gender",
         value: "female",
         onChange: _cache[8] || (_cache[8] = function ($event) {
-          return $options.genderChange($event);
+          return $setup.genderChange($event);
         })
       }, null, 8
       /* PROPS */
-      , ["modelValue"])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeLabel, {
+      , ["modelValue", "checked"])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeLabel, {
         value: "وضعیت نظام وظیفه",
         "class": "flex-1"
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeInput, {
+      }), _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeInput, {
         id: "military_status",
         name: "military_status",
-        type: "checkbox",
+        type: "radio",
         "class": "",
-        modelValue: $data.form.military_status,
+        modelValue: $setup.form.military_status,
         "onUpdate:modelValue": _cache[9] || (_cache[9] = function ($event) {
-          return $data.form.military_status = $event;
+          return $setup.form.military_status = $event;
         }),
+        checked: $setup.form.military_status == 'permanent_exemption',
         autofocus: "",
         autocomplete: "military_status",
         value: "permanent_exemption"
       }, null, 8
       /* PROPS */
-      , ["modelValue"]), _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeInput, {
+      , ["modelValue", "checked"]), _hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeInput, {
         id: "military_status2",
         name: "military_status",
         type: "radio",
         "class": "",
-        modelValue: $data.form.military_status,
+        modelValue: $setup.form.military_status,
         "onUpdate:modelValue": _cache[10] || (_cache[10] = function ($event) {
-          return $data.form.military_status = $event;
+          return $setup.form.military_status = $event;
         }),
+        checked: $setup.form.military_status == 'temporary_exemption',
         autofocus: "",
         autocomplete: "military_status",
         value: "temporary_exemption"
       }, null, 8
       /* PROPS */
-      , ["modelValue"]), _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeInput, {
+      , ["modelValue", "checked"]), _hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeInput, {
         id: "military_status3",
         name: "military_status",
         type: "radio",
         "class": "",
-        modelValue: $data.form.military_status,
+        modelValue: $setup.form.military_status,
         "onUpdate:modelValue": _cache[11] || (_cache[11] = function ($event) {
-          return $data.form.military_status = $event;
+          return $setup.form.military_status = $event;
         }),
+        checked: $setup.form.military_status == 'done',
         autofocus: "",
         autocomplete: "military_status",
         value: "done"
       }, null, 8
       /* PROPS */
-      , ["modelValue"]), _hoisted_9], 512
+      , ["modelValue", "checked"])], 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.form.gender == 'male']]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [_hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $setup.form.gender == 'male']]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [_hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
         type: "file",
         onInput: _cache[12] || (_cache[12] = function ($event) {
-          return $data.form.avatar = $event.target.files[0];
+          return $setup.form.avatar = $event.target.files[0];
         }),
         "class": "block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400",
         "aria-describedby": "avatar_help",
         id: "avatar"
       }, null, 32
       /* HYDRATE_EVENTS */
-      ), _hoisted_12, $data.form.progress ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("progress", {
+      ), _hoisted_16, $setup.form.progress ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("progress", {
         key: 0,
-        value: $data.form.progress.percentage,
+        value: $setup.form.progress.percentage,
         max: "100"
-      }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form.progress.percentage) + "% ", 9
+      }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.form.progress.percentage) + "% ", 9
       /* TEXT, PROPS */
-      , _hoisted_13)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeLabel, {
+      , _hoisted_17)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), $setup.form.avatar == $props.user.avatar ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+        src: 'storage/' + $setup.form.avatar,
+        alt: $props.user.username,
+        "class": "max-w-full h-auto rounded-lg"
+      }, null, 8
+      /* PROPS */
+      , _hoisted_19)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeLabel, {
         "for": "province",
-        value: "استان "
+        value: "استان"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
+        "class": "block mb-6 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500",
         "onUpdate:modelValue": _cache[13] || (_cache[13] = function ($event) {
-          return $data.form.province_id = $event;
+          return $setup.form.province_id = $event;
         }),
         name: "province_id",
         onChange: _cache[14] || (_cache[14] = function ($event) {
-          return $options.provinceChange($event);
+          return $setup.provinceChange($event);
         })
       }, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.regions, function (item) {
         return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", {
           value: item.id
         }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.title), 9
         /* TEXT, PROPS */
-        , _hoisted_15);
+        , _hoisted_21);
       }), 256
       /* UNKEYED_FRAGMENT */
       ))], 544
       /* HYDRATE_EVENTS, NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.form.province_id]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $setup.form.province_id]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeLabel, {
+        "for": "province",
+        value: "شهرستان"
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
+        "class": "block mb-6 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500",
         "onUpdate:modelValue": _cache[15] || (_cache[15] = function ($event) {
-          return $data.form.city_id = $event;
+          return $setup.form.city_id = $event;
         }),
         name: "city_id"
-      }, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.cities, function (item) {
+      }, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.needs.ourProvince.cities, function (item) {
         return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", {
-          value: item.id
+          value: item.id,
+          selected: item.id == $setup.form.city_id
         }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.title), 9
         /* TEXT, PROPS */
-        , _hoisted_16);
+        , _hoisted_22);
       }), 256
       /* UNKEYED_FRAGMENT */
       ))], 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.form.province_id != null], [vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.form.city_id]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $setup.form.province_id != null], [vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $setup.form.city_id]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_23, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
         href: _ctx.route('dashboard'),
         "class": "underline text-sm text-gray-600 hover:text-gray-900"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [_hoisted_18];
+          return [_hoisted_24];
         }),
         _: 1
         /* STABLE */
@@ -28818,12 +29069,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       /* PROPS */
       , ["href"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeButton, {
         "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["ml-4", {
-          'opacity-25': $data.form.processing
+          'opacity-25': $setup.form.processing
         }]),
-        disabled: $data.form.processing
+        disabled: $setup.form.processing
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [_hoisted_19];
+          return [_hoisted_25];
         }),
         _: 1
         /* STABLE */
