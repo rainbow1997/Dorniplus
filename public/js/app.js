@@ -25508,7 +25508,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     submit: function submit() {
-      this.form.post(route("regions.province.update", this.province.id));
+      this.form.put(route("regions.province.update", this.province.id));
     }
   },
   props: {

@@ -31,7 +31,7 @@
                                     "
                                 />
                             </div>
-                          
+
 
                             <!-- submit -->
                             <div class="flex items-center mt-4">
@@ -75,12 +75,12 @@ export default {
     }},
     methods: {
         submit() {
-            this.form.post(route("regions.province.update",this.province.id));
+            this.form.put(route("regions.province.update",this.province.id));
         },
     },
     props:
     {
-        province:{}    
+        province:{}
     }
 };
 </script>

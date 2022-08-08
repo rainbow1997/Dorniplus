@@ -77,7 +77,7 @@ Route::post('/province/storeProvince',[RegionController::class,'storeProvince'])
 Route::get('/province/edit/{province}',[RegionController::class,'editProvince'])
     ->middleware(['auth','verified'])->name('regions.province.edit');
 
-Route::get('/province/update/{province}',[RegionController::class,'updateProvince'])
+Route::put('/province/update/{province}',[RegionController::class,'updateProvince'])
     ->middleware(['auth','verified'])->name('regions.province.update');
 
 Route::delete('/province/destroy/{province}',[RegionController::class,'destroyProvince'])
