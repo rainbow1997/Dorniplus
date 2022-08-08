@@ -18,7 +18,7 @@ Commands :
 1 - run : git clone https://github.com/rainbow1997/Dorniplus.git
 2 - set database and email settings in the .env file first. (do not run any commands)
 3 - it would be best if you were sure you had installed PHP modules before. like :
-    mysql,pdo_mysql,mbstring,fileinfo,curl,gd
+    mysql,pdo_mysql,mbstring,fileinfo,curl,gd,zip,bcmath
 4 - run : php composer install (if you have an error, run : rm composer.lock or delete composer.lock)
 5 - run : php artisan key:generate 
 6 - run : php artisan Storage:link
@@ -28,8 +28,8 @@ Commands :
 10 - run : npm run dev
 11 - download wkhtmltopdf software from under link based on your system:
       11-1 :https://wkhtmltopdf.org/downloads.html
-    11-2 : go to config/snappy.php and edit binary element of pdf element 
-        in the file and set your whk installation path.
+    11-2 : install it and go to .env and set : 
+       WKHTML_PDF_BINARY = installation path like :/usr/bin/wkhtmltopdf or C:\wkhtmltopdf\bin\wkhtmltopdf)
 12 - run : php artisan serve
 </pre>
 
