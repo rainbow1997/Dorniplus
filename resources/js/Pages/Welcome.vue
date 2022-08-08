@@ -1,12 +1,14 @@
 <script setup>
 import { Head, Link } from '@inertiajs/inertia-vue3';
+import Pagination from '@/Layouts/pagination'
 
 defineProps({
     canLogin: Boolean,
     canRegister: Boolean,
     laravelVersion: String,
     phpVersion: String,
-    posts:{}
+    posts:{},
+    Pagination
 })
 </script>
 
@@ -42,10 +44,10 @@ defineProps({
                 </svg>
             </div>
             <!-- For testing -->
-            <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg text-right">
-                <div class="flex flex-wrap flex-col-reverse justify-end" v-for="post in posts">
+            <div class="flex flex-col mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg text-right">
+                <div class="flex flex-wrap flex-col-reverse justify-end mt-3" v-for="post in posts.data">
                 <div class="text-right" >
-                <img :src="'/storage/'+post.post_image" :alt="post.title" class="float-right m-2">
+                <img :src="'/storage/'+post.post_image" :alt="post.title" class="p-1 bg-white border rounded max-w-sm">
                 <h1 class="font-bold">{{post.title}}</h1>
                 <h6 class="font-light text-right rtl">
                     نویسنده:
@@ -60,6 +62,7 @@ defineProps({
               </div>
               <hr/>
             </div>
+            <pagination class="mt-6" :links="posts.links" />
 
             <div class="flex justify-center mt-4 sm:items-center sm:justify-between">
                 <div class="text-center text-sm text-gray-500 sm:text-left">

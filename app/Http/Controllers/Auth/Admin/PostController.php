@@ -45,13 +45,61 @@ class PostController extends Controller
         ->with('message','پست جدید با موفقیت افزوده شد.');
 
    }
+   public function edit(Post $post){
+       $categories = Category::pluck('title','id')->all();
+
+       return view('auth.posts_edit',['post' => $post, 'categories' => $categories]);
+   }
+   public function update(Post $post,Request $request)
+   {
+      //  dd($post->post_image);
+       $validated = ($this->validateEditedPost($request))->toArray();
+       if($request->hasFile('post_image')){
+           removeFiles($post->post_image);
+           $validated['post_image'] = $this->uploadPostImage($request);
+           $post->post_image = $validated['post_image'];
+       }
+
+
+
+       $category = Category::find($validated['category_id']);
+       $category->posts()->save($post);
+       $post->title = $validated['title'];
+       $post->text = $validated['text'];
+       $post->estimated_time = $this->estimatedTimeCaculating($validated['text']);
+
+       $post->save();
+
+       activity()->performedOn($post)
+           ->causedBy(Auth::user())
+           ->log('the post has been edited with these information');
+
+        return redirect()->route('posts.index')
+                ->with('message','پست ویرایش شد');
+   }
+    public function validateEditedPost(Request $request)
+    {
+        return collect($request->validate([
+            'title' => ['required','string'],
+            'text' => ['required','string'],
+            'post_image' => ['nullable','image','mimes:jpg,jpeg,png','max:2048'],
+
+            'category_id' => ['required','numeric','exists:categories,id'],
+        ]));
+
+
+    }
    protected function uploadPostImage(Request $request)
    {
-        $uploadedFile = $request->file('post_image');
-        //$this->imageSizeOptimizer($uploadedFile->getRealPath());
-        $filename = time().$uploadedFile->getClientOriginalName();
-        $file = Storage::disk('public')->putFileAs( 'posts', $uploadedFile,$filename);
-        return $file;
+
+       $uploadedFile = $request->file('post_image');
+       $filename = time().$uploadedFile->getClientOriginalName();
+
+       $file = Storage::disk('public')->putFileAs( 'posts', $uploadedFile,$filename);
+
+       $this->imageSizeOptimizer($file);
+
+       return $file;
    }
    protected function imageSizeOptimizer($file)
     {
@@ -67,7 +115,7 @@ class PostController extends Controller
         return collect($request->validate([
             'title' => ['required','string'],
             'text' => ['required','string'],
-            'post_image' => ['nullable','image','mimes:jpg,jpeg,png','max:2048'],
+            'post_image' => ['required','image','mimes:jpg,jpeg,png','max:2048'],
 
             'category_id' => ['required','numeric','exists:categories,id'],
         ]));
@@ -91,7 +139,7 @@ class PostController extends Controller
 
         $wordsArray = explode(' ',$str);
 
-        $secondDuration = (ceil(count($wordsArray) / $adultsAvgTime) ) * 60;//convert to seconds
+        $secondDuration = (ceil(count($wordsArray) / $adultsAvgTime) );//convert to seconds
         return ($datetime = date('i:s',$secondDuration));
     }
 }

@@ -37,13 +37,14 @@ class UserController extends Controller
             else
                 $users = $users->where($input,'like',"%{$request->searchingInput}%");
 
-            $users = $users->paginate(5);
+            //$users = $users->paginate(5);
 
         }, function() use(&$users){
             //our else
-            $users = $users->orderBy('id','DESC')->paginate(5);
+            //$users = $users->orderBy('id','DESC')->paginate(5);
 
         });
+        $users = $users->orderBy('id','DESC')->paginate(5);
         return Inertia::render('UsersIndex',['users' => $users]);
 
 
@@ -159,9 +160,8 @@ class UserController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        $user = User::find($id);
         $roles = Role::pluck('name','name')->all();
         $userRole = $user->roles->pluck('name','name')->all();
 
@@ -175,12 +175,12 @@ class UserController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(User $user,Request $request)
     {
         $this->validate($request, [
             'fname' => 'required|string',
             'lname' => 'required|string',
-            'email' => 'required|email|unique:users,email,'.$id,
+            'email' => 'required|email|unique:users,email,'.$user->id,
             'password' => 'nullable|same:confirm-password',
             'roles' => 'required'
         ]);
@@ -192,12 +192,10 @@ class UserController extends Controller
             $input = Arr::except($input,array('password'));
         }
 
-        $user = User::find($id);
         $user->update($input);
-        DB::table('model_has_roles')->where('model_id',$id)->delete();
+        DB::table('model_has_roles')->where('model_id',$user->id)->delete();
 
         $user->assignRole($request->input('roles'));
-
 
         activity()->performedOn($user)
         ->causedBy(Auth::user())
@@ -213,14 +211,12 @@ class UserController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        User::find($id)->delete();
-
-        $user = User::create($input);
-        $user->assignRole($request->input('roles'));
+        $user->roles()->detach();
+        $user->delete();// or $user->syncRoles([]);
         activity()->performedOn($user)
-        ->causeBy(Auth::user())
+        ->causedBy(\Auth::user())
         ->log('the user has been deleted with these information');
         return redirect()->route('users.index')
                         ->with('success','حذف کاربر موفقیت آمیز بود.');

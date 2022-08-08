@@ -96,7 +96,9 @@
                                 </tr>
                                 </tbody>
                             </table>
-                        {{$page.props.flash.message}}
+                            <pagination class="mt-6" :links="users.links" />
+
+                            {{$page.props.flash.message}}
                     </div>
                         </div>
                 </div>
@@ -115,6 +117,8 @@ import BreezeValidationErrors from '@/Components/ValidationErrors.vue';
 import './Auth/persian-datepicker.js';// in another time,use modules.env not this statically manner.
 import './Auth/persian-datepicker.min.css';
 import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
+import Pagination from '@/Layouts/pagination'
+
 export default {
     components:{
         Head,
@@ -125,6 +129,7 @@ export default {
         BreezeInput,
         BreezeLabel,
         BreezeValidationErrors,
+        Pagination
 
     },
     data(){

@@ -133,7 +133,7 @@ class RoleController extends Controller
     public function destroy($id)
     {
         DB::table("roles")->where('id',$id)->delete();
-        return redirect()->route('auth.roles.index')
+        return redirect()->route('roles.index')
                         ->with('success','نقش کاربری با موفقیت حذف گردید');
     }
 }
