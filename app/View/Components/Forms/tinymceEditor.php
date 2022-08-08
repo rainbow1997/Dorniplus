@@ -14,10 +14,12 @@ class tinymceEditor extends Component
      * @return void
      */
     public $nameAttr;
-    public function __construct($nameAttr)
+    public $valueAttr;
+    public function __construct($nameAttr,$valueAttr = null)
     {
         //
         $this->nameAttr = $nameAttr;
+        $this->valueAttr = $valueAttr;
     }
 
     /**
