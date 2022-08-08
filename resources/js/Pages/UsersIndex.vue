@@ -51,19 +51,18 @@
                                 </div>
                             </div>
 
-                        <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
-                            <table class="table-fixed w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-
-                                <tr>
-                                    <th scope="col" class="py-3 px-6">شناسه</th>
-                                    <th scope="col" class="py-3 px-6">نام</th>
-                                    <th scope="col" class="py-3 px-6">نام خانوادگی</th>
-                                    <th scope="col" class="py-3 px-6">ایمیل</th>
-                                    <th scope="col" class="py-3 px-6">استان</th>
-                                    <th scope="col" class="py-3 px-6">شهرستان</th>
-                                    <th scope="col" class="py-3 px-6">نقش ها</th>
-                                    <th scope="col" class="py-3 px-6" width="280px">عملیات</th>
+                            <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
+                                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                                    <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
+                                    <tr>
+                                    <th scope="col" class="py-3 px-6 bg-gray-50 dark:bg-gray-800">>شناسه</th>
+                                    <th scope="col" class="py-3 px-6 bg-gray-50 dark:bg-gray-800">>نام</th>
+                                    <th scope="col" class="py-3 px-6 bg-gray-50 dark:bg-gray-800">>نام خانوادگی</th>
+                                    <th scope="col" class="py-3 px-6 bg-gray-50 dark:bg-gray-800">>ایمیل</th>
+                                    <th scope="col" class="py-3 px-6 bg-gray-50 dark:bg-gray-800">>استان</th>
+                                    <th scope="col" class="py-3 px-6 bg-gray-50 dark:bg-gray-800">>شهرستان</th>
+                                    <th scope="col" class="py-3 px-6 bg-gray-50 dark:bg-gray-800">>نقش ها</th>
+                                    <th scope="col" class="py-3 px-6 bg-gray-50 dark:bg-gray-800" width="280px"> عملیات</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -72,8 +71,8 @@
                                     <td class="py-4 px-6">{{ user.fname }}</td>
                                     <td class="py-4 px-6">{{ user.lname }}</td>
                                     <td class="py-4 ">{{ user.email }}</td>
-                                    <td class="py-4 mr-3">{{ user.province.title ?? ''}}</td>
-                                    <td class="py-4 px-6">{{ user.city.title ?? '' }}</td>
+                                    <td v-if="user.province != null" class="py-4 mr-3">{{ user.province.title ?? ''}}</td>
+                                    <td v-if="user.city != null" class="py-4 px-6">{{ user.city.title ?? '' }}</td>
                                     <td class="py-4 px-6">
                                         <div v-if="!!user.roles" class="flex flex-row">
                                             <span v-for="role in user.roles" class="m-1">

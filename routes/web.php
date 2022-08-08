@@ -103,8 +103,9 @@ Route::group(['middleware' => ['auth','verified','role:Admin']], function() {
         Route::resource('posts',PostController::class);
         Route::get('/reporting/{method}',[UserController::class,'displayUsersReport'])->name('reporting');
         Route::get('/chart',[UsersChart::class,'showChart'])->name('chart');
+        Route::get('/logs',[LogController::class,'index'])
+            ->name('logs');
 
-        Route::get('/logs',[LogController::class,'index']);
 
     });
 Route::get('/captcha',function(){

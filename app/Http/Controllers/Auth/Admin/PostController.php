@@ -40,7 +40,7 @@ class PostController extends Controller
         $post = Post::create($validData->toArray());
         activity()->performedOn($post)
         ->causedBy(Auth::user())
-        ->log('the user has been created with these information');
+        ->log('the post has been created with these information');
         return redirect()->route('posts.index')
         ->with('message','پست جدید با موفقیت افزوده شد.');
 

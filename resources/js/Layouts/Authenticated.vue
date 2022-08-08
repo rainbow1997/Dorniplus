@@ -23,7 +23,7 @@ const showingNavigationDropdown = ref(false);
                                 <Link :href="route('dashboard')">
                                     <BreezeApplicationLogo class="block h-9 w-auto" />
                                 </Link>
-                                 
+
                             </div>
 
                             <!-- Navigation Links -->
@@ -46,8 +46,10 @@ const showingNavigationDropdown = ref(false);
                                  <BreezeNavLink :href="route('chart')">
                                     نمودار
                                 </BreezeNavLink>
-                         
-                         
+                                <BreezeNavLink :href="route('logs')">
+                                    گزارشات(لاگ)
+                                </BreezeNavLink>
+
                             </div>
                         </div>
 
@@ -122,11 +124,12 @@ const showingNavigationDropdown = ref(false);
             <header class="bg-white shadow" v-if="$slots.header">
                 <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                     <slot name="header" />
+                    {{$page.props.flash.message}}
                 </div>
             </header>
 
             <!-- Page Content -->
-                                    {{$page.props.flash.message}}
+
 
             <main>
                 <slot />
