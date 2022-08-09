@@ -178,6 +178,7 @@ export default {
 
         provinceSetter();
         const provinceChange = (event) => {
+            setBirth();
             console.log('hi -> province is :');
             let t = props.regions.filter(function (province) {
                 console.log(province.cities);
@@ -191,6 +192,7 @@ export default {
 
         };
         let genderChange = (event) => {
+            setBirth();
             if (event.target.value != 'male')
                 form.military_status = null;
         };

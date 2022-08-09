@@ -60,7 +60,7 @@ watch:{
 methods: {
      provinceChange(event){
 
-
+        this.setBirth();
          console.log('hi -> province is :');
                 let t = this.regions.filter(function(province){
                     console.log(province.cities);
@@ -71,20 +71,24 @@ methods: {
 
             },
     genderChange(event){
+         this.setBirth();
         if(event.target.value != 'male')
             this.form.military_status = null;
     },
     setBirth(){
+
          this.form.birth = this.$refs.settingBirth.value;//direct connection to DOM elements in Vuejs
 
     },
      submit() {
       this.setBirth();
-      this.$inertia.post('/register', this.form)
+      this.$inertia.post('/register', this.form);
     }
 },
 mounted() {
+
     $(document).ready(function() {
+
             $(".datepicker").pDatepicker({
             "inline": false,
             "format": "L",
@@ -224,11 +228,11 @@ mounted() {
                 <div class="flex flex-row content-around ">
                     <div class="px-3">
                         <BreezeLabel for ="genderMale" value="مذکر" />
-                        <BreezeInput id="genderMale" name="gender" type="radio" class="mt-1 " v-model="form.gender" required autofocus autocomplete="gender" value="male" @change="genderChange($event)"/>
+                        <BreezeInput id="genderMale" name="gender" type="radio" class="mt-1 " v-model="form.gender" required autofocus autocomplete="gender" value="male" @click="genderChange($event)"/>
                     </div>
                     <div class="">
                     <BreezeLabel for ="genderFemale" value="مونث" />
-                    <BreezeInput id="genderFemale" name="gender" type="radio" class="mt-1" v-model="form.gender" required autofocus autocomplete="gender" value="female" @change="genderChange($event)"/>
+                    <BreezeInput id="genderFemale" name="gender" type="radio" class="mt-1" v-model="form.gender" required autofocus autocomplete="gender" value="female" @click="genderChange($event)"/>
                     </div>
                 </div>
             </div>

@@ -25691,6 +25691,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     provinceChange: function provinceChange(event) {
+      this.setBirth();
       console.log('hi -> province is :');
       var t = this.regions.filter(function (province) {
         console.log(province.cities);
@@ -25699,6 +25700,7 @@ __webpack_require__.r(__webpack_exports__);
       this.cities = t[0].cities;
     },
     genderChange: function genderChange(event) {
+      this.setBirth();
       if (event.target.value != 'male') this.form.military_status = null;
     },
     setBirth: function setBirth() {
@@ -26226,6 +26228,7 @@ __webpack_require__.r(__webpack_exports__);
     provinceSetter();
 
     var provinceChange = function provinceChange(event) {
+      setBirth();
       console.log('hi -> province is :');
       var t = props.regions.filter(function (province) {
         console.log(province.cities);
@@ -26235,6 +26238,7 @@ __webpack_require__.r(__webpack_exports__);
     };
 
     var genderChange = function genderChange(event) {
+      setBirth();
       if (event.target.value != 'male') form.military_status = null;
     };
 
@@ -28192,7 +28196,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         autofocus: "",
         autocomplete: "gender",
         value: "male",
-        onChange: _cache[6] || (_cache[6] = function ($event) {
+        onClick: _cache[6] || (_cache[6] = function ($event) {
           return $options.genderChange($event);
         })
       }, null, 8
@@ -28213,7 +28217,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         autofocus: "",
         autocomplete: "gender",
         value: "female",
-        onChange: _cache[8] || (_cache[8] = function ($event) {
+        onClick: _cache[8] || (_cache[8] = function ($event) {
           return $options.genderChange($event);
         })
       }, null, 8
