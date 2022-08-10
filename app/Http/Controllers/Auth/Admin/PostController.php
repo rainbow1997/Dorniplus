@@ -9,6 +9,7 @@ use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Image;
+use Inertia\Inertia;
 
 class PostController extends Controller
 {
@@ -16,9 +17,15 @@ class PostController extends Controller
 
     public function index()
     {
-        $posts = Post::with('writerPerson', 'category')->paginate(10);
+        $posts = Post::with('writerPerson', 'category');
         return view('auth.posts_index', ['posts' => $posts]);
 
+    }
+
+    public function show(Post $post)
+    {
+        $post->load(['writerPerson', 'category']);
+        return Inertia::render('Post/Show', ['post' => $post]);
     }
 
     public function store(Request $request)

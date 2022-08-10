@@ -252,11 +252,13 @@ $grandTotalSkip = !$showNumColumn ? $grandTotalSkip - 1 : $grandTotalSkip;
             $pdf->page_text(($pdf->get_width() - 84), ($pdf->get_height() - 26.89), __('laravel-report-generator::messages.page_pdf'), null, 10);
         }
 
+
     @elseif (strtolower($orientation) == 'landscape')
         if ( isset($pdf) ) {
             $pdf->page_text(30, ($pdf->get_height() - 26.89), __('laravel-report-generator::messages.printed_at', ['date' => date('d M Y H:i:s')]), null, 10);
             $pdf->page_text(($pdf->get_width() - 84), ($pdf->get_height() - 26.89), __('laravel-report-generator::messages.page_pdf'), null, 10);
         }
+
 
     @endif
 </script>

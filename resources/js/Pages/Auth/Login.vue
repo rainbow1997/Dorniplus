@@ -38,13 +38,15 @@ const submit = () => {
         <form @submit.prevent="submit">
             <div>
                 <BreezeLabel for="email" value="ایمیل"/>
-                <BreezeInput id="email" v-model="form.email" autocomplete="username" autofocus class="mt-1 block w-full" required
+                <BreezeInput id="email" v-model="form.email" autocomplete="username" autofocus class="mt-1 block w-full"
+                             required
                              type="email"/>
             </div>
 
             <div class="mt-4">
                 <BreezeLabel for="password" value="رمز عبور"/>
-                <BreezeInput id="password" v-model="form.password" autocomplete="current-password" class="mt-1 block w-full" required
+                <BreezeInput id="password" v-model="form.password" autocomplete="current-password"
+                             class="mt-1 block w-full" required
                              type="password"/>
             </div>
 

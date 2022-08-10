@@ -40,8 +40,9 @@
                                 <td class="px-4 py-2">{{ province.id }}</td>
                                 <td class="px-4 py-2">{{ province.title }}</td>
                                 <td class="px-4 py-2 font-extrabold flex flex-row space-around">
-                                    <BreezeButton class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                                                  @click="chooseProvince(province.id)">
+                                    <BreezeButton
+                                        class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                                        @click="chooseProvince(province.id)">
                                         انتخاب
                                     </BreezeButton> <!-- remember that , link try to remount and it makes conflicts-->
 

@@ -201,13 +201,15 @@ export default {
 
             <div class="mt-4">
                 <BreezeLabel for="fname" value="نام*"/>
-                <BreezeInput id="fname" v-model="form.fname" autocomplete="fname" autofocus class="mt-1 block w-full" required
+                <BreezeInput id="fname" v-model="form.fname" autocomplete="fname" autofocus class="mt-1 block w-full"
+                             required
                              type="text"/>
             </div>
 
             <div class="mt-4">
                 <BreezeLabel for="lname" value="نام خانوادگی*"/>
-                <BreezeInput id="lname" v-model="form.lname" autocomplete="lname" autofocus class="mt-1 block w-full" required
+                <BreezeInput id="lname" v-model="form.lname" autocomplete="lname" autofocus class="mt-1 block w-full"
+                             required
                              type="text"/>
             </div>
             <div class="mt-4">
@@ -217,14 +219,17 @@ export default {
             </div>
             <div class="mt-4">
                 <BreezeLabel for="phone" value="شماره همراه*"/>
-                <BreezeInput id="phone" v-model="form.phone" autocomplete="phone" autofocus class="mt-1 block w-full" required
+                <BreezeInput id="phone" v-model="form.phone" autocomplete="phone" autofocus class="mt-1 block w-full"
+                             required
                              type="tel"/>
             </div>
             <div class="mt-4">
                 <BreezeLabel for="birth" value="تاریخ تولد"/>
                 <input id="birth" ref="settingBirth"
                        v-model="form.birth"
-                       autocomplete="birth" autofocus class="mt-1 block w-full datepicker bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required type="text">
+                       autocomplete="birth" autofocus
+                       class="mt-1 block w-full datepicker bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                       required type="text">
             </div>
             <div class="mt-4">
                 <BreezeLabel for="gender" value="جنسیت*"/>
@@ -237,7 +242,8 @@ export default {
                     </div>
                     <div class="">
                         <BreezeLabel for="genderFemale" value="مونث"/>
-                        <BreezeInput id="genderFemale" v-model="form.gender" autocomplete="gender" autofocus class="mt-1"
+                        <BreezeInput id="genderFemale" v-model="form.gender" autocomplete="gender" autofocus
+                                     class="mt-1"
                                      name="gender" required type="radio" value="female"
                                      @click="genderChange($event)"/>
                     </div>
@@ -246,15 +252,18 @@ export default {
             <div v-show="form.gender == 'male'" class="mt-4 flex flex-row content-around flex-wrap">
                 <BreezeLabel class=" flex-1 mt-4" value="وضعیت نظام وظیفه*"/>
                 <div class="breacontent-around pt-5">
-                    <BreezeInput id="military_status" v-model="form.military_status" autocomplete="military_status" autofocus
+                    <BreezeInput id="military_status" v-model="form.military_status" autocomplete="military_status"
+                                 autofocus
                                  class="" name="military_status" type="radio"
                                  value="permanent_exemption"/>
                     معاف دائم
-                    <BreezeInput id="military_status2" v-model="form.military_status" autocomplete="military_status" autofocus
+                    <BreezeInput id="military_status2" v-model="form.military_status" autocomplete="military_status"
+                                 autofocus
                                  class="" name="military_status" type="radio"
                                  value="temporary_exemption"/>
                     معاف موقت
-                    <BreezeInput id="military_status3" v-model="form.military_status" autocomplete="military_status" autofocus
+                    <BreezeInput id="military_status3" v-model="form.military_status" autocomplete="military_status"
+                                 autofocus
                                  class="" name="military_status" type="radio" value="done"/>
                     پایان خدمت
                 </div>
@@ -280,12 +289,14 @@ export default {
             </div>
             <div class="mt-4">
                 <BreezeLabel for="username" value="نام کاربری*"/>
-                <BreezeInput id="username" v-model="form.username" autocomplete="username" autofocus class="mt-1 block w-full"
+                <BreezeInput id="username" v-model="form.username" autocomplete="username" autofocus
+                             class="mt-1 block w-full"
                              required type="text"/>
             </div>
             <div class="mt-4">
                 <BreezeLabel for="password" value="رمز عبور*"/>
-                <BreezeInput id="password" v-model="form.password" autocomplete="new-password" class="mt-1 block w-full" required
+                <BreezeInput id="password" v-model="form.password" autocomplete="new-password" class="mt-1 block w-full"
+                             required
                              type="password"/>
             </div>
             <div class="mt-4">

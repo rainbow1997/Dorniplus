@@ -18,4 +18,4 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::post('/users/search', [UserController::class,'index'])->name('users.index.search');
+Route::post('/users/search', [UserController::class, 'index'])->name('users.index.search');
