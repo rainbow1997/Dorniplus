@@ -44,23 +44,36 @@ defineProps({
                 </svg>
             </div>
             <!-- For testing -->
-            <div class="flex flex-col mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg text-right">
-                <div class="flex flex-wrap flex-col-reverse justify-end mt-3" v-for="post in posts.data">
-                <div class="text-right" >
-                <img :src="'/storage/'+post.post_image" :alt="post.title" class="p-1 bg-white border rounded max-w-sm">
-                <h1 class="font-bold">{{post.title}}</h1>
-                <h6 class="font-light text-right rtl">
+            <div class="w-full flex sm:flex-row p-2 box-header-color gap-y-2 mt-8 bg-white dark:bg-gray-800 overflow-hidden gap-x-3 shadow text-right gap-x-2">
+                <div class="" v-for="post in posts.data">
+                <div class="w-full items-center flex flex-col justify-end gap-x-4 bg-slate-50	" >
+                    <a href="#" class="w-full">
+                        <img :src="'/storage/'+post.post_image" :alt="post.title" class="w-full h-auto object-cover rounded">
+                    </a>
+
+                    <div class="flex flex-1 justify-evenly h-full flex-col gap-3 ps-4 pt-2 px-2">
+                        <a href="#" class="text-xs text-black md:text-base font-medium box-text-color-darker paragraph-ellipsis-2 leading-relaxed">
+                    <h1 class="text-xs text-black md:text-base font-medium box-text-color-darker paragraph-ellipsis-2 leading-relaxed">{{post.title}}</h1>
+                        </a>
+                        <div class=" text-xs flex flex-row items-center gap-x-2 bg-amber-50">
+
+                    <h6 class="font-light rtl italic ">
                     نویسنده:
                     {{ post.writer_person.fname }} {{ post.writer_person.lname}} </h6>
-                <h5 class="mt-1 font-medium">موضوع:{{post.category.title}}</h5>
-                <h6 class="mt-1 font-light">زمان تقریبی مطالعه:{{post.estimated_time}}</h6>
-                <hr/>
-                <div class="leading-loose m-1 mt-1">
+                <h5 class=" font-medium">موضوع:{{post.category.title}}</h5>
+                <h6 class="font-light">زمان تقریبی مطالعه:{{post.estimated_time}}</h6>
+                        </div>
+
+                <div class="leading-loose m-1 mt-1 blog-card-paragraph text-sm paragraph-ellipsis-4 sm:paragraph-ellipsis-2 md:paragraph-ellipsis-4 leading-loose text-gray-500">
                     <span v-html="post.text"></span>
                                     </div>
+
+                </div>
                 </div>
               </div>
-              <hr/>
+
+
+
             </div>
             <pagination class="mt-6" :links="posts.links" />
 
