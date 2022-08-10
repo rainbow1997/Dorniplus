@@ -3,42 +3,46 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Province;
 use App\Models\User;
+use App\Models\UserVerify;
+use App\Notifications\RegisterNotification;
 use App\Providers\RouteServiceProvider;
-use Illuminate\Auth\Events\Registered;
+use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rules;
-use App\Enum\Gender;
-use App\Enum\MilitaryStatus;
-use App\Models\Province;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
 use Image;
-use App\Models\UserVerify;
-use Illuminate\Support\Collection;
-use App\Notifications\RegisterNotification;
 use Inertia\Inertia;
-use Illuminate\Support\Facades\Request as RequestFacade;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Storage;
-use Morilog\Jalali\Jalalian;
-use Carbon\Carbon;
-use Hekmatinasser\Verta\Verta;
 
 class RegisteredUserController extends Controller
 {
-    /**
-     * Display the registration view.
-     *
-     * @return View
-     */
-    public function create()
+    public function store(Request $request)
     {
-        $regions = Province::with('cities')->get();
-        return Inertia::render('Auth/Register',['regions'=>$regions]);
+
+        $validData = $this->userValidating($request);
+        $validData = collect($validData);
+        $this->securePassword($validData);
+        if ($request->hasFile('avatar'))
+            $validData->put('avatar', $this->uploadAvatar($request));
+
+        $user = User::create($validData->toArray());
+        $userVerify = new UserVerify;
+        $userVerify->setToken();
+        $user->emailVerificationCode()->save($userVerify);
+        $user->save();
+        $user->notify(new RegisterNotification($user));
+        //event(new Registered($user));
+
+        Auth::login($user);
+
+        return redirect(RouteServiceProvider::HOME);
     }
 
     /**
@@ -59,93 +63,89 @@ class RegisteredUserController extends Controller
             'lname' => ['required', 'string', 'max:455'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'national_code' => ['required','unique:users',function($attribute,$value,$fail) use($self){
-                    if(!$self->nationalCodeChecking($value))
-                        $fail('فرمت کد ملی صحیح نمی باشد.');
-                }
-                               ],
-            'phone' => ['required','digits_between:10,11'],
-            'gender' => ['required','in:male,female'],//if it gets much time ,remove it and use string
-            'birth' => ['required','date','before:'.$tenYearsAgo],
-            'username' => ['required','alpha_num','regex:/^[^0-9]/','unique:users'],
-            'military_status' => ['nullable','required_if:gender,male',
-            'in:permanent_exemption,temporary_exemption,done'],
-            'avatar' => ['nullable','image','mimes:png,jpg,jpeg','max:200'],
-            'province_id' => ['nullable','numeric','exists:provinces,id'],
-            'city_id' => ['nullable','numeric','exists:cities,id'],
+            'national_code' => ['required', 'unique:users', function ($attribute, $value, $fail) use ($self) {
+                if (!$self->nationalCodeChecking($value))
+                    $fail('فرمت کد ملی صحیح نمی باشد.');
+            }
+            ],
+            'phone' => ['required', 'digits_between:10,11'],
+            'gender' => ['required', 'in:male,female'],//if it gets much time ,remove it and use string
+            'birth' => ['required', 'date', 'before:' . $tenYearsAgo],
+            'username' => ['required', 'alpha_num', 'regex:/^[^0-9]/', 'unique:users'],
+            'military_status' => ['nullable', 'required_if:gender,male',
+                'in:permanent_exemption,temporary_exemption,done'],
+            'avatar' => ['nullable', 'image', 'mimes:png,jpg,jpeg', 'max:200'],
+            'province_id' => ['nullable', 'numeric', 'exists:provinces,id'],
+            'city_id' => ['nullable', 'numeric', 'exists:cities,id'],
 
-            'captcha_num' => ['required','numeric',function($attribute,$value,$fail){
-                if(session('captcha_num') != $value)
+            'captcha_num' => ['required', 'numeric', function ($attribute, $value, $fail) {
+                if (session('captcha_num') != $value)
                     $fail('کد امنیتی صحیح نمی باشد');
             }]
         ]);
     }
-    protected function uploadAvatar(Request $request)
+
+    protected function nationalCodeChecking($code)
     {
-
-        $uploadedFile = $request->file('avatar');
-        $filename = time().$uploadedFile->getClientOriginalName();
-
-        $file = Storage::disk('public')->putFileAs( 'avatars', $uploadedFile,$filename);
-
-        $this->imageSizeOptimizer($file);
-
-        return $file;
+        if (!preg_match('/^[0-9]{10}$/', $code))
+            return false;
+        for ($i = 0; $i < 10; $i++)
+            if (preg_match('/^' . $i . '{10}$/', $code))
+                return false;
+        for ($i = 0, $sum = 0; $i < 9; $i++)
+            $sum += ((10 - $i) * intval(substr($code, $i, 1)));
+        $ret = $sum % 11;
+        $parity = intval(substr($code, 9, 1));
+        if (($ret < 2 && $ret == $parity) || ($ret >= 2 && $ret == 11 - $parity))
+            return true;
+        return false;
     }
-    protected function imageSizeOptimizer($file)
-    {
 
-        $image = Image::make('storage/'.$file);
-        $image->resize(400,400,function($const){
-            $const->aspectRatio();
-        })->save();
-    }
     private function securePassword(Collection $validData)
     {
         $validData['password'] = Hash::make($validData['password']);
         return $validData;
     }
 
-    public function store(Request $request)
+    protected function uploadAvatar(Request $request)
     {
 
-        $validData = $this->userValidating($request);
-        $validData = collect($validData);
-        $this->securePassword($validData);
-        if($request->hasFile('avatar'))
-            $validData->put('avatar', $this->uploadAvatar($request));
+        $uploadedFile = $request->file('avatar');
+        $filename = time() . $uploadedFile->getClientOriginalName();
 
-        $user = User::create($validData->toArray());
-        $userVerify = new UserVerify;
-        $userVerify->setToken();
-        $user->emailVerificationCode()->save($userVerify);
-        $user->save();
-        $user->notify(new RegisterNotification($user));
-        //event(new Registered($user));
+        $file = Storage::disk('public')->putFileAs('avatars', $uploadedFile, $filename);
 
-        Auth::login($user);
+        $this->imageSizeOptimizer($file);
 
-        return redirect(RouteServiceProvider::HOME);
+        return $file;
     }
-    protected function nationalCodeChecking($code)
+
+    protected function imageSizeOptimizer($file)
     {
-        if(!preg_match('/^[0-9]{10}$/',$code))
-            return false;
-        for($i=0;$i<10;$i++)
-            if(preg_match('/^'.$i.'{10}$/',$code))
-                return false;
-        for($i=0,$sum=0;$i<9;$i++)
-            $sum+=((10-$i)*intval(substr($code, $i,1)));
-        $ret=$sum%11;
-        $parity=intval(substr($code, 9,1));
-        if(($ret<2 && $ret==$parity) || ($ret>=2 && $ret==11-$parity))
-            return true;
-        return false;
-    }
-    public function changePasswordIndex(){
 
-        return Inertia::render('ChangePassword',['user'=>\Auth::user()]);
+        $image = Image::make('storage/' . $file);
+        $image->resize(400, 400, function ($const) {
+            $const->aspectRatio();
+        })->save();
     }
+
+    /**
+     * Display the registration view.
+     *
+     * @return View
+     */
+    public function create()
+    {
+        $regions = Province::with('cities')->get();
+        return Inertia::render('Auth/Register', ['regions' => $regions]);
+    }
+
+    public function changePasswordIndex()
+    {
+
+        return Inertia::render('ChangePassword', ['user' => \Auth::user()]);
+    }
+
     public function changePassword(Request $request)
     {
         $user = User::find($request->user_id);//to avoid of modification inderction error with $request->user->password
@@ -153,34 +153,37 @@ class RegisteredUserController extends Controller
         $request->validate([
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
-         $user->password = Hash::make($request->password);
-         $user->save();
-         return redirect()->route('dashboard')
-                        ->with('message','گذرواژه با موفقیت تغییر کرد');
+        $user->password = Hash::make($request->password);
+        $user->save();
+        return redirect()->route('dashboard')
+            ->with('message', 'گذرواژه با موفقیت تغییر کرد');
     }
+
     public function editProfile()
     {
-       // dd(\Auth::user());
+        // dd(\Auth::user());
 
-        return Inertia::render('EditProfile',['user' => \Auth::user(),
-                                              'regions' =>  $regions = Province::with('cities')->get()]);
+        return Inertia::render('EditProfile', ['user' => \Auth::user(),
+            'regions' => $regions = Province::with('cities')->get()]);
     }
-    public function storeProfile(User $user,Request $request){
 
-        $validData = collect($this->storeValidating($user,$request));
-       // $validData = $this->convertDateForDB($validData);
+    public function storeProfile(User $user, Request $request)
+    {
+
+        $validData = collect($this->storeValidating($user, $request));
+        // $validData = $this->convertDateForDB($validData);
 
 
-        if($request->hasFile('avatar')) {
+        if ($request->hasFile('avatar')) {
             removeFiles($user->avatar);
             $validData['avatar'] = $this->uploadAvatar($request);
         }
         $user->update($validData->toArray());
         return redirect()->route('dashboard')
-            ->with('message','پروفایل با موفقیت تغییر کرد');
+            ->with('message', 'پروفایل با موفقیت تغییر کرد');
     }
 
-    public function storeValidating(User $user,Request $request)
+    public function storeValidating(User $user, Request $request)
     {
 
 
@@ -190,14 +193,14 @@ class RegisteredUserController extends Controller
         return $request->validate([
             'fname' => 'required|string|max:455',
             'lname' => 'required|string|max:455',
-            'national_code' => 'required|unique:users,national_code,'.$user->id,function($attribute,$value,$fail) use($self){
-                    if(!$self->nationalCodeChecking($value))
-                        $fail('The'.$attribute.'is invalid.');
-                }
-                               ,
+            'national_code' => 'required|unique:users,national_code,' . $user->id, function ($attribute, $value, $fail) use ($self) {
+                if (!$self->nationalCodeChecking($value))
+                    $fail('The' . $attribute . 'is invalid.');
+            }
+            ,
             'phone' => 'required|digits_between:10,11',
             'gender' => 'required|in:male,female',//if it gets much time ,remove it and use string
-            'birth' => 'required|date|before:'.$tenYearsAgo,
+            'birth' => 'required|date|before:' . $tenYearsAgo,
             'military_status' => 'nullable|required_if:gender,male|
              in:permanent_exemption,temporary_exemption,done',
             'post_image' => 'nullable|mimes:png,jpg,jpeg|max:20000',

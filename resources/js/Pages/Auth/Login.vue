@@ -5,7 +5,7 @@ import BreezeGuestLayout from '@/Layouts/Guest.vue';
 import BreezeInput from '@/Components/Input.vue';
 import BreezeLabel from '@/Components/Label.vue';
 import BreezeValidationErrors from '@/Components/ValidationErrors.vue';
-import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
+import {Head, Link, useForm} from '@inertiajs/inertia-vue3';
 
 defineProps({
     canResetPassword: Boolean,
@@ -27,9 +27,9 @@ const submit = () => {
 
 <template>
     <BreezeGuestLayout>
-        <Head title="ورود به سیستم" />
+        <Head title="ورود به سیستم"/>
 
-        <BreezeValidationErrors class="mb-4" />
+        <BreezeValidationErrors class="mb-4"/>
 
         <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
             {{ status }}
@@ -37,29 +37,32 @@ const submit = () => {
 
         <form @submit.prevent="submit">
             <div>
-                <BreezeLabel for="email" value="ایمیل" />
-                <BreezeInput id="email" type="email" class="mt-1 block w-full" v-model="form.email" required autofocus autocomplete="username" />
+                <BreezeLabel for="email" value="ایمیل"/>
+                <BreezeInput id="email" v-model="form.email" autocomplete="username" autofocus class="mt-1 block w-full" required
+                             type="email"/>
             </div>
 
             <div class="mt-4">
-                <BreezeLabel for="password" value="رمز عبور" />
-                <BreezeInput id="password" type="password" class="mt-1 block w-full" v-model="form.password" required autocomplete="current-password" />
+                <BreezeLabel for="password" value="رمز عبور"/>
+                <BreezeInput id="password" v-model="form.password" autocomplete="current-password" class="mt-1 block w-full" required
+                             type="password"/>
             </div>
 
             <div class="block mt-4">
                 <label class="flex items-center">
-                    <BreezeCheckbox name="remember" v-model:checked="form.remember" />
+                    <BreezeCheckbox v-model:checked="form.remember" name="remember"/>
                     <span class="ml-2 text-sm text-gray-600">مرا به یاد داشته باش!</span>
                 </label>
             </div>
 
             <div class="flex items-center justify-end mt-4">
-                <Link v-if="canResetPassword" :href="route('password.request')" class="underline text-sm text-gray-600 hover:text-gray-900">
+                <Link v-if="canResetPassword" :href="route('password.request')"
+                      class="underline text-sm text-gray-600 hover:text-gray-900">
                     فراموشی رمز عبور؟
                 </Link>
 
-                <BreezeButton class="mr-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    ورود 
+                <BreezeButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing" class="mr-4">
+                    ورود
                 </BreezeButton>
             </div>
         </form>

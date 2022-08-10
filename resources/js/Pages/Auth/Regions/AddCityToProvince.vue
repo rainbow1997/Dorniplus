@@ -1,10 +1,10 @@
 <template>
-    <Head title="افزودن شهر به استان" />
+    <Head title="افزودن شهر به استان"/>
 
     <BreezeAuthenticatedLayout>
         <template #header>
             <h2 class="text-xl font-semibold leading-tight text-gray-800">
-                افزودن شهر به استان {{province.title}}
+                افزودن شهر به استان {{ province.title }}
             </h2>
         </template>
 
@@ -16,7 +16,6 @@
                             <div>
                                 <label for="title">عنوان</label>
                                 <input
-                                    type="text"
                                     v-model="form.title"
                                     class="
                                         w-full
@@ -29,9 +28,10 @@
                                         focus:ring-1
                                         focus:ring-blue-600
                                     "
+                                    type="text"
                                 />
                             </div>
-                          
+
 
                             <!-- submit -->
                             <div class="flex items-center mt-4">
@@ -58,8 +58,9 @@
 <script>
 import BreezeAuthenticatedLayout from "@/Layouts/Authenticated.vue";
 import BreezeLabel from "@/Components/Label";
-import { Head } from "@inertiajs/inertia-vue3";
-import { useForm } from "@inertiajs/inertia-vue3";
+import {Head} from "@inertiajs/inertia-vue3";
+import {useForm} from "@inertiajs/inertia-vue3";
+
 export default {
     components: {
         BreezeAuthenticatedLayout,
@@ -70,15 +71,15 @@ export default {
             title: null,
         });
 
-        return { form };
+        return {form};
     },
     methods: {
         submit() {
-            this.form.post(route("regions.city.store",this.province.id));
+            this.form.post(route("regions.city.store", this.province.id));
         },
     },
-    props:{
-        province : {}
+    props: {
+        province: {}
     }
 };
 </script>

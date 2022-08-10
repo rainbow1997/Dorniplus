@@ -12,7 +12,7 @@ return [
     | has failed, such as for an invalid token or invalid new password.
     |
     */
-    
+
     'reset' => 'رمز عبور شما با موفقیت تغییر یافت!',
     'sent' => 'لینک تغییر رمز عبور برای شما فرستاده شد!',
     'throttled' => 'لطفا قبل تلاش مجدد منتظر بمانید.',

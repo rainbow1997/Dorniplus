@@ -4,7 +4,7 @@ import BreezeGuestLayout from '@/Layouts/Guest.vue';
 import BreezeInput from '@/Components/Input.vue';
 import BreezeLabel from '@/Components/Label.vue';
 import BreezeValidationErrors from '@/Components/ValidationErrors.vue';
-import { Head, useForm } from '@inertiajs/inertia-vue3';
+import {Head, useForm} from '@inertiajs/inertia-vue3';
 
 defineProps({
     status: String,
@@ -21,7 +21,7 @@ const submit = () => {
 
 <template>
     <BreezeGuestLayout>
-        <Head title="Forgot Password" />
+        <Head title="Forgot Password"/>
 
         <div class="mb-4 text-sm text-gray-600">
             رمز خود را فراموش کرده اید؟ مشکلی نیست ایمیل خود را وارد کرده و لینک تغییر رمز را دریافت کنید
@@ -31,12 +31,13 @@ const submit = () => {
             {{ status }}
         </div>
 
-        <BreezeValidationErrors class="mb-4" />
+        <BreezeValidationErrors class="mb-4"/>
 
         <form @submit.prevent="submit">
             <div>
-                <BreezeLabel for="email" value="ایمیل" />
-                <BreezeInput id="email" type="email" class="mt-1 block w-full" v-model="form.email" required autofocus autocomplete="username" />
+                <BreezeLabel for="email" value="ایمیل"/>
+                <BreezeInput id="email" v-model="form.email" autocomplete="username" autofocus class="mt-1 block w-full" required
+                             type="email"/>
             </div>
 
             <div class="flex items-center justify-end mt-4">

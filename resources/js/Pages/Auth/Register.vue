@@ -4,191 +4,188 @@ import BreezeGuestLayout from '@/Layouts/Guest.vue';
 import BreezeInput from '@/Components/Input.vue';
 import BreezeLabel from '@/Components/Label.vue';
 import BreezeValidationErrors from '@/Components/ValidationErrors.vue';
-import './persian-datepicker.js';// in another time,use modules.env not this statically manner.
+import './persian-datepicker.js'; // in another time,use modules.env not this statically manner.
 import './persian-datepicker.min.css';
-import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
+import {Head, Link, useForm} from '@inertiajs/inertia-vue3';
 
 export default {
-    components:{
-    Head,
-    Link,
-    useForm,
-    BreezeButton,
-    BreezeGuestLayout,
-    BreezeInput,
-    BreezeLabel,
-    BreezeValidationErrors,
+    components: {
+        Head,
+        Link,
+        useForm,
+        BreezeButton,
+        BreezeGuestLayout,
+        BreezeInput,
+        BreezeLabel,
+        BreezeValidationErrors,
 
-},
-data(){
-    return{
-        cities:{},
-        form : this.$inertia.form({
-            fname: '',
-            lname: '',
-            national_code: '',
-            phone:'',
-            birth:'',
-            gender:'',
-            military_status:'',
-            email: '',
-            avatar:'',
-            username:'',
-            password: '',
-            password_confirmation: '',
-            province_id:'',
-            city_id:'',
-            terms: false,
-            captcha_num:null
-})
+    },
+    data() {
+        return {
+            cities: {},
+            form: this.$inertia.form({
+                fname: '',
+                lname: '',
+                national_code: '',
+                phone: '',
+                birth: '',
+                gender: '',
+                military_status: '',
+                email: '',
+                avatar: '',
+                username: '',
+                password: '',
+                password_confirmation: '',
+                province_id: '',
+                city_id: '',
+                terms: false,
+                captcha_num: null
+            })
 
-}},
-props: {
-    regions:{}
-},
-watch:{
-    form:{
-        gender(newGen,oldGen)
-        {
-            console.log('ali ali');
-            alert('hi');
-              if(newGender != 'male')
-                this.military_status = null;
         }
-    }
-},
-methods: {
-     provinceChange(event){
-
-        this.setBirth();
-         console.log('hi -> province is :');
-                let t = this.regions.filter(function(province){
-                    console.log(province.cities);
-                    if(province.id == event.target.value)
-                        return province;
-                });
-                this.cities = t[0].cities;
-
-            },
-    genderChange(event){
-         this.setBirth();
-        if(event.target.value != 'male')
-            this.form.military_status = null;
     },
-    setBirth(){
-
-         this.form.birth = this.$refs.settingBirth.value;//direct connection to DOM elements in Vuejs
-
+    props: {
+        regions: {}
     },
-     submit() {
-      this.setBirth();
-      this.$inertia.post('/register', this.form);
-    }
-},
-mounted() {
+    watch: {
+        form: {
+            gender(newGen, oldGen) {
+                console.log('ali ali');
+                alert('hi');
+                if (newGender != 'male')
+                    this.military_status = null;
+            }
+        }
+    },
+    methods: {
+        provinceChange(event) {
 
-    $(document).ready(function() {
+            this.setBirth();
+            console.log('hi -> province is :');
+            let t = this.regions.filter(function (province) {
+                console.log(province.cities);
+                if (province.id == event.target.value)
+                    return province;
+            });
+            this.cities = t[0].cities;
+
+        },
+        genderChange(event) {
+            this.setBirth();
+            if (event.target.value != 'male')
+                this.form.military_status = null;
+        },
+        setBirth() {
+
+            this.form.birth = this.$refs.settingBirth.value;//direct connection to DOM elements in Vuejs
+
+        },
+        submit() {
+            this.setBirth();
+            this.$inertia.post('/register', this.form);
+        }
+    },
+    mounted() {
+
+        $(document).ready(function () {
 
             $(".datepicker").pDatepicker({
-            "inline": false,
-            "format": "L",
-            "viewMode": "year",
-            "initialValue": true,
-            "minDate": null,
-            "maxDate": 1660459870590,
-            "autoClose": true,
-            "position": "auto",
-            "altFormat": "l",
-            "altField": "#altfieldExample",
-            "onlyTimePicker": false,
-            "onlySelectOnDate": true,
-            "calendarType": "persian",
-            "inputDelay": 800,
-            "observer": true,
-            "calendar": {
-                "persian": {
-                    "locale": "fa",
-                    "showHint": true,
-                    "leapYearMode": "algorithmic"
-                },
-                "gregorian": {
-                    "locale": "en",
-                    "showHint": false
-                }
-            },
-            "navigator": {
-                "enabled": true,
-                "scroll": {
-                    "enabled": true
-                },
-                "text": {
-                    "btnNextText": "<",
-                    "btnPrevText": ">"
-                }
-            },
-            "toolbox": {
-                "enabled": true,
-                "calendarSwitch": {
-                    "enabled": false,
-                    "format": "MMMM"
-                },
-                "todayButton": {
-                    "enabled": false,
-                    "text": {
-                        "fa": "امروز",
-                        "en": "Today"
+                "inline": false,
+                "format": "L",
+                "viewMode": "year",
+                "initialValue": true,
+                "minDate": null,
+                "maxDate": 1660459870590,
+                "autoClose": true,
+                "position": "auto",
+                "altFormat": "l",
+                "altField": "#altfieldExample",
+                "onlyTimePicker": false,
+                "onlySelectOnDate": true,
+                "calendarType": "persian",
+                "inputDelay": 800,
+                "observer": true,
+                "calendar": {
+                    "persian": {
+                        "locale": "fa",
+                        "showHint": true,
+                        "leapYearMode": "algorithmic"
+                    },
+                    "gregorian": {
+                        "locale": "en",
+                        "showHint": false
                     }
                 },
-                "submitButton": {
+                "navigator": {
                     "enabled": true,
+                    "scroll": {
+                        "enabled": true
+                    },
                     "text": {
-                        "fa": "تایید",
-                        "en": "Submit"
+                        "btnNextText": "<",
+                        "btnPrevText": ">"
                     }
                 },
-                "text": {
-                    "btnToday": "امروز"
-                }
-            },
-            "timePicker": {
-                "enabled": false,
-                "step": 1,
-                "hour": {
-                    "enabled": false,
-                    "step": null
+                "toolbox": {
+                    "enabled": true,
+                    "calendarSwitch": {
+                        "enabled": false,
+                        "format": "MMMM"
+                    },
+                    "todayButton": {
+                        "enabled": false,
+                        "text": {
+                            "fa": "امروز",
+                            "en": "Today"
+                        }
+                    },
+                    "submitButton": {
+                        "enabled": true,
+                        "text": {
+                            "fa": "تایید",
+                            "en": "Submit"
+                        }
+                    },
+                    "text": {
+                        "btnToday": "امروز"
+                    }
                 },
-                "minute": {
+                "timePicker": {
                     "enabled": false,
-                    "step": null
+                    "step": 1,
+                    "hour": {
+                        "enabled": false,
+                        "step": null
+                    },
+                    "minute": {
+                        "enabled": false,
+                        "step": null
+                    },
+                    "second": {
+                        "enabled": false,
+                        "step": null
+                    },
+                    "meridian": {
+                        "enabled": false
+                    }
                 },
-                "second": {
-                    "enabled": false,
-                    "step": null
+                "dayPicker": {
+                    "enabled": true,
+                    "titleFormat": "YYYY MMMM"
                 },
-                "meridian": {
-                    "enabled": false
-                }
-            },
-            "dayPicker": {
-                "enabled": true,
-                "titleFormat": "YYYY MMMM"
-            },
-            "monthPicker": {
-                "enabled": true,
-                "titleFormat": "YYYY"
-            },
-            "yearPicker": {
-                "enabled": true,
-                "titleFormat": "YYYY"
-            },
-            "responsive": true
+                "monthPicker": {
+                    "enabled": true,
+                    "titleFormat": "YYYY"
+                },
+                "yearPicker": {
+                    "enabled": true,
+                    "titleFormat": "YYYY"
+                },
+                "responsive": true
+            });
         });
-  });
-},
+    },
 };
-
-
-
 
 
 </script>
@@ -196,109 +193,136 @@ mounted() {
 
 <template>
     <BreezeGuestLayout>
-        <Head title="ثبت نام" />
+        <Head title="ثبت نام"/>
 
-        <BreezeValidationErrors class="mb-4" />
+        <BreezeValidationErrors class="mb-4"/>
 
-        <form @submit.prevent="submit" class="rtl text-right">
+        <form class="rtl text-right" @submit.prevent="submit">
 
             <div class="mt-4">
-                <BreezeLabel for="fname" value="نام*" />
-                <BreezeInput id="fname" type="text" class="mt-1 block w-full" v-model="form.fname" required autofocus autocomplete="fname" />
+                <BreezeLabel for="fname" value="نام*"/>
+                <BreezeInput id="fname" v-model="form.fname" autocomplete="fname" autofocus class="mt-1 block w-full" required
+                             type="text"/>
             </div>
 
-             <div class="mt-4">
-                <BreezeLabel for="lname" value="نام خانوادگی*" />
-                <BreezeInput id="lname" type="text" class="mt-1 block w-full" v-model="form.lname" required autofocus autocomplete="lname" />
+            <div class="mt-4">
+                <BreezeLabel for="lname" value="نام خانوادگی*"/>
+                <BreezeInput id="lname" v-model="form.lname" autocomplete="lname" autofocus class="mt-1 block w-full" required
+                             type="text"/>
             </div>
             <div class="mt-4">
-                <BreezeLabel for="national_code" value="کدملی*" />
-                <BreezeInput id="national_code" type="number" class="mt-1 block w-full" v-model="form.national_code" required autofocus autocomplete="national_code" />
+                <BreezeLabel for="national_code" value="کدملی*"/>
+                <BreezeInput id="national_code" v-model="form.national_code" autocomplete="national_code" autofocus
+                             class="mt-1 block w-full" required type="number"/>
             </div>
             <div class="mt-4">
-                <BreezeLabel for="phone" value="شماره همراه*" />
-                <BreezeInput id="phone" type="tel" class="mt-1 block w-full" v-model="form.phone" required autofocus autocomplete="phone" />
+                <BreezeLabel for="phone" value="شماره همراه*"/>
+                <BreezeInput id="phone" v-model="form.phone" autocomplete="phone" autofocus class="mt-1 block w-full" required
+                             type="tel"/>
             </div>
             <div class="mt-4">
-                <BreezeLabel for="birth" value="تاریخ تولد" />
-                <input type="text" id="birth" class="mt-1 block w-full datepicker bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" ref="settingBirth"  v-model="form.birth" required autofocus autocomplete="birth">
+                <BreezeLabel for="birth" value="تاریخ تولد"/>
+                <input id="birth" ref="settingBirth"
+                       v-model="form.birth"
+                       autocomplete="birth" autofocus class="mt-1 block w-full datepicker bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required type="text">
             </div>
             <div class="mt-4">
-                <BreezeLabel for="gender" value="جنسیت*" />
+                <BreezeLabel for="gender" value="جنسیت*"/>
                 <div class="flex flex-row content-around ">
                     <div class="px-3">
-                        <BreezeLabel for ="genderMale" value="مذکر" />
-                        <BreezeInput id="genderMale" name="gender" type="radio" class="mt-1 " v-model="form.gender" required autofocus autocomplete="gender" value="male" @click="genderChange($event)"/>
+                        <BreezeLabel for="genderMale" value="مذکر"/>
+                        <BreezeInput id="genderMale" v-model="form.gender" autocomplete="gender" autofocus class="mt-1 "
+                                     name="gender" required type="radio" value="male"
+                                     @click="genderChange($event)"/>
                     </div>
                     <div class="">
-                    <BreezeLabel for ="genderFemale" value="مونث" />
-                    <BreezeInput id="genderFemale" name="gender" type="radio" class="mt-1" v-model="form.gender" required autofocus autocomplete="gender" value="female" @click="genderChange($event)"/>
+                        <BreezeLabel for="genderFemale" value="مونث"/>
+                        <BreezeInput id="genderFemale" v-model="form.gender" autocomplete="gender" autofocus class="mt-1"
+                                     name="gender" required type="radio" value="female"
+                                     @click="genderChange($event)"/>
                     </div>
                 </div>
             </div>
             <div v-show="form.gender == 'male'" class="mt-4 flex flex-row content-around flex-wrap">
-                <BreezeLabel  value="وضعیت نظام وظیفه*" class=" flex-1 mt-4" />
+                <BreezeLabel class=" flex-1 mt-4" value="وضعیت نظام وظیفه*"/>
                 <div class="breacontent-around pt-5">
-                    <BreezeInput id="military_status" name="military_status" type="radio" class="" v-model="form.military_status"  autofocus autocomplete="military_status" value="permanent_exemption" />معاف دائم
-                    <BreezeInput id="military_status2" name="military_status" type="radio" class="" v-model="form.military_status"  autofocus autocomplete="military_status" value="temporary_exemption" />معاف موقت
-                    <BreezeInput id="military_status3" name="military_status" type="radio" class="" v-model="form.military_status"  autofocus autocomplete="military_status" value="done" />پایان خدمت
+                    <BreezeInput id="military_status" v-model="form.military_status" autocomplete="military_status" autofocus
+                                 class="" name="military_status" type="radio"
+                                 value="permanent_exemption"/>
+                    معاف دائم
+                    <BreezeInput id="military_status2" v-model="form.military_status" autocomplete="military_status" autofocus
+                                 class="" name="military_status" type="radio"
+                                 value="temporary_exemption"/>
+                    معاف موقت
+                    <BreezeInput id="military_status3" v-model="form.military_status" autocomplete="military_status" autofocus
+                                 class="" name="military_status" type="radio" value="done"/>
+                    پایان خدمت
                 </div>
             </div>
-             <div class="mt-4">
-                <BreezeLabel for="email" value="ایمیل*" />
-                <BreezeInput id="email" type="email" class="mt-1 block w-full" v-model="form.email" required autocomplete="username" />
+            <div class="mt-4">
+                <BreezeLabel for="email" value="ایمیل*"/>
+                <BreezeInput id="email" v-model="form.email" autocomplete="username" class="mt-1 block w-full" required
+                             type="email"/>
             </div>
             <div class="mt-4">
 
-                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" for="avatar">آپلود عکس</label>
-                <input type="file" @input="form.avatar = $event.target.files[0]" class="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="avatar_help" id="avatar">
-                <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="avatar_help">PNG, JPG, JPEG or GIF (MAX :200KB).</p>
+                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" for="avatar">آپلود
+                    عکس</label>
+                <input id="avatar" aria-describedby="avatar_help"
+                       class="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                       type="file" @input="form.avatar = $event.target.files[0]">
+                <p id="avatar_help" class="mt-1 text-sm text-gray-500 dark:text-gray-300">PNG, JPG, JPEG or GIF (MAX
+                    :200KB).</p>
 
                 <progress v-if="form.progress" :value="form.progress.percentage" max="100">
-                   {{ form.progress.percentage }}%
+                    {{ form.progress.percentage }}%
                 </progress>
             </div>
-             <div class="mt-4">
-                <BreezeLabel for="username" value="نام کاربری*" />
-                <BreezeInput id="username" type="text" class="mt-1 block w-full" v-model="form.username" required autofocus autocomplete="username" />
+            <div class="mt-4">
+                <BreezeLabel for="username" value="نام کاربری*"/>
+                <BreezeInput id="username" v-model="form.username" autocomplete="username" autofocus class="mt-1 block w-full"
+                             required type="text"/>
             </div>
             <div class="mt-4">
-                <BreezeLabel for="password" value="رمز عبور*" />
-                <BreezeInput id="password" type="password" class="mt-1 block w-full" v-model="form.password" required autocomplete="new-password" />
+                <BreezeLabel for="password" value="رمز عبور*"/>
+                <BreezeInput id="password" v-model="form.password" autocomplete="new-password" class="mt-1 block w-full" required
+                             type="password"/>
             </div>
-             <div class="mt-4">
-                <BreezeLabel for="password_confirmation" value="تکرار رمز عبور*" />
-                <BreezeInput id="password_confirmation" type="password" class="mt-1 block w-full" v-model="form.password_confirmation" required autocomplete="new-password" />
+            <div class="mt-4">
+                <BreezeLabel for="password_confirmation" value="تکرار رمز عبور*"/>
+                <BreezeInput id="password_confirmation" v-model="form.password_confirmation" autocomplete="new-password"
+                             class="mt-1 block w-full" required type="password"/>
             </div>
-           <div class="mt-4">
-                <BreezeLabel for="province" value="استان " />
+            <div class="mt-4">
+                <BreezeLabel for="province" value="استان "/>
 
                 <select v-model="form.province_id" name="province_id" @change="provinceChange($event)">
-                    <option v-for="item in regions" :value="item.id">{{item.title}}</option>
+                    <option v-for="item in regions" :value="item.id">{{ item.title }}</option>
                 </select>
                 <select v-show="form.province_id!=null" v-model="form.city_id" name="city_id">
-                    <option v-for="item in cities" :value="item.id">{{item.title}}</option>
+                    <option v-for="item in cities" :value="item.id">{{ item.title }}</option>
                 </select>
 
             </div>
             <div class="mt-4">
-                <BreezeLabel for="captcha" value="کد امنیتی*" />
+                <BreezeLabel for="captcha" value="کد امنیتی*"/>
 
                 <img id="captcha" class="" src="/captcha2">
 
 
-             </div>
-            <div  class="mt-4">
-                 <BreezeLabel value="کد بالا را با دقت وارد کنید"></BreezeLabel>
-                 <BreezeInput id="captcha_code" v-model="form.captcha_num" class="block mt-1 w-full" type="number" name="captcha_num" required autofocus />
+            </div>
+            <div class="mt-4">
+                <BreezeLabel value="کد بالا را با دقت وارد کنید"></BreezeLabel>
+                <BreezeInput id="captcha_code" v-model="form.captcha_num" autofocus class="block mt-1 w-full"
+                             name="captcha_num" required type="number"/>
 
-             </div>
+            </div>
             <div class="flex items-center justify-end mt-4">
                 <Link :href="route('login')" class="underline text-sm text-gray-600 hover:text-gray-900">
                     پیش از این ثبت نام کرده اید؟ برای ورود کلیک کنید.
                 </Link>
 
-                <BreezeButton class=" pl-2 mr-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                <BreezeButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing" class=" pl-2 mr-4">
                     ثبت نام
                 </BreezeButton>
             </div>

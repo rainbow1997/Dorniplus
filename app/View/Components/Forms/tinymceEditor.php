@@ -15,7 +15,8 @@ class tinymceEditor extends Component
      */
     public $nameAttr;
     public $valueAttr;
-    public function __construct($nameAttr,$valueAttr = null)
+
+    public function __construct($nameAttr, $valueAttr = null)
     {
         //
         $this->nameAttr = $nameAttr;

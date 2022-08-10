@@ -2,16 +2,13 @@
 import BreezeButton from '@/Components/Button.vue';
 import BreezeGuestLayout from '@/Layouts/Guest.vue';
 import BreezeInput from '@/Components/Input.vue';
-import BreezeCheckbox from '@/Components/Checkbox.vue';
 import BreezeLabel from '@/Components/Label.vue';
 import BreezeValidationErrors from '@/Components/ValidationErrors.vue';
-import './Auth/persian-datepicker.js';// in another time,use modules.env not this statically manner.
+import './Auth/persian-datepicker.js'; // in another time,use modules.env not this statically manner.
 import './Auth/persian-datepicker.min.css';
 import {Head, Link, useForm} from '@inertiajs/inertia-vue3';
-import {Inertia} from '@inertiajs/inertia'
-import { reactive} from 'vue'
+import {reactive} from 'vue'
 
-import * as moment from 'jalali-moment';
 export default {
     components: {
         Head,
@@ -35,11 +32,11 @@ export default {
     setup(props) {
         //let datepickerValue;
         const needs = reactive({
-            ourProvince:{},
+            ourProvince: {},
             datepickerValue: {}
         });
 
-        const form = useForm('EditProfile',{
+        const form = useForm('EditProfile', {
             _method: 'put',
             fname: props.user.fname,
             lname: props.user.lname,
@@ -159,7 +156,6 @@ export default {
         datepicker();
 
 
-
         const provinceSetter = () => {
             // alert("in ejra shod setprovince");
             let tempProvinces = props.regions.filter(function (province) {
@@ -168,11 +164,11 @@ export default {
             });
             needs.ourProvince = tempProvinces[0];
             form.province_id = needs.ourProvince.id;
-            let tempCities = needs.ourProvince.cities.filter(function(city){
-               if(city.id == props.user.city_id)
-                   return city;
+            let tempCities = needs.ourProvince.cities.filter(function (city) {
+                if (city.id == props.user.city_id)
+                    return city;
             });
-           let ourCity =  tempCities[0];
+            let ourCity = tempCities[0];
 
         }
 
@@ -213,7 +209,7 @@ export default {
                 preserveState: true
             });
         };
-        return {form, provinceChange, genderChange, submit,needs}
+        return {form, provinceChange, genderChange, submit, needs}
     },
 };
 
@@ -227,70 +223,70 @@ export default {
 
         <BreezeValidationErrors class="mb-4"/>
 
-        <form @submit.prevent="submit" class="rtl text-right">
+        <form class="rtl text-right" @submit.prevent="submit">
             <div class="mt-2">
                 <BreezeLabel for="fname" value="نام*"/>
-                <BreezeInput id="fname" type="text" class="mt-1 block w-full" v-model="form.fname" required autofocus
-                             autocomplete="fname"/>
+                <BreezeInput id="fname" v-model="form.fname" autocomplete="fname" autofocus class="mt-1 block w-full" required
+                             type="text"/>
             </div>
 
             <div class="mt-2">
                 <BreezeLabel for="lname" value="نام خانوادگی*"/>
-                <BreezeInput id="lname" type="text" class="mt-1 block w-full" v-model="form.lname" required autofocus
-                             autocomplete="lname"/>
+                <BreezeInput id="lname" v-model="form.lname" autocomplete="lname" autofocus class="mt-1 block w-full" required
+                             type="text"/>
             </div>
             <div class="mt-2">
                 <BreezeLabel for="national_code" value="کدملی*"/>
-                <BreezeInput id="national_code" type="number" class="mt-1 block w-full" v-model="form.national_code"
-                             required autofocus autocomplete="national_code"/>
+                <BreezeInput id="national_code" v-model="form.national_code" autocomplete="national_code" autofocus
+                             class="mt-1 block w-full" required type="number"/>
             </div>
             <div class="mt-2">
                 <BreezeLabel for="phone" value="شماره همراه*"/>
-                <BreezeInput id="phone" type="tel" class="mt-1 block w-full" v-model="form.phone" required autofocus
-                             autocomplete="phone"/>
+                <BreezeInput id="phone" v-model="form.phone" autocomplete="phone" autofocus class="mt-1 block w-full" required
+                             type="tel"/>
             </div>
             <div class="mt-2">
                 <BreezeLabel for="birth" value="تاریخ تولد"/>
-                <input type="text" id="birth"
-                       class="mt-1 block w-full datepicker bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                       v-model="form.birth" required autofocus autocomplete="birth">
+                <input id="birth" v-model="form.birth"
+                       autocomplete="birth"
+                       autofocus class="mt-1 block w-full datepicker bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required type="text">
             </div>
             <div class="mt-2">
                 <BreezeLabel for="gender" value="جنسیت*"/>
                 <div class="flex flex-row content-around ">
                     <div class="px-3">
                         <BreezeLabel for="genderMale" value="مذکر"/>
-                        <BreezeInput id="genderMale" name="gender" type="radio" class="mt-1 " v-model="form.gender"
-                                     :checked="form.gender == 'male' " required autofocus autocomplete="gender"
+                        <BreezeInput id="genderMale" v-model="form.gender" :checked="form.gender == 'male' " autocomplete="gender" autofocus
+                                     class="mt-1 " name="gender" required type="radio"
                                      value="male" @change="genderChange($event)"/>
                     </div>
                     <div class="">
                         <BreezeLabel for="genderFemale" value="مونث"/>
-                        <BreezeInput id="genderFemale" name="gender" type="radio" class="mt-1" v-model="form.gender"
-                                     :checked="form.gender == 'female' " required autofocus autocomplete="gender"
+                        <BreezeInput id="genderFemale" v-model="form.gender" :checked="form.gender == 'female' " autocomplete="gender" autofocus
+                                     class="mt-1" name="gender" required type="radio"
                                      value="female" @change="genderChange($event)"/>
                     </div>
                 </div>
             </div>
             <div v-show="form.gender == 'male'" class="flex flex-row space-x-2 text-xs mt-2 ">
-                <BreezeLabel value="وضعیت نظام وظیفه" class=" flex-1"/>
+                <BreezeLabel class=" flex-1" value="وضعیت نظام وظیفه"/>
                 <span>معافیت دائم</span>
 
-                <BreezeInput id="military_status" name="military_status" type="radio" class=""
-                             v-model="form.military_status" :checked="form.military_status == 'permanent_exemption' "
-                             autofocus autocomplete="military_status" value="permanent_exemption"/>
+                <BreezeInput id="military_status" v-model="form.military_status" :checked="form.military_status == 'permanent_exemption' " autocomplete="military_status"
+                             autofocus class=""
+                             name="military_status" type="radio" value="permanent_exemption"/>
                 <span>
                     معاف موقت
                 </span>
-                <BreezeInput id="military_status2" name="military_status" type="radio" class=""
-                             v-model="form.military_status" :checked="form.military_status == 'temporary_exemption' "
-                             autofocus autocomplete="military_status" value="temporary_exemption"/>
+                <BreezeInput id="military_status2" v-model="form.military_status" :checked="form.military_status == 'temporary_exemption' " autocomplete="military_status"
+                             autofocus class=""
+                             name="military_status" type="radio" value="temporary_exemption"/>
                 <span>
                 پایان خدمت
                     </span>
-                <BreezeInput id="military_status3" name="military_status" type="radio" class=""
-                             v-model="form.military_status" :checked="form.military_status == 'done' " autofocus
-                             autocomplete="military_status" value="done"/>
+                <BreezeInput id="military_status3" v-model="form.military_status" :checked="form.military_status == 'done' " autocomplete="military_status"
+                             autofocus class="" name="military_status"
+                             type="radio" value="done"/>
 
             </div>
 
@@ -298,10 +294,10 @@ export default {
 
                 <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" for="avatar">آپلود
                     عکس</label>
-                <input type="file" @input="form.avatar = $event.target.files[0]"
+                <input id="avatar" aria-describedby="avatar_help"
                        class="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                       aria-describedby="avatar_help" id="avatar">
-                <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="avatar_help">PNG, JPG, JPEG or GIF (MAX
+                       type="file" @input="form.avatar = $event.target.files[0]">
+                <p id="avatar_help" class="mt-1 text-sm text-gray-500 dark:text-gray-300">PNG, JPG, JPEG or GIF (MAX
                     :200KB).</p>
 
                 <progress v-if="form.progress" :value="form.progress.percentage" max="100">
@@ -309,17 +305,23 @@ export default {
                 </progress>
             </div>
             <div v-if="form.avatar == user.avatar" class="flex flex-row mt-2">
-                <img :src="'storage/'+form.avatar" :alt="user.username" class="max-w-full h-auto rounded-lg">
+                <img :alt="user.username" :src="'storage/'+form.avatar" class="max-w-full h-auto rounded-lg">
             </div>
             <div class="flex flex-col mt-4 justify-center">
                 <BreezeLabel for="province" value="استان"/>
 
-                <select class="block  mb-6 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" v-model="form.province_id" name="province_id" @change="provinceChange($event)">
-                    <option  v-for="item in regions" :value="item.id">{{ item.title }}</option>
+                <select
+                    v-model="form.province_id"
+                    class="block  mb-6 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" name="province_id" @change="provinceChange($event)">
+                    <option v-for="item in regions" :value="item.id">{{ item.title }}</option>
                 </select>
                 <BreezeLabel for="province" value="شهرستان"/>
-                <select class=" block mb-6 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" v-show="form.province_id!=null" v-model="form.city_id" name="city_id">
-                    <option v-for="item in needs.ourProvince.cities" :value="item.id" :selected="item.id == form.city_id">{{ item.title }} </option>
+                <select
+                    v-show="form.province_id!=null"
+                    v-model="form.city_id" class=" block mb-6 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" name="city_id">
+                    <option v-for="item in needs.ourProvince.cities" :selected="item.id == form.city_id"
+                            :value="item.id">{{ item.title }}
+                    </option>
                 </select>
 
             </div>
@@ -329,7 +331,7 @@ export default {
                     بازگشت به داشبورد
                 </Link>
 
-                <BreezeButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                <BreezeButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing" class="ml-4">
                     ثبت
                 </BreezeButton>
             </div>

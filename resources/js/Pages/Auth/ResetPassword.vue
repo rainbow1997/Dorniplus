@@ -4,7 +4,7 @@ import BreezeGuestLayout from '@/Layouts/Guest.vue';
 import BreezeInput from '@/Components/Input.vue';
 import BreezeLabel from '@/Components/Label.vue';
 import BreezeValidationErrors from '@/Components/ValidationErrors.vue';
-import { Head, useForm } from '@inertiajs/inertia-vue3';
+import {Head, useForm} from '@inertiajs/inertia-vue3';
 
 const props = defineProps({
     email: String,
@@ -27,24 +27,27 @@ const submit = () => {
 
 <template>
     <BreezeGuestLayout>
-        <Head title="Reset Password" />
+        <Head title="Reset Password"/>
 
-        <BreezeValidationErrors class="mb-4" />
+        <BreezeValidationErrors class="mb-4"/>
 
         <form @submit.prevent="submit">
             <div>
-                <BreezeLabel for="email" value="ایمیل" />
-                <BreezeInput id="email" type="email" class="mt-1 block w-full" v-model="form.email" required autofocus autocomplete="username" />
+                <BreezeLabel for="email" value="ایمیل"/>
+                <BreezeInput id="email" v-model="form.email" autocomplete="username" autofocus class="mt-1 block w-full" required
+                             type="email"/>
             </div>
 
             <div class="mt-4">
-                <BreezeLabel for="password" value="رمز عبور" />
-                <BreezeInput id="password" type="password" class="mt-1 block w-full" v-model="form.password" required autocomplete="new-password" />
+                <BreezeLabel for="password" value="رمز عبور"/>
+                <BreezeInput id="password" v-model="form.password" autocomplete="new-password" class="mt-1 block w-full" required
+                             type="password"/>
             </div>
 
             <div class="mt-4">
-                <BreezeLabel for="password_confirmation" value="تکرار رمز عبور" />
-                <BreezeInput id="password_confirmation" type="password" class="mt-1 block w-full" v-model="form.password_confirmation" required autocomplete="new-password" />
+                <BreezeLabel for="password_confirmation" value="تکرار رمز عبور"/>
+                <BreezeInput id="password_confirmation" v-model="form.password_confirmation" autocomplete="new-password"
+                             class="mt-1 block w-full" required type="password"/>
             </div>
 
             <div class="flex items-center justify-end mt-4">

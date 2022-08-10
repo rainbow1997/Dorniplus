@@ -16,10 +16,13 @@
                         <form action="{{route('checking_verification')}}" method="post">
                             @csrf
                             <div class="flex flex-col m-3">
-                                <label for="token" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">                        کد احراز هویت خود را وارد نمائید.
+                                <label for="token"
+                                       class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"> کد احراز
+                                    هویت خود را وارد نمائید.
                                 </label>
 
-                                <input type="text" name="token" class=" mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                                <input type="text" name="token"
+                                       class=" mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                                 <input type="submit"
                                        class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
                                        value="ثبت"/>

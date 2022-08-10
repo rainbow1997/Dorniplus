@@ -1,5 +1,5 @@
 <template>
-    <Head title="ویرایش استان" />
+    <Head title="ویرایش استان"/>
 
     <BreezeAuthenticatedLayout>
         <template #header>
@@ -16,7 +16,6 @@
                             <div>
                                 <label for="title">عنوان</label>
                                 <input
-                                    type="text"
                                     v-model="form.title"
                                     class="
                                         w-full
@@ -29,6 +28,7 @@
                                         focus:ring-1
                                         focus:ring-blue-600
                                     "
+                                    type="text"
                                 />
                             </div>
 
@@ -58,29 +58,31 @@
 <script>
 import BreezeAuthenticatedLayout from "@/Layouts/Authenticated.vue";
 import BreezeLabel from "@/Components/Label";
-import { Head } from "@inertiajs/inertia-vue3";
-import { useForm } from "@inertiajs/inertia-vue3";
+import {Head} from "@inertiajs/inertia-vue3";
+import {useForm} from "@inertiajs/inertia-vue3";
+
 export default {
     components: {
         BreezeAuthenticatedLayout,
         Head,
     },
-    data(){
-    return{
-         form : this.$inertia.form({
-            method:'put',
-            title : this.province.title,
+    data() {
+        return {
+            form: this.$inertia.form({
+                method: 'put',
+                title: this.province.title,
 
-    })
-    }},
+            })
+        }
+    },
     methods: {
         submit() {
-            this.form.put(route("regions.province.update",this.province.id));
+            this.form.put(route("regions.province.update", this.province.id));
         },
     },
     props:
-    {
-        province:{}
-    }
+        {
+            province: {}
+        }
 };
 </script>

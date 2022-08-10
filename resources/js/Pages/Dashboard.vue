@@ -1,10 +1,9 @@
 <script setup>
 import BreezeAuthenticatedLayout from '@/Layouts/Authenticated.vue';
-import { Head } from '@inertiajs/inertia-vue3';
-</script>
+import {Head} from '@inertiajs/inertia-vue3';</script>
 
 <template>
-    <Head title="داشبورد" />
+    <Head title="داشبورد"/>
 
     <BreezeAuthenticatedLayout>
         <template #header>
@@ -19,7 +18,7 @@ import { Head } from '@inertiajs/inertia-vue3';
                     <div class="p-6 bg-white border-b border-gray-200">
                         شما با موفقیت وارد شده اید.
                         <hr/>
-                        {{$page.props.flash.message}}
+                        {{ $page.props.flash.message }}
                     </div>
                 </div>
             </div>

@@ -1,9 +1,9 @@
 <?php
 
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 use Morilog\Jalali\Jalalian;
 
-use Carbon\Carbon;
 if (!function_exists('captchaMaking')) {
 
     function captchaMaking()
@@ -53,15 +53,16 @@ if (!function_exists('captchaMaking')) {
         return strtr($string, array('۰' => '0', '۱' => '1', '۲' => '2', '۳' => '3', '۴' => '4', '۵' => '5', '۶' => '6', '۷' => '7', '۸' => '8', '۹' => '9', '٠' => '0', '١' => '1', '٢' => '2', '٣' => '3', '٤' => '4', '٥' => '5', '٦' => '6', '٧' => '7', '٨' => '8', '٩' => '9'));
     }
 
-    function convertDateForDB(string $date) : Carbon
+    function convertDateForDB(string $date): Carbon
     {
         $date = convertToEngNums($date);
         $date = explode('/', $date);
         return
-            $date = (new Jalalian($date[0],$date[1],$date[2]))->toCarbon();
+            $date = (new Jalalian($date[0], $date[1], $date[2]))->toCarbon();
 
     }
-     function removeFiles($files)
+
+    function removeFiles($files)
     {
 
         Storage::disk('public')->delete($files);

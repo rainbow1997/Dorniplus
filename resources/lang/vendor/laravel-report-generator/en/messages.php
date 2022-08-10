@@ -11,9 +11,9 @@ return [
     |
     */
 
-    'page'        => 'Page [page] of [topage]',
-    'page_pdf'    => 'Page {PAGE_NUM} of {PAGE_COUNT}',
-    'printed_at'  => 'Date Printed: :date',
-    'no'          => 'No',
+    'page' => 'Page [page] of [topage]',
+    'page_pdf' => 'Page {PAGE_NUM} of {PAGE_COUNT}',
+    'printed_at' => 'Date Printed: :date',
+    'no' => 'No',
     'grand_total' => 'Grand Total',
 ];
