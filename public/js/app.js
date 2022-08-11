@@ -29473,7 +29473,7 @@ var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
   role: "alert"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "font-medium"
-}, "دقت کنید!"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" تنها برای جست و جو در هر پارامتر مورد نظر مقدار وارد نمائید ")], -1
+}, "دقت کنید!"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" برای جست و جو می توانید از پارامتر های مختلف به طور همزمان استفاده کنید. ")], -1
 /* HOISTED */
 );
 
