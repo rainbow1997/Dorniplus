@@ -195,6 +195,6 @@ class PostController extends Controller
         $post->delete();
 
         return redirect()->route('posts.index')
-            ->with('message', 'استان مورد نظر حذف گردید.');
+            ->with('message', 'مطلب مورد نظر حذف گردید.');
     }
 }

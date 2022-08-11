@@ -49,6 +49,9 @@ const showingNavigationDropdown = ref(false);
                                 <BreezeNavLink :href="route('logs')">
                                     گزارشات(لاگ)
                                 </BreezeNavLink>
+                                <BreezeNavLink :href="route('homepage')">
+                                    مشاهده سایت اصلی
+                                </BreezeNavLink>
 
                             </div>
                         </div>
