@@ -25,6 +25,7 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
+        //Don't remember this validation afterwards,
         $users = User::with(['province', 'city', 'roles']);
         $request->whenHas('searchingItem', function ($input) use (&$users, $request) {
             if ($input == 'province' || $input == 'city') { // I don't know it's a good way or not because of its simple condition.

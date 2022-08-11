@@ -10,15 +10,56 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Image;
 use Inertia\Inertia;
-
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Request as RequestFacade;
 class PostController extends Controller
 {
     //
 
-    public function index()
+    public function index(Request $request)
     {
-        $posts = Post::with('writerPerson', 'category');
-        return view('auth.posts_index', ['posts' => $posts]);
+        $search = RequestFacade::all();//why its work but why $request from Request doesn't work?
+          $posts = Post::query();
+//        $posts = Post::with(['writerPerson', 'category']);
+
+        if($search != null) {
+
+            $posts->when($search['title'], function ($query, $search) {// $search['title] become $search
+
+                return $query->title($search);
+            })
+                ->when($search['category_title'], function ($query, $search) {
+                    return $query->category($search);
+                })
+                ->when($search['writer_name'], function ($query, $search) {
+                    return $query->user($search);
+                });
+
+            if(!is_null($search['start_date']) && !is_null($search['end_date']))
+                $posts = $posts->dateRange(convertDateForDB($search['start_date']),convertDateForDB($search['end_date']));
+
+            else if(!is_null($search['start_date']))
+                $posts = $posts->startDate(convertDateForDB($search['start_date']));
+
+            else if(!is_null($search['end_date']))
+                $posts = $posts->endDate(convertDateForDB($search['end_date']));
+//                ->when($search['start_date'], function ($query, $search) {
+//                    return $query->dateRange( convertDateForDB($search),null);
+//                })
+//                ->when($search['end_date'], function ($query, $search) {
+//                    return $query->dateRange( null,convertDateForDB($search));
+//                });
+        }
+
+        $posts = $posts->with(['writerPerson', 'category']);
+
+
+        $posts = $posts->paginate(5);
+      //  ddd($posts);
+        return Inertia::render('Post/Index',['posts' => $posts]);
+
+    }
+    protected function validatePostSearchStrings(){
 
     }
 
