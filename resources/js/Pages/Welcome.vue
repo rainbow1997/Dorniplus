@@ -48,7 +48,7 @@ defineProps({
             </div>
             <!-- For testing -->
             <div
-                class="w-full flex sm:flex-row p-2 box-header-color gap-y-2 mt-8 bg-white dark:bg-gray-800 overflow-hidden gap-x-3 shadow text-right gap-x-2">
+                class="w-full flex flex-col p-2 box-header-color gap-y-2 mt-8 bg-white dark:bg-gray-800 overflow-hidden gap-x-3 shadow text-right gap-x-2">
                 <div v-for="post in posts.data" class="">
                     <div class="w-full items-center flex flex-col justify-end gap-x-4 bg-slate-50	">
                         <a :href="route('posts.show',post.id)" class="w-full">

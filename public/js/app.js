@@ -30131,7 +30131,7 @@ var _hoisted_8 = /*#__PURE__*/_withScopeId(function () {
 });
 
 var _hoisted_9 = {
-  "class": "w-full flex sm:flex-row p-2 box-header-color gap-y-2 mt-8 bg-white dark:bg-gray-800 overflow-hidden gap-x-3 shadow text-right gap-x-2"
+  "class": "w-full flex flex-col p-2 box-header-color gap-y-2 mt-8 bg-white dark:bg-gray-800 overflow-hidden gap-x-3 shadow text-right gap-x-2"
 };
 var _hoisted_10 = {
   "class": ""

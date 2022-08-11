@@ -23,7 +23,7 @@ class HomeController extends Controller
 
     private function getPosts()
     {
-        return $posts = Post::with(['category', 'writerPerson'])->paginate(10);
+        return $posts = Post::with(['category', 'writerPerson'])->orderBy('updated_at','DESC')->paginate(10);
 
     }
 }
