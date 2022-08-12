@@ -53,13 +53,13 @@
                                 <input id="post-title" ref="start_date"
                                        v-model="search.start_date"
                                        class="datepicker rounded-none rounded-l-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block min-w-0  text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                       placeholder="ابتدای بازه زمانی مورد نظر..." type="text">
+                                       @click="keepDating" placeholder="ابتدای بازه زمانی مورد نظر..." type="text">
 
 
                                 <input id="post-title" ref="end_date"
                                        v-model="search.end_date"
                                        class="datepicker rounded-none rounded-l-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block min-w-0  text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                       placeholder="انتهای بازه زمانی موردنظر..." type="text">
+                                       @click="keepDating" placeholder="انتهای بازه زمانی موردنظر..." type="text">
 
                                 <!--&lt;!&ndash;                                <select v-model="searchingItem"&ndash;&gt;-->
                                 <!--&lt;!&ndash;                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">&ndash;&gt;-->
@@ -207,7 +207,7 @@ export default {
                 Inertia.reload({
                     replace: true,
                     preserveState: true,
-                    data: this.search
+                    data: { search : this.search}
                 });
             },
             deep: true
@@ -336,7 +336,6 @@ export default {
         console.log('hi');
 
         this.datepicker();
-        this.keepDating();
 
     },
 };

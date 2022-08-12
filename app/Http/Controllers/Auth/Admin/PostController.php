@@ -52,9 +52,9 @@ class PostController extends Controller
         }
 
         $posts = $posts->with(['writerPerson', 'category']);
+        $posts = $posts->orderBy('id', 'DESC')->paginate(5);
 
 
-        $posts = $posts->paginate(5);
       //  ddd($posts);
         return Inertia::render('Post/Index',['posts' => $posts]);
 

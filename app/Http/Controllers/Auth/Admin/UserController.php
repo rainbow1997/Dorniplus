@@ -14,7 +14,9 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Arr;
 use Inertia\Inertia;
 use PdfReport;
+use Illuminate\Support\Collection;
 use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Request as RequestFacade;
 
 class UserController extends Controller
 {
@@ -23,26 +25,58 @@ class UserController extends Controller
      *
      * @return Response
      */
-    public function index(Request $request)
+    protected array $searchParams = ['fullname','email','province','city','birth','created_at'];
+    public function apartSearchParameters(Collection $data) : Collection
     {
-        //Don't remember this validation afterwards,
-        $users = User::with(['province', 'city', 'roles']);
-        $request->whenHas('searchingItem', function ($input) use (&$users, $request) {
-            if ($input == 'province' || $input == 'city') { // I don't know it's a good way or not because of its simple condition.
-                $users = $users->whereHas($input, function ($query) use ($request) {
-                    $query->where('title', 'like', "%{$request->searchingInput}%");
-                });
-            } else
-                $users = $users->where($input, 'like', "%{$request->searchingInput}%");
-
-            //$users = $users->paginate(5);
-
-        }, function () use (&$users) {
-            //our else
-            //$users = $users->orderBy('id','DESC')->paginate(5);
+        $searchValues = collect();
+        $data->each(function($item,$key) use($searchValues) {
+            foreach($this->searchParams as $searchParam)
+                if($key == $searchParam)
+                    $searchValues->put($searchParam, $item);
 
         });
+
+        return $searchValues;
+
+    }
+    public function index()
+    {
+        //Don't remember this validation afterwards,
+        $request = collect(RequestFacade::all());
+        $search = $this->apartSearchParameters($request);
+        $users = User::query();
+        if($search->isNotEmpty()) {
+
+            $users->when($search['fullname'], function ($query, $search) {// $search['title] become $search
+
+                return $query->fullname($search);
+            })
+                ->when($search['email'], function ($query, $search) {
+
+                    return $query->email($search);
+                })
+                ->when($search['province'], function ($query, $search) {
+                    return $query->province($search);
+                })
+                ->when($search['city'], function ($query, $search) {
+                    return $query->city($search);
+                })
+//                ->when($search['roles'], function ($query, $search) {
+//
+//                    return $query->role($search);
+//                 })
+                ->when($search['birth'], function ($query, $search) {
+                    return $query->birth(convertDateForDB($search));
+                })
+                ->when($search['created_at'], function ($query, $search) {
+                    return $query->createdat(convertDateForDB($search));
+                });
+
+        }
+
+        $users = $users->with(['province','city','roles']);
         $users = $users->orderBy('id', 'DESC')->paginate(5);
+
         return Inertia::render('UsersIndex', ['users' => $users]);
 
 

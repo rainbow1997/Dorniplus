@@ -30,44 +30,74 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <div class="flex flex-col space-y-8">
-                        <div class="">
-                            <div class="flex flex-row">
-                                <select v-model="searchingItem"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                    <option value="fname">
-                                        نام
-                                    </option>
-                                    <option value="lname">
-                                        نام خانوادگی
-                                    </option>
-                                    <option value="province">
-                                        استان
-                                    </option>
-                                    <option value="city">
-                                        شهرستان
-                                    </option>
+                        <div class="flex-1">
+                            <div
+                                class="p-4 mb-4 text-sm text-yellow-700 bg-yellow-100 rounded-lg dark:bg-yellow-200 dark:text-yellow-800"
+                                role="alert">
+                                <span class="font-medium">دقت کنید!</span> برای جست و جو می توانید از پارامتر های مختلف به طور همزمان استفاده کنید.
+                            </div>
+                            <div class="grid grid-cols-4 gap-4 items-center justify-evenly">
 
-                                </select>
-                                <input v-model="searchingInput"
-                                       class="mx-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                       name="searchingInput"
-                                       type="text"
-                                       v-on:keyup="onSearch">
+                                <input id="post-title" v-model="search.fullname"
+                                       class="rounded-none rounded-l-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block min-w-0  text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                       placeholder="نام و نام خانوادگی..."
+                                       type="text">
 
+                                <input id="search_email" v-model="search.email"
+                                       class="rounded-none rounded-l-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block min-w-0  text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                       placeholder="ایمیل..."
+                                       type="text">
+
+                                <input id="search_province" v-model="search.province"
+                                       class="rounded-none rounded-l-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block min-w-0  text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                       placeholder="استان..."
+                                       type="text">
+
+                                <input id="search_city"
+                                       v-model="search.city"
+                                       class="rounded-none rounded-l-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block min-w-0  text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                       placeholder="شهرستان" type="text">
+
+
+<!--                                <input id="search_role"-->
+<!--                                       v-model="search.role"-->
+<!--                                       class="rounded-none rounded-l-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block min-w-0  text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"-->
+<!--                                       placeholder="نقش کاربری" type="text">-->
+
+
+
+<!--                                <div>-->
+<!--                                    <label class="typo__label">Tagging</label>-->
+<!--                                    <VueMultiselect v-model="search.roles" tag-placeholder="Add this as new tag" placeholder="Search or add a tag" label="name" track-by="id" :options="roles" :multiple="true" :taggable="true" @tag="addTag">-->
+
+
+
+<!--                                    </VueMultiselect>-->
+
+<!--                                </div>-->
+                                <input id="search_birth" ref="birth"
+                                       v-model="search.birth"
+                                       class="datepicker rounded-none rounded-l-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block min-w-0  text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                       @click="keepingDate" placeholder="تاریخ تولد" type="text">
+
+
+                                <input id="search_created_at" ref="created_at"
+                                       v-model="search.created_at"
+                                       class="datepicker rounded-none rounded-l-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block min-w-0  text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                       @click="keepingDate" placeholder="تاریخ عضویت" type="text">
                             </div>
                         </div>
-
                         <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
                             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                                 <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
                                 <tr>
-                                    <th class="py-3 px-6 bg-gray-50 dark:bg-gray-800" scope="col">>شناسه</th>
-                                    <th class="py-3 px-6 bg-gray-50 dark:bg-gray-800" scope="col">>نام</th>
-                                    <th class="py-3 px-6 bg-gray-50 dark:bg-gray-800" scope="col">>نام خانوادگی</th>
-                                    <th class="py-3 px-6 bg-gray-50 dark:bg-gray-800" scope="col">>ایمیل</th>
-                                    <th class="py-3 px-6 bg-gray-50 dark:bg-gray-800" scope="col">>استان</th>
+                                    <th class="py-3 px-6 bg-gray-50 dark:bg-gray-800" scope="col">شناسه</th>
+                                    <th class="py-3 px-6 bg-gray-50 dark:bg-gray-800" scope="col">نام</th>
+                                    <th class="py-3 px-6 bg-gray-50 dark:bg-gray-800" scope="col">نام خانوادگی</th>
+                                    <th class="py-3 px-6 bg-gray-50 dark:bg-gray-800" scope="col">ایمیل</th>
+                                    <th class="py-3 px-6 bg-gray-50 dark:bg-gray-800" scope="col">استان</th>
                                     <th class="py-3 px-6 bg-gray-50 dark:bg-gray-800" scope="col">>شهرستان</th>
-                                    <th class="py-3 px-6 bg-gray-50 dark:bg-gray-800" scope="col">>نقش ها</th>
+                                    <th class="py-3 px-6 bg-gray-50 dark:bg-gray-800" scope="col">نقش ها</th>
                                     <th class="py-3 px-6 bg-gray-50 dark:bg-gray-800" scope="col" width="280px">
                                         عملیات
                                     </th>
@@ -125,16 +155,17 @@
 </template>
 <script>
 import {Inertia} from '@inertiajs/inertia'
-import BreezeButton from '@/Components/Button.vue';
-import BreezeAuthenticatedLayout from '@/Layouts/Authenticated.vue';
-import BreezeInput from '@/Components/Input.vue';
-import BreezeCheckbox from '@/Components/Checkbox.vue';
-import BreezeLabel from '@/Components/Label.vue';
-import BreezeValidationErrors from '@/Components/ValidationErrors.vue';
+import BreezeButton from '@/Components/Button.vue'
+import BreezeAuthenticatedLayout from '@/Layouts/Authenticated.vue'
+import BreezeInput from '@/Components/Input.vue'
+import BreezeCheckbox from '@/Components/Checkbox.vue'
+import BreezeLabel from '@/Components/Label.vue'
+import BreezeValidationErrors from '@/Components/ValidationErrors.vue'
 import './Auth/persian-datepicker.js';// in another time,use modules.env not this statically manner.
 import './Auth/persian-datepicker.min.css';
-import {Head, Link, useForm} from '@inertiajs/inertia-vue3';
+import {Head, Link, useForm} from '@inertiajs/inertia-vue3'
 import Pagination from '@/Layouts/pagination'
+// import VueMultiselect from 'vue-multiselect'
 
 export default {
     components: {
@@ -146,23 +177,69 @@ export default {
         BreezeInput,
         BreezeLabel,
         BreezeValidationErrors,
-        Pagination
+        Pagination,
+        // VueMultiselect
 
     },
     data() {
         return {
+            ali: [1,2,5],
             test: {},
             newUsers: {},
-            searchingItem: '',
-            searchingInput: ''
+            search : {
+                fullname : '',
+                email : '',
+                province : '',
+                city : '',
+                // roles: [],
+                birth: '',
+                created_at : '',
+
+            },
+            myDateObj : {}
+
 
         }
     },
     props: {
         users: Object,//afterwards, delete it and use Inertia attr
+        roles:{}
     },
+    watch:{
+      search:{
+          handler(val){
+            this.keepingDate();
+            // this.getRolesId();
+            Inertia.reload({
+                replace: true,
+                preserveState: true,
+                data: this.search
+            });
 
+          },
+          deep:true
+      }
+    },
     methods: {
+        // getRolesId()
+        // {
+        //     let i = this.search.roles.filter(function (role) {
+        //         return role.id;
+        //     });
+        //     console.log(i[0]);
+        // },
+        // addTag (newTag) {
+        //     const tag = {
+        //         name: newTag,
+        //         code: newTag.substring(0, 2) + Math.floor((Math.random() * 10000000))
+        //     }
+        //     this.roles.push(tag)
+        //     this.search.roles.push(tag)
+        // },
+        keepingDate(){
+            this.search.birth = this.$refs.birth.value;
+            this.search.created_at = this.$refs.created_at.value;
+        },
         destroyUser(id) {
             this.$inertia.delete(route("users.destroy", id));
 
@@ -170,25 +247,116 @@ export default {
         // reset(){
         //     this.user
         // }
-        onSearch() {
-            let data2 = {
-                'searchingItem': this.searchingItem,
-                'searchingInput': this.searchingInput
-            };
-            // this.newUsers = this.$inertia.post(route("users.index.search",data));
-            // Inertia.post(route("users.index.search",data),{
-            //     only : ['users']
-            // })
-            Inertia.reload({
-                replace: true,
-                preserveState: true,
-                data: data2
+        datepicker() {
+            console.log(this.search);
+            console.log('before doucment ready');
+
+            const pd = $(".datepicker").pDatepicker({
+                "inline": false,
+                "format": "L",
+                "viewMode": "year",
+                "initialValue": false,
+                "minDate": null,
+                "maxDate": 1660459870590,
+                "autoClose": true,
+                "position": "auto",
+                "altFormat": "l",
+                "altField": "#altfieldExample",
+                "onlyTimePicker": false,
+                "onlySelectOnDate": true,
+                "calendarType": "persian",
+                "inputDelay": 800,
+                "observer": true,
+                "calendar": {
+                    "persian": {
+                        "locale": "fa",
+                        "showHint": true,
+                        "leapYearMode": "algorithmic"
+                    },
+                    "gregorian": {
+                        "locale": "en",
+                        "showHint": false
+                    }
+                },
+                "navigator": {
+                    "enabled": true,
+                    "scroll": {
+                        "enabled": true
+                    },
+                    "text": {
+                        "btnNextText": "<",
+                        "btnPrevText": ">"
+                    }
+                },
+                "toolbox": {
+                    "enabled": true,
+                    "calendarSwitch": {
+                        "enabled": false,
+                        "format": "MMMM"
+                    },
+                    "todayButton": {
+                        "enabled": false,
+                        "text": {
+                            "fa": "امروز",
+                            "en": "Today"
+                        }
+                    },
+                    "submitButton": {
+                        "enabled": true,
+                        "text": {
+                            "fa": "تایید",
+                            "en": "Submit"
+                        }
+                    },
+                    "text": {
+                        "btnToday": "امروز"
+                    }
+                },
+                "timePicker": {
+                    "enabled": false,
+                    "step": 1,
+                    "hour": {
+                        "enabled": false,
+                        "step": null
+                    },
+                    "minute": {
+                        "enabled": false,
+                        "step": null
+                    },
+                    "second": {
+                        "enabled": false,
+                        "step": null
+                    },
+                    "meridian": {
+                        "enabled": false
+                    }
+                },
+                "dayPicker": {
+                    "enabled": true,
+                    "titleFormat": "YYYY MMMM"
+                },
+                "monthPicker": {
+                    "enabled": true,
+                    "titleFormat": "YYYY"
+                },
+                "yearPicker": {
+                    "enabled": true,
+                    "titleFormat": "YYYY"
+                },
+                "responsive": true
             });
+            console.log(this.search);
+
+            this.myDateObj = pd;
+
+
         }
+
     },
     mounted() {
         console.log('hi');
-
+        this.datepicker();
+        this.keepingDate();
 
     },
 };
