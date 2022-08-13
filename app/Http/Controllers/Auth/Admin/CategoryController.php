@@ -40,7 +40,7 @@ class CategoryController extends Controller
 
         }
 
-        $categories = Category::withCount(['posts']);
+        $categories = $categories->withCount(['posts']);
         $categories = $categories->orderBy('created_at', 'ASC')->paginate(5);
 
         return Inertia::render('Post/Category/Index',['categories' => $categories]);
@@ -54,6 +54,7 @@ class CategoryController extends Controller
     public function create()
     {
         //
+        return Inertia::render('Post/Category/Create');
     }
 
     /**
@@ -62,9 +63,20 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    protected function validateCreation(Request $request)
+    {
+        return $request->validate([
+            'title' => ['required', 'string']
+        ]);
+
+    }
     public function store(Request $request)
     {
         //
+        Category::create($this->validateCreation($request));
+
+        return redirect()->route('categories.index')
+            ->with('message', 'موضوع مورد نظر با موفقیت افزوده شد.');
     }
 
     /**
@@ -87,6 +99,9 @@ class CategoryController extends Controller
     public function edit(Category $category)
     {
         //
+        return Inertia::render('Post/Category/Edit', [
+            'category' => $category
+        ]);
     }
 
     /**
@@ -96,9 +111,20 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
+    protected function validateUpdate(Request $request)
+    {
+        return $request->validate([
+            'title' => ['required', 'string']
+        ]);
+
+    }
     public function update(Request $request, Category $category)
     {
         //
+        $category->update($this->validateUpdate($request));
+
+        return redirect()->route('categories.index')
+            ->with('message', 'موضوع مورد نظر با موفقیت ویرایش گردید.');
     }
 
     /**
@@ -110,5 +136,8 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         //
+        $category->delete();
+        return redirect()->route('categories.index')
+            ->with('message', 'موضوع مورد نظر حذف گردید.');
     }
 }

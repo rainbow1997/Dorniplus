@@ -26,24 +26,12 @@ class UserController extends Controller
      * @return Response
      */
     protected array $searchParams = ['fullname','email','province','city','birth','created_at'];
-    public function apartSearchParameters(Collection $data) : Collection
-    {
-        $searchValues = collect();
-        $data->each(function($item,$key) use($searchValues) {
-            foreach($this->searchParams as $searchParam)
-                if($key == $searchParam)
-                    $searchValues->put($searchParam, $item);
 
-        });
-
-        return $searchValues;
-
-    }
     public function index()
     {
         //Don't remember this validation afterwards,
         $request = collect(RequestFacade::all());
-        $search = $this->apartSearchParameters($request);
+        $search = apartSearchParameters($request,$this->searchParams);
         $users = User::query();
         if($search->isNotEmpty()) {
 

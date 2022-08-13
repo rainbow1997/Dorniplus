@@ -40,6 +40,9 @@ const showingNavigationDropdown = ref(false);
                                 <BreezeNavLink :href="route('users.index')">
                                     کاربران
                                 </BreezeNavLink>
+                                <BreezeNavLink :href="route('categories.index')">
+                                    موضوعات
+                                </BreezeNavLink>
                                 <BreezeNavLink :href="route('posts.index')">
                                     مطالب
                                 </BreezeNavLink>
