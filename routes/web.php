@@ -97,10 +97,7 @@ Route::group(['middleware' => ['auth', 'verified', 'role:Admin']], function () {
 
 
 });
-Route::group(['middleware' => ['auth', 'verified', 'permission:category-list|category-create|category-edit|category-delete']],
-    function () {
-        Route::resource('categories',CategoryController::class);
-    });
+Route::resource('categories',CategoryController::class);//permissions in its controller
 Route::get('/captcha', function () {
     return view('helpers/captcha_show');
 });

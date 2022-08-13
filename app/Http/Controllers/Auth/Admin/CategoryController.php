@@ -7,7 +7,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Request as RequestFacade;
-
+use App\Models\User;
 class CategoryController extends Controller
 {
     /**
@@ -16,6 +16,14 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     protected array $searchParams = ['title','created_at','updated_at'];
+    public function __construct(Request $request)
+    {
+
+        $this->middleware('permission:category-list|category-edit|category-create|category-delete',['only' => ['index','show']]);
+        $this->middleware('permission:category-create',['only' =>['create','store']]);
+        $this->middleware('permission:category-edit',['only' => ['edit','update'] ]);
+        $this->middleware('permission:category-delete',['only' => ['destroy'] ]);
+    }
 
     public function index()
     {
@@ -54,6 +62,7 @@ class CategoryController extends Controller
     public function create()
     {
         //
+
         return Inertia::render('Post/Category/Create');
     }
 
