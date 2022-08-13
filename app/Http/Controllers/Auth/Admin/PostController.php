@@ -15,14 +15,17 @@ use Illuminate\Support\Facades\Request as RequestFacade;
 class PostController extends Controller
 {
     //
+    protected array $searchParams = ['title','category_title','writer_name','start_date','end_date'];
 
     public function index(Request $request)
     {
-        $search = RequestFacade::all();//why its work but why $request from Request doesn't work?
-          $posts = Post::query();
-//        $posts = Post::with(['writerPerson', 'category']);
+//        $search = RequestFacade::all();//why its work but why $request from Request doesn't work?
+        $posts = Post::query();
+////        $posts = Post::with(['writerPerson', 'category']);
+        $request = collect(RequestFacade::all());
+        $search = apartSearchParameters($request,$this->searchParams);
 
-        if($search != null) {
+        if($search->isNotEmpty()){
 
             $posts->when($search['title'], function ($query, $search) {// $search['title] become $search
 

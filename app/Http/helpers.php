@@ -1,6 +1,7 @@
 <?php
 
 use Carbon\Carbon;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Storage;
 use Morilog\Jalali\Jalalian;
 
@@ -64,7 +65,22 @@ if (!function_exists('captchaMaking')) {
 
     function removeFiles($files)
     {
-
         Storage::disk('public')->delete($files);
     }
+    function apartSearchParameters(Collection $data, array $searchParams): Collection
+    {
+        $searchValues = collect();
+        $data->each(function ($item, $key) use ($searchValues,$searchParams) {
+            foreach ($searchParams as $searchParam)
+                if ($key == $searchParam) {
+
+                    $searchValues->put($searchParam, $item);
+                }
+
+        });
+
+        return $searchValues;
+
+    }
 }
+

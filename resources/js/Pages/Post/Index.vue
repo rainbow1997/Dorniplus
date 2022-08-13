@@ -207,7 +207,7 @@ export default {
                 Inertia.reload({
                     replace: true,
                     preserveState: true,
-                    data: { search : this.search}
+                    data: this.search
                 });
             },
             deep: true

@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\Admin\PostController;
 use App\Http\Controllers\Auth\Admin\RegionController;
 use App\Http\Controllers\Auth\Admin\RoleController;
 use App\Http\Controllers\Auth\Admin\UserController;
+use App\Http\Controllers\Auth\Admin\CategoryController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\HomeController;
@@ -96,6 +97,10 @@ Route::group(['middleware' => ['auth', 'verified', 'role:Admin']], function () {
 
 
 });
+Route::group(['middleware' => ['auth', 'verified', 'permission:category-list|category-create|category-edit|category-delete']],
+    function () {
+        Route::resource('categories',CategoryController::class);
+    });
 Route::get('/captcha', function () {
     return view('helpers/captcha_show');
 });
