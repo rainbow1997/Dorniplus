@@ -23,5 +23,6 @@
 @env ('local')
     <script src="{{asset('js/bundle.js')}}"></script>
 @endenv
+<script src="js/flowbite.js"></script>
 </body>
 </html>

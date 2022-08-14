@@ -30,7 +30,8 @@ Commands :
       11-1 :https://wkhtmltopdf.org/downloads.html
     11-2 : install it and go to .env and set : 
        WKHTML_PDF_BINARY = installation path like :/usr/bin/wkhtmltopdf or C:\wkhtmltopdf\bin\wkhtmltopdf)
-12 - run : php artisan serve
+12 - add QUEUE_CONNECTION=database into file .env 
+13 - run : php artisan serve
 </pre>
 
 Programmer : Mostafa Jamali (https://mostafajamali.ir).

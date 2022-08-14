@@ -91,6 +91,8 @@ Route::group(['middleware' => ['auth', 'verified', 'role:Admin']], function () {
     Route::resource('users', UserController::class);
     Route::resource('posts', PostController::class);
     Route::get('/reporting/{method}', [UserController::class, 'displayUsersReport'])->name('reporting');
+    Route::get('/downloading/{tempFile}',[UserController::class,'downloading'])->name('downloading');
+    Route::post('getReport',[UserController::class,'getReport'])->name('users.report');
     Route::get('/chart', [UsersChart::class, 'showChart'])->name('chart');
     Route::get('/logs', [LogController::class, 'index'])
         ->name('logs');
@@ -98,6 +100,7 @@ Route::group(['middleware' => ['auth', 'verified', 'role:Admin']], function () {
 
 });
 Route::resource('categories',CategoryController::class);//permissions in its controller
+
 Route::get('/captcha', function () {
     return view('helpers/captcha_show');
 });
