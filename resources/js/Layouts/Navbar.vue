@@ -16,7 +16,7 @@ defineProps({
                     <Link href="/">
                         <BreezeApplicationLogo class="mr-3 h-6 text-gray-500"/>
                     </Link>
-                    <span class="m-2 self-center text-xl font-semibold whitespace-nowrap dark:text-white">{{this.$page.props.appName}}</span>
+                    <span class="m-2 self-center text-xl font-semibold whitespace-nowrap dark:text-white">{{$page.props.appName}}</span>
                 </div>
 
                 <div class="flex md:order-2">
