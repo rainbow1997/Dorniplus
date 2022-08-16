@@ -171,13 +171,14 @@ class RegisteredUserController extends Controller
     {
 
         $validData = collect($this->storeValidating($user, $request));
-        // $validData = $this->convertDateForDB($validData);
+
 
 
         if ($request->hasFile('avatar')) {
             removeFiles($user->avatar);
             $validData['avatar'] = $this->uploadAvatar($request);
         }
+
         $user->update($validData->toArray());
         return redirect()->route('dashboard')
             ->with('message', 'پروفایل با موفقیت تغییر کرد');

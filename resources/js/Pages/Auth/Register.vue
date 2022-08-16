@@ -7,6 +7,7 @@ import BreezeValidationErrors from '@/Components/ValidationErrors.vue';
 import './persian-datepicker.js'; // in another time,use modules.env not this statically manner.
 import './persian-datepicker.min.css';
 import {Head, Link, useForm} from '@inertiajs/inertia-vue3';
+import DatePicker from 'vue3-persian-datetime-picker'
 
 export default {
     components: {
@@ -18,6 +19,7 @@ export default {
         BreezeInput,
         BreezeLabel,
         BreezeValidationErrors,
+        DatePicker
 
     },
     data() {
@@ -47,20 +49,9 @@ export default {
     props: {
         regions: {}
     },
-    watch: {
-        form: {
-            gender(newGen, oldGen) {
-                console.log('ali ali');
-                alert('hi');
-                if (newGender != 'male')
-                    this.military_status = null;
-            }
-        }
-    },
     methods: {
         provinceChange(event) {
 
-            this.setBirth();
             console.log('hi -> province is :');
             let t = this.regions.filter(function (province) {
                 console.log(province.cities);
@@ -71,119 +62,17 @@ export default {
 
         },
         genderChange(event) {
-            this.setBirth();
             if (event.target.value != 'male')
                 this.form.military_status = null;
         },
-        setBirth() {
 
-            this.form.birth = this.$refs.settingBirth.value;//direct connection to DOM elements in Vuejs
-
-        },
         submit() {
-            this.setBirth();
             this.$inertia.post('/register', this.form);
         }
     },
     mounted() {
 
-        $(document).ready(function () {
 
-            $(".datepicker").pDatepicker({
-                "inline": false,
-                "format": "L",
-                "viewMode": "year",
-                "initialValue": true,
-                "minDate": null,
-                "maxDate": 1660459870590,
-                "autoClose": true,
-                "position": "auto",
-                "altFormat": "l",
-                "altField": "#altfieldExample",
-                "onlyTimePicker": false,
-                "onlySelectOnDate": true,
-                "calendarType": "persian",
-                "inputDelay": 800,
-                "observer": true,
-                "calendar": {
-                    "persian": {
-                        "locale": "fa",
-                        "showHint": true,
-                        "leapYearMode": "algorithmic"
-                    },
-                    "gregorian": {
-                        "locale": "en",
-                        "showHint": false
-                    }
-                },
-                "navigator": {
-                    "enabled": true,
-                    "scroll": {
-                        "enabled": true
-                    },
-                    "text": {
-                        "btnNextText": "<",
-                        "btnPrevText": ">"
-                    }
-                },
-                "toolbox": {
-                    "enabled": true,
-                    "calendarSwitch": {
-                        "enabled": false,
-                        "format": "MMMM"
-                    },
-                    "todayButton": {
-                        "enabled": false,
-                        "text": {
-                            "fa": "امروز",
-                            "en": "Today"
-                        }
-                    },
-                    "submitButton": {
-                        "enabled": true,
-                        "text": {
-                            "fa": "تایید",
-                            "en": "Submit"
-                        }
-                    },
-                    "text": {
-                        "btnToday": "امروز"
-                    }
-                },
-                "timePicker": {
-                    "enabled": false,
-                    "step": 1,
-                    "hour": {
-                        "enabled": false,
-                        "step": null
-                    },
-                    "minute": {
-                        "enabled": false,
-                        "step": null
-                    },
-                    "second": {
-                        "enabled": false,
-                        "step": null
-                    },
-                    "meridian": {
-                        "enabled": false
-                    }
-                },
-                "dayPicker": {
-                    "enabled": true,
-                    "titleFormat": "YYYY MMMM"
-                },
-                "monthPicker": {
-                    "enabled": true,
-                    "titleFormat": "YYYY"
-                },
-                "yearPicker": {
-                    "enabled": true,
-                    "titleFormat": "YYYY"
-                },
-                "responsive": true
-            });
-        });
     },
 };
 
@@ -225,11 +114,10 @@ export default {
             </div>
             <div class="mt-4">
                 <BreezeLabel for="birth" value="تاریخ تولد"/>
-                <input id="birth" ref="settingBirth"
-                       v-model="form.birth"
-                       autocomplete="birth" autofocus
-                       class="mt-1 block w-full datepicker bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                       required type="text">
+                <date-picker initial-value="1970/01/01" class="mt-1 block w-full  bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                             v-model="form.birth" format="YYYY/MM/DD" display-format="jYYYY/jMM/jDD"  autofocus />
+
+
             </div>
             <div class="mt-4">
                 <BreezeLabel for="gender" value="جنسیت*"/>

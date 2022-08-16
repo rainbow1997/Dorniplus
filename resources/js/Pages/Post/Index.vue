@@ -45,43 +45,20 @@
                                        placeholder="موضوع..."
                                        type="text">
 
-                                <input id="post-title" v-model="search.writer_name"
+                                <input id="post-writer-name" v-model="search.writer_name"
                                        class="rounded-none rounded-l-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block min-w-0  text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                        placeholder="نویسنده..."
                                        type="text">
 
-                                <input id="post-title" ref="start_date"
-                                       v-model="search.start_date"
-                                       class="datepicker rounded-none rounded-l-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block min-w-0  text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                       @click="keepDating" placeholder="ابتدای بازه زمانی مورد نظر..." type="text">
+
+                                <date-picker editable class="rounded-none rounded-l-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block min-w-0  text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                             placeholder="ابتدای بازه زمانی مورد نظر..." v-model="search.start_date" format="YYYY/MM/DD" display-format="jYYYY/jMM/jDD"  autofocus />
+
+                                <date-picker editable class="rounded-none rounded-l-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block min-w-0  text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                             placeholder="انتهای بازه زمانی موردنظر..." v-model="search.end_date" format="YYYY/MM/DD" display-format="jYYYY/jMM/jDD"  autofocus />
 
 
-                                <input id="post-title" ref="end_date"
-                                       v-model="search.end_date"
-                                       class="datepicker rounded-none rounded-l-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block min-w-0  text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                       @click="keepDating" placeholder="انتهای بازه زمانی موردنظر..." type="text">
 
-                                <!--&lt;!&ndash;                                <select v-model="searchingItem"&ndash;&gt;-->
-                                <!--&lt;!&ndash;                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">&ndash;&gt;-->
-                                <!--&lt;!&ndash;                                    <option value="fname">&ndash;&gt;-->
-                                <!--&lt;!&ndash;                                        عنوان&ndash;&gt;-->
-                                <!--&lt;!&ndash;                                    </option>&ndash;&gt;-->
-                                <!--&lt;!&ndash;                                    <option value="lname">&ndash;&gt;-->
-                                <!--&lt;!&ndash;                                        موضوع&ndash;&gt;-->
-                                <!--&lt;!&ndash;                                    </option>&ndash;&gt;-->
-                                <!--&lt;!&ndash;                                    <option value="province">&ndash;&gt;-->
-                                <!--&lt;!&ndash;                                        نویسنده&ndash;&gt;-->
-                                <!--&lt;!&ndash;                                    </option>&ndash;&gt;-->
-                                <!--&lt;!&ndash;                                    <option value="city">&ndash;&gt;-->
-                                <!--&lt;!&ndash;                                        زمان آخرین تغییر&ndash;&gt;-->
-                                <!--&lt;!&ndash;                                    </option>&ndash;&gt;-->
-
-                                <!--&lt;!&ndash;                                </select>&ndash;&gt;-->
-                                <!--                                <input v-model="searchingInput"-->
-                                <!--                                       class="mx-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"-->
-                                <!--                                       name="searchingInput"-->
-                                <!--                                       type="text"-->
-                                <!--                                       v-on:keyup="onSearch">-->
 
                             </div>
                         </div>
@@ -164,6 +141,7 @@ import '../Auth/persian-datepicker.js';// in another time,use modules.env not th
 import '../Auth/persian-datepicker.min.css';
 import {Head, Link, useForm} from '@inertiajs/inertia-vue3';
 import Pagination from '@/Layouts/pagination'
+import DatePicker from 'vue3-persian-datetime-picker'
 
 export default {
     components: {
@@ -175,7 +153,8 @@ export default {
         BreezeInput,
         BreezeLabel,
         BreezeValidationErrors,
-        Pagination
+        Pagination,
+        DatePicker
 
     },
     data() {
@@ -203,7 +182,6 @@ export default {
 
                 // this.search = val;
                 console.log(this.search);
-                this.keepDating();
                 Inertia.reload({
                     replace: true,
                     preserveState: true,
@@ -216,126 +194,14 @@ export default {
 
     },
     methods: {
-        keepDating() {
-            this.search.start_date = this.$refs.start_date.value;
-            this.search.end_date = this.$refs.end_date.value;
-        },
         destroyUser(id) {
             this.$inertia.delete(route("posts.destroy", id));
 
         },
-        datepicker() {
-            console.log(this.search);
-            console.log('before doucment ready');
 
-                const pd = $(".datepicker").pDatepicker({
-                    "inline": false,
-                    "format": "L",
-                    "viewMode": "year",
-                    "initialValue": false,
-                    "minDate": null,
-                    "maxDate": 1660459870590,
-                    "autoClose": true,
-                    "position": "auto",
-                    "altFormat": "l",
-                    "altField": "#altfieldExample",
-                    "onlyTimePicker": false,
-                    "onlySelectOnDate": true,
-                    "calendarType": "persian",
-                    "inputDelay": 800,
-                    "observer": true,
-                    "calendar": {
-                        "persian": {
-                            "locale": "fa",
-                            "showHint": true,
-                            "leapYearMode": "algorithmic"
-                        },
-                        "gregorian": {
-                            "locale": "en",
-                            "showHint": false
-                        }
-                    },
-                    "navigator": {
-                        "enabled": true,
-                        "scroll": {
-                            "enabled": true
-                        },
-                        "text": {
-                            "btnNextText": "<",
-                            "btnPrevText": ">"
-                        }
-                    },
-                    "toolbox": {
-                        "enabled": true,
-                        "calendarSwitch": {
-                            "enabled": false,
-                            "format": "MMMM"
-                        },
-                        "todayButton": {
-                            "enabled": false,
-                            "text": {
-                                "fa": "امروز",
-                                "en": "Today"
-                            }
-                        },
-                        "submitButton": {
-                            "enabled": true,
-                            "text": {
-                                "fa": "تایید",
-                                "en": "Submit"
-                            }
-                        },
-                        "text": {
-                            "btnToday": "امروز"
-                        }
-                    },
-                    "timePicker": {
-                        "enabled": false,
-                        "step": 1,
-                        "hour": {
-                            "enabled": false,
-                            "step": null
-                        },
-                        "minute": {
-                            "enabled": false,
-                            "step": null
-                        },
-                        "second": {
-                            "enabled": false,
-                            "step": null
-                        },
-                        "meridian": {
-                            "enabled": false
-                        }
-                    },
-                    "dayPicker": {
-                        "enabled": true,
-                        "titleFormat": "YYYY MMMM"
-                    },
-                    "monthPicker": {
-                        "enabled": true,
-                        "titleFormat": "YYYY"
-                    },
-                    "yearPicker": {
-                        "enabled": true,
-                        "titleFormat": "YYYY"
-                    },
-                    "responsive": true
-                });
-                console.log(this.search);
-
-                this.myDateObj = pd;
-
-
-        }
-        // reset(){
-        //     this.user
-        // }
     },
     mounted() {
-        console.log('hi');
 
-        this.datepicker();
 
     },
 };

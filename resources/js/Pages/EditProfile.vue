@@ -5,9 +5,10 @@ import BreezeInput from '@/Components/Input.vue';
 import BreezeLabel from '@/Components/Label.vue';
 import BreezeValidationErrors from '@/Components/ValidationErrors.vue';
 import './Auth/persian-datepicker.js'; // in another time,use modules.env not this statically manner.
-import './Auth/persian-datepicker.min.css';
-import {Head, Link, useForm} from '@inertiajs/inertia-vue3';
+import './Auth/persian-datepicker.min.css'
+import {Head, Link, useForm} from '@inertiajs/inertia-vue3'
 import {reactive} from 'vue'
+import DatePicker from 'vue3-persian-datetime-picker'
 
 export default {
     components: {
@@ -19,6 +20,7 @@ export default {
         BreezeInput,
         BreezeLabel,
         BreezeValidationErrors,
+        DatePicker
 
 
     },
@@ -33,7 +35,6 @@ export default {
         //let datepickerValue;
         const needs = reactive({
             ourProvince: {},
-            datepickerValue: {}
         });
 
         const form = useForm('EditProfile', {
@@ -49,112 +50,6 @@ export default {
             province_id: props.user.province_id,
             city_id: props.user.city_id,
         });
-        const datepicker = () => {
-            $(document).ready(function () {
-
-                const pd = $("#birth").pDatepicker({
-                    "inline": false,
-                    "format": "L",
-                    "viewMode": "year",
-                    "initialValue": false,
-                    "minDate": null,
-                    "maxDate": 1660459870590,
-                    "autoClose": true,
-                    "position": "auto",
-                    "altFormat": "l",
-                    "altField": "#altfieldExample",
-                    "onlyTimePicker": false,
-                    "onlySelectOnDate": true,
-                    "calendarType": "persian",
-                    "inputDelay": 800,
-                    "observer": true,
-                    "calendar": {
-                        "persian": {
-                            "locale": "fa",
-                            "showHint": true,
-                            "leapYearMode": "algorithmic"
-                        },
-                        "gregorian": {
-                            "locale": "en",
-                            "showHint": false
-                        }
-                    },
-                    "navigator": {
-                        "enabled": true,
-                        "scroll": {
-                            "enabled": true
-                        },
-                        "text": {
-                            "btnNextText": "<",
-                            "btnPrevText": ">"
-                        }
-                    },
-                    "toolbox": {
-                        "enabled": true,
-                        "calendarSwitch": {
-                            "enabled": false,
-                            "format": "MMMM"
-                        },
-                        "todayButton": {
-                            "enabled": false,
-                            "text": {
-                                "fa": "امروز",
-                                "en": "Today"
-                            }
-                        },
-                        "submitButton": {
-                            "enabled": true,
-                            "text": {
-                                "fa": "تایید",
-                                "en": "Submit"
-                            }
-                        },
-                        "text": {
-                            "btnToday": "امروز"
-                        }
-                    },
-                    "timePicker": {
-                        "enabled": false,
-                        "step": 1,
-                        "hour": {
-                            "enabled": false,
-                            "step": null
-                        },
-                        "minute": {
-                            "enabled": false,
-                            "step": null
-                        },
-                        "second": {
-                            "enabled": false,
-                            "step": null
-                        },
-                        "meridian": {
-                            "enabled": false
-                        }
-                    },
-                    "dayPicker": {
-                        "enabled": true,
-                        "titleFormat": "YYYY MMMM"
-                    },
-                    "monthPicker": {
-                        "enabled": true,
-                        "titleFormat": "YYYY"
-                    },
-                    "yearPicker": {
-                        "enabled": true,
-                        "titleFormat": "YYYY"
-                    },
-                    "responsive": true
-                });
-                console.log(pd);
-                needs.datepickerValue = pd;
-
-
-            });
-        };
-
-        datepicker();
-
 
         const provinceSetter = () => {
             // alert("in ejra shod setprovince");
@@ -174,7 +69,6 @@ export default {
 
         provinceSetter();
         const provinceChange = (event) => {
-            setBirth();
             console.log('hi -> province is :');
             let t = props.regions.filter(function (province) {
                 console.log(province.cities);
@@ -184,25 +78,13 @@ export default {
             });
             needs.ourProvince = t[0];
 
-            // alert('taghirkard');
-
         };
         let genderChange = (event) => {
-            setBirth();
             if (event.target.value != 'male')
                 form.military_status = null;
         };
-        const setBirth = () => {
 
-            console.log(needs.datepickerValue.model.api.model.input.elem.value);
-            form.birth = needs.datepickerValue.model.api.model.input.elem.value;
-
-            // form.birth = $refs.settingBirth.value;//direct connection to DOM elements in Vuejs
-
-        };
         let submit = () => {
-
-            setBirth();
 
             form.post(`/storeProfile/${props.user.id}`, {
                 onSuccess: () => form.reset('password', 'avatar'),
@@ -250,11 +132,9 @@ export default {
             </div>
             <div class="mt-2">
                 <BreezeLabel for="birth" value="تاریخ تولد"/>
-                <input id="birth" v-model="form.birth"
-                       autocomplete="birth"
-                       autofocus
-                       class="mt-1 block w-full datepicker bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                       required type="text">
+                <date-picker class="mt-1 block w-full  bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                             v-model="form.birth"  input-format="jYYYY/jMM/jDD" format="YYYY/MM/DD" display-format="jYYYY/jMM/jDD" autofocus />
+
             </div>
             <div class="mt-2">
                 <BreezeLabel for="gender" value="جنسیت*"/>

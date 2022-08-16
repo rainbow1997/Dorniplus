@@ -3,144 +3,7 @@
 
     <BreezeAuthenticatedLayout>
         <template #header>
-            <div class="flex flex-col">
-                <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                    کاربران
-                </h2>
 
-                <div class="my-2 flex flex-row justify-center space-around ">
-
-
-                    <button
-                        class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                        data-modal-toggle="reporting-modal" type="button">
-                        گزارش گیری
-                    </button>
-
-
-                    <!-- Main modal -->
-                    <div ref="reporting-modal" id="reporting-modal" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full"
-                         tabindex="-1">
-                        <div class="relative p-4 w-full max-w-md h-full md:h-auto">
-                            <!-- Modal content -->
-                            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                                <button class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
-                                        data-modal-toggle="reporting-modal"
-                                        type="button">
-                                    <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                                         xmlns="http://www.w3.org/2000/svg">
-                                        <path clip-rule="evenodd"
-                                              d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                              fill-rule="evenodd"></path>
-                                    </svg>
-                                    <span class="sr-only">Close modal</span>
-                                </button>
-                                <div class="py-6 px-6 lg:px-8 space-y-6">
-                                    <h3 class="mt-4 mb-4 text-xl font-medium text-gray-900 dark:text-white">دریافت گزارش
-                                        از اطلاعات کاربران</h3>
-                                    <form class="space-y-6 gap-3" @submit.prevent="submitReportGenerator">
-                                        <div class="flex flex-col gap-4 ">
-                                            <div id="reportParameters" class="flex flex-col gap-3">
-                                                <label class="flex-1 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                                                       for="reportParameters">
-                                                    پارامتر های گزارش گیری:</label>
-
-                                                <div class="flex">
-                                                    <label class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                                                           for="parameterProvince">
-                                                        استان</label>
-                                                    <input id="parameterProvince" v-model="report.parameters['province']"
-                                                           class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-600 dark:border-gray-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
-                                                           type="checkbox"
-                                                           value="province">
-                                                </div>
-                                                <div class="flex">
-                                                    <label class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                                                           for="parameterCity">
-                                                        شهرستان</label>
-
-                                                    <input id="parameterCity" v-model="report.parameters['city']"
-                                                           class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-600 dark:border-gray-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
-                                                           type="checkbox"
-                                                           value="city">
-
-                                                </div>
-                                                <div class="flex">
-                                                    <label class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                                                           for="parameterGenders">
-                                                        جنسیت</label>
-
-                                                    <input id="parameterGenders" v-model="report.parameters['gender']"
-                                                           class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-600 dark:border-gray-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
-                                                           type="checkbox"
-                                                           value="gender">
-                                                </div>
-
-                                                <div class="flex">
-                                                    <label class=" ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                                                           for="parameterStartDate">
-                                                        ابتدای بازه زمانی</label>
-                                                    <date-picker v-model="report.parameters['start_date']" format="YYYY-MM-DD" display-format="jYYYY-jMM-jDD" />
-                                                </div>
-
-                                                <div class="flex">
-                                                    <label class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                                                           for="parameterEndDate">
-                                                        انتهای بازه زمانی</label>
-                                                    <date-picker v-model="report.parameters['end_date']" format="YYYY-MM-DD" display-format="jYYYY-jMM-jDD" />
-
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <div id="reportMethods" class="flex flex-row gap-4">
-                                            <label class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                                                   for="reportMethods">
-                                                نوع خروجی گزارش گیری:</label>
-
-
-                                            <div class="flex gap-2">
-
-                                                <input id="parameterPdf" v-model="report.methods" class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-600 dark:border-gray-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
-
-                                                       type="checkbox"
-                                                       value="pdf">
-                                                <label class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                                                       for="parameterPdf">
-                                                    PDF </label>
-
-                                            </div>
-
-                                            <div class="flex gap-2">
-
-                                                <input id="parameterExcel" v-model="report.methods" class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-600 dark:border-gray-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
-
-                                                       type="checkbox"
-                                                       value="excel">
-                                                <label class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                                                       for="parameterExcel">
-                                                    EXCEL </label>
-
-                                            </div>
-
-                                        </div>
-
-                                        <div class="flex justify-between">
-
-                                            <button class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                                                    type="submit">
-                                                دریافت گزارش
-                                            </button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                </div>
-            </div>
         </template>
 
 
@@ -148,6 +11,144 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <div class="flex flex-col space-y-8">
+                        <div class="flex flex-col">
+                            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                                کاربران
+                            </h2>
+
+                            <div class="my-2 flex flex-row justify-center space-around ">
+
+
+                                <button
+                                    class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                                    data-modal-toggle="reporting-modal" type="button">
+                                    گزارش گیری
+                                </button>
+
+
+                                <!-- Main modal -->
+                                <div ref="reporting-modal" id="reporting-modal" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full"
+                                     tabindex="-1">
+                                    <div class="relative p-4 w-full max-w-md h-full md:h-auto">
+                                        <!-- Modal content -->
+                                        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                            <button class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
+                                                    data-modal-toggle="reporting-modal"
+                                                    type="button">
+                                                <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                                                     xmlns="http://www.w3.org/2000/svg">
+                                                    <path clip-rule="evenodd"
+                                                          d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                                          fill-rule="evenodd"></path>
+                                                </svg>
+                                                <span class="sr-only">Close modal</span>
+                                            </button>
+                                            <div class="py-6 px-6 lg:px-8 space-y-6">
+                                                <h3 class="mt-4 mb-4 text-xl font-medium text-gray-900 dark:text-white">دریافت گزارش
+                                                    از اطلاعات کاربران</h3>
+                                                <form class="space-y-6 gap-3" @submit.prevent="submitReportGenerator">
+                                                    <div class="flex flex-col gap-4 ">
+                                                        <div id="reportParameters" class="flex flex-col gap-3">
+                                                            <label class="flex-1 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                                                                   for="reportParameters">
+                                                                پارامتر های گزارش گیری:</label>
+
+                                                            <div class="flex">
+                                                                <label class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                                                                       for="parameterProvince">
+                                                                    استان</label>
+                                                                <input id="parameterProvince" v-model="report.parameters['province']"
+                                                                       class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-600 dark:border-gray-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
+                                                                       type="checkbox"
+                                                                       value="province">
+                                                            </div>
+                                                            <div class="flex">
+                                                                <label class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                                                                       for="parameterCity">
+                                                                    شهرستان</label>
+
+                                                                <input id="parameterCity" v-model="report.parameters['city']"
+                                                                       class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-600 dark:border-gray-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
+                                                                       type="checkbox"
+                                                                       value="city">
+
+                                                            </div>
+                                                            <div class="flex">
+                                                                <label class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                                                                       for="parameterGenders">
+                                                                    جنسیت</label>
+
+                                                                <input id="parameterGenders" v-model="report.parameters['gender']"
+                                                                       class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-600 dark:border-gray-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
+                                                                       type="checkbox"
+                                                                       value="gender">
+                                                            </div>
+
+                                                            <div class="flex">
+                                                                <label class=" ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                                                                       for="parameterStartDate">
+                                                                    ابتدای بازه زمانی</label>
+                                                                <date-picker v-model="report.parameters['start_date']" format="YYYY-MM-DD" display-format="jYYYY-jMM-jDD" />
+                                                            </div>
+
+                                                            <div class="flex">
+                                                                <label class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                                                                       for="parameterEndDate">
+                                                                    انتهای بازه زمانی</label>
+                                                                <date-picker v-model="report.parameters['end_date']" format="YYYY-MM-DD" display-format="jYYYY-jMM-jDD" />
+
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                    <div id="reportMethods" class="flex flex-row gap-4">
+                                                        <label class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                                                               for="reportMethods">
+                                                            نوع خروجی گزارش گیری:</label>
+
+
+                                                        <div class="flex gap-2">
+
+                                                            <input id="parameterPdf" v-model="report.methods" class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-600 dark:border-gray-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
+
+                                                                   type="checkbox"
+                                                                   value="pdf">
+                                                            <label class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                                                                   for="parameterPdf">
+                                                                PDF </label>
+
+                                                        </div>
+
+                                                        <div class="flex gap-2">
+
+                                                            <input id="parameterExcel" v-model="report.methods" class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-600 dark:border-gray-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
+
+                                                                   type="checkbox"
+                                                                   value="excel">
+                                                            <label class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                                                                   for="parameterExcel">
+                                                                EXCEL </label>
+
+                                                        </div>
+
+                                                    </div>
+
+                                                    <div class="flex justify-between">
+
+                                                        <button class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                                                                type="submit">
+                                                            دریافت گزارش
+                                                        </button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
                         <div class="flex-1">
 
 
@@ -194,16 +195,14 @@
                                 <!--                                    </VueMultiselect>-->
 
                                 <!--                                </div>-->
-                                <input id="search_birth" ref="birth"
-                                       v-model="search.birth"
-                                       class="datepicker rounded-none rounded-l-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block min-w-0  text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                       placeholder="تاریخ تولد" type="text" @click="keepingDate">
+                                <date-picker editable class="rounded-none rounded-l-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block min-w-0  text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                             placeholder="تاریخ تولد ..." v-model="search.birth" format="YYYY/MM/DD" display-format="jYYYY/jMM/jDD" autofocus />
 
 
-                                <input id="search_created_at" ref="created_at"
-                                       v-model="search.created_at"
-                                       class="datepicker rounded-none rounded-l-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block min-w-0  text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                       placeholder="تاریخ عضویت" type="text" @click="keepingDate">
+                                <date-picker editable class="rounded-none rounded-l-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block min-w-0  text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                             placeholder="ابتدای بازه تاریخ عضویت..." v-model="search.created_at" format="YYYY/MM/DD" display-format="jYYYY/jMM/jDD" autofocus />
+
+
                             </div>
                         </div>
                         <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
@@ -339,7 +338,6 @@ export default {
     watch: {
         search: {
             handler(val) {
-                this.keepingDate();
                 // this.getRolesId();
                 Inertia.reload({
                     replace: true,
@@ -380,132 +378,19 @@ export default {
 
 
             });
-            console.log(i);
+            //console.log(i);
 
         },
-        keepingDate() {
-            this.search.birth = this.$refs.birth.value;
-            this.search.created_at = this.$refs.created_at.value;
-        },
+
         destroyUser(id) {
             this.$inertia.delete(route("users.destroy", id));
 
         },
-        // reset(){
-        //     this.user
-        // }
-        datepicker() {
-            console.log(this.search);
-            console.log('before doucment ready');
-
-            const pd = $(".datepicker").pDatepicker({
-                "inline": false,
-                "format": "L",
-                "viewMode": "year",
-                "initialValue": false,
-                "minDate": null,
-                "maxDate": 1660459870590,
-                "autoClose": true,
-                "position": "auto",
-                "altFormat": "l",
-                "altField": "#altfieldExample",
-                "onlyTimePicker": false,
-                "onlySelectOnDate": true,
-                "calendarType": "persian",
-                "inputDelay": 800,
-                "observer": true,
-                "calendar": {
-                    "persian": {
-                        "locale": "fa",
-                        "showHint": true,
-                        "leapYearMode": "algorithmic"
-                    },
-                    "gregorian": {
-                        "locale": "en",
-                        "showHint": false
-                    }
-                },
-                "navigator": {
-                    "enabled": true,
-                    "scroll": {
-                        "enabled": true
-                    },
-                    "text": {
-                        "btnNextText": "<",
-                        "btnPrevText": ">"
-                    }
-                },
-                "toolbox": {
-                    "enabled": true,
-                    "calendarSwitch": {
-                        "enabled": false,
-                        "format": "MMMM"
-                    },
-                    "todayButton": {
-                        "enabled": false,
-                        "text": {
-                            "fa": "امروز",
-                            "en": "Today"
-                        }
-                    },
-                    "submitButton": {
-                        "enabled": true,
-                        "text": {
-                            "fa": "تایید",
-                            "en": "Submit"
-                        }
-                    },
-                    "text": {
-                        "btnToday": "امروز"
-                    }
-                },
-                "timePicker": {
-                    "enabled": false,
-                    "step": 1,
-                    "hour": {
-                        "enabled": false,
-                        "step": null
-                    },
-                    "minute": {
-                        "enabled": false,
-                        "step": null
-                    },
-                    "second": {
-                        "enabled": false,
-                        "step": null
-                    },
-                    "meridian": {
-                        "enabled": false
-                    }
-                },
-                "dayPicker": {
-                    "enabled": true,
-                    "titleFormat": "YYYY MMMM"
-                },
-                "monthPicker": {
-                    "enabled": true,
-                    "titleFormat": "YYYY"
-                },
-                "yearPicker": {
-                    "enabled": true,
-                    "titleFormat": "YYYY"
-                },
-                "responsive": true
-            });
-            console.log(this.search);
-
-            this.myDateObj = pd;
 
 
-        }
 
     },
     mounted() {
-
-
-        console.log('hi');
-        this.datepicker();
-        this.keepingDate();
 
     },
 };

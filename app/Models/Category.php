@@ -36,6 +36,7 @@ class Category extends Model
     }
     public function scopeCreatedat($query,$created_at)
     {
+
         if (!is_null($created_at))
             return $query->whereDate('created_at', '>=', $created_at->toDateString());
     }

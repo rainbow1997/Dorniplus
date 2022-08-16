@@ -33,5 +33,6 @@
         {{ $slot }}
     </main>
 </div>
+<script src="js/flowbite.js" async></script>
 </body>
 </html>

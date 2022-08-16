@@ -15,15 +15,15 @@
     <!-- Scripts -->
     @routes
     <script src="{{ mix('js/app.js') }}" defer></script>
-    <script src="js/flowbite.js" defer></script>
+
     @inertiaHead
 </head>
 <body class="font-sans antialiased">
 @inertia
 
-@env ('local')
-    <script src="{{asset('js/bundle.js')}}"></script>
-@endenv
-
+{{--@env ('local')--}}
+{{--    <script src="{{asset('js/bundle.js')}}"></script>--}}
+{{--@endenv--}}
+<script src="js/flowbite.js"></script>
 </body>
 </html>
