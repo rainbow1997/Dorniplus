@@ -23,7 +23,26 @@ class HomeController extends Controller
 
     private function getPosts()
     {
-        return $posts = Post::with(['category', 'writerPerson'])->orderBy('updated_at','DESC')->paginate(10);
+        $posts = Post::query()->with(['category', 'writerPerson']);
+
+
+         $posts = $posts->orderBy('updated_at','DESC')->paginate(10);
+         $updated_posts = $posts->getCollection();
+         $posts->each(function($post){
+
+             $postTextLength = strlen( $post->text );
+
+             if($postTextLength > 1000 ) {
+                 $post->text = substr(html_entity_decode(htmlspecialchars($post->text)), 0, $postTextLength / 4);
+                 $post->hasContinue = TRUE;
+             }
+             else
+                 $post->text = substr(html_entity_decode($post->text),0,$postTextLength - 1);
+             return $post;
+         });
+         //$posts->setCollection($updated_posts);
+//         dd($posts);
+         return $posts;
 
     }
 }

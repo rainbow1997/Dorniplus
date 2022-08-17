@@ -1,13 +1,20 @@
 <script setup>
 import BreezeApplicationLogo from '@/Components/ApplicationLogo.vue';
 import {Link} from '@inertiajs/inertia-vue3';
+import Navbar from '@/Layouts/Navbar'
 
 defineProps({
-    smWidthClass: {type: String, default: 'max-w-md'}
+    smWidthClass: {type: String, default: 'max-w-md'},
+    Navbar,
+
 });
 </script>
 
 <template>
+    <header>
+        <navbar></navbar>
+
+    </header>
     <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 rtl text-right">
         <div>
             <Link href="/">
