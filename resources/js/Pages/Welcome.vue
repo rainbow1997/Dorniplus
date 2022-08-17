@@ -30,13 +30,13 @@ defineProps({
                 class="bg-white  p-2 md:w-10/12 flex flex-row   box-header-color gap-y-2 mt-8  dark:bg-gray-800 overflow-hidden gap-x-3 shadow text-right">
                 <div v-for="post in posts.data" class="w-fit space-y-10 bg-white">
                     <article class="w-full items-center flex flex-col justify-end gap-x-4 bg-slate-50">
-                        <Link  :href="route('posts.show',post.id)" class="w-full opacity-80 hover:opacity-100">
+                        <Link  :href="route('posts.show',{post: post.id,title: post.title})" class="w-full opacity-80 hover:opacity-100">
                             <img :alt="post.title" :src="'/storage/'+post.post_image"
                                  class="w-full h-1/3 object-cover rounded">
                         </Link>
 
                         <div class="flex flex-1 justify-evenly h-full flex-col gap-3 ps-4 pt-2 px-2">
-                            <Link :href="route('posts.show',post.id)"
+                            <Link :href="route('posts.show',{post: post.id,title: post.title})"
                                class="text-xs text-black md:text-base font-medium box-text-color-darker paragraph-ellipsis-2 leading-relaxed">
                                 <h1 class="text-sm md:text-2xl text-black md:text-base font-medium box-text-color-darker paragraph-ellipsis-2 leading-relaxed">
                                     {{ post.title }}</h1>
@@ -54,7 +54,7 @@ defineProps({
                                 class="leading-loose m-1 mt-1 blog-card-paragraph text-sm paragraph-ellipsis-4 sm:paragraph-ellipsis-2 md:paragraph-ellipsis-4 leading-loose text-gray-500">
                                 <span v-html="post.text"></span>
                                 <button :v-show="post.hasContinue" type="button" class="mt-5 text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-3 py-1.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">
-                                    <Link :href="route('posts.show',post.id)">
+                                    <Link :href="route('posts.show',{post: post.id,title: post.title})">
                                         ادامه مطلب
                                     </Link>
 

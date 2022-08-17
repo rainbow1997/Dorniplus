@@ -112,7 +112,7 @@ Route::get('/information', function () {
     return phpinfo();
     //return $provinces;
 });
-Route::get('/post/{post}', [PostController::class, 'show'])
+Route::get('/post/{post}/{title}', [PostController::class, 'show'])
     ->name('posts.show');
 Route::get('/test-mail', function () {
     Notification::route('mail', 'personal@mostafajamali.ir')->notify(new RegisterNotification(Auth::user()));

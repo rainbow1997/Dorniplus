@@ -27705,7 +27705,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     title: "Welcome"
   }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("header", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Navbar"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("main", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("section", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" For testing "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.posts.data, function (post) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("article", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Link"], {
-      href: _ctx.route('posts.show', post.id),
+      href: _ctx.route('posts.show', {
+        post: post.id,
+        title: post.title
+      }),
       "class": "w-full opacity-80 hover:opacity-100"
     }, {
       "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -27723,7 +27726,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }, 1032
     /* PROPS, DYNAMIC_SLOTS */
     , ["href"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Link"], {
-      href: _ctx.route('posts.show', post.id),
+      href: _ctx.route('posts.show', {
+        post: post.id,
+        title: post.title
+      }),
       "class": "text-xs text-black md:text-base font-medium box-text-color-darker paragraph-ellipsis-2 leading-relaxed"
     }, {
       "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -27751,7 +27757,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       type: "button",
       "class": "mt-5 text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-3 py-1.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
     }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Link"], {
-      href: _ctx.route('posts.show', post.id)
+      href: _ctx.route('posts.show', {
+        post: post.id,
+        title: post.title
+      })
     }, {
       "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
         return [_hoisted_17];
