@@ -9,7 +9,8 @@ defineProps({
     laravelVersion: String,
     phpVersion: String,
     posts: {},
-    Pagination
+    Pagination,
+    Navbar
 })
 </script>
 

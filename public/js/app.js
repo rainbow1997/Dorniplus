@@ -23362,7 +23362,8 @@ __webpack_require__.r(__webpack_exports__);
     laravelVersion: String,
     phpVersion: String,
     posts: {},
-    Pagination: _Layouts_pagination__WEBPACK_IMPORTED_MODULE_1__["default"]
+    Pagination: _Layouts_pagination__WEBPACK_IMPORTED_MODULE_1__["default"],
+    Navbar: _Layouts_Navbar__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
   setup: function setup(__props, _ref) {
     var expose = _ref.expose;
@@ -24216,7 +24217,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     _: 1
     /* STABLE */
 
-  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(this.$page.props.appName), 1
+  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$page.props.appName), 1
   /* TEXT */
   )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["NavLink"], {
     href: "/register",
