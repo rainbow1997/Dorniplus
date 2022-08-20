@@ -180,6 +180,7 @@ class RegisteredUserController extends Controller
         }
 
         $user->update($validData->toArray());
+
         return redirect()->route('dashboard')
             ->with('message', 'پروفایل با موفقیت تغییر کرد');
     }
@@ -190,7 +191,9 @@ class RegisteredUserController extends Controller
 
         $self = $this;
         $tenYearsAgo = Carbon::now()->subYear(10)->format('Y/m/d');
-        $request['birth'] = convertDateForDB($request['birth']);
+
+        $request['birth'] = convertDateForDBFromJalalian($request['birth']);
+
         return $request->validate([
             'fname' => 'required|string|max:455',
             'lname' => 'required|string|max:455',
@@ -204,10 +207,9 @@ class RegisteredUserController extends Controller
             'birth' => 'required|date|before:' . $tenYearsAgo,
             'military_status' => 'nullable|required_if:gender,male|
              in:permanent_exemption,temporary_exemption,done',
-            'post_image' => 'nullable|mimes:png,jpg,jpeg|max:20000',
+            'avatar' => 'nullable|mimes:png,jpg,jpeg|max:2048',
             'province_id' => 'nullable|numeric|exists:provinces,id',
             'city_id' => 'nullable|numeric|exists:cities,id',
-            'avatar' => 'nullable',
         ]);
 
     }

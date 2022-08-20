@@ -58,6 +58,7 @@ class User extends Authenticatable implements MustVerifyEmail, \Illuminate\Contr
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'birth' => 'date',
         'gender' => Gender::class,
         'military_status' => MilitaryStatus::class
 

@@ -4,8 +4,6 @@ import BreezeGuestLayout from '@/Layouts/Guest.vue';
 import BreezeInput from '@/Components/Input.vue';
 import BreezeLabel from '@/Components/Label.vue';
 import BreezeValidationErrors from '@/Components/ValidationErrors.vue';
-import './Auth/persian-datepicker.js'; // in another time,use modules.env not this statically manner.
-import './Auth/persian-datepicker.min.css'
 import {Head, Link, useForm} from '@inertiajs/inertia-vue3'
 import {reactive} from 'vue'
 import DatePicker from 'vue3-persian-datetime-picker'
@@ -35,6 +33,7 @@ export default {
         //let datepickerValue;
         const needs = reactive({
             ourProvince: {},
+            url:''
         });
 
         const form = useForm('EditProfile', {
@@ -46,7 +45,7 @@ export default {
             birth: props.user.birth,
             gender: props.user.gender,
             military_status: props.user.military_status,
-            avatar: props.user.avatar,
+            avatar: null,
             province_id: props.user.province_id,
             city_id: props.user.city_id,
         });
@@ -83,7 +82,10 @@ export default {
             if (event.target.value != 'male')
                 form.military_status = null;
         };
-
+        let previewImage = (e) => {
+            const file = e.target.files[0];
+            needs.url = URL.createObjectURL(file);
+        };
         let submit = () => {
 
             form.post(`/storeProfile/${props.user.id}`, {
@@ -91,7 +93,7 @@ export default {
                 preserveState: true
             });
         };
-        return {form, provinceChange, genderChange, submit, needs}
+        return {form, provinceChange, genderChange, previewImage,submit, needs}
     },
 };
 
@@ -132,8 +134,10 @@ export default {
             </div>
             <div class="mt-2">
                 <BreezeLabel for="birth" value="تاریخ تولد"/>
-                <date-picker class="mt-1 block w-full  bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                             v-model="form.birth"  input-format="jYYYY/jMM/jDD" format="YYYY/MM/DD" display-format="jYYYY/jMM/jDD" autofocus />
+
+                <date-picker  class="rounded-none rounded-l-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block min-w-0  text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                             placeholder="تاریخ تولد" v-model="form.birth" editable  format="jYYYY/jMM/jDD" display-format="jYYYY/jMM/jDD"  autofocus />
+
 
             </div>
             <div class="mt-2">
@@ -186,7 +190,7 @@ export default {
                     عکس</label>
                 <input id="avatar" aria-describedby="avatar_help"
                        class="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                       type="file" @input="form.avatar = $event.target.files[0]">
+                       type="file" @input="form.avatar = $event.target.files[0]" @change="previewImage">
                 <p id="avatar_help" class="mt-1 text-sm text-gray-500 dark:text-gray-300">PNG, JPG, JPEG or GIF (MAX
                     :200KB).</p>
 
@@ -194,8 +198,10 @@ export default {
                     {{ form.progress.percentage }}%
                 </progress>
             </div>
-            <div v-if="form.avatar == user.avatar" class="flex flex-row mt-2">
-                <img :alt="user.username" :src="'storage/'+form.avatar" class="max-w-full h-auto rounded-lg">
+            <img v-if="needs.url" :src="needs.url" class="max-w-full h-auto rounded-lg">
+
+            <div v-if="form.avatar == null && user.avatar != null" class="flex flex-row mt-2">
+                <img :alt="user.username" :src="'storage/'+user.avatar" class="max-w-full h-auto rounded-lg">
             </div>
             <div class="flex flex-col mt-4 justify-center">
                 <BreezeLabel for="province" value="استان"/>
