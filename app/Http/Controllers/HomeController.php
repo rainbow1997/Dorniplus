@@ -27,20 +27,20 @@ class HomeController extends Controller
 
 
          $posts = $posts->orderBy('updated_at','DESC')->paginate(10);
-         $updated_posts = $posts->getCollection();
-         $posts->each(function($post){
-             $post->hasContinue = FALSE;
-             $postTextLength = strlen( $post->text );
-             $post->postLength = $postTextLength;
-             if($postTextLength > 1000 ) {
-
-                 $post->text = substr(html_entity_decode(htmlspecialchars($post->text)), 0, $postTextLength / 10);
-                 $post->hasContinue = TRUE;
-             }
-             else
-                 $post->text = substr(html_entity_decode($post->text),0,$postTextLength - 1);
-             return $post;
-         });
+//         $updated_posts = $posts->getCollection();
+//         $posts->each(function($post){
+//             $post->hasContinue = FALSE;
+//             $postTextLength = strlen( $post->text );
+//             $post->postLength = $postTextLength;
+//             if($postTextLength > 1000 ) {
+//
+//                 $post->text = substr(html_entity_decode(htmlspecialchars($post->text)), 0, $postTextLength / 10);
+//                 $post->hasContinue = TRUE;
+//             }
+//             else
+//                 $post->text = substr(html_entity_decode($post->text),0,$postTextLength - 1);
+//             return $post;
+//         });
          //$posts->setCollection($updated_posts);
 //         dd($posts);
          return $posts;

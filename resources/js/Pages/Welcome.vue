@@ -55,10 +55,10 @@ defineProps({
 
                             <div
                                 class=" flex flex-col  leading-loose m-1 mt-1 blog-card-paragraph text-sm paragraph-ellipsis-4 sm:paragraph-ellipsis-2 md:paragraph-ellipsis-4 leading-loose text-gray-500">
-                                <span v-html="post.text"></span>
+                                <span v-html="post.summary"></span>
 
                             </div>
-                            <button :v-show="post.hasContinue" type="button" class=" flex my-3   w-1/4 text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-3 py-1.5 mr-2  dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">
+                            <button type="button" class=" flex my-3   w-1/4 text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-3 py-1.5 mr-2  dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">
                                 <Link :href="route('posts.show',{post: post.id,title: post.title})">
                                     ادامه مطلب
                                 </Link>
