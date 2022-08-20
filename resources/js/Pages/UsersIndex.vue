@@ -21,7 +21,7 @@
 
                                 <button
                                     class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                                    data-modal-toggle="reporting-modal" type="button">
+                                    data-modal-toggle="reporting-modal" type="button" @mouseenter="refreshPage">
                                     گزارش گیری
                                 </button>
 
@@ -29,6 +29,7 @@
                                 <!-- Main modal -->
                                 <div ref="reporting-modal" id="reporting-modal" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full"
                                      tabindex="-1">
+
                                     <div class="relative p-4 w-full max-w-md h-full md:h-auto">
                                         <!-- Modal content -->
                                         <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
@@ -279,11 +280,11 @@ import BreezeInput from '@/Components/Input.vue'
 import BreezeCheckbox from '@/Components/Checkbox.vue'
 import BreezeLabel from '@/Components/Label.vue'
 import BreezeValidationErrors from '@/Components/ValidationErrors.vue'
-import './Auth/persian-datepicker.js';// in another time,use modules.env not this statically manner.
 import {Head, Link, useForm} from '@inertiajs/inertia-vue3'
 import Pagination from '@/Layouts/pagination'
 // import VueMultiselect from 'vue-multiselect'
 import DatePicker from 'vue3-persian-datetime-picker'
+import 'flowbite';
 export default {
     components: {
         Head,
@@ -348,6 +349,13 @@ export default {
         }
     },
     methods: {
+        refreshPage(e)
+        {
+           const script = document.createElement('script');
+           script.setAttribute('src','/js/flowbite.js');
+           script.setAttribute('async','');
+           document.head.appendChild(script);
+        },
         // getRolesId()
         // {
         //     let i = this.search.roles.filter(function (role) {

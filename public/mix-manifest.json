@@ -1,5 +1,6 @@
 {
     "/js/app.js": "/js/app.js",
+    "/js/flowbite.js": "/js/flowbite.js",
     "/css/app.css": "/css/app.css",
     "/js/tinymce/bower.json": "/js/tinymce/bower.json",
     "/js/tinymce/CHANGELOG.md": "/js/tinymce/CHANGELOG.md",
