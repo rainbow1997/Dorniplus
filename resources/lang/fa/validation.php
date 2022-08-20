@@ -201,6 +201,11 @@ return [
         "male" => 'مذکر',
         'start_date' => 'تاریخ شروع',
         'expire_datetime' => 'تاریخ انقضا',
-        'birth' => 'تاریخ تولد'
+        'birth' => 'تاریخ تولد',
+        "summary" => "خلاصه متن",
+          "text" => "متن",
+          "post_image"=> "تصویر پست",
+          "category_id" => "موضوع متن"
+
     ],
 ];

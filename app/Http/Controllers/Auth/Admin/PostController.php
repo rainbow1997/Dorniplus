@@ -6,12 +6,15 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Post;
 use Auth;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Image;
 use Inertia\Inertia;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Request as RequestFacade;
+
 class PostController extends Controller
 {
     //
@@ -74,7 +77,9 @@ class PostController extends Controller
 
     public function store(Request $request)
     {
+
         $validData = $this->validateCreatedPost($request);
+
         if ($request->hasFile('post_image'))
             $validData->put('post_image', $this->uploadPostImage($request));
         $validData->put('estimated_time', $this->estimatedTimeCaculating($validData['text']));
@@ -94,6 +99,7 @@ class PostController extends Controller
         return collect($request->validate([
             'title' => ['required', 'string'],
             'text' => ['required', 'string'],
+            'summary' => ['required','string'],
             'post_image' => ['required', 'image', 'mimes:jpg,jpeg,png', 'max:2048'],
 
             'category_id' => ['required', 'numeric', 'exists:categories,id'],
@@ -141,54 +147,60 @@ class PostController extends Controller
 
     public function create()
     {
-        $categories = Category::pluck('title', 'id')->all();
-
-        return view('auth.post_create', ['categories' => $categories]);
+        $categories = Category::all();
+        return Inertia::render('Post/Create',['categories' => $categories]);
+//        return view('auth.post_create', ['categories' => $categories]);
     }
 
     public function edit(Post $post)
     {
-        $categories = Category::pluck('title', 'id')->all();
 
-        return view('auth.posts_edit', ['post' => $post, 'categories' => $categories]);
+        $categories = Category::all();
+
+        return Inertia::render('Post/Edit', ['post' => $post, 'categories' => $categories]);
     }
 
     public function update(Post $post, Request $request)
     {
-        //  dd($post->post_image);
-        $validated = ($this->validateEditedPost($request))->toArray();
-        if ($request->hasFile('post_image')) {
-            removeFiles($post->post_image);
-            $validated['post_image'] = $this->uploadPostImage($request);
-            $post->post_image = $validated['post_image'];
-        }
+
+        $validated = $this->validateEditedPost($request,$post);
+            if ($request->hasFile('post_image')) {
+                removeFiles($post->post_image);
+                $validated['post_image'] = $this->uploadPostImage($request);
+                $post->post_image = $validated['post_image'];
+            }
 
 
-        $category = Category::find($validated['category_id']);
-        $category->posts()->save($post);
-        $post->title = $validated['title'];
-        $post->text = $validated['text'];
-        $post->estimated_time = $this->estimatedTimeCaculating($validated['text']);
+            $post->category_id = $validated['category_id'];
+            $post->title = $validated['title'];
+            $post->text = $validated['text'];
+            $post->summary = $validated['summary'];
+            $post->estimated_time = $this->estimatedTimeCaculating($validated['text']);
 
-        $post->save();
+            $post->save();
 
-        activity()->performedOn($post)
-            ->causedBy(Auth::user())
-            ->log('the post has been edited with these information');
+            activity()->performedOn($post)
+                ->causedBy(Auth::user())
+                ->log('the post has been edited with these information');
 
-        return redirect()->route('posts.index')
-            ->with('message', 'پست ویرایش شد');
+            return redirect()->route('posts.index')
+                ->with('message', 'پست ویرایش شد');
+
+
     }
 
-    public function validateEditedPost(Request $request)
+    public function validateEditedPost(Request $request,Post $post)
     {
+
         return collect($request->validate([
             'title' => ['required', 'string'],
             'text' => ['required', 'string'],
-            'post_image' => ['nullable', 'image', 'mimes:jpg,jpeg,png', 'max:2048'],
-
+            'post_image' => ['nullable','image','mimes:jpg,jpeg,png','max:2048'],
+            'summary' => ['required','string'],
             'category_id' => ['required', 'numeric', 'exists:categories,id'],
+
         ]));
+
 
 
     }

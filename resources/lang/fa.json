@@ -134,5 +134,9 @@
     "The :attribute must be at least :length characters and contain at least one special character.": "فیلد :attribute باید حداقل :length کاراکتر و شامل یک کاراکتر مخصوص باشد.",
     "The :attribute must be at least :length characters and contain at least one uppercase character and one special character.": "فیلد :attribute باید حداقل :length کاراکتر و شامل یک کاراکتر مخصوص و یک حرف بزرگ باشد.",
     "The :attribute must be at least :length characters and contain at least one uppercase character, one number, and one special character.": "فیلد :attribute باید حداقل :length کاراکتر، یک کاراکتر مخصوص، یک حرف بزرگ و یک عدد باشد.",
-    "Regards": "ارادتمند،"
+    "Regards": "ارادتمند،",
+    "summary" : "خلاصه متن",
+    "text" : "متن",
+    "post_image": "تصویر پست",
+    "category id" : "موضوع متن"
 }

@@ -10,7 +10,7 @@ class Post extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'text', 'post_image', 'estimated_time', 'category_id', 'user_id','updated_at'];
+    protected $fillable = ['title', 'summary','text', 'post_image', 'estimated_time', 'category_id', 'user_id','updated_at'];
 
     public function category()
     {

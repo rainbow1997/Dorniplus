@@ -80,11 +80,11 @@ Route::post('/city/storeCity/{province}', [RegionController::class, 'storeCity']
 Route::delete('/city/destroy/{city}', [RegionController::class, 'destroyCity'])
     ->middleware(['auth', 'verified'])->name('regions.city.destroy');
 
-Route::get('/posts/edit/{post}', [PostController::class, 'edit'])
-    ->middleware(['auth', 'verified'])->name('posts.edit');
-
-Route::put('/posts/update/{post}', [PostController::class, 'update'])
-    ->middleware(['auth', 'verified'])->name('posts.update');
+//Route::get('/posts/edit/{post}', [PostController::class, 'edit'])
+//    ->middleware(['auth', 'verified'])->name('posts.edit');  //////We have resource controller
+//
+//Route::post('/posts/update/{post}', [PostController::class, 'update'])
+//    ->middleware(['auth', 'verified'])->name('posts.update');
 
 Route::group(['middleware' => ['auth', 'verified', 'role:Admin']], function () {
     Route::resource('roles', RoleController::class);

@@ -54,7 +54,7 @@ defineProps({
                             </div>
 
                             <div
-                                class="h-48 flex flex-col  leading-loose m-1 mt-1 blog-card-paragraph text-sm paragraph-ellipsis-4 sm:paragraph-ellipsis-2 md:paragraph-ellipsis-4 leading-loose text-gray-500">
+                                class=" flex flex-col  leading-loose m-1 mt-1 blog-card-paragraph text-sm paragraph-ellipsis-4 sm:paragraph-ellipsis-2 md:paragraph-ellipsis-4 leading-loose text-gray-500">
                                 <span v-html="post.text"></span>
 
                             </div>
