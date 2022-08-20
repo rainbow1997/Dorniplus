@@ -18,6 +18,7 @@ mix.js('resources/js/app.js', 'public/js')
         '@': 'resources/js',
     });
 mix.js('node_modules/flowbite/dist/flowbite.js','public/js');
+
 mix.copyDirectory('vendor/tinymce/tinymce', 'public/js/tinymce');
 if (mix.inProduction()) {
     mix.version();

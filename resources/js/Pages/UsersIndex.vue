@@ -280,12 +280,10 @@ import BreezeCheckbox from '@/Components/Checkbox.vue'
 import BreezeLabel from '@/Components/Label.vue'
 import BreezeValidationErrors from '@/Components/ValidationErrors.vue'
 import './Auth/persian-datepicker.js';// in another time,use modules.env not this statically manner.
-import './Auth/persian-datepicker.min.css';
 import {Head, Link, useForm} from '@inertiajs/inertia-vue3'
 import Pagination from '@/Layouts/pagination'
 // import VueMultiselect from 'vue-multiselect'
 import DatePicker from 'vue3-persian-datetime-picker'
-
 export default {
     components: {
         Head,
