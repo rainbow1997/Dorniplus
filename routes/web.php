@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\Admin\LogController;
 use App\Http\Controllers\Auth\Admin\PostController;
 use App\Http\Controllers\Auth\Admin\RegionController;
 use App\Http\Controllers\Auth\Admin\RoleController;
+use App\Http\Controllers\Auth\Admin\PermissionController;
 use App\Http\Controllers\Auth\Admin\UserController;
 use App\Http\Controllers\Auth\Admin\CategoryController;
 use App\Http\Controllers\Auth\Admin\SiteAdminController;
@@ -89,9 +90,22 @@ Route::delete('/city/destroy/{city}', [RegionController::class, 'destroyCity'])
 
 Route::group(['middleware' => ['auth', 'verified', 'role:Admin']], function () {
     Route::resource('roles', RoleController::class);
+
+    Route::resource('permissions',PermissionController::class);
+
+    Route::get('/addRoleToPermission/{permission}',[PermissionController::class,'addRole'])
+        ->name('addRoleToPermission');
+    Route::put('/setRoleToPermission/{permission}',[PermissionController::class,'setRoleToPermission'])
+        ->name('setRoleToPermission');
+
+    Route::delete('/destroyRoleFromPermission/role/{role}/permission/{permission}',[PermissionController::class,'destroyRoleFromPermission'])
+        ->name('destroyRoleFromPermission');
+
+
     Route::resource('users', UserController::class);
     Route::resource('posts', PostController::class);
     Route::resource('site_admin',SiteAdminController::class);
+
     Route::get('/reporting/{method}', [UserController::class, 'displayUsersReport'])->name('reporting');
     Route::get('/downloading/{tempFile}',[UserController::class,'downloading'])->name('downloading');
     Route::post('getReport',[UserController::class,'getReport'])->name('users.report');

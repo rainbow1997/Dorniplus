@@ -35,7 +35,10 @@ const showingNavigationDropdown = ref(false);
                                     مناطق
                                 </BreezeNavLink>
                                 <BreezeNavLink :href="route('roles.index')">
-                                    دسترسی و نقش ها
+                                    نقش های کاربری
+                                </BreezeNavLink>
+                                <BreezeNavLink class="" :href="route('permissions.index')">
+                                    دسترسی و مجوز ها
                                 </BreezeNavLink>
                                 <BreezeNavLink :href="route('site_admin.index')">
                                     مدیران سایت
