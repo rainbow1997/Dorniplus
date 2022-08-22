@@ -65,8 +65,8 @@ export default {
             let ourCity = tempCities[0];
 
         }
-
-        provinceSetter();
+        if(form.province_id != null)
+            provinceSetter();
         const provinceChange = (event) => {
             console.log('hi -> province is :');
             let t = props.regions.filter(function (province) {
