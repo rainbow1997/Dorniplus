@@ -119,13 +119,7 @@ class User extends Authenticatable implements MustVerifyEmail, \Illuminate\Contr
         });
     }
 
-    public function scopeRole(Builder $query, $roles, $guard = null): Builder
-    {
-        return $query->whereHas('roles',function($query) use($roles){
 
-            return $query->whereIn('id','=',$roles);
-        });//it's a good way to make a scope with an array of values
-    }
 
     public function scopeBirth($query,$birth)
     {

@@ -248,10 +248,10 @@
                                     </td>
 
                                     <td v-if="isFromSiteAdminAdd">
-                                      <button   class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                                                @click="$emit('setUser',user.id)">
-                                          انتخاب کاربر
-                                      </button>
+                                        <button   class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                                                  @click="$emit('setUser',user.id)">
+                                            انتخاب کاربر
+                                        </button>
 
                                     </td>
                                     <td class="py-4 flex flex-row" v-if="isFromSiteAdminAdd!=true">
@@ -376,10 +376,10 @@ export default {
         },
         refreshPage(e)
         {
-           const script = document.createElement('script');
-           script.setAttribute('src','/js/flowbite.js');
-           script.setAttribute('async','');
-           document.head.appendChild(script);
+            const script = document.createElement('script');
+            script.setAttribute('src','/js/flowbite.js');
+            script.setAttribute('async','');
+            document.head.appendChild(script);
         },
         // getRolesId()
         // {
@@ -399,7 +399,7 @@ export default {
 
         submitReportGenerator() {
 
-              this.report.post(route('users.report'), {
+            this.report.post(route('users.report'), {
                 preserveState: true,
                 preserveScroll: true,
                 onFinish: () => {

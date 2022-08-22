@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\Admin\RegionController;
 use App\Http\Controllers\Auth\Admin\RoleController;
 use App\Http\Controllers\Auth\Admin\UserController;
 use App\Http\Controllers\Auth\Admin\CategoryController;
+use App\Http\Controllers\Auth\Admin\SiteAdminController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\HomeController;
@@ -90,6 +91,7 @@ Route::group(['middleware' => ['auth', 'verified', 'role:Admin']], function () {
     Route::resource('roles', RoleController::class);
     Route::resource('users', UserController::class);
     Route::resource('posts', PostController::class);
+    Route::resource('site_admin',SiteAdminController::class);
     Route::get('/reporting/{method}', [UserController::class, 'displayUsersReport'])->name('reporting');
     Route::get('/downloading/{tempFile}',[UserController::class,'downloading'])->name('downloading');
     Route::post('getReport',[UserController::class,'getReport'])->name('users.report');

@@ -18,7 +18,7 @@ class CreateAdminUserSeeder extends Seeder
     {
         $user = User::create([
             'fname' => 'Dorniplus',
-            'lname' => 'Admin',
+            'lname' => 'SiteAdmin',
             'email' => 'admin@dorniplus.smj',
             'password' => bcrypt('123456'),
             'email_verified_at' => now(),
@@ -33,7 +33,7 @@ class CreateAdminUserSeeder extends Seeder
 
         ]);
 
-        $role = Role::firstOrCreate(['name' => 'Admin']);
+        $role = Role::firstOrCreate(['name' => 'SiteAdmin']);
 
         $permissions = Permission::pluck('id', 'id')->all();
 
