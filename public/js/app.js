@@ -23649,7 +23649,7 @@ __webpack_require__.r(__webpack_exports__);
       var ourCity = tempCities[0];
     };
 
-    provinceSetter();
+    if (form.province_id != null) provinceSetter();
 
     var provinceChange = function provinceChange(event) {
       console.log('hi -> province is :');

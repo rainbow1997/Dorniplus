@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
+use App\Models\Province;
 
 class CreateAdminUserSeeder extends Seeder
 {
@@ -26,14 +27,14 @@ class CreateAdminUserSeeder extends Seeder
             'phone' => 123456789,
             'birth' => now(),
             'gender' => 'male',
-            'province_id' => 1,
-            'city_id' => 1,
+            'province_id' => Province::first()->id,
+            'city_id' => Province::first()->cities()->first()->id,
             'username' => 'admin',
             'is_email_verified' => 1
 
         ]);
 
-        $role = Role::firstOrCreate(['name' => 'SiteAdmin']);
+        $role = Role::firstOrCreate(['name' => 'Super Admin']);
 
         $permissions = Permission::pluck('id', 'id')->all();
 

@@ -19,7 +19,12 @@ class PostController extends Controller
 {
     //
     protected array $searchParams = ['title','category_title','writer_name','start_date','end_date'];
-
+    public function __construct(){
+        $this->middleware('permission:post-list|post-create|post-edit|post-delete', ['only' => ['index', 'store']]);
+        $this->middleware('permission:post-create', ['only' => ['create', 'store']]);
+        $this->middleware('permission:post-edit', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:post-delete', ['only' => ['destroy']]);
+    }
     public function index(Request $request)
     {
 //        $search = RequestFacade::all();//why its work but why $request from Request doesn't work?
@@ -88,7 +93,7 @@ class PostController extends Controller
         $post = Post::create($validData->toArray());
         activity()->performedOn($post)
             ->causedBy(Auth::user())
-            ->log('the post has been created with these information');
+            ->log("پست جدید با نام $post->title ساخته شده است .");
         return redirect()->route('posts.index')
             ->with('message', 'پست جدید با موفقیت افزوده شد.');
 
@@ -179,9 +184,9 @@ class PostController extends Controller
 
             $post->save();
 
-            activity()->performedOn($post)
-                ->causedBy(Auth::user())
-                ->log('the post has been edited with these information');
+        activity()->performedOn($post)
+            ->causedBy(Auth::user())
+            ->log("پست  با نام $post->title ویرایش شده است .");
 
             return redirect()->route('posts.index')
                 ->with('message', 'پست ویرایش شد');
@@ -207,6 +212,9 @@ class PostController extends Controller
 
     public function destroy(Post $post)
     {
+        activity()->performedOn($post)
+            ->causedBy(Auth::user())
+            ->log("پست  با نام $post->title حذف شده است .");
         $post->delete();
 
         return redirect()->route('posts.index')

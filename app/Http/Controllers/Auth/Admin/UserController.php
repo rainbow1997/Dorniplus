@@ -7,7 +7,7 @@ use App\Events\TempFileDownloaded;
 use App\Http\Controllers\Controller;
 use App\Models\TempFile;
 use App\Models\User;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use DB;
 use ExcelReport;
 use Hash;
@@ -20,6 +20,7 @@ use Inertia\Inertia;
 use PdfReport;
 use Spatie\Permission\Models\Role;
 use ZanySoft\Zip\Zip;
+use Illuminate\Database\Eloquent\Builder as DBBuilder;
 
 class UserController extends Controller
 {
@@ -31,6 +32,19 @@ class UserController extends Controller
      */
     protected array $searchParams = ['fullname', 'email', 'province', 'city', 'birth', 'created_at'];
     protected $tempDirectoryPath;
+
+    public function __construct(){
+        $this->middleware('permission:user-list|user-create|user-edit|user-delete', ['only' => ['index', 'store','getReport']]);
+        $this->middleware('permission:user-create', ['only' => ['create', 'store']]);
+        $this->middleware('permission:user-edit', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:user-delete', ['only' => ['destroy']]);
+    }
+    public function excludeSuperAdmin(DBBuilder $users)
+    {
+        return
+            $users->whereNotIn('id',User::select('id')->role('Super Admin')->get()->toArray());
+
+    }
 
     public function index()
     {
@@ -68,6 +82,7 @@ class UserController extends Controller
         }
 
         $users = $users->with(['province', 'city', 'roles']);
+        $users =  $this->excludeSuperAdmin($users);
         $users = $users->orderBy('id', 'DESC')->paginate(5);
 
         return Inertia::render('UsersIndex', ['users' => $users]);
@@ -205,7 +220,7 @@ class UserController extends Controller
         $user->assignRole($request->input('roles'));
         activity()->performedOn($user)
             ->causedBy(Auth::user())
-            ->log('the user has been created with these information');
+            ->log("کاربری جدید با ایمیل $user->email ساخته شده است. ");
         return redirect()->route('users.index')
             ->with('success', 'User created successfully');
     }
@@ -228,6 +243,7 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::with(['city', 'province'])->find($id);
+
         return view('auth.show_user', compact('user'));
     }
 
@@ -276,7 +292,7 @@ class UserController extends Controller
 
         activity()->performedOn($user)
             ->causedBy(Auth::user())
-            ->log('the user has been updated with these information');
+            ->log("کاربر با ایمیل $user->email ویرایش شده است. ");
 
         return redirect()->route('users.index')
             ->with('success', 'کاربر با موفقیت ویرایش گردید.');
@@ -291,10 +307,11 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         $user->roles()->detach();
-        $user->delete();// or $user->syncRoles([]);
         activity()->performedOn($user)
             ->causedBy(Auth::user())
-            ->log('the user has been deleted with these information');
+            ->log("کاربر با ایمیل $user->email  حذف شد. ");
+        $user->delete();// or $user->syncRoles([]);
+
         return redirect()->route('users.index')
             ->with('success', 'حذف کاربر موفقیت آمیز بود.');
     }

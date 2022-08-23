@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Request as RequestFacade;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+
 class CategoryController extends Controller
 {
     /**
@@ -82,8 +84,11 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         //
-        Category::create($this->validateCreation($request));
 
+        $category = Category::create($this->validateCreation($request));
+        activity()->performedOn($category)
+            ->causedBy(Auth::user())
+            ->log("موضوع  با نام $category->title ساخته شده است .");
         return redirect()->route('categories.index')
             ->with('message', 'موضوع مورد نظر با موفقیت افزوده شد.');
     }
@@ -131,7 +136,9 @@ class CategoryController extends Controller
     {
         //
         $category->update($this->validateUpdate($request));
-
+        activity()->performedOn($category)
+            ->causedBy(Auth::user())
+            ->log("موضوع  با نام $category->title ویرایش شده است .");
         return redirect()->route('categories.index')
             ->with('message', 'موضوع مورد نظر با موفقیت ویرایش گردید.');
     }
@@ -145,6 +152,9 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         //
+        activity()->performedOn($category)
+            ->causedBy(Auth::user())
+            ->log("موضوع  با نام $category->title حذف شده است .");
         $category->delete();
         return redirect()->route('categories.index')
             ->with('message', 'موضوع مورد نظر حذف گردید.');

@@ -2,26 +2,31 @@
 
 namespace App\Charts;
 
+use App\Http\Controllers\Controller;
 use App\Models\Province;
+use Illuminate\Support\Collection;
 use Lava;
 
-class UsersChart
+class UsersChart extends Controller
 {
-    protected $provincesTitles;
-    protected $provincesCounts;
+    protected Collection $provincesTitles;
+    protected Collection $provincesCounts;
 
     public function __construct()
     {
-        $this->provincesTitles = collect($this->provincesTitles);
-        $this->provincesCounts = collect($this->provincesCounts);
+        $this->middleware('permission:chart-show', ['only' => ['showChart']]);
         $this->countsOfProvince();
+
 
     }
 
     public function countsOfProvince()
     {
-
+        $this->provincesTitles = collect();
+        $this->provincesCounts = collect();
         foreach (Province::all() as $province) {
+            if($province == null)
+                dd($province);
             $this->provincesTitles->push($province->title);
             $this->provincesCounts->push($province->users()->count());
         }

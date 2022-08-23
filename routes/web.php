@@ -88,7 +88,8 @@ Route::delete('/city/destroy/{city}', [RegionController::class, 'destroyCity'])
 //Route::post('/posts/update/{post}', [PostController::class, 'update'])
 //    ->middleware(['auth', 'verified'])->name('posts.update');
 
-Route::group(['middleware' => ['auth', 'verified', 'role:Admin']], function () {
+Route::group(['middleware' => ['role:Super Admin']],function(){
+
     Route::resource('roles', RoleController::class);
 
     Route::resource('permissions',PermissionController::class);
@@ -100,11 +101,15 @@ Route::group(['middleware' => ['auth', 'verified', 'role:Admin']], function () {
 
     Route::delete('/destroyRoleFromPermission/role/{role}/permission/{permission}',[PermissionController::class,'destroyRoleFromPermission'])
         ->name('destroyRoleFromPermission');
+    Route::resource('site_admin',SiteAdminController::class);
+
+
+});
+Route::group(['middleware' => ['auth', 'verified']], function () {
 
 
     Route::resource('users', UserController::class);
     Route::resource('posts', PostController::class);
-    Route::resource('site_admin',SiteAdminController::class);
 
     Route::get('/reporting/{method}', [UserController::class, 'displayUsersReport'])->name('reporting');
     Route::get('/downloading/{tempFile}',[UserController::class,'downloading'])->name('downloading');

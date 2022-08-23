@@ -8,7 +8,10 @@ use Spatie\Activitylog\Models\Activity;
 class LogController extends Controller
 {
     //
+    public function __construct(){
 
+        $this->middleware('permission:log-list', ['only' => ['index']]);
+    }
     public function index()
     {
 

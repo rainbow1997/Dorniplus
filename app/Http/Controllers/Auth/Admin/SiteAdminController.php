@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Request as RequestFacade;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\Auth;
+
 use Illuminate\Database\Eloquent\Builder as EloquentBuilder;
 class SiteAdminController extends Controller
 {
@@ -90,6 +92,9 @@ class SiteAdminController extends Controller
 
         $user = User::findOrFail($request['id']);
         $user->assignRole('Admin');
+        activity()->performedOn($user)
+            ->causedBy(Auth::user())
+            ->log("مدیر جدید با ایمیل $user->email افزوده شد. ");
         return redirect()->route('site_admin.index')->with('message','مدیر جدید با موفقیت افزوده گردید');
     }
 
