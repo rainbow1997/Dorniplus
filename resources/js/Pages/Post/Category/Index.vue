@@ -36,17 +36,21 @@
                             </div>
                             <div class="flex  items-center justify-evenly">
 
-                                <input id="category-title" v-model="search.title"
+                                <input id="category-title" v-model="ourData.search.title"
                                        class="rounded-none rounded-l-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block min-w-0  text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                        placeholder="عنوان موضوع..."
                                        type="text">
 
-                                <date-picker editable class="rounded-none rounded-l-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block min-w-0  text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                             placeholder="ابتدای بازه زمانی ایجاد..." v-model="search.created_at" format="YYYY/MM/DD" display-format="jYYYY/jMM/jDD" autofocus />
+                                <date-picker editable
+                                             class="rounded-none rounded-l-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block min-w-0  text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                             placeholder="ابتدای بازه زمانی ایجاد..." v-model="ourData.search.created_at"
+                                             format="YYYY/MM/DD" display-format="jYYYY/jMM/jDD" autofocus/>
 
 
-                                <date-picker   editable class="rounded-none rounded-l-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block min-w-0  text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                             placeholder="ابتدای بازه زمانی بروزرسانی..." v-model="search.updated_at" format="YYYY/MM/DD" display-format="jYYYY/jMM/jDD" autofocus />
+                                <date-picker editable
+                                             class="rounded-none rounded-l-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block min-w-0  text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                             placeholder="ابتدای بازه زمانی بروزرسانی..." v-model="ourData.search.updated_at"
+                                             format="YYYY/MM/DD" display-format="jYYYY/jMM/jDD" autofocus/>
 
 
                             </div>
@@ -68,7 +72,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr v-for="category in categories.data"
+                                <tr v-for="category in props.categories.data"
                                     class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
                                     <td class="py-4 px-6">{{ category.id }}</td>
                                     <td class="py-4 px-6">{{ category.title }}</td>
@@ -90,12 +94,13 @@
                                             class="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
                                             type="button">
 
-                                            <a class="btn btn-primary" @click="destroyUser(category.id)">حذف</a></button>
+                                            <a class="btn btn-primary" @click="destroyUser(category.id)">حذف</a>
+                                        </button>
                                     </td>
                                 </tr>
                                 </tbody>
                             </table>
-                            <pagination :links="categories.links" class="mt-6"/>
+                            <pagination :links="props.categories.links" class="mt-6"/>
 
                             {{ $page.props.flash.message }}
                         </div>
@@ -105,7 +110,7 @@
         </div>
     </BreezeAuthenticatedLayout>
 </template>
-<script>
+<script setup>
 import {Inertia} from '@inertiajs/inertia'
 import BreezeButton from '@/Components/Button.vue';
 import BreezeAuthenticatedLayout from '@/Layouts/Authenticated.vue';
@@ -113,71 +118,37 @@ import BreezeInput from '@/Components/Input.vue';
 import BreezeCheckbox from '@/Components/Checkbox.vue';
 import BreezeLabel from '@/Components/Label.vue';
 import BreezeValidationErrors from '@/Components/ValidationErrors.vue';
-import '../../Auth/persian-datepicker.js';// in another time,use modules.env not this statically manner.
-import '../../Auth/persian-datepicker.min.css';
 import {Head, Link, useForm} from '@inertiajs/inertia-vue3';
 import Pagination from '@/Layouts/pagination'
 import DatePicker from 'vue3-persian-datetime-picker'
+import {ref, watch} from 'vue'
 
-export default {
-    components: {
-        Head,
-        Link,
-        useForm,
-        BreezeButton,
-        BreezeAuthenticatedLayout,
-        BreezeInput,
-        BreezeLabel,
-        BreezeValidationErrors,
-        Pagination,
-        DatePicker
+let ourData = useForm({
+    test: {},
+    search: {
+        title: '',
+        created_at: '',
+        updated_at: ''
     },
-    data() {
-        return {
-            test: {},
-            search: {
-                title: '',
-                created_at: '',
-                updated_at: ''
-            },
 
-            myDateObj: {}
+    myDateObj: {}
 
-        }
-    },
-    props: {
-        categories: Object,//afterwards, delete it and use Inertia attr
-    },
-    watch: {
-        search: {
-            handler(val) {
+});
+const props = defineProps({
+    categories: Object,//afterwards, delete it and use Inertia attr
 
-                // this.search = val;
-                console.log(this.search);
-                Inertia.reload({
-                    replace: true,
-                    preserveState: true,
-                    data: this.search
-                });
-            },
-            deep: true
+});
+watch(ourData.search, (newValue, oldValue) => {
+        Inertia.reload({
+            replace: true,
+            preserveState: true,
+            data: ourData.search
+        });
+    }
+);
+const destroyUser = (id) => {
+    Inertia.delete(route("categories.destroy", id));
 
-        },
-
-    },
-    methods: {
-
-        destroyUser(id) {
-            this.$inertia.delete(route("categories.destroy", id));
-
-        },
-
-    },
-    mounted() {
-        console.log('hi');
-
-    },
 };
-
 
 </script>

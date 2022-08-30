@@ -35,27 +35,33 @@
                             </div>
                             <div class="flex  items-center justify-evenly">
 
-                                <input id="post-title" v-model="search.title"
+                                <input id="post-title" v-model="ourData.search.title"
                                        class="rounded-none rounded-l-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block min-w-0  text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                        placeholder="عنوان مطلب..."
                                        type="text">
 
-                                <input id="post-category-title" v-model="search.category_title"
+                                <input id="post-category-title" v-model="ourData.search.category_title"
                                        class="rounded-none rounded-l-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block min-w-0  text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                        placeholder="موضوع..."
                                        type="text">
 
-                                <input id="post-writer-name" v-model="search.writer_name"
+                                <input id="post-writer-name" v-model="ourData.search.writer_name"
                                        class="rounded-none rounded-l-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block min-w-0  text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                        placeholder="نویسنده..."
                                        type="text">
 
 
-                                <date-picker editable class="rounded-none rounded-l-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block min-w-0  text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                             placeholder="ابتدای بازه زمانی مورد نظر..." v-model="search.start_date" format="YYYY/MM/DD" display-format="jYYYY/jMM/jDD"  autofocus />
+                                <date-picker v-model="ourData.search.start_date"
+                                             autofocus
+                                             class="rounded-none rounded-l-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block min-w-0  text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                             display-format="jYYYY/jMM/jDD" editable
+                                             format="YYYY/MM/DD" placeholder="ابتدای بازه زمانی مورد نظر..."/>
 
-                                <date-picker editable class="rounded-none rounded-l-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block min-w-0  text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                             placeholder="انتهای بازه زمانی موردنظر..." v-model="search.end_date" format="YYYY/MM/DD" display-format="jYYYY/jMM/jDD"  autofocus />
+                                <date-picker v-model="ourData.search.end_date"
+                                             autofocus
+                                             class="rounded-none rounded-l-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block min-w-0  text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                             display-format="jYYYY/jMM/jDD" editable
+                                             format="YYYY/MM/DD" placeholder="انتهای بازه زمانی موردنظر..."/>
 
 
 
@@ -82,7 +88,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr v-for="post in posts.data"
+                                <tr v-for="post in props.posts.data"
                                     class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
                                     <td class="py-4 px-6">{{ post.id }}</td>
                                     <td class="py-4 px-6">{{ post.title }}</td>
@@ -119,7 +125,7 @@
                                 </tr>
                                 </tbody>
                             </table>
-                            <pagination :links="posts.links" class="mt-6"/>
+                            <pagination :links="props.posts.links" class="mt-6"/>
 
                             {{ $page.props.flash.message }}
                         </div>
@@ -129,82 +135,47 @@
         </div>
     </BreezeAuthenticatedLayout>
 </template>
-<script>
+<script setup>
 import {Inertia} from '@inertiajs/inertia'
-import BreezeButton from '@/Components/Button.vue';
-import BreezeAuthenticatedLayout from '@/Layouts/Authenticated.vue';
-import BreezeInput from '@/Components/Input.vue';
-import BreezeCheckbox from '@/Components/Checkbox.vue';
-import BreezeLabel from '@/Components/Label.vue';
-import BreezeValidationErrors from '@/Components/ValidationErrors.vue';
-import '../Auth/persian-datepicker.js';// in another time,use modules.env not this statically manner.
-import '../Auth/persian-datepicker.min.css';
-import {Head, Link, useForm} from '@inertiajs/inertia-vue3';
+import BreezeButton from '@/Components/Button.vue'
+import BreezeAuthenticatedLayout from '@/Layouts/Authenticated.vue'
+import BreezeInput from '@/Components/Input.vue'
+import BreezeCheckbox from '@/Components/Checkbox.vue'
+import BreezeLabel from '@/Components/Label.vue'
+import BreezeValidationErrors from '@/Components/ValidationErrors.vue'
+import {Head, Link, useForm} from '@inertiajs/inertia-vue3'
 import Pagination from '@/Layouts/pagination'
 import DatePicker from 'vue3-persian-datetime-picker'
+import {ref, watch} from 'vue'
 
-export default {
-    components: {
-        Head,
-        Link,
-        useForm,
-        BreezeButton,
-        BreezeAuthenticatedLayout,
-        BreezeInput,
-        BreezeLabel,
-        BreezeValidationErrors,
-        Pagination,
-        DatePicker
-
+let ourData = useForm({
+    test: {},
+    newPosts: {},
+    search: {
+        title: '',
+        category_title: '',
+        writer_name: '',
+        start_date: '',
+        end_date: ''
     },
-    data() {
-        return {
-            test: {},
-            newPosts: {},
-            search: {
-                title: '',
-                category_title: '',
-                writer_name: '',
-                start_date: '',
-                end_date: ''
-            },
 
-            myDateObj: {}
+    myDateObj: {}
 
-        }
-    },
-    props: {
-        posts: Object,//afterwards, delete it and use Inertia attr
-    },
-    watch: {
-        search: {
-            handler(val) {
+});
+const props = defineProps({
+    posts: Object,//afterwards, delete it and use Inertia attr
 
-                // this.search = val;
-                console.log(this.search);
-                Inertia.reload({
-                    replace: true,
-                    preserveState: true,
-                    data: this.search
-                });
-            },
-            deep: true
+});
+watch(ourData.search, (newValue, oldValue) => {
 
-        },
-
-    },
-    methods: {
-        destroyUser(id) {
-            this.$inertia.delete(route("posts.destroy", id));
-
-        },
-
-    },
-    mounted() {
-
-
-    },
-};
-
+    Inertia.reload({
+        replace: true,
+        preserveState: true,
+        data: ourData.search
+    });
+});
+const destroyUser = (id) => {
+    Inertia.delete(route('posts.destroy', id));
+}
 
 </script>

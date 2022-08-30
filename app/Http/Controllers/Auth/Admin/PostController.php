@@ -84,7 +84,6 @@ class PostController extends Controller
     {
 
         $validData = $this->validateCreatedPost($request);
-
         if ($request->hasFile('post_image'))
             $validData->put('post_image', $this->uploadPostImage($request));
         $validData->put('estimated_time', $this->estimatedTimeCaculating($validData['text']));
@@ -118,7 +117,6 @@ class PostController extends Controller
 
         $uploadedFile = $request->file('post_image');
         $filename = time() . $uploadedFile->getClientOriginalName();
-
         $file = Storage::disk('public')->putFileAs('posts', $uploadedFile, $filename);
 
         $this->imageSizeOptimizer($file);

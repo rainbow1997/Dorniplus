@@ -1,84 +1,3 @@
-<script>
-import BreezeButton from '@/Components/Button.vue';
-import BreezeGuestLayout from '@/Layouts/Guest.vue';
-import BreezeInput from '@/Components/Input.vue';
-import BreezeLabel from '@/Components/Label.vue';
-import BreezeValidationErrors from '@/Components/ValidationErrors.vue';
-import './persian-datepicker.js'; // in another time,use modules.env not this statically manner.
-import './persian-datepicker.min.css';
-import {Head, Link, useForm} from '@inertiajs/inertia-vue3';
-import DatePicker from 'vue3-persian-datetime-picker'
-
-export default {
-    components: {
-        Head,
-        Link,
-        useForm,
-        BreezeButton,
-        BreezeGuestLayout,
-        BreezeInput,
-        BreezeLabel,
-        BreezeValidationErrors,
-        DatePicker
-
-    },
-    data() {
-        return {
-            cities: {},
-            form: this.$inertia.form({
-                fname: '',
-                lname: '',
-                national_code: '',
-                phone: '',
-                birth: '',
-                gender: '',
-                military_status: '',
-                email: '',
-                avatar: '',
-                username: '',
-                password: '',
-                password_confirmation: '',
-                province_id: '',
-                city_id: '',
-                terms: false,
-                captcha_num: null
-            })
-
-        }
-    },
-    props: {
-        regions: {}
-    },
-    methods: {
-        provinceChange(event) {
-
-            console.log('hi -> province is :');
-            let t = this.regions.filter(function (province) {
-                console.log(province.cities);
-                if (province.id == event.target.value)
-                    return province;
-            });
-            this.cities = t[0].cities;
-
-        },
-        genderChange(event) {
-            if (event.target.value != 'male')
-                this.form.military_status = null;
-        },
-
-        submit() {
-            this.$inertia.post('/register', this.form);
-        }
-    },
-    mounted() {
-
-
-    },
-};
-
-
-</script>
-
 
 <template>
     <BreezeGuestLayout>
@@ -196,10 +115,10 @@ export default {
                 <BreezeLabel for="province" value="استان "/>
 
                 <select v-model="form.province_id" name="province_id" @change="provinceChange($event)">
-                    <option v-for="item in regions" :value="item.id">{{ item.title }}</option>
+                    <option v-for="item in props.regions" :value="item.id">{{ item.title }}</option>
                 </select>
-                <select v-show="form.province_id!=null" v-model="form.city_id" name="city_id">
-                    <option v-for="item in cities" :value="item.id">{{ item.title }}</option>
+                <select v-if="form.province_id!=null" v-model="form.city_id" name="city_id">
+                    <option v-for="item in ourData.cities" :value="item.id">{{ item.title }}</option>
                 </select>
 
             </div>
@@ -229,3 +148,60 @@ export default {
 
     </BreezeGuestLayout>
 </template>
+<script setup>
+import BreezeButton from '@/Components/Button.vue'
+import BreezeGuestLayout from '@/Layouts/Guest.vue'
+import BreezeInput from '@/Components/Input.vue'
+import BreezeLabel from '@/Components/Label.vue'
+import BreezeValidationErrors from '@/Components/ValidationErrors.vue'
+import {Inertia} from '@inertiajs/inertia'
+import {ref, reactive} from 'vue'
+
+import {Head, Link, useForm} from '@inertiajs/inertia-vue3'
+import DatePicker from 'vue3-persian-datetime-picker'
+const props = defineProps({
+    regions: {}
+});
+let ourData = useForm({
+    cities : {}
+});
+let form = useForm({
+
+    fname: '',
+    lname: '',
+    national_code: '',
+    phone: '',
+    birth: '',
+    gender: '',
+    military_status: '',
+    email: '',
+    avatar: '',
+    username: '',
+    password: '',
+    password_confirmation: '',
+    province_id: null,
+    city_id: null,
+    terms: false,
+    captcha_num: null
+});
+const provinceChange = (event)=> {
+
+    let t = props.regions.filter(function (province) {
+        if (province.id == event.target.value)
+            return province;
+    });
+    console.log(t[0]);
+    ourData.cities = {...t[0].cities};
+
+};
+const genderChange = (event) => {
+    if (event.target.value != 'male')
+        form.military_status = null;
+}
+
+const submit = ()=>{
+    Inertia.post(route('register'),form);
+}
+
+</script>
+

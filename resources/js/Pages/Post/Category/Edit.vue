@@ -55,34 +55,24 @@
     </BreezeAuthenticatedLayout>
 </template>
 
-<script>
-import BreezeAuthenticatedLayout from "@/Layouts/Authenticated.vue";
-import BreezeLabel from "@/Components/Label";
-import {Head} from "@inertiajs/inertia-vue3";
-import {useForm} from "@inertiajs/inertia-vue3";
+<script setup>
+import BreezeAuthenticatedLayout from "@/Layouts/Authenticated.vue"
+import BreezeLabel from "@/Components/Label"
+import {Inertia} from '@inertiajs/inertia'
+import {ref, watch} from 'vue'
 
-export default {
-    components: {
-        BreezeAuthenticatedLayout,
-        Head,
-    },
-    data() {
-        return {
-            form: this.$inertia.form({
-                method: 'put',
-                title: this.category.title,
 
-            })
-        }
-    },
-    methods: {
-        submit() {
-            this.form.put(route("categories.update", this.category.id));
-        },
-    },
-    props:
-        {
-            category: {}
-        }
+import {Head} from "@inertiajs/inertia-vue3"
+import {useForm} from "@inertiajs/inertia-vue3"
+const props = defineProps({
+    category: {}
+
+});
+let form = useForm({
+    method: 'put',
+    title: props.category.title,
+});
+const submit = () => {
+    Inertia.put(route("categories.update", props.category.id),form);
 };
 </script>

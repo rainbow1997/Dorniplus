@@ -58,7 +58,7 @@
                                                                 <label class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                                                                        for="parameterProvince">
                                                                     استان</label>
-                                                                <input id="parameterProvince" v-model="report.parameters['province']"
+                                                                <input id="parameterProvince" v-model="ourData.report.parameters['province']"
                                                                        class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-600 dark:border-gray-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
                                                                        type="checkbox"
                                                                        value="province">
@@ -68,7 +68,7 @@
                                                                        for="parameterCity">
                                                                     شهرستان</label>
 
-                                                                <input id="parameterCity" v-model="report.parameters['city']"
+                                                                <input id="parameterCity" v-model="ourData.report.parameters['city']"
                                                                        class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-600 dark:border-gray-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
                                                                        type="checkbox"
                                                                        value="city">
@@ -79,7 +79,7 @@
                                                                        for="parameterGenders">
                                                                     جنسیت</label>
 
-                                                                <input id="parameterGenders" v-model="report.parameters['gender']"
+                                                                <input id="parameterGenders" v-model="ourData.report.parameters['gender']"
                                                                        class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-600 dark:border-gray-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
                                                                        type="checkbox"
                                                                        value="gender">
@@ -89,14 +89,14 @@
                                                                 <label class=" ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                                                                        for="parameterStartDate">
                                                                     ابتدای بازه زمانی</label>
-                                                                <date-picker v-model="report.parameters['start_date']" format="YYYY-MM-DD" display-format="jYYYY-jMM-jDD" />
+                                                                <date-picker v-model="ourData.report.parameters['start_date']" format="YYYY-MM-DD" display-format="jYYYY-jMM-jDD" />
                                                             </div>
 
                                                             <div class="flex">
                                                                 <label class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                                                                        for="parameterEndDate">
                                                                     انتهای بازه زمانی</label>
-                                                                <date-picker v-model="report.parameters['end_date']" format="YYYY-MM-DD" display-format="jYYYY-jMM-jDD" />
+                                                                <date-picker v-model="ourData.report.parameters['end_date']" format="YYYY-MM-DD" display-format="jYYYY-jMM-jDD" />
 
                                                             </div>
 
@@ -110,7 +110,7 @@
 
                                                         <div class="flex gap-2">
 
-                                                            <input id="parameterPdf" v-model="report.methods" class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-600 dark:border-gray-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
+                                                            <input id="parameterPdf" v-model="ourData.report.methods" class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-600 dark:border-gray-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
 
                                                                    type="checkbox"
                                                                    value="pdf">
@@ -122,7 +122,7 @@
 
                                                         <div class="flex gap-2">
 
-                                                            <input id="parameterExcel" v-model="report.methods" class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-600 dark:border-gray-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
+                                                            <input id="parameterExcel" v-model="ourData.report.methods" class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-600 dark:border-gray-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
 
                                                                    type="checkbox"
                                                                    value="excel">
@@ -168,23 +168,23 @@
                             </div>
                             <div class="grid grid-cols-4 gap-4 items-center justify-evenly">
 
-                                <input id="post-title" v-model="search.fullname"
+                                <input id="post-title" v-model="ourData.search.fullname"
                                        class="rounded-none rounded-l-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block min-w-0  text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                        placeholder="نام و نام خانوادگی..."
                                        type="text">
 
-                                <input id="search_email" v-model="search.email"
+                                <input id="search_email" v-model="ourData.search.email"
                                        class="rounded-none rounded-l-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block min-w-0  text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                        placeholder="ایمیل..."
                                        type="text">
 
-                                <input id="search_province" v-model="search.province"
+                                <input id="search_province" v-model="ourData.search.province"
                                        class="rounded-none rounded-l-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block min-w-0  text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                        placeholder="استان..."
                                        type="text">
 
                                 <input id="search_city"
-                                       v-model="search.city"
+                                       v-model="ourData.search.city"
                                        class="rounded-none rounded-l-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block min-w-0  text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                        placeholder="شهرستان" type="text">
 
@@ -204,11 +204,11 @@
 
                                 <!--                                </div>-->
                                 <date-picker editable class="rounded-none rounded-l-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block min-w-0  text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                             placeholder="تاریخ تولد ..." v-model="search.birth" format="YYYY/MM/DD" display-format="jYYYY/jMM/jDD" autofocus />
+                                             placeholder="تاریخ تولد ..." v-model="ourData.search.birth" format="YYYY/MM/DD" display-format="jYYYY/jMM/jDD" autofocus />
 
 
                                 <date-picker editable class="rounded-none rounded-l-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block min-w-0  text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                             placeholder="ابتدای بازه تاریخ عضویت..." v-model="search.created_at" format="YYYY/MM/DD" display-format="jYYYY/jMM/jDD" autofocus />
+                                             placeholder="ابتدای بازه تاریخ عضویت..." v-model="ourData.search.created_at" format="YYYY/MM/DD" display-format="jYYYY/jMM/jDD" autofocus />
 
 
                             </div>
@@ -230,7 +230,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr v-for="user in users.data"
+                                <tr v-for="user in props.users.data"
                                     class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
                                     <td class="py-4 px-6">{{ user.id }}</td>
                                     <td class="py-4 px-6">{{ user.fname }}</td>
@@ -247,14 +247,14 @@
                                         </div>
                                     </td>
 
-                                    <td v-if="isFromSiteAdminAdd">
+                                    <td v-if="props.isFromSiteAdminAdd">
                                       <button   class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                                                 @click="$emit('setUser',user.id)">
                                           انتخاب کاربر
                                       </button>
 
                                     </td>
-                                    <td class="py-4 flex flex-row" v-if="isFromSiteAdminAdd!=true">
+                                    <td class="py-4 flex flex-row" v-if="props.isFromSiteAdminAdd!=true">
                                         <button
                                             class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                                             type="button">
@@ -276,7 +276,7 @@
                                 </tr>
                                 </tbody>
                             </table>
-                            <pagination :links="users.links" class="mt-6"/>
+                            <pagination :links="props.users.links" class="mt-6"/>
 
                             {{ $page.props.flash.message }}
                         </div>
@@ -286,7 +286,7 @@
         </div>
     </BreezeAuthenticatedLayout>
 </template>
-<script>
+<script setup>
 import {Inertia} from '@inertiajs/inertia'
 import BreezeButton from '@/Components/Button.vue'
 import BreezeAuthenticatedLayout from '@/Layouts/Authenticated.vue'
@@ -295,109 +295,74 @@ import BreezeCheckbox from '@/Components/Checkbox.vue'
 import BreezeLabel from '@/Components/Label.vue'
 import BreezeValidationErrors from '@/Components/ValidationErrors.vue'
 import {Head, Link, useForm} from '@inertiajs/inertia-vue3'
+import { ref, watch } from 'vue'
+
 import Pagination from '@/Layouts/pagination'
 // import VueMultiselect from 'vue-multiselect'
 import DatePicker from 'vue3-persian-datetime-picker'
 import 'flowbite';
-export default {
-    components: {
-        Head,
-        Link,
-        useForm,
-        BreezeButton,
-        BreezeAuthenticatedLayout,
-        BreezeInput,
-        BreezeLabel,
-        BreezeValidationErrors,
-        Pagination,
-        // VueMultiselect
-        DatePicker
-
-    },
-    data() {
-        return {
-            chosenUser:{},
-            ali: [1, 2, 5],
-            test: {},
-            newUsers: {},
-            report: useForm({
-                parameters: {
-                    province:false,
-                    city:false,
-                    gender:false,
-                    start_date:'',
-                    end_date:''
-                },
-                methods: []
-            }),
-            search: {
-                fullname: '',
-                email: '',
-                province: '',
-                city: '',
-                // roles: [],
-                birth: '',
-                created_at: '',
-
-            },
-            myDateObj: {}
-
-
-        }
-    },
-    props: {
-        users: Object,//afterwards, delete it and use Inertia attr
-        roles: {},
-        isFromSiteAdmin : false,
-        isFromSiteAdminAdd:false
-    },
-    watch: {
-        search: {
-            handler(val) {
-                // this.getRolesId();
-                Inertia.reload({
-                    replace: true,
-                    preserveState: true,
-                    data: this.search
-                });
-
-            },
-            deep: true
-        }
-    },
-    methods: {
-        setUser(user){
-            Inertia.visit(route('site_admin.create',{
-                replace:true,
-                data: {
-                    chosenUser:user
-                }
-            }));
+let ourData = useForm({
+    chosenUser:{},
+    ali: [1, 2, 5],
+    test: {},
+    newUsers: {},
+    report: useForm({
+        parameters: {
+            province:false,
+            city:false,
+            gender:false,
+            start_date:'',
+            end_date:''
         },
-        refreshPage(e)
-        {
-           const script = document.createElement('script');
-           script.setAttribute('src','/js/flowbite.js');
-           script.setAttribute('async','');
-           document.head.appendChild(script);
-        },
-        // getRolesId()
-        // {
-        //     let i = this.search.roles.filter(function (role) {
-        //         return role.id;
-        //     });
-        //     console.log(i[0]);
-        // },
-        // addTag (newTag) {
-        //     const tag = {
-        //         name: newTag,
-        //         code: newTag.substring(0, 2) + Math.floor((Math.random() * 10000000))
-        //     }
-        //     this.roles.push(tag)
-        //     this.search.roles.push(tag)
-        // },
+        methods: []
+    }),
+    search: {
+        fullname: '',
+        email: '',
+        province: '',
+        city: '',
+        // roles: [],
+        birth: '',
+        created_at: '',
 
-        submitReportGenerator() {
+    },
+    myDateObj: {}
+
+});
+const props = defineProps({
+    users: Object,//afterwards, delete it and use Inertia attr
+    roles: {},
+    isFromSiteAdmin : false,
+    isFromSiteAdminAdd:false
+});
+watch(ourData.search,(newValue,oldValue) => {
+    Inertia.reload({
+        replace: true,
+        preserveState: true,
+        data: ourData.search
+    });
+    }
+
+);
+
+const setUser = (user) => {
+
+        Inertia.visit(route('site_admin.create',{
+            replace:true,
+            data: {
+                chosenUser:user
+            }
+        }));
+}
+const refreshPage = (e)=>
+{
+    const script = document.createElement('script');
+    script.setAttribute('src','/js/flowbite.js');
+    script.setAttribute('async','');
+    document.head.appendChild(script);
+};
+
+const submitReportGenerator =()=> {
 
               this.report.post(route('users.report'), {
                 preserveState: true,
@@ -409,22 +374,13 @@ export default {
 
 
             });
-            //console.log(i);
 
-        },
+        };
 
-        destroyUser(id) {
-            this.$inertia.delete(route("users.destroy", id));
+const destroyUser = (id) => {
+    Inertia.delete(route("users.destroy", id));
 
-        },
-
-
-
-    },
-    mounted() {
-
-    },
-};
+    }
 
 
 </script>

@@ -1,45 +1,24 @@
-<script>
+<script setup>
 import BreezeButton from '@/Components/Button.vue';
 import BreezeGuestLayout from '@/Layouts/Guest.vue';
 import BreezeInput from '@/Components/Input.vue';
 import BreezeLabel from '@/Components/Label.vue';
 import BreezeValidationErrors from '@/Components/ValidationErrors.vue';
 import {Head, useForm} from '@inertiajs/inertia-vue3';
+import {Inertia} from '@inertiajs/inertia'
 
-export default {
-    components: {
-        Head,
-        useForm,
-        BreezeButton,
-        BreezeGuestLayout,
-        BreezeInput,
-        BreezeLabel,
-        BreezeValidationErrors,
-
-    },
-    data() {
-        return {
-            ourUser: {},
-            form: this.$inertia.form({
-                password: '',
-                password_confirmation: '',
-                user_id: null
-            })
-        }
-    },
-    props: {
-        user: {}
-    },
-    mounted() {
-        console.log('we are mounted');
-    },
-    methods: {
-        submit() {
-            this.form.user_id = this.user.id;
-            this.$inertia.post(route('changePassword.save'), this.form)
-        }
-    },
-};
+const props = defineProps({
+    user: {}
+})
+let form = useForm({
+    password: '',
+    password_confirmation: '',
+    user_id: null
+});
+const submit = () => {
+    form.user_id = props.user.id;
+    Inertia.post(route('changePassword.save'), form);
+}
 </script>
 
 <template>

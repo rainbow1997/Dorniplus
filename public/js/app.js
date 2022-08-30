@@ -23258,10 +23258,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Auth/Register.vue?vue&type=script&lang=js":
-/*!**************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Auth/Register.vue?vue&type=script&lang=js ***!
-  \**************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Auth/Register.vue?vue&type=script&setup=true&lang=js":
+/*!*************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Auth/Register.vue?vue&type=script&setup=true&lang=js ***!
+  \*************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -23274,77 +23274,99 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Components_Input_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Components/Input.vue */ "./resources/js/Components/Input.vue");
 /* harmony import */ var _Components_Label_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Components/Label.vue */ "./resources/js/Components/Label.vue");
 /* harmony import */ var _Components_ValidationErrors_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Components/ValidationErrors.vue */ "./resources/js/Components/ValidationErrors.vue");
-/* harmony import */ var _persian_datepicker_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./persian-datepicker.js */ "./resources/js/Pages/Auth/persian-datepicker.js");
-/* harmony import */ var _persian_datepicker_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_persian_datepicker_js__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _persian_datepicker_min_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./persian-datepicker.min.css */ "./resources/js/Pages/Auth/persian-datepicker.min.css");
+/* harmony import */ var _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 /* harmony import */ var _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @inertiajs/inertia-vue3 */ "./node_modules/@inertiajs/inertia-vue3/dist/index.js");
 /* harmony import */ var vue3_persian_datetime_picker__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vue3-persian-datetime-picker */ "./node_modules/vue3-persian-datetime-picker/dist/vue3-persian-datetime-picker.common.js");
 /* harmony import */ var vue3_persian_datetime_picker__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(vue3_persian_datetime_picker__WEBPACK_IMPORTED_MODULE_8__);
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
 
 
 
- // in another time,use modules.env not this statically manner.
+
 
 
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  components: {
-    Head: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_7__.Head,
-    Link: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_7__.Link,
-    useForm: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_7__.useForm,
-    BreezeButton: _Components_Button_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
-    BreezeGuestLayout: _Layouts_Guest_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
-    BreezeInput: _Components_Input_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
-    BreezeLabel: _Components_Label_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
-    BreezeValidationErrors: _Components_ValidationErrors_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
-    DatePicker: (vue3_persian_datetime_picker__WEBPACK_IMPORTED_MODULE_8___default())
-  },
-  data: function data() {
-    return {
-      cities: {},
-      form: this.$inertia.form({
-        fname: '',
-        lname: '',
-        national_code: '',
-        phone: '',
-        birth: '',
-        gender: '',
-        military_status: '',
-        email: '',
-        avatar: '',
-        username: '',
-        password: '',
-        password_confirmation: '',
-        province_id: '',
-        city_id: '',
-        terms: false,
-        captcha_num: null
-      })
-    };
-  },
+  __name: 'Register',
   props: {
     regions: {}
   },
-  methods: {
-    provinceChange: function provinceChange(event) {
-      console.log('hi -> province is :');
-      var t = this.regions.filter(function (province) {
-        console.log(province.cities);
+  setup: function setup(__props, _ref) {
+    var expose = _ref.expose;
+    expose();
+    var props = __props;
+    var ourData = (0,_inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_7__.useForm)({
+      cities: {}
+    });
+    var form = (0,_inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_7__.useForm)({
+      fname: '',
+      lname: '',
+      national_code: '',
+      phone: '',
+      birth: '',
+      gender: '',
+      military_status: '',
+      email: '',
+      avatar: '',
+      username: '',
+      password: '',
+      password_confirmation: '',
+      province_id: null,
+      city_id: null,
+      terms: false,
+      captcha_num: null
+    });
+
+    var provinceChange = function provinceChange(event) {
+      var t = props.regions.filter(function (province) {
         if (province.id == event.target.value) return province;
       });
-      this.cities = t[0].cities;
-    },
-    genderChange: function genderChange(event) {
-      if (event.target.value != 'male') this.form.military_status = null;
-    },
-    submit: function submit() {
-      this.$inertia.post('/register', this.form);
-    }
-  },
-  mounted: function mounted() {}
+      console.log(t[0]);
+      ourData.cities = _objectSpread({}, t[0].cities);
+    };
+
+    var genderChange = function genderChange(event) {
+      if (event.target.value != 'male') form.military_status = null;
+    };
+
+    var submit = function submit() {
+      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_5__.Inertia.post(route('register'), form);
+    };
+
+    var __returned__ = {
+      props: props,
+      ourData: ourData,
+      form: form,
+      provinceChange: provinceChange,
+      genderChange: genderChange,
+      submit: submit,
+      BreezeButton: _Components_Button_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
+      BreezeGuestLayout: _Layouts_Guest_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
+      BreezeInput: _Components_Input_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
+      BreezeLabel: _Components_Label_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
+      BreezeValidationErrors: _Components_ValidationErrors_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
+      Inertia: _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_5__.Inertia,
+      ref: vue__WEBPACK_IMPORTED_MODULE_6__.ref,
+      reactive: vue__WEBPACK_IMPORTED_MODULE_6__.reactive,
+      Head: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_7__.Head,
+      Link: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_7__.Link,
+      useForm: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_7__.useForm,
+      DatePicker: (vue3_persian_datetime_picker__WEBPACK_IMPORTED_MODULE_8___default())
+    };
+    Object.defineProperty(__returned__, '__isScriptSetup', {
+      enumerable: false,
+      value: true
+    });
+    return __returned__;
+  }
 });
 
 /***/ }),
@@ -23478,10 +23500,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/ChangePassword.vue?vue&type=script&lang=js":
-/*!***************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/ChangePassword.vue?vue&type=script&lang=js ***!
-  \***************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/ChangePassword.vue?vue&type=script&setup=true&lang=js":
+/*!**************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/ChangePassword.vue?vue&type=script&setup=true&lang=js ***!
+  \**************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -23495,6 +23517,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Components_Label_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Components/Label.vue */ "./resources/js/Components/Label.vue");
 /* harmony import */ var _Components_ValidationErrors_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Components/ValidationErrors.vue */ "./resources/js/Components/ValidationErrors.vue");
 /* harmony import */ var _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @inertiajs/inertia-vue3 */ "./node_modules/@inertiajs/inertia-vue3/dist/index.js");
+/* harmony import */ var _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
+
 
 
 
@@ -23502,36 +23526,43 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  components: {
-    Head: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_5__.Head,
-    useForm: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_5__.useForm,
-    BreezeButton: _Components_Button_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
-    BreezeGuestLayout: _Layouts_Guest_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
-    BreezeInput: _Components_Input_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
-    BreezeLabel: _Components_Label_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
-    BreezeValidationErrors: _Components_ValidationErrors_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
-  },
-  data: function data() {
-    return {
-      ourUser: {},
-      form: this.$inertia.form({
-        password: '',
-        password_confirmation: '',
-        user_id: null
-      })
-    };
-  },
+  __name: 'ChangePassword',
   props: {
     user: {}
   },
-  mounted: function mounted() {
-    console.log('we are mounted');
-  },
-  methods: {
-    submit: function submit() {
-      this.form.user_id = this.user.id;
-      this.$inertia.post(route('changePassword.save'), this.form);
-    }
+  setup: function setup(__props, _ref) {
+    var expose = _ref.expose;
+    expose();
+    var props = __props;
+    var form = (0,_inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_5__.useForm)({
+      password: '',
+      password_confirmation: '',
+      user_id: null
+    });
+
+    var submit = function submit() {
+      form.user_id = props.user.id;
+      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_6__.Inertia.post(route('changePassword.save'), form);
+    };
+
+    var __returned__ = {
+      props: props,
+      form: form,
+      submit: submit,
+      BreezeButton: _Components_Button_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
+      BreezeGuestLayout: _Layouts_Guest_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
+      BreezeInput: _Components_Input_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
+      BreezeLabel: _Components_Label_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
+      BreezeValidationErrors: _Components_ValidationErrors_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
+      Head: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_5__.Head,
+      useForm: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_5__.useForm,
+      Inertia: _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_6__.Inertia
+    };
+    Object.defineProperty(__returned__, '__isScriptSetup', {
+      enumerable: false,
+      value: true
+    });
+    return __returned__;
   }
 });
 
@@ -23731,10 +23762,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Post/Category/Edit.vue?vue&type=script&lang=js":
-/*!*******************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Post/Category/Edit.vue?vue&type=script&lang=js ***!
-  \*******************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Post/Category/Edit.vue?vue&type=script&setup=true&lang=js":
+/*!******************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Post/Category/Edit.vue?vue&type=script&setup=true&lang=js ***!
+  \******************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -23744,40 +23775,59 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Layouts_Authenticated_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Layouts/Authenticated.vue */ "./resources/js/Layouts/Authenticated.vue");
 /* harmony import */ var _Components_Label__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Components/Label */ "./resources/js/Components/Label.vue");
-/* harmony import */ var _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @inertiajs/inertia-vue3 */ "./node_modules/@inertiajs/inertia-vue3/dist/index.js");
+/* harmony import */ var _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+/* harmony import */ var _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @inertiajs/inertia-vue3 */ "./node_modules/@inertiajs/inertia-vue3/dist/index.js");
+
+
 
 
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  components: {
-    BreezeAuthenticatedLayout: _Layouts_Authenticated_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
-    Head: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_2__.Head
-  },
-  data: function data() {
-    return {
-      form: this.$inertia.form({
-        method: 'put',
-        title: this.category.title
-      })
-    };
-  },
-  methods: {
-    submit: function submit() {
-      this.form.put(route("categories.update", this.category.id));
-    }
-  },
+  __name: 'Edit',
   props: {
     category: {}
+  },
+  setup: function setup(__props, _ref) {
+    var expose = _ref.expose;
+    expose();
+    var props = __props;
+    var form = (0,_inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_4__.useForm)({
+      method: 'put',
+      title: props.category.title
+    });
+
+    var submit = function submit() {
+      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__.Inertia.put(route("categories.update", props.category.id), form);
+    };
+
+    var __returned__ = {
+      props: props,
+      form: form,
+      submit: submit,
+      BreezeAuthenticatedLayout: _Layouts_Authenticated_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
+      BreezeLabel: _Components_Label__WEBPACK_IMPORTED_MODULE_1__["default"],
+      Inertia: _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__.Inertia,
+      ref: vue__WEBPACK_IMPORTED_MODULE_3__.ref,
+      watch: vue__WEBPACK_IMPORTED_MODULE_3__.watch,
+      Head: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_4__.Head,
+      useForm: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_4__.useForm
+    };
+    Object.defineProperty(__returned__, '__isScriptSetup', {
+      enumerable: false,
+      value: true
+    });
+    return __returned__;
   }
 });
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Post/Category/Index.vue?vue&type=script&lang=js":
-/*!********************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Post/Category/Index.vue?vue&type=script&lang=js ***!
-  \********************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Post/Category/Index.vue?vue&type=script&setup=true&lang=js":
+/*!*******************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Post/Category/Index.vue?vue&type=script&setup=true&lang=js ***!
+  \*******************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -23792,41 +23842,33 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Components_Checkbox_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Components/Checkbox.vue */ "./resources/js/Components/Checkbox.vue");
 /* harmony import */ var _Components_Label_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/Components/Label.vue */ "./resources/js/Components/Label.vue");
 /* harmony import */ var _Components_ValidationErrors_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/Components/ValidationErrors.vue */ "./resources/js/Components/ValidationErrors.vue");
-/* harmony import */ var _Auth_persian_datepicker_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../Auth/persian-datepicker.js */ "./resources/js/Pages/Auth/persian-datepicker.js");
-/* harmony import */ var _Auth_persian_datepicker_js__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_Auth_persian_datepicker_js__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _Auth_persian_datepicker_min_css__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../Auth/persian-datepicker.min.css */ "./resources/js/Pages/Auth/persian-datepicker.min.css");
-/* harmony import */ var _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @inertiajs/inertia-vue3 */ "./node_modules/@inertiajs/inertia-vue3/dist/index.js");
-/* harmony import */ var _Layouts_pagination__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @/Layouts/pagination */ "./resources/js/Layouts/pagination.vue");
-/* harmony import */ var vue3_persian_datetime_picker__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! vue3-persian-datetime-picker */ "./node_modules/vue3-persian-datetime-picker/dist/vue3-persian-datetime-picker.common.js");
-/* harmony import */ var vue3_persian_datetime_picker__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(vue3_persian_datetime_picker__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @inertiajs/inertia-vue3 */ "./node_modules/@inertiajs/inertia-vue3/dist/index.js");
+/* harmony import */ var _Layouts_pagination__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @/Layouts/pagination */ "./resources/js/Layouts/pagination.vue");
+/* harmony import */ var vue3_persian_datetime_picker__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! vue3-persian-datetime-picker */ "./node_modules/vue3-persian-datetime-picker/dist/vue3-persian-datetime-picker.common.js");
+/* harmony import */ var vue3_persian_datetime_picker__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(vue3_persian_datetime_picker__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 
 
 
 
 
-
- // in another time,use modules.env not this statically manner.
 
 
 
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  components: {
-    Head: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_9__.Head,
-    Link: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_9__.Link,
-    useForm: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_9__.useForm,
-    BreezeButton: _Components_Button_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
-    BreezeAuthenticatedLayout: _Layouts_Authenticated_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
-    BreezeInput: _Components_Input_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
-    BreezeLabel: _Components_Label_vue__WEBPACK_IMPORTED_MODULE_5__["default"],
-    BreezeValidationErrors: _Components_ValidationErrors_vue__WEBPACK_IMPORTED_MODULE_6__["default"],
-    Pagination: _Layouts_pagination__WEBPACK_IMPORTED_MODULE_10__["default"],
-    DatePicker: (vue3_persian_datetime_picker__WEBPACK_IMPORTED_MODULE_11___default())
+  __name: 'Index',
+  props: {
+    categories: Object //afterwards, delete it and use Inertia attr
+
   },
-  data: function data() {
-    return {
+  setup: function setup(__props, _ref) {
+    var expose = _ref.expose;
+    expose();
+    var props = __props;
+    var ourData = (0,_inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_7__.useForm)({
       test: {},
       search: {
         title: '',
@@ -23834,33 +23876,43 @@ __webpack_require__.r(__webpack_exports__);
         updated_at: ''
       },
       myDateObj: {}
-    };
-  },
-  props: {
-    categories: Object //afterwards, delete it and use Inertia attr
+    });
+    (0,vue__WEBPACK_IMPORTED_MODULE_10__.watch)(ourData.search, function (newValue, oldValue) {
+      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_0__.Inertia.reload({
+        replace: true,
+        preserveState: true,
+        data: ourData.search
+      });
+    });
 
-  },
-  watch: {
-    search: {
-      handler: function handler(val) {
-        // this.search = val;
-        console.log(this.search);
-        _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_0__.Inertia.reload({
-          replace: true,
-          preserveState: true,
-          data: this.search
-        });
-      },
-      deep: true
-    }
-  },
-  methods: {
-    destroyUser: function destroyUser(id) {
-      this.$inertia["delete"](route("categories.destroy", id));
-    }
-  },
-  mounted: function mounted() {
-    console.log('hi');
+    var destroyUser = function destroyUser(id) {
+      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_0__.Inertia["delete"](route("categories.destroy", id));
+    };
+
+    var __returned__ = {
+      ourData: ourData,
+      props: props,
+      destroyUser: destroyUser,
+      Inertia: _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_0__.Inertia,
+      BreezeButton: _Components_Button_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
+      BreezeAuthenticatedLayout: _Layouts_Authenticated_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
+      BreezeInput: _Components_Input_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
+      BreezeCheckbox: _Components_Checkbox_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
+      BreezeLabel: _Components_Label_vue__WEBPACK_IMPORTED_MODULE_5__["default"],
+      BreezeValidationErrors: _Components_ValidationErrors_vue__WEBPACK_IMPORTED_MODULE_6__["default"],
+      Head: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_7__.Head,
+      Link: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_7__.Link,
+      useForm: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_7__.useForm,
+      Pagination: _Layouts_pagination__WEBPACK_IMPORTED_MODULE_8__["default"],
+      DatePicker: (vue3_persian_datetime_picker__WEBPACK_IMPORTED_MODULE_9___default()),
+      ref: vue__WEBPACK_IMPORTED_MODULE_10__.ref,
+      watch: vue__WEBPACK_IMPORTED_MODULE_10__.watch
+    };
+    Object.defineProperty(__returned__, '__isScriptSetup', {
+      enumerable: false,
+      value: true
+    });
+    return __returned__;
   }
 });
 
@@ -23986,10 +24038,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Post/Index.vue?vue&type=script&lang=js":
-/*!***********************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Post/Index.vue?vue&type=script&lang=js ***!
-  \***********************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Post/Index.vue?vue&type=script&setup=true&lang=js":
+/*!**********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Post/Index.vue?vue&type=script&setup=true&lang=js ***!
+  \**********************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -24004,41 +24056,33 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Components_Checkbox_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Components/Checkbox.vue */ "./resources/js/Components/Checkbox.vue");
 /* harmony import */ var _Components_Label_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/Components/Label.vue */ "./resources/js/Components/Label.vue");
 /* harmony import */ var _Components_ValidationErrors_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/Components/ValidationErrors.vue */ "./resources/js/Components/ValidationErrors.vue");
-/* harmony import */ var _Auth_persian_datepicker_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../Auth/persian-datepicker.js */ "./resources/js/Pages/Auth/persian-datepicker.js");
-/* harmony import */ var _Auth_persian_datepicker_js__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_Auth_persian_datepicker_js__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _Auth_persian_datepicker_min_css__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../Auth/persian-datepicker.min.css */ "./resources/js/Pages/Auth/persian-datepicker.min.css");
-/* harmony import */ var _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @inertiajs/inertia-vue3 */ "./node_modules/@inertiajs/inertia-vue3/dist/index.js");
-/* harmony import */ var _Layouts_pagination__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @/Layouts/pagination */ "./resources/js/Layouts/pagination.vue");
-/* harmony import */ var vue3_persian_datetime_picker__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! vue3-persian-datetime-picker */ "./node_modules/vue3-persian-datetime-picker/dist/vue3-persian-datetime-picker.common.js");
-/* harmony import */ var vue3_persian_datetime_picker__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(vue3_persian_datetime_picker__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @inertiajs/inertia-vue3 */ "./node_modules/@inertiajs/inertia-vue3/dist/index.js");
+/* harmony import */ var _Layouts_pagination__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @/Layouts/pagination */ "./resources/js/Layouts/pagination.vue");
+/* harmony import */ var vue3_persian_datetime_picker__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! vue3-persian-datetime-picker */ "./node_modules/vue3-persian-datetime-picker/dist/vue3-persian-datetime-picker.common.js");
+/* harmony import */ var vue3_persian_datetime_picker__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(vue3_persian_datetime_picker__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 
 
 
 
 
-
- // in another time,use modules.env not this statically manner.
 
 
 
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  components: {
-    Head: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_9__.Head,
-    Link: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_9__.Link,
-    useForm: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_9__.useForm,
-    BreezeButton: _Components_Button_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
-    BreezeAuthenticatedLayout: _Layouts_Authenticated_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
-    BreezeInput: _Components_Input_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
-    BreezeLabel: _Components_Label_vue__WEBPACK_IMPORTED_MODULE_5__["default"],
-    BreezeValidationErrors: _Components_ValidationErrors_vue__WEBPACK_IMPORTED_MODULE_6__["default"],
-    Pagination: _Layouts_pagination__WEBPACK_IMPORTED_MODULE_10__["default"],
-    DatePicker: (vue3_persian_datetime_picker__WEBPACK_IMPORTED_MODULE_11___default())
+  __name: 'Index',
+  props: {
+    posts: Object //afterwards, delete it and use Inertia attr
+
   },
-  data: function data() {
-    return {
+  setup: function setup(__props, _ref) {
+    var expose = _ref.expose;
+    expose();
+    var props = __props;
+    var ourData = (0,_inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_7__.useForm)({
       test: {},
       newPosts: {},
       search: {
@@ -24049,32 +24093,44 @@ __webpack_require__.r(__webpack_exports__);
         end_date: ''
       },
       myDateObj: {}
-    };
-  },
-  props: {
-    posts: Object //afterwards, delete it and use Inertia attr
+    });
+    (0,vue__WEBPACK_IMPORTED_MODULE_10__.watch)(ourData.search, function (newValue, oldValue) {
+      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_0__.Inertia.reload({
+        replace: true,
+        preserveState: true,
+        data: ourData.search
+      });
+    });
 
-  },
-  watch: {
-    search: {
-      handler: function handler(val) {
-        // this.search = val;
-        console.log(this.search);
-        _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_0__.Inertia.reload({
-          replace: true,
-          preserveState: true,
-          data: this.search
-        });
-      },
-      deep: true
-    }
-  },
-  methods: {
-    destroyUser: function destroyUser(id) {
-      this.$inertia["delete"](route("posts.destroy", id));
-    }
-  },
-  mounted: function mounted() {}
+    var destroyUser = function destroyUser(id) {
+      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_0__.Inertia["delete"](route('posts.destroy', id));
+    };
+
+    var __returned__ = {
+      ourData: ourData,
+      props: props,
+      destroyUser: destroyUser,
+      Inertia: _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_0__.Inertia,
+      BreezeButton: _Components_Button_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
+      BreezeAuthenticatedLayout: _Layouts_Authenticated_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
+      BreezeInput: _Components_Input_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
+      BreezeCheckbox: _Components_Checkbox_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
+      BreezeLabel: _Components_Label_vue__WEBPACK_IMPORTED_MODULE_5__["default"],
+      BreezeValidationErrors: _Components_ValidationErrors_vue__WEBPACK_IMPORTED_MODULE_6__["default"],
+      Head: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_7__.Head,
+      Link: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_7__.Link,
+      useForm: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_7__.useForm,
+      Pagination: _Layouts_pagination__WEBPACK_IMPORTED_MODULE_8__["default"],
+      DatePicker: (vue3_persian_datetime_picker__WEBPACK_IMPORTED_MODULE_9___default()),
+      ref: vue__WEBPACK_IMPORTED_MODULE_10__.ref,
+      watch: vue__WEBPACK_IMPORTED_MODULE_10__.watch
+    };
+    Object.defineProperty(__returned__, '__isScriptSetup', {
+      enumerable: false,
+      value: true
+    });
+    return __returned__;
+  }
 });
 
 /***/ }),
@@ -24235,10 +24291,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/UsersIndex.vue?vue&type=script&lang=js":
-/*!***********************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/UsersIndex.vue?vue&type=script&lang=js ***!
-  \***********************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/UsersIndex.vue?vue&type=script&setup=true&lang=js":
+/*!**********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/UsersIndex.vue?vue&type=script&setup=true&lang=js ***!
+  \**********************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -24254,11 +24310,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Components_Label_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/Components/Label.vue */ "./resources/js/Components/Label.vue");
 /* harmony import */ var _Components_ValidationErrors_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/Components/ValidationErrors.vue */ "./resources/js/Components/ValidationErrors.vue");
 /* harmony import */ var _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @inertiajs/inertia-vue3 */ "./node_modules/@inertiajs/inertia-vue3/dist/index.js");
-/* harmony import */ var _Layouts_pagination__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @/Layouts/pagination */ "./resources/js/Layouts/pagination.vue");
-/* harmony import */ var vue3_persian_datetime_picker__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! vue3-persian-datetime-picker */ "./node_modules/vue3-persian-datetime-picker/dist/vue3-persian-datetime-picker.common.js");
-/* harmony import */ var vue3_persian_datetime_picker__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(vue3_persian_datetime_picker__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var flowbite__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! flowbite */ "./node_modules/flowbite/dist/flowbite.js");
-/* harmony import */ var flowbite__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(flowbite__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+/* harmony import */ var _Layouts_pagination__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @/Layouts/pagination */ "./resources/js/Layouts/pagination.vue");
+/* harmony import */ var vue3_persian_datetime_picker__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! vue3-persian-datetime-picker */ "./node_modules/vue3-persian-datetime-picker/dist/vue3-persian-datetime-picker.common.js");
+/* harmony import */ var vue3_persian_datetime_picker__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(vue3_persian_datetime_picker__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var flowbite__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! flowbite */ "./node_modules/flowbite/dist/flowbite.js");
+/* harmony import */ var flowbite__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(flowbite__WEBPACK_IMPORTED_MODULE_11__);
+
 
 
 
@@ -24272,21 +24330,21 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  components: {
-    Head: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_7__.Head,
-    Link: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_7__.Link,
-    useForm: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_7__.useForm,
-    BreezeButton: _Components_Button_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
-    BreezeAuthenticatedLayout: _Layouts_Authenticated_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
-    BreezeInput: _Components_Input_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
-    BreezeLabel: _Components_Label_vue__WEBPACK_IMPORTED_MODULE_5__["default"],
-    BreezeValidationErrors: _Components_ValidationErrors_vue__WEBPACK_IMPORTED_MODULE_6__["default"],
-    Pagination: _Layouts_pagination__WEBPACK_IMPORTED_MODULE_8__["default"],
-    // VueMultiselect
-    DatePicker: (vue3_persian_datetime_picker__WEBPACK_IMPORTED_MODULE_9___default())
+  __name: 'UsersIndex',
+  props: {
+    users: Object,
+    //afterwards, delete it and use Inertia attr
+    roles: {},
+    isFromSiteAdmin: false,
+    isFromSiteAdminAdd: false
   },
-  data: function data() {
-    return {
+  setup: function setup(__props, _ref) {
+    var _this = this;
+
+    var expose = _ref.expose;
+    expose();
+    var props = __props;
+    var ourData = (0,_inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_7__.useForm)({
       chosenUser: {},
       ali: [1, 2, 5],
       test: {},
@@ -24311,74 +24369,73 @@ __webpack_require__.r(__webpack_exports__);
         created_at: ''
       },
       myDateObj: {}
-    };
-  },
-  props: {
-    users: Object,
-    //afterwards, delete it and use Inertia attr
-    roles: {},
-    isFromSiteAdmin: false,
-    isFromSiteAdminAdd: false
-  },
-  watch: {
-    search: {
-      handler: function handler(val) {
-        // this.getRolesId();
-        _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_0__.Inertia.reload({
-          replace: true,
-          preserveState: true,
-          data: this.search
-        });
-      },
-      deep: true
-    }
-  },
-  methods: {
-    setUser: function setUser(user) {
+    });
+    (0,vue__WEBPACK_IMPORTED_MODULE_8__.watch)(ourData.search, function (newValue, oldValue) {
+      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_0__.Inertia.reload({
+        replace: true,
+        preserveState: true,
+        data: ourData.search
+      });
+    });
+
+    var setUser = function setUser(user) {
       _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_0__.Inertia.visit(route('site_admin.create', {
         replace: true,
         data: {
           chosenUser: user
         }
       }));
-    },
-    refreshPage: function refreshPage(e) {
+    };
+
+    var refreshPage = function refreshPage(e) {
       var script = document.createElement('script');
       script.setAttribute('src', '/js/flowbite.js');
       script.setAttribute('async', '');
       document.head.appendChild(script);
-    },
-    // getRolesId()
-    // {
-    //     let i = this.search.roles.filter(function (role) {
-    //         return role.id;
-    //     });
-    //     console.log(i[0]);
-    // },
-    // addTag (newTag) {
-    //     const tag = {
-    //         name: newTag,
-    //         code: newTag.substring(0, 2) + Math.floor((Math.random() * 10000000))
-    //     }
-    //     this.roles.push(tag)
-    //     this.search.roles.push(tag)
-    // },
-    submitReportGenerator: function submitReportGenerator() {
-      var _this = this;
+    };
 
-      this.report.post(route('users.report'), {
+    var submitReportGenerator = function submitReportGenerator() {
+      _this.report.post(route('users.report'), {
         preserveState: true,
         preserveScroll: true,
         onFinish: function onFinish() {
           alert(_this.report);
         }
-      }); //console.log(i);
-    },
-    destroyUser: function destroyUser(id) {
-      this.$inertia["delete"](route("users.destroy", id));
-    }
-  },
-  mounted: function mounted() {}
+      });
+    };
+
+    var destroyUser = function destroyUser(id) {
+      _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_0__.Inertia["delete"](route("users.destroy", id));
+    };
+
+    var __returned__ = {
+      ourData: ourData,
+      props: props,
+      setUser: setUser,
+      refreshPage: refreshPage,
+      submitReportGenerator: submitReportGenerator,
+      destroyUser: destroyUser,
+      Inertia: _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_0__.Inertia,
+      BreezeButton: _Components_Button_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
+      BreezeAuthenticatedLayout: _Layouts_Authenticated_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
+      BreezeInput: _Components_Input_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
+      BreezeCheckbox: _Components_Checkbox_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
+      BreezeLabel: _Components_Label_vue__WEBPACK_IMPORTED_MODULE_5__["default"],
+      BreezeValidationErrors: _Components_ValidationErrors_vue__WEBPACK_IMPORTED_MODULE_6__["default"],
+      Head: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_7__.Head,
+      Link: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_7__.Link,
+      useForm: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_7__.useForm,
+      ref: vue__WEBPACK_IMPORTED_MODULE_8__.ref,
+      watch: vue__WEBPACK_IMPORTED_MODULE_8__.watch,
+      Pagination: _Layouts_pagination__WEBPACK_IMPORTED_MODULE_9__["default"],
+      DatePicker: (vue3_persian_datetime_picker__WEBPACK_IMPORTED_MODULE_10___default())
+    };
+    Object.defineProperty(__returned__, '__isScriptSetup', {
+      enumerable: false,
+      value: true
+    });
+    return __returned__;
+  }
 });
 
 /***/ }),
@@ -26699,9 +26756,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
-var _hoisted_1 = {
-  "class": "mt-4"
-};
+var _hoisted_1 = ["onSubmit"];
 var _hoisted_2 = {
   "class": "mt-4"
 };
@@ -26718,52 +26773,52 @@ var _hoisted_6 = {
   "class": "mt-4"
 };
 var _hoisted_7 = {
-  "class": "flex flex-row content-around"
+  "class": "mt-4"
 };
 var _hoisted_8 = {
-  "class": "px-3"
+  "class": "flex flex-row content-around"
 };
 var _hoisted_9 = {
-  "class": ""
+  "class": "px-3"
 };
 var _hoisted_10 = {
-  "class": "mt-4 flex flex-row content-around flex-wrap"
+  "class": ""
 };
 var _hoisted_11 = {
+  "class": "mt-4 flex flex-row content-around flex-wrap"
+};
+var _hoisted_12 = {
   "class": "breacontent-around pt-5"
 };
 
-var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" معاف دائم ");
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" معاف دائم ");
 
-var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" معاف موقت ");
+var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" معاف موقت ");
 
-var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" پایان خدمت ");
+var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" پایان خدمت ");
 
-var _hoisted_15 = {
-  "class": "mt-4"
-};
 var _hoisted_16 = {
   "class": "mt-4"
 };
+var _hoisted_17 = {
+  "class": "mt-4"
+};
 
-var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300",
   "for": "avatar"
 }, "آپلود عکس", -1
 /* HOISTED */
 );
 
-var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
   id: "avatar_help",
   "class": "mt-1 text-sm text-gray-500 dark:text-gray-300"
 }, "PNG, JPG, JPEG or GIF (MAX :200KB).", -1
 /* HOISTED */
 );
 
-var _hoisted_19 = ["value"];
-var _hoisted_20 = {
-  "class": "mt-4"
-};
+var _hoisted_20 = ["value"];
 var _hoisted_21 = {
   "class": "mt-4"
 };
@@ -26773,13 +26828,16 @@ var _hoisted_22 = {
 var _hoisted_23 = {
   "class": "mt-4"
 };
-var _hoisted_24 = ["value"];
+var _hoisted_24 = {
+  "class": "mt-4"
+};
 var _hoisted_25 = ["value"];
-var _hoisted_26 = {
+var _hoisted_26 = ["value"];
+var _hoisted_27 = {
   "class": "mt-4"
 };
 
-var _hoisted_27 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
   id: "captcha",
   "class": "",
   src: "/captcha2"
@@ -26787,53 +26845,35 @@ var _hoisted_27 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_28 = {
+var _hoisted_29 = {
   "class": "mt-4"
 };
-var _hoisted_29 = {
+var _hoisted_30 = {
   "class": "flex items-center justify-end mt-4"
 };
 
-var _hoisted_30 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" پیش از این ثبت نام کرده اید؟ برای ورود کلیک کنید. ");
+var _hoisted_31 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" پیش از این ثبت نام کرده اید؟ برای ورود کلیک کنید. ");
 
-var _hoisted_31 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" ثبت نام ");
+var _hoisted_32 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" ثبت نام ");
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  var _component_Head = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Head");
-
-  var _component_BreezeValidationErrors = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("BreezeValidationErrors");
-
-  var _component_BreezeLabel = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("BreezeLabel");
-
-  var _component_BreezeInput = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("BreezeInput");
-
-  var _component_date_picker = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("date-picker");
-
-  var _component_Link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Link");
-
-  var _component_BreezeButton = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("BreezeButton");
-
-  var _component_BreezeGuestLayout = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("BreezeGuestLayout");
-
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_BreezeGuestLayout, null, {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["BreezeGuestLayout"], null, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Head, {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Head"], {
         title: "ثبت نام"
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeValidationErrors, {
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["BreezeValidationErrors"], {
         "class": "mb-4"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
         "class": "rtl text-right",
-        onSubmit: _cache[21] || (_cache[21] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
-          return $options.submit && $options.submit.apply($options, arguments);
-        }, ["prevent"]))
-      }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeLabel, {
+        onSubmit: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)($setup.submit, ["prevent"])
+      }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["BreezeLabel"], {
         "for": "fname",
         value: "نام*"
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeInput, {
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["BreezeInput"], {
         id: "fname",
-        modelValue: $data.form.fname,
+        modelValue: $setup.form.fname,
         "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
-          return $data.form.fname = $event;
+          return $setup.form.fname = $event;
         }),
         autocomplete: "fname",
         autofocus: "",
@@ -26842,14 +26882,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         type: "text"
       }, null, 8
       /* PROPS */
-      , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeLabel, {
+      , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["BreezeLabel"], {
         "for": "lname",
         value: "نام خانوادگی*"
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeInput, {
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["BreezeInput"], {
         id: "lname",
-        modelValue: $data.form.lname,
+        modelValue: $setup.form.lname,
         "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
-          return $data.form.lname = $event;
+          return $setup.form.lname = $event;
         }),
         autocomplete: "lname",
         autofocus: "",
@@ -26858,14 +26898,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         type: "text"
       }, null, 8
       /* PROPS */
-      , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeLabel, {
+      , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["BreezeLabel"], {
         "for": "national_code",
         value: "کدملی*"
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeInput, {
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["BreezeInput"], {
         id: "national_code",
-        modelValue: $data.form.national_code,
+        modelValue: $setup.form.national_code,
         "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
-          return $data.form.national_code = $event;
+          return $setup.form.national_code = $event;
         }),
         autocomplete: "national_code",
         autofocus: "",
@@ -26874,14 +26914,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         type: "number"
       }, null, 8
       /* PROPS */
-      , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeLabel, {
+      , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["BreezeLabel"], {
         "for": "phone",
         value: "شماره همراه*"
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeInput, {
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["BreezeInput"], {
         id: "phone",
-        modelValue: $data.form.phone,
+        modelValue: $setup.form.phone,
         "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
-          return $data.form.phone = $event;
+          return $setup.form.phone = $event;
         }),
         autocomplete: "phone",
         autofocus: "",
@@ -26890,32 +26930,32 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         type: "tel"
       }, null, 8
       /* PROPS */
-      , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeLabel, {
+      , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["BreezeLabel"], {
         "for": "birth",
         value: "تاریخ تولد"
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_date_picker, {
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["DatePicker"], {
         "initial-value": "1970/01/01",
         "class": "mt-1 block w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500",
-        modelValue: $data.form.birth,
+        modelValue: $setup.form.birth,
         "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
-          return $data.form.birth = $event;
+          return $setup.form.birth = $event;
         }),
         format: "YYYY/MM/DD",
         "display-format": "jYYYY/jMM/jDD",
         autofocus: ""
       }, null, 8
       /* PROPS */
-      , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeLabel, {
+      , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["BreezeLabel"], {
         "for": "gender",
         value: "جنسیت*"
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeLabel, {
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["BreezeLabel"], {
         "for": "genderMale",
         value: "مذکر"
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeInput, {
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["BreezeInput"], {
         id: "genderMale",
-        modelValue: $data.form.gender,
+        modelValue: $setup.form.gender,
         "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
-          return $data.form.gender = $event;
+          return $setup.form.gender = $event;
         }),
         autocomplete: "gender",
         autofocus: "",
@@ -26925,18 +26965,18 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         type: "radio",
         value: "male",
         onClick: _cache[6] || (_cache[6] = function ($event) {
-          return $options.genderChange($event);
+          return $setup.genderChange($event);
         })
       }, null, 8
       /* PROPS */
-      , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeLabel, {
+      , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["BreezeLabel"], {
         "for": "genderFemale",
         value: "مونث"
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeInput, {
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["BreezeInput"], {
         id: "genderFemale",
-        modelValue: $data.form.gender,
+        modelValue: $setup.form.gender,
         "onUpdate:modelValue": _cache[7] || (_cache[7] = function ($event) {
-          return $data.form.gender = $event;
+          return $setup.form.gender = $event;
         }),
         autocomplete: "gender",
         autofocus: "",
@@ -26946,18 +26986,18 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         type: "radio",
         value: "female",
         onClick: _cache[8] || (_cache[8] = function ($event) {
-          return $options.genderChange($event);
+          return $setup.genderChange($event);
         })
       }, null, 8
       /* PROPS */
-      , ["modelValue"])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeLabel, {
+      , ["modelValue"])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["BreezeLabel"], {
         "class": "flex-1 mt-4",
         value: "وضعیت نظام وظیفه*"
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeInput, {
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["BreezeInput"], {
         id: "military_status",
-        modelValue: $data.form.military_status,
+        modelValue: $setup.form.military_status,
         "onUpdate:modelValue": _cache[9] || (_cache[9] = function ($event) {
-          return $data.form.military_status = $event;
+          return $setup.form.military_status = $event;
         }),
         autocomplete: "military_status",
         autofocus: "",
@@ -26967,11 +27007,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         value: "permanent_exemption"
       }, null, 8
       /* PROPS */
-      , ["modelValue"]), _hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeInput, {
+      , ["modelValue"]), _hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["BreezeInput"], {
         id: "military_status2",
-        modelValue: $data.form.military_status,
+        modelValue: $setup.form.military_status,
         "onUpdate:modelValue": _cache[10] || (_cache[10] = function ($event) {
-          return $data.form.military_status = $event;
+          return $setup.form.military_status = $event;
         }),
         autocomplete: "military_status",
         autofocus: "",
@@ -26981,11 +27021,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         value: "temporary_exemption"
       }, null, 8
       /* PROPS */
-      , ["modelValue"]), _hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeInput, {
+      , ["modelValue"]), _hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["BreezeInput"], {
         id: "military_status3",
-        modelValue: $data.form.military_status,
+        modelValue: $setup.form.military_status,
         "onUpdate:modelValue": _cache[11] || (_cache[11] = function ($event) {
-          return $data.form.military_status = $event;
+          return $setup.form.military_status = $event;
         }),
         autocomplete: "military_status",
         autofocus: "",
@@ -26995,16 +27035,16 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         value: "done"
       }, null, 8
       /* PROPS */
-      , ["modelValue"]), _hoisted_14])], 512
+      , ["modelValue"]), _hoisted_15])], 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.form.gender == 'male']]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeLabel, {
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $setup.form.gender == 'male']]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["BreezeLabel"], {
         "for": "email",
         value: "ایمیل*"
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeInput, {
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["BreezeInput"], {
         id: "email",
-        modelValue: $data.form.email,
+        modelValue: $setup.form.email,
         "onUpdate:modelValue": _cache[12] || (_cache[12] = function ($event) {
-          return $data.form.email = $event;
+          return $setup.form.email = $event;
         }),
         autocomplete: "username",
         "class": "mt-1 block w-full",
@@ -27012,30 +27052,30 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         type: "email"
       }, null, 8
       /* PROPS */
-      , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [_hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+      , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [_hoisted_18, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
         id: "avatar",
         "aria-describedby": "avatar_help",
         "class": "block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400",
         type: "file",
         onInput: _cache[13] || (_cache[13] = function ($event) {
-          return $data.form.avatar = $event.target.files[0];
+          return $setup.form.avatar = $event.target.files[0];
         })
       }, null, 32
       /* HYDRATE_EVENTS */
-      ), _hoisted_18, $data.form.progress ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("progress", {
+      ), _hoisted_19, $setup.form.progress ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("progress", {
         key: 0,
-        value: $data.form.progress.percentage,
+        value: $setup.form.progress.percentage,
         max: "100"
-      }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form.progress.percentage) + "% ", 9
+      }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.form.progress.percentage) + "% ", 9
       /* TEXT, PROPS */
-      , _hoisted_19)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeLabel, {
+      , _hoisted_20)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_21, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["BreezeLabel"], {
         "for": "username",
         value: "نام کاربری*"
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeInput, {
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["BreezeInput"], {
         id: "username",
-        modelValue: $data.form.username,
+        modelValue: $setup.form.username,
         "onUpdate:modelValue": _cache[14] || (_cache[14] = function ($event) {
-          return $data.form.username = $event;
+          return $setup.form.username = $event;
         }),
         autocomplete: "username",
         autofocus: "",
@@ -27044,14 +27084,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         type: "text"
       }, null, 8
       /* PROPS */
-      , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_21, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeLabel, {
+      , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["BreezeLabel"], {
         "for": "password",
         value: "رمز عبور*"
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeInput, {
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["BreezeInput"], {
         id: "password",
-        modelValue: $data.form.password,
+        modelValue: $setup.form.password,
         "onUpdate:modelValue": _cache[15] || (_cache[15] = function ($event) {
-          return $data.form.password = $event;
+          return $setup.form.password = $event;
         }),
         autocomplete: "new-password",
         "class": "mt-1 block w-full",
@@ -27059,14 +27099,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         type: "password"
       }, null, 8
       /* PROPS */
-      , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeLabel, {
+      , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_23, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["BreezeLabel"], {
         "for": "password_confirmation",
         value: "تکرار رمز عبور*"
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeInput, {
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["BreezeInput"], {
         id: "password_confirmation",
-        modelValue: $data.form.password_confirmation,
+        modelValue: $setup.form.password_confirmation,
         "onUpdate:modelValue": _cache[16] || (_cache[16] = function ($event) {
-          return $data.form.password_confirmation = $event;
+          return $setup.form.password_confirmation = $event;
         }),
         autocomplete: "new-password",
         "class": "mt-1 block w-full",
@@ -27074,33 +27114,18 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         type: "password"
       }, null, 8
       /* PROPS */
-      , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_23, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeLabel, {
+      , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_24, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["BreezeLabel"], {
         "for": "province",
         value: "استان "
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
         "onUpdate:modelValue": _cache[17] || (_cache[17] = function ($event) {
-          return $data.form.province_id = $event;
+          return $setup.form.province_id = $event;
         }),
         name: "province_id",
         onChange: _cache[18] || (_cache[18] = function ($event) {
-          return $options.provinceChange($event);
+          return $setup.provinceChange($event);
         })
-      }, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.regions, function (item) {
-        return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", {
-          value: item.id
-        }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.title), 9
-        /* TEXT, PROPS */
-        , _hoisted_24);
-      }), 256
-      /* UNKEYED_FRAGMENT */
-      ))], 544
-      /* HYDRATE_EVENTS, NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.form.province_id]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
-        "onUpdate:modelValue": _cache[19] || (_cache[19] = function ($event) {
-          return $data.form.city_id = $event;
-        }),
-        name: "city_id"
-      }, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.cities, function (item) {
+      }, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.props.regions, function (item) {
         return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", {
           value: item.id
         }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.title), 9
@@ -27108,18 +27133,34 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         , _hoisted_25);
       }), 256
       /* UNKEYED_FRAGMENT */
+      ))], 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $setup.form.province_id]]), $setup.form.province_id != null ? (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)(((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("select", {
+        key: 0,
+        "onUpdate:modelValue": _cache[19] || (_cache[19] = function ($event) {
+          return $setup.form.city_id = $event;
+        }),
+        name: "city_id"
+      }, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.ourData.cities, function (item) {
+        return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", {
+          value: item.id
+        }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.title), 9
+        /* TEXT, PROPS */
+        , _hoisted_26);
+      }), 256
+      /* UNKEYED_FRAGMENT */
       ))], 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.form.province_id != null], [vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.form.city_id]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_26, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeLabel, {
+      )), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $setup.form.city_id]]) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_27, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["BreezeLabel"], {
         "for": "captcha",
         value: "کد امنیتی*"
-      }), _hoisted_27]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_28, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeLabel, {
+      }), _hoisted_28]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_29, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["BreezeLabel"], {
         value: "کد بالا را با دقت وارد کنید"
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeInput, {
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["BreezeInput"], {
         id: "captcha_code",
-        modelValue: $data.form.captcha_num,
+        modelValue: $setup.form.captcha_num,
         "onUpdate:modelValue": _cache[20] || (_cache[20] = function ($event) {
-          return $data.form.captcha_num = $event;
+          return $setup.form.captcha_num = $event;
         }),
         autofocus: "",
         "class": "block mt-1 w-full",
@@ -27128,23 +27169,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         type: "number"
       }, null, 8
       /* PROPS */
-      , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_29, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
+      , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_30, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Link"], {
         href: _ctx.route('login'),
         "class": "underline text-sm text-gray-600 hover:text-gray-900"
-      }, {
-        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [_hoisted_30];
-        }),
-        _: 1
-        /* STABLE */
-
-      }, 8
-      /* PROPS */
-      , ["href"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeButton, {
-        "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([{
-          'opacity-25': $data.form.processing
-        }, "pl-2 mr-4"]),
-        disabled: $data.form.processing
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [_hoisted_31];
@@ -27154,9 +27181,23 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
       }, 8
       /* PROPS */
-      , ["class", "disabled"])])], 32
-      /* HYDRATE_EVENTS */
-      )];
+      , ["href"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["BreezeButton"], {
+        "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([{
+          'opacity-25': $setup.form.processing
+        }, "pl-2 mr-4"]),
+        disabled: $setup.form.processing
+      }, {
+        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+          return [_hoisted_32];
+        }),
+        _: 1
+        /* STABLE */
+
+      }, 8
+      /* PROPS */
+      , ["class", "disabled"])])], 40
+      /* PROPS, HYDRATE_EVENTS */
+      , _hoisted_1)];
     }),
     _: 1
     /* STABLE */
@@ -27373,46 +27414,33 @@ var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 /* HOISTED */
 );
 
-var _hoisted_2 = {
+var _hoisted_2 = ["onSubmit"];
+var _hoisted_3 = {
   "class": "mt-4"
 };
-var _hoisted_3 = {
+var _hoisted_4 = {
   "class": "flex justify-end mt-4"
 };
 
-var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" تایید ");
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" تایید ");
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  var _component_Head = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Head");
-
-  var _component_BreezeValidationErrors = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("BreezeValidationErrors");
-
-  var _component_BreezeLabel = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("BreezeLabel");
-
-  var _component_BreezeInput = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("BreezeInput");
-
-  var _component_BreezeButton = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("BreezeButton");
-
-  var _component_BreezeGuestLayout = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("BreezeGuestLayout");
-
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_BreezeGuestLayout, null, {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["BreezeGuestLayout"], null, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Head, {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Head"], {
         title: "تغییر رمز عبور"
-      }), _hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeValidationErrors, {
+      }), _hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["BreezeValidationErrors"], {
         "class": "mb-4"
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
-        onSubmit: _cache[2] || (_cache[2] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
-          return $options.submit && $options.submit.apply($options, arguments);
-        }, ["prevent"]))
-      }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeLabel, {
+        onSubmit: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)($setup.submit, ["prevent"])
+      }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["BreezeLabel"], {
         "for": "password",
         value: "رمز عبور*"
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeInput, {
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["BreezeInput"], {
         id: "password",
-        modelValue: $data.form.password,
+        modelValue: $setup.form.password,
         "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
-          return $data.form.password = $event;
+          return $setup.form.password = $event;
         }),
         autocomplete: "current-password",
         autofocus: "",
@@ -27421,14 +27449,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         type: "password"
       }, null, 8
       /* PROPS */
-      , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeLabel, {
+      , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["BreezeLabel"], {
         "for": "password_confirmation",
         value: "*تکرار رمز عبور"
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeInput, {
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["BreezeInput"], {
         id: "password_confirmation",
-        modelValue: $data.form.password_confirmation,
+        modelValue: $setup.form.password_confirmation,
         "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
-          return $data.form.password_confirmation = $event;
+          return $setup.form.password_confirmation = $event;
         }),
         autocomplete: "new-password",
         "class": "mt-1 block w-full",
@@ -27436,23 +27464,23 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         type: "password"
       }, null, 8
       /* PROPS */
-      , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeButton, {
+      , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["BreezeButton"], {
         "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([{
-          'opacity-25': $data.form.processing
+          'opacity-25': $setup.form.processing
         }, "ml-4"]),
-        disabled: $data.form.processing
+        disabled: $setup.form.processing
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [_hoisted_4];
+          return [_hoisted_5];
         }),
         _: 1
         /* STABLE */
 
       }, 8
       /* PROPS */
-      , ["class", "disabled"])])], 32
-      /* HYDRATE_EVENTS */
-      )];
+      , ["class", "disabled"])])], 40
+      /* PROPS, HYDRATE_EVENTS */
+      , _hoisted_2)];
     }),
     _: 1
     /* STABLE */
@@ -28047,14 +28075,15 @@ var _hoisted_4 = {
 var _hoisted_5 = {
   "class": "p-6 bg-white border-b border-gray-200"
 };
+var _hoisted_6 = ["onSubmit"];
 
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "for": "title"
 }, "عنوان", -1
 /* HOISTED */
 );
 
-var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "flex items-center mt-4"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
   "class": "px-6 py-2 text-white bg-gray-900 rounded"
@@ -28063,35 +28092,29 @@ var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 );
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  var _component_Head = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Head");
-
-  var _component_BreezeAuthenticatedLayout = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("BreezeAuthenticatedLayout");
-
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Head, {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Head"], {
     title: "ویرایش موضوع"
-  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeAuthenticatedLayout, null, {
+  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["BreezeAuthenticatedLayout"], null, {
     header: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", _hoisted_1, " ویرایش موضوع " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form.title), 1
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", _hoisted_1, " ویرایش موضوع " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.form.title), 1
       /* TEXT */
       )];
     }),
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
         method: "post",
-        onSubmit: _cache[1] || (_cache[1] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
-          return $options.submit && $options.submit.apply($options, arguments);
-        }, ["prevent"]))
-      }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+        onSubmit: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)($setup.submit, ["prevent"])
+      }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
         "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
-          return $data.form.title = $event;
+          return $setup.form.title = $event;
         }),
         "class": "w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600",
         type: "text"
       }, null, 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.title]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" submit "), _hoisted_7], 32
-      /* HYDRATE_EVENTS */
-      )])])])])];
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.form.title]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" submit "), _hoisted_8], 40
+      /* PROPS, HYDRATE_EVENTS */
+      , _hoisted_6)])])])])];
     }),
     _: 1
     /* STABLE */
@@ -28225,17 +28248,9 @@ var _hoisted_25 = {
 };
 var _hoisted_26 = ["onClick"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  var _component_Head = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Head");
-
-  var _component_date_picker = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("date-picker");
-
-  var _component_pagination = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("pagination");
-
-  var _component_BreezeAuthenticatedLayout = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("BreezeAuthenticatedLayout");
-
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Head, {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Head"], {
     title: "مدیریت موضوعات"
-  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeAuthenticatedLayout, null, {
+  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["BreezeAuthenticatedLayout"], null, {
     header: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
         href: _ctx.route('categories.create')
@@ -28247,40 +28262,40 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [_hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
         id: "category-title",
         "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
-          return $data.search.title = $event;
+          return $setup.ourData.search.title = $event;
         }),
         "class": "rounded-none rounded-l-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block min-w-0 text-sm border-gray-300 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500",
         placeholder: "عنوان موضوع...",
         type: "text"
       }, null, 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.search.title]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_date_picker, {
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.ourData.search.title]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["DatePicker"], {
         editable: "",
         "class": "rounded-none rounded-l-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block min-w-0 text-sm border-gray-300 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500",
         placeholder: "ابتدای بازه زمانی ایجاد...",
-        modelValue: $data.search.created_at,
+        modelValue: $setup.ourData.search.created_at,
         "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
-          return $data.search.created_at = $event;
+          return $setup.ourData.search.created_at = $event;
         }),
         format: "YYYY/MM/DD",
         "display-format": "jYYYY/jMM/jDD",
         autofocus: ""
       }, null, 8
       /* PROPS */
-      , ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_date_picker, {
+      , ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["DatePicker"], {
         editable: "",
         "class": "rounded-none rounded-l-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block min-w-0 text-sm border-gray-300 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500",
         placeholder: "ابتدای بازه زمانی بروزرسانی...",
-        modelValue: $data.search.updated_at,
+        modelValue: $setup.ourData.search.updated_at,
         "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
-          return $data.search.updated_at = $event;
+          return $setup.ourData.search.updated_at = $event;
         }),
         format: "YYYY/MM/DD",
         "display-format": "jYYYY/jMM/jDD",
         autofocus: ""
       }, null, 8
       /* PROPS */
-      , ["modelValue"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_14, [_hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.categories.data, function (category) {
+      , ["modelValue"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_14, [_hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.props.categories.data, function (category) {
         return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("tr", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(category.id), 1
         /* TEXT */
         ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_18, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(category.title), 1
@@ -28299,15 +28314,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         , _hoisted_24)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", _hoisted_25, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
           "class": "btn btn-primary",
           onClick: function onClick($event) {
-            return $options.destroyUser(category.id);
+            return $setup.destroyUser(category.id);
           }
         }, "حذف", 8
         /* PROPS */
         , _hoisted_26)])])]);
       }), 256
       /* UNKEYED_FRAGMENT */
-      ))])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_pagination, {
-        links: $props.categories.links,
+      ))])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Pagination"], {
+        links: $setup.props.categories.links,
         "class": "mt-6"
       }, null, 8
       /* PROPS */
@@ -28833,19 +28848,9 @@ var _hoisted_29 = {
 };
 var _hoisted_30 = ["onClick"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  var _component_Head = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Head");
-
-  var _component_date_picker = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("date-picker");
-
-  var _component_Link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Link");
-
-  var _component_pagination = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("pagination");
-
-  var _component_BreezeAuthenticatedLayout = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("BreezeAuthenticatedLayout");
-
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Head, {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Head"], {
     title: "مدیریت مطالب"
-  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeAuthenticatedLayout, null, {
+  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["BreezeAuthenticatedLayout"], null, {
     header: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
         href: _ctx.route('posts.create')
@@ -28857,60 +28862,60 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [_hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
         id: "post-title",
         "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
-          return $data.search.title = $event;
+          return $setup.ourData.search.title = $event;
         }),
         "class": "rounded-none rounded-l-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block min-w-0 text-sm border-gray-300 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500",
         placeholder: "عنوان مطلب...",
         type: "text"
       }, null, 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.search.title]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.ourData.search.title]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
         id: "post-category-title",
         "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
-          return $data.search.category_title = $event;
+          return $setup.ourData.search.category_title = $event;
         }),
         "class": "rounded-none rounded-l-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block min-w-0 text-sm border-gray-300 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500",
         placeholder: "موضوع...",
         type: "text"
       }, null, 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.search.category_title]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.ourData.search.category_title]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
         id: "post-writer-name",
         "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
-          return $data.search.writer_name = $event;
+          return $setup.ourData.search.writer_name = $event;
         }),
         "class": "rounded-none rounded-l-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block min-w-0 text-sm border-gray-300 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500",
         placeholder: "نویسنده...",
         type: "text"
       }, null, 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.search.writer_name]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_date_picker, {
-        editable: "",
-        "class": "rounded-none rounded-l-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block min-w-0 text-sm border-gray-300 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500",
-        placeholder: "ابتدای بازه زمانی مورد نظر...",
-        modelValue: $data.search.start_date,
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.ourData.search.writer_name]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["DatePicker"], {
+        modelValue: $setup.ourData.search.start_date,
         "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
-          return $data.search.start_date = $event;
+          return $setup.ourData.search.start_date = $event;
         }),
-        format: "YYYY/MM/DD",
-        "display-format": "jYYYY/jMM/jDD",
-        autofocus: ""
-      }, null, 8
-      /* PROPS */
-      , ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_date_picker, {
-        editable: "",
+        autofocus: "",
         "class": "rounded-none rounded-l-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block min-w-0 text-sm border-gray-300 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500",
-        placeholder: "انتهای بازه زمانی موردنظر...",
-        modelValue: $data.search.end_date,
-        "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
-          return $data.search.end_date = $event;
-        }),
-        format: "YYYY/MM/DD",
         "display-format": "jYYYY/jMM/jDD",
-        autofocus: ""
+        editable: "",
+        format: "YYYY/MM/DD",
+        placeholder: "ابتدای بازه زمانی مورد نظر..."
       }, null, 8
       /* PROPS */
-      , ["modelValue"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_14, [_hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.posts.data, function (post) {
+      , ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["DatePicker"], {
+        modelValue: $setup.ourData.search.end_date,
+        "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
+          return $setup.ourData.search.end_date = $event;
+        }),
+        autofocus: "",
+        "class": "rounded-none rounded-l-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block min-w-0 text-sm border-gray-300 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500",
+        "display-format": "jYYYY/jMM/jDD",
+        editable: "",
+        format: "YYYY/MM/DD",
+        placeholder: "انتهای بازه زمانی موردنظر..."
+      }, null, 8
+      /* PROPS */
+      , ["modelValue"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_14, [_hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.props.posts.data, function (post) {
         return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("tr", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(post.id), 1
         /* TEXT */
         ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_18, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(post.title), 1
@@ -28925,7 +28930,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         /* TEXT */
         ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_23, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(post.updated_at), 1
         /* TEXT */
-        ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_24, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", _hoisted_25, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
+        ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_24, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", _hoisted_25, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Link"], {
           href: _ctx.route('posts.show', {
             post: post.id,
             title: post.title
@@ -28948,15 +28953,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         , _hoisted_28)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", _hoisted_29, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
           "class": "btn btn-primary",
           onClick: function onClick($event) {
-            return $options.destroyUser(post.id);
+            return $setup.destroyUser(post.id);
           }
         }, "حذف", 8
         /* PROPS */
         , _hoisted_30)])])]);
       }), 256
       /* UNKEYED_FRAGMENT */
-      ))])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_pagination, {
-        links: $props.posts.links,
+      ))])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Pagination"], {
+        links: $setup.props.posts.links,
         "class": "mt-6"
       }, null, 8
       /* PROPS */
@@ -29193,111 +29198,112 @@ var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_15 = {
+var _hoisted_15 = ["onSubmit"];
+var _hoisted_16 = {
   "class": "flex flex-col gap-4"
 };
-var _hoisted_16 = {
+var _hoisted_17 = {
   id: "reportParameters",
   "class": "flex flex-col gap-3"
 };
 
-var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "flex-1 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300",
   "for": "reportParameters"
 }, " پارامتر های گزارش گیری:", -1
 /* HOISTED */
 );
 
-var _hoisted_18 = {
+var _hoisted_19 = {
   "class": "flex"
 };
 
-var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "ml-2 text-sm font-medium text-gray-900 dark:text-gray-300",
   "for": "parameterProvince"
 }, " استان", -1
 /* HOISTED */
 );
 
-var _hoisted_20 = {
+var _hoisted_21 = {
   "class": "flex"
 };
 
-var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "ml-2 text-sm font-medium text-gray-900 dark:text-gray-300",
   "for": "parameterCity"
 }, " شهرستان", -1
 /* HOISTED */
 );
 
-var _hoisted_22 = {
+var _hoisted_23 = {
   "class": "flex"
 };
 
-var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "ml-2 text-sm font-medium text-gray-900 dark:text-gray-300",
   "for": "parameterGenders"
 }, " جنسیت", -1
 /* HOISTED */
 );
 
-var _hoisted_24 = {
+var _hoisted_25 = {
   "class": "flex"
 };
 
-var _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+var _hoisted_26 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "ml-2 text-sm font-medium text-gray-900 dark:text-gray-300",
   "for": "parameterStartDate"
 }, " ابتدای بازه زمانی", -1
 /* HOISTED */
 );
 
-var _hoisted_26 = {
+var _hoisted_27 = {
   "class": "flex"
 };
 
-var _hoisted_27 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "ml-2 text-sm font-medium text-gray-900 dark:text-gray-300",
   "for": "parameterEndDate"
 }, " انتهای بازه زمانی", -1
 /* HOISTED */
 );
 
-var _hoisted_28 = {
+var _hoisted_29 = {
   id: "reportMethods",
   "class": "flex flex-row gap-4"
 };
 
-var _hoisted_29 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+var _hoisted_30 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "ml-2 text-sm font-medium text-gray-900 dark:text-gray-300",
   "for": "reportMethods"
 }, " نوع خروجی گزارش گیری:", -1
 /* HOISTED */
 );
 
-var _hoisted_30 = {
+var _hoisted_31 = {
   "class": "flex gap-2"
 };
 
-var _hoisted_31 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+var _hoisted_32 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "ml-2 text-sm font-medium text-gray-900 dark:text-gray-300",
   "for": "parameterPdf"
 }, " PDF ", -1
 /* HOISTED */
 );
 
-var _hoisted_32 = {
+var _hoisted_33 = {
   "class": "flex gap-2"
 };
 
-var _hoisted_33 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+var _hoisted_34 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "ml-2 text-sm font-medium text-gray-900 dark:text-gray-300",
   "for": "parameterExcel"
 }, " EXCEL ", -1
 /* HOISTED */
 );
 
-var _hoisted_34 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_35 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "flex justify-between"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
   "class": "w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800",
@@ -29306,11 +29312,11 @@ var _hoisted_34 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_35 = {
+var _hoisted_36 = {
   "class": "flex-1"
 };
 
-var _hoisted_36 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_37 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "p-4 mb-4 text-sm text-yellow-700 bg-yellow-100 rounded-lg dark:bg-yellow-200 dark:text-yellow-800",
   role: "alert"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
@@ -29319,7 +29325,7 @@ var _hoisted_36 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_37 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_38 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "p-4 mb-4 text-sm text-yellow-700 bg-yellow-100 rounded-lg dark:bg-yellow-200 dark:text-yellow-800",
   role: "alert"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
@@ -29328,17 +29334,17 @@ var _hoisted_37 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_38 = {
+var _hoisted_39 = {
   "class": "grid grid-cols-4 gap-4 items-center justify-evenly"
 };
-var _hoisted_39 = {
+var _hoisted_40 = {
   "class": "overflow-x-auto relative shadow-md sm:rounded-lg"
 };
-var _hoisted_40 = {
+var _hoisted_41 = {
   "class": "w-full text-sm text-left text-gray-500 dark:text-gray-400"
 };
 
-var _hoisted_41 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("thead", {
+var _hoisted_42 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("thead", {
   "class": "text-xs text-gray-700 uppercase dark:text-gray-400"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
   "class": "py-3 px-6 bg-gray-50 dark:bg-gray-800",
@@ -29369,11 +29375,8 @@ var _hoisted_41 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_42 = {
-  "class": "bg-white border-b dark:bg-gray-900 dark:border-gray-700"
-};
 var _hoisted_43 = {
-  "class": "py-4 px-6"
+  "class": "bg-white border-b dark:bg-gray-900 dark:border-gray-700"
 };
 var _hoisted_44 = {
   "class": "py-4 px-6"
@@ -29382,70 +29385,63 @@ var _hoisted_45 = {
   "class": "py-4 px-6"
 };
 var _hoisted_46 = {
-  "class": "py-4"
+  "class": "py-4 px-6"
 };
 var _hoisted_47 = {
+  "class": "py-4"
+};
+var _hoisted_48 = {
   key: 0,
   "class": "py-4 mr-3"
 };
-var _hoisted_48 = {
+var _hoisted_49 = {
   key: 1,
   "class": "py-4 px-6"
 };
-var _hoisted_49 = {
+var _hoisted_50 = {
   "class": "py-4 px-6"
 };
-var _hoisted_50 = {
+var _hoisted_51 = {
   key: 0,
   "class": "flex flex-row"
 };
-var _hoisted_51 = {
+var _hoisted_52 = {
   "class": "m-1"
 };
-var _hoisted_52 = {
+var _hoisted_53 = {
   key: 2
 };
-var _hoisted_53 = ["onClick"];
-var _hoisted_54 = {
+var _hoisted_54 = ["onClick"];
+var _hoisted_55 = {
   key: 3,
   "class": "py-4 flex flex-row"
 };
-var _hoisted_55 = {
+var _hoisted_56 = {
   "class": "text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800",
   type: "button"
 };
 
-var _hoisted_56 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("مشاهده");
+var _hoisted_57 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("مشاهده");
 
-var _hoisted_57 = {
+var _hoisted_58 = {
   "class": "text-white bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:focus:ring-yellow-900",
   type: "button"
 };
-var _hoisted_58 = ["href"];
-var _hoisted_59 = {
+var _hoisted_59 = ["href"];
+var _hoisted_60 = {
   "class": "text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900",
   type: "button"
 };
-var _hoisted_60 = ["onClick"];
+var _hoisted_61 = ["onClick"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  var _component_Head = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Head");
-
-  var _component_Link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Link");
-
-  var _component_date_picker = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("date-picker");
-
-  var _component_pagination = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("pagination");
-
-  var _component_BreezeAuthenticatedLayout = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("BreezeAuthenticatedLayout");
-
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Head, {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Head"], {
     title: "مدیریت کاربری"
-  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BreezeAuthenticatedLayout, null, {
+  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["BreezeAuthenticatedLayout"], null, {
     header: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [];
     }),
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [_hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [_hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Link"], {
         type: "button",
         href: _ctx.route('site_admin.create'),
         "class": "block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
@@ -29462,211 +29458,207 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "class": "block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800",
         "data-modal-toggle": "reporting-modal",
         type: "button",
-        onMouseenter: _cache[0] || (_cache[0] = function () {
-          return $options.refreshPage && $options.refreshPage.apply($options, arguments);
-        })
+        onMouseenter: $setup.refreshPage
       }, " گزارش گیری ", 32
       /* HYDRATE_EVENTS */
       ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Main modal "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Modal content "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [_hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [_hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
         "class": "space-y-6 gap-3",
-        onSubmit: _cache[8] || (_cache[8] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
-          return $options.submitReportGenerator && $options.submitReportGenerator.apply($options, arguments);
-        }, ["prevent"]))
-      }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [_hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [_hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+        onSubmit: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)($setup.submitReportGenerator, ["prevent"])
+      }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [_hoisted_18, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_19, [_hoisted_20, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
         id: "parameterProvince",
-        "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
-          return $data.report.parameters['province'] = $event;
+        "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
+          return $setup.ourData.report.parameters['province'] = $event;
         }),
         "class": "w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-600 dark:border-gray-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800",
         type: "checkbox",
         value: "province"
       }, null, 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, $data.report.parameters['province']]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [_hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, $setup.ourData.report.parameters['province']]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_21, [_hoisted_22, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
         id: "parameterCity",
-        "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
-          return $data.report.parameters['city'] = $event;
+        "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
+          return $setup.ourData.report.parameters['city'] = $event;
         }),
         "class": "w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-600 dark:border-gray-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800",
         type: "checkbox",
         value: "city"
       }, null, 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, $data.report.parameters['city']]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [_hoisted_23, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, $setup.ourData.report.parameters['city']]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_23, [_hoisted_24, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
         id: "parameterGenders",
-        "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
-          return $data.report.parameters['gender'] = $event;
+        "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
+          return $setup.ourData.report.parameters['gender'] = $event;
         }),
         "class": "w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-600 dark:border-gray-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800",
         type: "checkbox",
         value: "gender"
       }, null, 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, $data.report.parameters['gender']]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_24, [_hoisted_25, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_date_picker, {
-        modelValue: $data.report.parameters['start_date'],
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, $setup.ourData.report.parameters['gender']]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_25, [_hoisted_26, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["DatePicker"], {
+        modelValue: $setup.ourData.report.parameters['start_date'],
+        "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
+          return $setup.ourData.report.parameters['start_date'] = $event;
+        }),
+        format: "YYYY-MM-DD",
+        "display-format": "jYYYY-jMM-jDD"
+      }, null, 8
+      /* PROPS */
+      , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_27, [_hoisted_28, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["DatePicker"], {
+        modelValue: $setup.ourData.report.parameters['end_date'],
         "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
-          return $data.report.parameters['start_date'] = $event;
+          return $setup.ourData.report.parameters['end_date'] = $event;
         }),
         format: "YYYY-MM-DD",
         "display-format": "jYYYY-jMM-jDD"
       }, null, 8
       /* PROPS */
-      , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_26, [_hoisted_27, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_date_picker, {
-        modelValue: $data.report.parameters['end_date'],
-        "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
-          return $data.report.parameters['end_date'] = $event;
-        }),
-        format: "YYYY-MM-DD",
-        "display-format": "jYYYY-jMM-jDD"
-      }, null, 8
-      /* PROPS */
-      , ["modelValue"])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_28, [_hoisted_29, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_30, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+      , ["modelValue"])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_29, [_hoisted_30, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_31, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
         id: "parameterPdf",
-        "onUpdate:modelValue": _cache[6] || (_cache[6] = function ($event) {
-          return $data.report.methods = $event;
+        "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
+          return $setup.ourData.report.methods = $event;
         }),
         "class": "w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-600 dark:border-gray-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800",
         type: "checkbox",
         value: "pdf"
       }, null, 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, $data.report.methods]]), _hoisted_31]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_32, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, $setup.ourData.report.methods]]), _hoisted_32]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_33, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
         id: "parameterExcel",
-        "onUpdate:modelValue": _cache[7] || (_cache[7] = function ($event) {
-          return $data.report.methods = $event;
+        "onUpdate:modelValue": _cache[6] || (_cache[6] = function ($event) {
+          return $setup.ourData.report.methods = $event;
         }),
         "class": "w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-600 dark:border-gray-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800",
         type: "checkbox",
         value: "excel"
       }, null, 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, $data.report.methods]]), _hoisted_33])]), _hoisted_34], 32
-      /* HYDRATE_EVENTS */
-      )])])])], 512
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelCheckbox, $setup.ourData.report.methods]]), _hoisted_34])]), _hoisted_35], 40
+      /* PROPS, HYDRATE_EVENTS */
+      , _hoisted_15)])])])], 512
       /* NEED_PATCH */
-      )])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_35, [_hoisted_36, _hoisted_37, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_38, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+      )])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_36, [_hoisted_37, _hoisted_38, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_39, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
         id: "post-title",
-        "onUpdate:modelValue": _cache[9] || (_cache[9] = function ($event) {
-          return $data.search.fullname = $event;
+        "onUpdate:modelValue": _cache[7] || (_cache[7] = function ($event) {
+          return $setup.ourData.search.fullname = $event;
         }),
         "class": "rounded-none rounded-l-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block min-w-0 text-sm border-gray-300 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500",
         placeholder: "نام و نام خانوادگی...",
         type: "text"
       }, null, 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.search.fullname]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.ourData.search.fullname]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
         id: "search_email",
-        "onUpdate:modelValue": _cache[10] || (_cache[10] = function ($event) {
-          return $data.search.email = $event;
+        "onUpdate:modelValue": _cache[8] || (_cache[8] = function ($event) {
+          return $setup.ourData.search.email = $event;
         }),
         "class": "rounded-none rounded-l-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block min-w-0 text-sm border-gray-300 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500",
         placeholder: "ایمیل...",
         type: "text"
       }, null, 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.search.email]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.ourData.search.email]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
         id: "search_province",
-        "onUpdate:modelValue": _cache[11] || (_cache[11] = function ($event) {
-          return $data.search.province = $event;
+        "onUpdate:modelValue": _cache[9] || (_cache[9] = function ($event) {
+          return $setup.ourData.search.province = $event;
         }),
         "class": "rounded-none rounded-l-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block min-w-0 text-sm border-gray-300 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500",
         placeholder: "استان...",
         type: "text"
       }, null, 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.search.province]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.ourData.search.province]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
         id: "search_city",
-        "onUpdate:modelValue": _cache[12] || (_cache[12] = function ($event) {
-          return $data.search.city = $event;
+        "onUpdate:modelValue": _cache[10] || (_cache[10] = function ($event) {
+          return $setup.ourData.search.city = $event;
         }),
         "class": "rounded-none rounded-l-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block min-w-0 text-sm border-gray-300 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500",
         placeholder: "شهرستان",
         type: "text"
       }, null, 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.search.city]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                <input id=\"search_role\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                       v-model=\"search.role\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                       class=\"rounded-none rounded-l-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block min-w-0  text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                       placeholder=\"نقش کاربری\" type=\"text\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                <div>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                    <label class=\"typo__label\">Tagging</label>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                    <VueMultiselect v-model=\"search.roles\" tag-placeholder=\"Add this as new tag\" placeholder=\"Search or add a tag\" label=\"name\" track-by=\"id\" :options=\"roles\" :multiple=\"true\" :taggable=\"true\" @tag=\"addTag\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                    </VueMultiselect>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                </div>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_date_picker, {
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.ourData.search.city]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                <input id=\"search_role\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                       v-model=\"search.role\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                       class=\"rounded-none rounded-l-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block min-w-0  text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500\""), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                       placeholder=\"نقش کاربری\" type=\"text\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                <div>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                    <label class=\"typo__label\">Tagging</label>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                    <VueMultiselect v-model=\"search.roles\" tag-placeholder=\"Add this as new tag\" placeholder=\"Search or add a tag\" label=\"name\" track-by=\"id\" :options=\"roles\" :multiple=\"true\" :taggable=\"true\" @tag=\"addTag\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                    </VueMultiselect>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                </div>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["DatePicker"], {
         editable: "",
         "class": "rounded-none rounded-l-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block min-w-0 text-sm border-gray-300 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500",
         placeholder: "تاریخ تولد ...",
-        modelValue: $data.search.birth,
-        "onUpdate:modelValue": _cache[13] || (_cache[13] = function ($event) {
-          return $data.search.birth = $event;
+        modelValue: $setup.ourData.search.birth,
+        "onUpdate:modelValue": _cache[11] || (_cache[11] = function ($event) {
+          return $setup.ourData.search.birth = $event;
         }),
         format: "YYYY/MM/DD",
         "display-format": "jYYYY/jMM/jDD",
         autofocus: ""
       }, null, 8
       /* PROPS */
-      , ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_date_picker, {
+      , ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["DatePicker"], {
         editable: "",
         "class": "rounded-none rounded-l-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block min-w-0 text-sm border-gray-300 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500",
         placeholder: "ابتدای بازه تاریخ عضویت...",
-        modelValue: $data.search.created_at,
-        "onUpdate:modelValue": _cache[14] || (_cache[14] = function ($event) {
-          return $data.search.created_at = $event;
+        modelValue: $setup.ourData.search.created_at,
+        "onUpdate:modelValue": _cache[12] || (_cache[12] = function ($event) {
+          return $setup.ourData.search.created_at = $event;
         }),
         format: "YYYY/MM/DD",
         "display-format": "jYYYY/jMM/jDD",
         autofocus: ""
       }, null, 8
       /* PROPS */
-      , ["modelValue"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_39, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_40, [_hoisted_41, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.users.data, function (user) {
+      , ["modelValue"])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_40, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_41, [_hoisted_42, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.props.users.data, function (user) {
         var _user$province$title, _user$city$title;
 
-        return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("tr", _hoisted_42, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_43, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(user.id), 1
+        return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("tr", _hoisted_43, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_44, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(user.id), 1
         /* TEXT */
-        ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_44, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(user.fname), 1
+        ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_45, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(user.fname), 1
         /* TEXT */
-        ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_45, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(user.lname), 1
+        ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_46, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(user.lname), 1
         /* TEXT */
-        ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_46, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(user.email), 1
+        ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_47, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(user.email), 1
         /* TEXT */
-        ), user.province != null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("td", _hoisted_47, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)((_user$province$title = user.province.title) !== null && _user$province$title !== void 0 ? _user$province$title : ''), 1
+        ), user.province != null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("td", _hoisted_48, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)((_user$province$title = user.province.title) !== null && _user$province$title !== void 0 ? _user$province$title : ''), 1
         /* TEXT */
-        )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), user.city != null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("td", _hoisted_48, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)((_user$city$title = user.city.title) !== null && _user$city$title !== void 0 ? _user$city$title : ''), 1
+        )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), user.city != null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("td", _hoisted_49, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)((_user$city$title = user.city.title) !== null && _user$city$title !== void 0 ? _user$city$title : ''), 1
         /* TEXT */
-        )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_49, [!!user.roles ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_50, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(user.roles, function (role) {
-          return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_51, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(role.name), 1
+        )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_50, [!!user.roles ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_51, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(user.roles, function (role) {
+          return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_52, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(role.name), 1
           /* TEXT */
           );
         }), 256
         /* UNKEYED_FRAGMENT */
-        ))])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), $props.isFromSiteAdminAdd ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("td", _hoisted_52, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+        ))])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), $setup.props.isFromSiteAdminAdd ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("td", _hoisted_53, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
           "class": "text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800",
           onClick: function onClick($event) {
             return _ctx.$emit('setUser', user.id);
           }
         }, " انتخاب کاربر ", 8
         /* PROPS */
-        , _hoisted_53)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $props.isFromSiteAdminAdd != true ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("td", _hoisted_54, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", _hoisted_55, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
+        , _hoisted_54)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $setup.props.isFromSiteAdminAdd != true ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("td", _hoisted_55, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", _hoisted_56, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Link"], {
           href: _ctx.route('users.show', user.id),
           "class": "btn btn-info"
         }, {
           "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-            return [_hoisted_56];
+            return [_hoisted_57];
           }),
           _: 2
           /* DYNAMIC */
 
         }, 1032
         /* PROPS, DYNAMIC_SLOTS */
-        , ["href"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", _hoisted_57, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+        , ["href"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", _hoisted_58, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
           href: _ctx.route('users.edit', user.id),
           "class": "btn btn-primary"
         }, "ویرایش", 8
         /* PROPS */
-        , _hoisted_58)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", _hoisted_59, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+        , _hoisted_59)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", _hoisted_60, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
           "class": "btn btn-primary",
           onClick: function onClick($event) {
-            return $options.destroyUser(user.id);
+            return $setup.destroyUser(user.id);
           }
         }, "حذف کاربر", 8
         /* PROPS */
-        , _hoisted_60)])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]);
+        , _hoisted_61)])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]);
       }), 256
       /* UNKEYED_FRAGMENT */
-      ))])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_pagination, {
-        links: $props.users.links,
+      ))])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Pagination"], {
+        links: $setup.props.users.links,
         "class": "mt-6"
       }, null, 8
       /* PROPS */
@@ -29846,4974 +29838,6 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
 /***/ }),
 
-/***/ "./resources/js/Pages/Auth/persian-datepicker.js":
-/*!*******************************************************!*\
-  !*** ./resources/js/Pages/Auth/persian-datepicker.js ***!
-  \*******************************************************/
-/***/ (() => {
-
-function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
-
-/******/
-(function () {
-  // webpackBootstrap
-
-  /******/
-  var __webpack_modules__ = {
-    /***/
-    "./node_modules/persian-datepicker/dist/js/persian-datepicker.js":
-    /*!***********************************************************************!*\
-    !*** ./node_modules/persian-datepicker/dist/js/persian-datepicker.js ***!
-    \***********************************************************************/
-
-    /***/
-    function node_modulesPersianDatepickerDistJsPersianDatepickerJs(module) {
-      /*
-      ** persian-datepicker - v1.2.0
-      ** Reza Babakhani <babakhani.reza@gmail.com>
-      ** http://babakhani.github.io/PersianWebToolkit/docs/datepicker
-      ** Under MIT license
-      */
-      (function webpackUniversalModuleDefinition(root, factory) {
-        if (true) module.exports = factory();else {}
-      })(this, function () {
-        return (
-          /******/
-          function (modules) {
-            // webpackBootstrap
-
-            /******/
-            // The module cache
-
-            /******/
-            var installedModules = {};
-            /******/
-
-            /******/
-            // The require function
-
-            /******/
-
-            function __nested_webpack_require_727__(moduleId) {
-              /******/
-
-              /******/
-              // Check if module is in cache
-
-              /******/
-              if (installedModules[moduleId]) {
-                /******/
-                return installedModules[moduleId].exports;
-                /******/
-              }
-              /******/
-              // Create a new module (and put it into the cache)
-
-              /******/
-
-
-              var module = installedModules[moduleId] = {
-                /******/
-                i: moduleId,
-
-                /******/
-                l: false,
-
-                /******/
-                exports: {}
-                /******/
-
-              };
-              /******/
-
-              /******/
-              // Execute the module function
-
-              /******/
-
-              modules[moduleId].call(module.exports, module, module.exports, __nested_webpack_require_727__);
-              /******/
-
-              /******/
-              // Flag the module as loaded
-
-              /******/
-
-              module.l = true;
-              /******/
-
-              /******/
-              // Return the exports of the module
-
-              /******/
-
-              return module.exports;
-              /******/
-            }
-            /******/
-
-            /******/
-
-            /******/
-            // expose the modules object (__webpack_modules__)
-
-            /******/
-
-
-            __nested_webpack_require_727__.m = modules;
-            /******/
-
-            /******/
-            // expose the module cache
-
-            /******/
-
-            __nested_webpack_require_727__.c = installedModules;
-            /******/
-
-            /******/
-            // identity function for calling harmony imports with the correct context
-
-            /******/
-
-            __nested_webpack_require_727__.i = function (value) {
-              return value;
-            };
-            /******/
-
-            /******/
-            // define getter function for harmony exports
-
-            /******/
-
-
-            __nested_webpack_require_727__.d = function (exports, name, getter) {
-              /******/
-              if (!__nested_webpack_require_727__.o(exports, name)) {
-                /******/
-                Object.defineProperty(exports, name, {
-                  /******/
-                  configurable: false,
-
-                  /******/
-                  enumerable: true,
-
-                  /******/
-                  get: getter
-                  /******/
-
-                });
-                /******/
-              }
-              /******/
-
-            };
-            /******/
-
-            /******/
-            // getDefaultExport function for compatibility with non-harmony modules
-
-            /******/
-
-
-            __nested_webpack_require_727__.n = function (module) {
-              /******/
-              var getter = module && module.__esModule ?
-              /******/
-              function getDefault() {
-                return module['default'];
-              } :
-              /******/
-              function getModuleExports() {
-                return module;
-              };
-              /******/
-
-              __nested_webpack_require_727__.d(getter, 'a', getter);
-              /******/
-
-
-              return getter;
-              /******/
-            };
-            /******/
-
-            /******/
-            // Object.prototype.hasOwnProperty.call
-
-            /******/
-
-
-            __nested_webpack_require_727__.o = function (object, property) {
-              return Object.prototype.hasOwnProperty.call(object, property);
-            };
-            /******/
-
-            /******/
-            // __webpack_public_path__
-
-            /******/
-
-
-            __nested_webpack_require_727__.p = "";
-            /******/
-
-            /******/
-            // Load entry module and return exports
-
-            /******/
-
-            return __nested_webpack_require_727__(__nested_webpack_require_727__.s = 5);
-            /******/
-          }
-          /************************************************************************/
-
-          /******/
-          ([
-          /* 0 */
-
-          /***/
-          function (module, exports, __webpack_require__) {
-            "use strict";
-
-            var Helper = {
-              // leading edge, instead of the trailing.
-              debounce: function debounce(func, wait, immediate) {
-                var timeout;
-                return function () {
-                  var context = this,
-                      args = arguments;
-
-                  var later = function later() {
-                    timeout = null;
-                    if (!immediate) func.apply(context, args);
-                  };
-
-                  var callNow = immediate && !timeout;
-                  clearTimeout(timeout);
-                  timeout = setTimeout(later, wait);
-                  if (callNow) func.apply(context, args);
-                };
-              },
-
-              /**
-               * @desc normal log
-               * @param input
-               * @example log('whoooooha')
-               */
-              log: function log(input) {
-                /*eslint-disable no-console */
-                console.log(input);
-                /*eslint-enable no-console */
-              },
-
-              /* eslint-disable no-useless-escape */
-              isMobile: function () {
-                var check = false;
-
-                (function (a) {
-                  if (/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino|android|ipad|playbook|silk/i.test(a) || /1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0, 4))) check = true;
-                })(navigator.userAgent || navigator.vendor || window.opera);
-
-                return check;
-              }(),
-
-              /* eslint-enable no-useless-escape */
-
-              /**
-               * @desc show debug messages if window.persianDatepickerDebug set as true
-               * @param elem
-               * @param input
-               * @example window.persianDatepickerDebug = true;
-               * debug('element','message');
-               */
-              debug: function debug(elem, input) {
-                /*eslint-disable no-console */
-                if (window.persianDatepickerDebug) {
-                  if (elem.constructor.name) {
-                    console.log('Debug: ' + elem.constructor.name + ' : ' + input);
-                  } else {
-                    console.log('Debug: ' + input);
-                  }
-                }
-                /*eslint-enable no-console */
-
-              },
-              delay: function delay(callback, ms) {
-                clearTimeout(window.datepickerTimer);
-                window.datepickerTimer = setTimeout(callback, ms);
-              }
-            };
-            module.exports = Helper;
-            /***/
-          },
-          /* 1 */
-
-          /***/
-          function (module, exports, __webpack_require__) {
-            "use strict";
-            /**
-             * @type {string}
-             */
-
-            var Template = "\n<div id=\"plotId\" class=\"datepicker-plot-area {{cssClass}}\">\n    {{#navigator.enabled}}\n        <div data-navigator class=\"datepicker-navigator\">\n            <div class=\"pwt-btn pwt-btn-next\">{{navigator.text.btnNextText}}</div>\n            <div class=\"pwt-btn pwt-btn-switch\">{{navigator.switch.text}}</div>\n            <div class=\"pwt-btn pwt-btn-prev\">{{navigator.text.btnPrevText}}</div>\n        </div>\n    {{/navigator.enabled}}\n    <div class=\"datepicker-grid-view\" >\n    {{#days.enabled}}\n        {{#days.viewMode}}\n        <div class=\"datepicker-day-view\" >    \n            <div class=\"month-grid-box\">\n                <div class=\"header\">\n                    <div class=\"title\"></div>\n                    <div class=\"header-row\">\n                        {{#weekdays.list}}\n                            <div class=\"header-row-cell\">{{.}}</div>\n                        {{/weekdays.list}}\n                    </div>\n                </div>    \n                <table cellspacing=\"0\" class=\"table-days\">\n                    <tbody>\n                        {{#days.list}}\n                           \n                            <tr>\n                                {{#.}}\n                                    {{#enabled}}\n                                        <td data-date=\"{{dataDate}}\" data-unix=\"{{dataUnix}}\" >\n                                            <span  class=\"{{#otherMonth}}other-month{{/otherMonth}}\">{{title}}</span>\n                                            {{#altCalendarShowHint}}\n                                            <i  class=\"alter-calendar-day\">{{alterCalTitle}}</i>\n                                            {{/altCalendarShowHint}}\n                                        </td>\n                                    {{/enabled}}\n                                    {{^enabled}}\n                                        <td data-date=\"{{dataDate}}\" data-unix=\"{{dataUnix}}\" class=\"disabled\">\n                                            <span class=\"{{#otherMonth}}other-month{{/otherMonth}}\">{{title}}</span>\n                                            {{#altCalendarShowHint}}\n                                            <i  class=\"alter-calendar-day\">{{alterCalTitle}}</i>\n                                            {{/altCalendarShowHint}}\n                                        </td>\n                                    {{/enabled}}\n                                    \n                                {{/.}}\n                            </tr>\n                        {{/days.list}}\n                    </tbody>\n                </table>\n            </div>\n        </div>\n        {{/days.viewMode}}\n    {{/days.enabled}}\n    \n    {{#month.enabled}}\n        {{#month.viewMode}}\n            <div class=\"datepicker-month-view\">\n                {{#month.list}}\n                    {{#enabled}}               \n                        <div data-year=\"{{year}}\" data-month=\"{{dataMonth}}\" class=\"month-item {{#selected}}selected{{/selected}}\">{{title}}</small></div>\n                    {{/enabled}}\n                    {{^enabled}}               \n                        <div data-year=\"{{year}}\"data-month=\"{{dataMonth}}\" class=\"month-item month-item-disable {{#selected}}selected{{/selected}}\">{{title}}</small></div>\n                    {{/enabled}}\n                {{/month.list}}\n            </div>\n        {{/month.viewMode}}\n    {{/month.enabled}}\n    \n    {{#year.enabled }}\n        {{#year.viewMode }}\n            <div class=\"datepicker-year-view\" >\n                {{#year.list}}\n                    {{#enabled}}\n                        <div data-year=\"{{dataYear}}\" class=\"year-item {{#selected}}selected{{/selected}}\">{{title}}</div>\n                    {{/enabled}}\n                    {{^enabled}}\n                        <div data-year=\"{{dataYear}}\" class=\"year-item year-item-disable {{#selected}}selected{{/selected}}\">{{title}}</div>\n                    {{/enabled}}                    \n                {{/year.list}}\n            </div>\n        {{/year.viewMode }}\n    {{/year.enabled }}\n    \n    </div>\n    {{#time}}\n    {{#enabled}}\n    <div class=\"datepicker-time-view\">\n        {{#hour.enabled}}\n            <div class=\"hour time-segment\" data-time-key=\"hour\">\n                <div class=\"up-btn\" data-time-key=\"hour\">\u25B2</div>\n                <input disabled value=\"{{hour.title}}\" type=\"text\" placeholder=\"hour\" class=\"hour-input\">\n                <div class=\"down-btn\" data-time-key=\"hour\">\u25BC</div>                    \n            </div>       \n            <div class=\"divider\">\n                <span>:</span>\n            </div>\n        {{/hour.enabled}}\n        {{#minute.enabled}}\n            <div class=\"minute time-segment\" data-time-key=\"minute\" >\n                <div class=\"up-btn\" data-time-key=\"minute\">\u25B2</div>\n                <input disabled value=\"{{minute.title}}\" type=\"text\" placeholder=\"minute\" class=\"minute-input\">\n                <div class=\"down-btn\" data-time-key=\"minute\">\u25BC</div>\n            </div>        \n            <div class=\"divider second-divider\">\n                <span>:</span>\n            </div>\n        {{/minute.enabled}}\n        {{#second.enabled}}\n            <div class=\"second time-segment\" data-time-key=\"second\"  >\n                <div class=\"up-btn\" data-time-key=\"second\" >\u25B2</div>\n                <input disabled value=\"{{second.title}}\"  type=\"text\" placeholder=\"second\" class=\"second-input\">\n                <div class=\"down-btn\" data-time-key=\"second\" >\u25BC</div>\n            </div>\n            <div class=\"divider meridian-divider\"></div>\n            <div class=\"divider meridian-divider\"></div>\n        {{/second.enabled}}\n        {{#meridian.enabled}}\n            <div class=\"meridian time-segment\" data-time-key=\"meridian\" >\n                <div class=\"up-btn\" data-time-key=\"meridian\">\u25B2</div>\n                <input disabled value=\"{{meridian.title}}\" type=\"text\" class=\"meridian-input\">\n                <div class=\"down-btn\" data-time-key=\"meridian\">\u25BC</div>\n            </div>\n        {{/meridian.enabled}}\n    </div>\n    {{/enabled}}\n    {{/time}}\n    \n    {{#toolbox}}\n    {{#enabled}}\n    <div class=\"toolbox\">\n        {{#toolbox.submitButton.enabled}}\n            <div class=\"pwt-btn-submit\">{{submitButtonText}}</div>\n        {{/toolbox.submitButton.enabled}}        \n        {{#toolbox.todayButton.enabled}}\n            <div class=\"pwt-btn-today\">{{todayButtonText}}</div>\n        {{/toolbox.todayButton.enabled}}        \n        {{#toolbox.calendarSwitch.enabled}}\n            <div class=\"pwt-btn-calendar\">{{calendarSwitchText}}</div>\n        {{/toolbox.calendarSwitch.enabled}}\n    </div>\n    {{/enabled}}\n    {{^enabled}}\n        {{#onlyTimePicker}}\n        <div class=\"toolbox\">\n            <div class=\"pwt-btn-submit\">{{submitButtonText}}</div>\n        </div>\n        {{/onlyTimePicker}}\n    {{/enabled}}\n    {{/toolbox}}\n</div>\n";
-            module.exports = Template;
-            /***/
-          },
-          /* 2 */
-
-          /***/
-          function (module, exports, __nested_webpack_require_14525__) {
-            "use strict";
-
-            var _createClass = function () {
-              function defineProperties(target, props) {
-                for (var i = 0; i < props.length; i++) {
-                  var descriptor = props[i];
-                  descriptor.enumerable = descriptor.enumerable || false;
-                  descriptor.configurable = true;
-                  if ("value" in descriptor) descriptor.writable = true;
-                  Object.defineProperty(target, descriptor.key, descriptor);
-                }
-              }
-
-              return function (Constructor, protoProps, staticProps) {
-                if (protoProps) defineProperties(Constructor.prototype, protoProps);
-                if (staticProps) defineProperties(Constructor, staticProps);
-                return Constructor;
-              };
-            }();
-
-            function _classCallCheck(instance, Constructor) {
-              if (!(instance instanceof Constructor)) {
-                throw new TypeError("Cannot call a class as a function");
-              }
-            }
-
-            var State = __nested_webpack_require_14525__(11);
-
-            var Toolbox = __nested_webpack_require_14525__(12);
-
-            var View = __nested_webpack_require_14525__(13);
-
-            var Input = __nested_webpack_require_14525__(6);
-
-            var API = __nested_webpack_require_14525__(3);
-
-            var Navigator = __nested_webpack_require_14525__(7);
-
-            var Options = __nested_webpack_require_14525__(8);
-
-            var PersianDateWrapper = __nested_webpack_require_14525__(10);
-            /**
-             * Main datepicker object, manage every things
-             */
-
-
-            var Model = function () {
-              /**
-               * @param inputElement
-               * @param options
-               * @private
-               */
-              function Model(inputElement, options) {
-                _classCallCheck(this, Model);
-
-                return this.components(inputElement, options);
-              }
-
-              _createClass(Model, [{
-                key: 'components',
-                value: function components(inputElement, options) {
-                  /**
-                   * @desc [initialUnix=null]
-                   * @type {unix}
-                   */
-                  this.initialUnix = null;
-                  /**
-                   * @desc inputElement=inputElement
-                   * @type {Object}
-                   */
-
-                  this.inputElement = inputElement;
-                  /**
-                   * @desc handle works about config
-                   * @type {Options}
-                   */
-
-                  this.options = new Options(options, this);
-                  /**
-                   *
-                   * @type {PersianDateWrapper}
-                   */
-
-                  this.PersianDate = new PersianDateWrapper(this);
-                  /**
-                   * @desc set and get selected and view and other state
-                   * @type {State}
-                   */
-
-                  this.state = new State(this);
-                  this.api = new API(this);
-                  /**
-                   * @desc handle works about input and alt field input element
-                   * @type {Input}
-                   */
-
-                  this.input = new Input(this, inputElement);
-                  /**
-                   * @desc render datepicker view base on State
-                   * @type {View}
-                   */
-
-                  this.view = new View(this);
-                  /**
-                   * @desc handle works about toolbox
-                   * @type {Toolbox}
-                   */
-
-                  this.toolbox = new Toolbox(this);
-                  /**
-                   *
-                   * @param unix
-                   */
-
-                  this.updateInput = function (unix) {
-                    this.input.update(unix);
-                  };
-
-                  this.state.setViewDateTime('unix', this.input.getOnInitState());
-                  this.state.setSelectedDateTime('unix', this.input.getOnInitState());
-                  this.view.render();
-                  /**
-                   * @desc handle navigation and dateoicker element events
-                   * @type {Navigator}
-                   */
-
-                  this.navigator = new Navigator(this);
-                  return this.api;
-                }
-              }]);
-
-              return Model;
-            }();
-
-            module.exports = Model;
-            /***/
-          },
-          /* 3 */
-
-          /***/
-          function (module, exports, __webpack_require__) {
-            "use strict";
-
-            var _createClass = function () {
-              function defineProperties(target, props) {
-                for (var i = 0; i < props.length; i++) {
-                  var descriptor = props[i];
-                  descriptor.enumerable = descriptor.enumerable || false;
-                  descriptor.configurable = true;
-                  if ("value" in descriptor) descriptor.writable = true;
-                  Object.defineProperty(target, descriptor.key, descriptor);
-                }
-              }
-
-              return function (Constructor, protoProps, staticProps) {
-                if (protoProps) defineProperties(Constructor.prototype, protoProps);
-                if (staticProps) defineProperties(Constructor, staticProps);
-                return Constructor;
-              };
-            }();
-
-            function _classCallCheck(instance, Constructor) {
-              if (!(instance instanceof Constructor)) {
-                throw new TypeError("Cannot call a class as a function");
-              }
-            }
-            /**
-             * This is the API documentation for persian-datepicker
-             */
-
-
-            var API = function () {
-              function API(model) {
-                _classCallCheck(this, API);
-
-                this.model = model;
-              }
-              /**
-               * @description get current option object
-               * @example var pd = $('.selector').persianDatepicker();
-               * console.log(pd.options);
-               */
-
-
-              _createClass(API, [{
-                key: 'show',
-
-                /**
-                 * @description make datepicker visible
-                 * @example var pd = $('.selector').persianDatepicker();
-                 * pd.show();
-                 */
-                value: function show() {
-                  this.model.view.show();
-                  this.model.options.onShow(this.model);
-                  return this.model;
-                }
-                /**
-                 * @description return datepicker current state
-                 * @since 1.0.0
-                 * @example var pd = $('.selector').persianDatepicker();
-                 * var state = pd.getState();
-                 *
-                 * console.log(state.selected);
-                 * console.log(state.view);
-                 * */
-
-              }, {
-                key: 'getState',
-                value: function getState() {
-                  return this.model.state;
-                }
-                /**
-                 * @description make datepicker invisible
-                 * @example var pd = $('.selector').persianDatepicker();
-                 * pd.show();
-                 */
-
-              }, {
-                key: 'hide',
-                value: function hide() {
-                  this.model.view.hide();
-                  this.model.options.onHide(this.model);
-                  return this.model;
-                }
-                /**
-                 * @description toggle datepicker visibility state
-                 * @example var pd = $('.selector').persianDatepicker();
-                 * pd.toggle();
-                 */
-
-              }, {
-                key: 'toggle',
-                value: function toggle() {
-                  this.model.view.toggle();
-                  this.model.options.onToggle(this.model);
-                  return this.model;
-                }
-                /**
-                 * @description destroy every thing clean dom and
-                 * @example var pd = $('.selector').persianDatepicker();
-                 * pd.destroy();
-                 */
-
-              }, {
-                key: 'destroy',
-                value: function destroy() {
-                  if (this.model) {
-                    this.model.view.destroy();
-                    this.model.options.onDestroy(this.model);
-                    delete this.model;
-                  }
-                }
-                /**
-                 * @description set selected date of datepicker accept unix timestamp
-                 * @param unix
-                 * @example var pd = $('.selector').persianDatepicker();
-                 * pd.setDate(1382276091100)
-                 */
-
-              }, {
-                key: 'setDate',
-                value: function setDate(unix) {
-                  this.model.state.setSelectedDateTime('unix', unix);
-                  this.model.state.setViewDateTime('unix', unix);
-                  this.model.state.setSelectedDateTime('unix', unix);
-                  this.model.view.render(this.view);
-                  this.model.options.onSet(unix);
-                  return this.model;
-                }
-              }, {
-                key: 'options',
-                get: function get() {
-                  return this.model.options;
-                }
-                /**
-                 * @description set options live
-                 * @example var pd = $('.selector').persianDatepicker();
-                 * pd.options;
-                 * //return current options
-                 * pd.options = {};
-                 * // set options and render datepicker with new options
-                 */
-                ,
-                set: function set(inputOptions) {
-                  var opt = $.extend(true, this.model.options, inputOptions);
-                  this.model.view.destroy();
-                  this.model.components(this.model.inputElement, opt);
-                }
-              }]);
-
-              return API;
-            }();
-
-            module.exports = API;
-            /***/
-          },
-          /* 4 */
-
-          /***/
-          function (module, exports, __nested_webpack_require_22080__) {
-            "use strict";
-
-            var Helper = __nested_webpack_require_22080__(0);
-            /**
-             * @description persian-datepicker configuration document
-             */
-
-
-            var Config = {
-              /**
-               * @description set default calendar mode of datepicker, available options: 'persian', 'gregorian'
-               * @default 'persian'
-               * @type string
-               * @since 1.0.0
-               */
-              'calendarType': 'persian',
-
-              /**
-               * @description calendar type and localization configuration
-               * @type object
-               * @since 1.0.0
-               * @example
-               * {
-               *     'persian': {
-               *         'locale': 'fa',
-               *         'showHint': false,
-               *         'leapYearMode': 'algorithmic' // "astronomical"
-               *     },
-               *
-               *     'gregorian': {
-               *         'locale': 'en',
-               *         'showHint': false
-               *     }
-               * }
-               *
-               *
-               *
-               */
-              'calendar': {
-                /**
-                 * @description Persian calendar configuration
-                 * @type object
-                 * @since 1.0.0
-                 */
-                'persian': {
-                  /**
-                   * @description set locale of Persian calendar available options: 'fa', 'en'
-                   * @default 'fa'
-                   * @type string
-                   * @since 1.0.0
-                   */
-                  'locale': 'fa',
-
-                  /**
-                   * @description if set true, small date hint of this calendar will be shown on another calendar
-                   * @type boolean
-                   * @default false
-                   * @since 1.0.0
-                   */
-                  'showHint': false,
-
-                  /**
-                   * @description Persian calendar leap year calculation mode, available options: 'algorithmic', 'astronomical'
-                   * @type string
-                   * @link http://babakhani.github.io/PersianWebToolkit/doc/persian-date/leapyear
-                   * @default 'algorithmic'
-                   * @since 1.0.0
-                   */
-                  'leapYearMode': 'algorithmic' // "astronomical"
-
-                },
-
-                /**
-                 * @description Gregorian calendar configuration
-                 * @type object
-                 * @since 1.0.0
-                 */
-                'gregorian': {
-                  /**
-                   * @description set locale of Gregorian calendar available options: 'fa', 'en'
-                   * @default 'en'
-                   * @type string
-                   * @since 1.0.0
-                   */
-                  'locale': 'en',
-
-                  /**
-                   * @description if set true, small date hint of this calendar will be shown on another calendar
-                   * @type boolean
-                   * @default false
-                   * @since 1.0.0
-                   */
-                  'showHint': false
-                }
-              },
-
-              /**
-               * @description if set true make enable responsive view on mobile devices
-               * @type boolean
-               * @since 1.0.0
-               * @default true
-               */
-              'responsive': true,
-
-              /**
-               * @description if true datepicker render inline
-               * @type boolean
-               * @default false
-               */
-              'inline': false,
-
-              /**
-               * @description If set true datepicker init with input value date, use data-date property when you want set inline datepicker initial value
-               * @type boolean
-               * @default true
-               */
-              'initialValue': true,
-
-              /**
-               * @description Initial value calendar type, accept: 'persian', 'gregorian'
-               * @type boolean
-               * @default true
-               */
-              'initialValueType': 'gregorian',
-
-              /**
-               * @description from v1.0.0 this options is deprecated, use calendar.persian.locale instead
-               * @deprecated
-               * @type boolean
-               * @default true
-               */
-              'persianDigit': true,
-
-              /**
-               * @description default view mode, Acceptable value : day,month,year
-               * @type {string}
-               * @default 'day'
-               */
-              'viewMode': 'day',
-
-              /**
-               * @description the date format, combination of d, dd, m, mm, yy, yyy.
-               * @link http://babakhani.github.io/PersianWebToolkit/doc/persian-date/#format
-               * @type {boolean}
-               * @default 'LLLL'
-               */
-              'format': 'LLLL',
-
-              /**
-               * @description format value of input
-               * @param unixDate
-               * @default function
-               * @example function (unixDate) {
-               *      var self = this;
-               *      var pdate = new persianDate(unixDate);
-               *      pdate.formatPersian = this.persianDigit;
-               *      return pdate.format(self.format);
-               *  }
-               */
-              'formatter': function formatter(unixDate) {
-                var self = this,
-                    pdate = this.model.PersianDate.date(unixDate);
-                return pdate.format(self.format);
-              },
-
-              /**
-               * @description An input element that is to be updated with the selected date from the datepicker. Use the altFormat option to change the format of the date within this field. Leave as blank for no alternate field. acceptable value: : '#elementId','.element-class'
-               * @type {boolean}
-               * @default false
-               * @example
-               * altField: '#inputAltFirld'
-               *
-               * altField: '.input-alt-field'
-               */
-              'altField': false,
-
-              /**
-               * @description the date format, combination of d, dd, m, mm, yy, yyy.
-               * @link http://babakhani.github.io/PersianWebToolkit/doc/persian-date/#format
-               * @type {string}
-               * @default 'unix'
-               */
-              'altFormat': 'unix',
-
-              /**
-               * @description format value of 'altField' input
-               * @param unixDate
-               * @default function
-               * @example function (unixDate) {
-               *      var self = this;
-               *      var thisAltFormat = self.altFormat.toLowerCase();
-               *      if (thisAltFormat === 'gregorian' || thisAltFormat === 'g') {
-               *          return new Date(unixDate);
-               *      }
-               *      if (thisAltFormat === 'unix' || thisAltFormat === 'u') {
-               *          return unixDate;
-               *      }
-               *      else {
-               *          var pd = new persianDate(unixDate);
-               *          pd.formatPersian = this.persianDigit;
-               *          return pd.format(self.altFormat);
-               *      }
-               *  }
-               */
-              'altFieldFormatter': function altFieldFormatter(unixDate) {
-                var self = this,
-                    thisAltFormat = self.altFormat.toLowerCase(),
-                    pd = void 0;
-
-                if (thisAltFormat === 'gregorian' || thisAltFormat === 'g') {
-                  return new Date(unixDate);
-                }
-
-                if (thisAltFormat === 'unix' || thisAltFormat === 'u') {
-                  return unixDate;
-                } else {
-                  pd = this.model.PersianDate.date(unixDate);
-                  return pd.format(self.altFormat);
-                }
-              },
-
-              /**
-               * @description Set min date on datepicker, prevent user select date before given unix time
-               * @property minDate
-               * @type Date
-               * @default null
-               */
-              'minDate': null,
-
-              /**
-               * @description Set max date on datepicker, prevent user select date after given unix time
-               * @property maxDate
-               * @type Date
-               * @default null
-               */
-              'maxDate': null,
-
-              /**
-               * @description navigator config object
-               * @type {object}
-               * @default true
-               */
-              'navigator': {
-                /**
-                 * @description make navigator enable or disable
-                 * @type boolean
-                 * @default true
-                 */
-                'enabled': true,
-
-                /**
-                 * @description navigate by scroll configuration
-                 * @type object
-                 * @description scroll navigation options
-                 */
-                'scroll': {
-                  /**
-                   * @description if you want make disable scroll navigation set this option false
-                   * @type boolean
-                   * @default true
-                   */
-                  'enabled': true
-                },
-
-                /**
-                 * @description navigator text config object
-                 */
-                'text': {
-                  /**
-                   * @description text of next button
-                   * @default '<'
-                   */
-                  'btnNextText': '<',
-
-                  /**
-                   * @description text of prev button
-                   * @default: '>'
-                   */
-                  'btnPrevText': '>'
-                },
-
-                /**
-                 * @description Called when navigator goes to next state
-                 * @event
-                 * @example function (navigator) {
-                 *      //log('navigator next ');
-                 *  }
-                 */
-                'onNext': function onNext(datepickerObject) {
-                  Helper.debug(datepickerObject, 'Event: onNext');
-                },
-
-                /**
-                 * @description Called when navigator goes to previews state
-                 * @event
-                 * @example function (navigator) {
-                 *      //log('navigator prev ');
-                 *  }
-                 */
-                'onPrev': function onPrev(datepickerObject) {
-                  Helper.debug(datepickerObject, 'Event: onPrev');
-                },
-
-                /**
-                 * @description Called when navigator switch
-                 * @event
-                 * @example function (datepickerObject) {
-                // console.log('navigator switch ');
-                 *  }
-                 */
-                'onSwitch': function onSwitch(datepickerObject) {
-                  Helper.debug(datepickerObject, 'dayPicker Event: onSwitch');
-                }
-              },
-
-              /**
-               * @description toolbox config object
-               * @type {object}
-               * @default true
-               */
-              'toolbox': {
-                /**
-                 * @description boolean option that make toolbar enable or disable
-                 * @type boolean
-                 * @default true
-                 */
-                'enabled': true,
-
-                /**
-                 * @description toolbox button text configuration
-                 * @type object
-                 * @deprecated from 1.0.0
-                 */
-                'text': {
-                  /**
-                   * @description text of today button, deprecated from 1.0.0
-                   * @type string
-                   * @default 'امروز'
-                   * @deprecated from 1.0.0
-                   */
-                  btnToday: 'امروز'
-                },
-
-                /**
-                 * @description submit button configuration (only shown on mobile)
-                 * @since 1.0.0
-                 */
-                submitButton: {
-                  /**
-                   * @description make submit button enable or disable
-                   * @type boolean
-                   * @default false
-                   * @since 1.0.0
-                   */
-                  enabled: Helper.isMobile,
-
-                  /**
-                   * @description submit button text
-                   * @since 1.0.0
-                   * @type object
-                   */
-                  text: {
-                    /**
-                     * @description show when current calendar is Persian
-                     * @since 1.0.0
-                     * @type object
-                     * @default تایید
-                     */
-                    fa: 'تایید',
-
-                    /**
-                     * @description show when current calendar is Gregorian
-                     * @since 1.0.0
-                     * @type object
-                     * @default submit
-                     */
-                    en: 'submit'
-                  },
-
-                  /**
-                   * @description Called when submit button clicked
-                   * @since 1.0.0
-                   * @type function
-                   * @event
-                   */
-                  onSubmit: function onSubmit(datepickerObject) {
-                    Helper.debug(datepickerObject, 'dayPicker Event: onSubmit');
-                  }
-                },
-
-                /**
-                 * @description toolbox today button configuration
-                 * @since 1.0.0
-                 */
-                todayButton: {
-                  /**
-                   * @description make toolbox today button enable or disable
-                   * @type boolean
-                   * @since 1.0.0
-                   */
-                  enabled: true,
-
-                  /**
-                   * @description today button text
-                   * @since 1.0.0
-                   * @type object
-                   */
-                  text: {
-                    /**
-                     * @description show when current calendar is Persian
-                     * @since 1.0.0
-                     * @type object
-                     * @default امروز
-                     */
-                    fa: 'امروز',
-
-                    /**
-                     * @description show when current calendar is Gregorian
-                     * @since 1.0.0
-                     * @type object
-                     * @default today
-                     */
-                    en: 'today'
-                  },
-
-                  /**
-                   * @description Called when today button clicked
-                   * @since 1.0.0
-                   * @type function
-                   * @event
-                   */
-                  onToday: function onToday(datepickerObject) {
-                    Helper.debug(datepickerObject, 'dayPicker Event: onToday');
-                  }
-                },
-
-                /**
-                 * @description toolbox calendar switch configuration
-                 * @type object
-                 * @since 1.0.0
-                 */
-                calendarSwitch: {
-                  /**
-                   * @description make calendar switch enable or disable
-                   * @type boolean
-                   * @since 1.0.0
-                   * @default true
-                   */
-                  enabled: true,
-
-                  /**
-                   * @description calendar switch text format string
-                   * @link http://babakhani.github.io/PersianWebToolkit/doc/persian-date/#format
-                   * @type string
-                   * @since 1.0.0
-                   * @default MMMM
-                   */
-                  format: 'MMMM',
-
-                  /**
-                   * @description Called when calendar switch clicked
-                   * @since 1.0.0
-                   * @type function
-                   * @event
-                   */
-                  onSwitch: function onSwitch(datepickerObject) {
-                    Helper.debug(datepickerObject, 'dayPicker Event: onSwitch');
-                  }
-                },
-
-                /**
-                 * @event
-                 * @param toolbox
-                 * @example function (toolbox) {
-                 *      //log('toolbox today btn');
-                 *  }
-                 *  @deprecated 1.0.0
-                 */
-                onToday: function onToday(datepickerObject) {
-                  Helper.debug(datepickerObject, 'dayPicker Event: onToday');
-                }
-              },
-
-              /**
-               * @description if true all pickers hide and just show timepicker
-               * @default false
-               * @type boolean
-               */
-              'onlyTimePicker': false,
-
-              /**
-               * @description  if true date select just by click on day in month grid, and when user select month or year selected date doesnt change
-               * @property justSelectOnDate
-               * @type boolean
-               * @default: true
-               */
-              'onlySelectOnDate': true,
-
-              /**
-               * @description Validate date access before render
-               * @type function
-               */
-              'checkDate': function checkDate() {
-                return true;
-              },
-
-              /**
-               * @description Validate month access before render
-               * @type {function}
-               */
-              'checkMonth': function checkMonth() {
-                return true;
-              },
-
-              /**
-               * @description Validate year access before render
-               * @type {function}
-               */
-              'checkYear': function checkYear() {
-                return true;
-              },
-
-              /**
-               * @description timePicker configuration
-               * @type {object}
-               */
-              'timePicker': {
-                /**
-                 * @description make timePicker enable or disable
-                 * @type boolean
-                 */
-                'enabled': false,
-
-                /**
-                 * @description The amount that increases or decreases by pressing the button
-                 * @type number
-                 */
-                'step': 1,
-
-                /**
-                 * @description hour selector configuration
-                 * @type object
-                 */
-                'hour': {
-                  /**
-                   * @description make hour selector enable or disable
-                   * @type boolean
-                   */
-                  'enabled': true,
-
-                  /**
-                   * @description The amount that increases or decreases hour, by pressing the button. overwrite by timepicker.step
-                   * @type boolean
-                   */
-                  'step': null
-                },
-
-                /**
-                 * @description minute selector configuration
-                 * @type object
-                 */
-                'minute': {
-                  /**
-                   * @description make minute selector enable or disable
-                   * @type boolean
-                   */
-                  'enabled': true,
-
-                  /**
-                   * @description The amount that increases or decreases minute, by pressing the button. overwrite by timepicker.step
-                   * @description overwrite by parent step
-                   * @type boolean
-                   */
-                  'step': null
-                },
-
-                /**
-                 * @description second selector configuration
-                 * @type object
-                 */
-                'second': {
-                  /**
-                   * @description make second selector enable or disable
-                   * @type boolean
-                   */
-                  'enabled': true,
-
-                  /**
-                   * @description The amount that increases or decreases second, by pressing the button. overwrite by timepicker.step
-                   * @type boolean
-                   */
-                  'step': null
-                },
-
-                /**
-                 * @description meridian selector configuration
-                 * @type object
-                 */
-                'meridian': {
-                  /**
-                   * @description if you set this as false, datepicker timepicker system moved to 24-hour system
-                   * @type boolean
-                   */
-                  'enabled': false
-                }
-              },
-
-              /**
-               * @description dayPicker configuration
-               * @type {object}
-               */
-              'dayPicker': {
-                /**
-                 * @description make daypicker enable or disable
-                 * @type boolean
-                 * @default true
-                 */
-                'enabled': true,
-
-                /**
-                 * @description daypicker title format string
-                 * @type string
-                 * @default 'YYYY MMMM'
-                 * @link http://babakhani.github.io/PersianWebToolkit/doc/persian-date/#format
-                 */
-                'titleFormat': 'YYYY MMMM',
-
-                /**
-                 * @description daypicker title formatter function
-                 * @param year
-                 * @param month
-                 * @return {*}
-                 */
-                'titleFormatter': function titleFormatter(year, month) {
-                  var titleDate = this.model.PersianDate.date([year, month]);
-                  return titleDate.format(this.model.options.dayPicker.titleFormat);
-                },
-
-                /**
-                 * @description fired when user select date
-                 * @event
-                 * @param selectedDayUnix
-                 */
-                'onSelect': function onSelect(selectedDayUnix) {
-                  Helper.debug(this, 'dayPicker Event: onSelect : ' + selectedDayUnix);
-                }
-              },
-
-              /**
-               * @description monthPicker configuration
-               * @type {object}
-               */
-              'monthPicker': {
-                /**
-                 * @description make monthPicker enable or disable
-                 * @type boolean
-                 * @default true
-                 */
-                'enabled': true,
-
-                /**
-                 * @description monthPicker title format string
-                 * @type string
-                 * @default 'YYYY'
-                 */
-                'titleFormat': 'YYYY',
-
-                /**
-                 * @description monthPicker title formatter function
-                 * @param unix
-                 * @return {*}
-                 */
-                'titleFormatter': function titleFormatter(unix) {
-                  var titleDate = this.model.PersianDate.date(unix);
-                  return titleDate.format(this.model.options.monthPicker.titleFormat);
-                },
-
-                /**
-                 * @description fired when user select month
-                 * @event
-                 * @param monthIndex
-                 */
-                'onSelect': function onSelect(monthIndex) {
-                  Helper.debug(this, 'monthPicker Event: onSelect : ' + monthIndex);
-                }
-              },
-
-              /**
-               * @description yearPicker configuration
-               * @type {object}
-               */
-              'yearPicker': {
-                /**
-                 * @description make yearPicker enable or disable
-                 * @type boolean
-                 * @default true
-                 */
-                'enabled': true,
-
-                /**
-                 * @description yearPicker title format string
-                 * @type string
-                 * @default 'YYYY'
-                 */
-                'titleFormat': 'YYYY',
-
-                /**
-                 * @description yearPicker title formatter function
-                 * @param year
-                 * @return {string}
-                 */
-                'titleFormatter': function titleFormatter(year) {
-                  var remaining = parseInt(year / 12, 10) * 12;
-                  var startYear = this.model.PersianDate.date([remaining]);
-                  var endYear = this.model.PersianDate.date([remaining + 11]);
-                  return startYear.format(this.model.options.yearPicker.titleFormat) + '-' + endYear.format(this.model.options.yearPicker.titleFormat);
-                },
-
-                /**
-                 * @description fired when user select year
-                 * @event
-                 * @param year
-                 */
-                'onSelect': function onSelect(year) {
-                  Helper.debug(this, 'yearPicker Event: onSelect : ' + year);
-                }
-              },
-
-              /**
-               * @description Called when date Select by user.
-               * @event
-               * @param unixDate
-               */
-              'onSelect': function onSelect(unixDate) {
-                Helper.debug(this, 'datepicker Event: onSelect : ' + unixDate);
-              },
-
-              /**
-               * @description Called when date Select by api.
-               * @event
-               * @param unixDate
-               */
-              'onSet': function onSet(unixDate) {
-                Helper.debug(this, 'datepicker Event: onSet : ' + unixDate);
-              },
-
-              /**
-               * @description position of datepicker relative to input element
-               * @type string | array
-               * @default 'auto'
-               * @example
-               *  'position': 'auto'
-               *'position': [10,10]
-               */
-              'position': 'auto',
-
-              /**
-               * @description A function that takes current datepicker instance. It is called just before the datepicker is displayed.
-               * @event
-               */
-              'onShow': function onShow(datepickerObject) {
-                Helper.debug(datepickerObject, 'Event: onShow ');
-              },
-
-              /**
-               * @description A function that takes current datepicker instance. It is called just before the datepicker Hide.
-               * @event
-               */
-              'onHide': function onHide(datepickerObject) {
-                Helper.debug(datepickerObject, 'Event: onHide ');
-              },
-
-              /**
-               * @description on toggle datepicker event
-               * @event
-               */
-              'onToggle': function onToggle(datepickerObject) {
-                Helper.debug(datepickerObject, 'Event: onToggle ');
-              },
-
-              /**
-               * @description on destroy datepicker event
-               * @event
-               */
-              'onDestroy': function onDestroy(datepickerObject) {
-                Helper.debug(datepickerObject, 'Event: onDestroy ');
-              },
-
-              /**
-               * @description If true datepicker close When select a date
-               * @type {boolean}
-               * @default false
-               */
-              'autoClose': false,
-
-              /**
-               * @description by default datepicker have a template string, and you can overwrite it simply by replace string in config.
-               * @type string
-               * @example
-               * <div id="plotId" class="datepicker-plot-area datepicker-plot-area-inline-view">
-               {{#navigator.enabled}}
-               <div class="navigator">
-               <div class="datepicker-header">
-               <div class="btn btn-next">{{navigator.text.btnNextText}}</div>
-               <div class="btn btn-switch">{{ navigator.switch.text }}</div>
-               <div class="btn btn-prev">{{navigator.text.btnPrevText}}</div>
-               </div>
-               </div>
-               {{/navigator.enabled}}
-               <div class="datepicker-grid-view" >
-               {{#days.enabled}}
-               {{#days.viewMode}}
-               <div class="datepicker-day-view" >
-               <div class="month-grid-box">
-               <div class="header">
-               <div class="title"></div>
-               <div class="header-row">
-               <div class="header-row-cell">ش</div>
-               <div class="header-row-cell">ی</div>
-               <div class="header-row-cell">د</div>
-               <div class="header-row-cell">س</div>
-               <div class="header-row-cell">چ</div>
-               <div class="header-row-cell">پ</div>
-               <div class="header-row-cell">ج</div>
-               </div>
-               </div>
-               <table cellspacing="0" class="table-days">
-               <tbody>
-               {{#days.list}}
-               <tr>
-               {{#.}}
-               {{#enabled}}
-               <td data-unix="{{dataUnix}}" ><span  class="{{#otherMonth}}other-month{{/otherMonth}} {{#selected}}selected{{/selected}}">{{title}}</span></td>
-               {{/enabled}}
-               {{^enabled}}
-               <td data-unix="{{dataUnix}}" class="disabled"><span class="{{#otherMonth}}other-month{{/otherMonth}}">{{title}}</span></td>
-               {{/enabled}}
-               {{/.}}
-               </tr>
-               {{/days.list}}
-               </tbody>
-               </table>
-               </div>
-               </div>
-               {{/days.viewMode}}
-               {{/days.enabled}}
-               {{#month.enabled}}
-               {{#month.viewMode}}
-               <div class="datepicker-month-view">
-               {{#month.list}}
-               {{#enabled}}
-               <div data-month="{{dataMonth}}" class="month-item {{#selected}}selected{{/selected}}">{{title}}</small></div>
-               {{/enabled}}
-               {{^enabled}}
-               <div data-month="{{dataMonth}}" class="month-item month-item-disable {{#selected}}selected{{/selected}}">{{title}}</small></div>
-               {{/enabled}}
-               {{/month.list}}
-               </div>
-               {{/month.viewMode}}
-               {{/month.enabled}}
-               {{#year.enabled }}
-               {{#year.viewMode }}
-               <div class="datepicker-year-view" >
-               {{#year.list}}
-               {{#enabled}}
-               <div data-year="{{dataYear}}" class="year-item {{#selected}}selected{{/selected}}">{{title}}</div>
-               {{/enabled}}
-               {{^enabled}}
-               <div data-year="{{dataYear}}" class="year-item year-item-disable {{#selected}}selected{{/selected}}">{{title}}</div>
-               {{/enabled}}
-               {{/year.list}}
-               </div>
-               {{/year.viewMode }}
-               {{/year.enabled }}
-               </div>
-               {{#time}}
-               {{#enabled}}
-               <div class="datepicker-time-view">
-               {{#hour.enabled}}
-               <div class="hour time-segment" data-time-key="hour">
-               <div class="up-btn" data-time-key="hour">▲</div>
-               <input value="{{hour.title}}" type="text" placeholder="hour" class="hour-input">
-               <div class="down-btn" data-time-key="hour">▼</div>
-               </div>
-               <div class="divider">:</div>
-               {{/hour.enabled}}
-               {{#minute.enabled}}
-               <div class="minute time-segment" data-time-key="minute" >
-               <div class="up-btn" data-time-key="minute">▲</div>
-               <input value="{{minute.title}}" type="text" placeholder="minute" class="minute-input">
-               <div class="down-btn" data-time-key="minute">▼</div>
-               </div>
-               <div class="divider second-divider">:</div>
-               {{/minute.enabled}}
-               {{#second.enabled}}
-               <div class="second time-segment" data-time-key="second"  >
-               <div class="up-btn" data-time-key="second" >▲</div>
-               <input value="{{second.title}}"  type="text" placeholder="second" class="second-input">
-               <div class="down-btn" data-time-key="second" >▼</div>
-               </div>
-               <div class="divider meridian-divider"></div>
-               <div class="divider meridian-divider"></div>
-               {{/second.enabled}}
-               {{#meridian.enabled}}
-               <div class="meridian time-segment" data-time-key="meridian" >
-               <div class="up-btn" data-time-key="meridian">▲</div>
-               <input value="{{meridian.title}}" type="text" class="meridian-input">
-               <div class="down-btn" data-time-key="meridian">▼</div>
-               </div>
-               {{/meridian.enabled}}
-               </div>
-               {{/enabled}}
-               {{/time}}
-               {{#toolbox}}
-               {{#enabled}}
-               <div class="toolbox ">
-               <div class="btn-today">{{text.btnToday}}</div>
-               </div>
-               {{/enabled}}
-               {{/toolbox}}
-               </div>
-               */
-              'template': null,
-              ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-              /////////// Under Implement ///////////////////////////////////////////////////////////////////////////////////////
-              ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-              /**
-               * @description if true datepicker update self by user inputted date string, accept 'yyyy/mm/dd'
-               * @example '1396/10/2', ''
-               * @type {boolean}
-               * @default false
-               */
-              'observer': false,
-              ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-              /////////// Un  implemented ///////////////////////////////////////////////////////////////////////////////////////
-              ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-              /**
-               * @description waite time for last user key-down event, accept millisecond
-               * @type {number}
-               * @default 800
-               */
-              'inputDelay': 800
-            };
-            module.exports = Config;
-            /***/
-          },
-          /* 5 */
-
-          /***/
-          function (module, exports, __nested_webpack_require_46733__) {
-            "use strict";
-
-            var Model = __nested_webpack_require_46733__(2);
-            /**
-             * @author babakhani.reza@gmail.com
-             * @description jquery plugin initializer
-             */
-
-
-            (function ($) {
-              /*eslint-disable no-unused-vars */
-              $.fn.persianDatepicker = $.fn.pDatepicker = function (options) {
-                var args = Array.prototype.slice.call(arguments),
-                    output = null,
-                    self = this;
-
-                if (!this) {
-                  $.error('Invalid selector');
-                }
-
-                $(this).each(function () {
-                  // encapsulation Args
-                  var emptyArr = [],
-                      tempArg = args.concat(emptyArr),
-                      dp = $(this).data('datepicker'),
-                      funcName = null;
-
-                  if (dp && typeof tempArg[0] === 'string') {
-                    funcName = tempArg[0];
-                    output = dp[funcName](tempArg[0]);
-                  } else {
-                    self.pDatePicker = new Model(this, options);
-                  }
-                });
-                $(this).data('datepicker', self.pDatePicker);
-                return self.pDatePicker;
-              };
-              /*eslint-enable no-unused-vars */
-
-            })(jQuery);
-            /***/
-
-          },
-          /* 6 */
-
-          /***/
-          function (module, exports, __nested_webpack_require_47883__) {
-            "use strict";
-
-            var _createClass = function () {
-              function defineProperties(target, props) {
-                for (var i = 0; i < props.length; i++) {
-                  var descriptor = props[i];
-                  descriptor.enumerable = descriptor.enumerable || false;
-                  descriptor.configurable = true;
-                  if ("value" in descriptor) descriptor.writable = true;
-                  Object.defineProperty(target, descriptor.key, descriptor);
-                }
-              }
-
-              return function (Constructor, protoProps, staticProps) {
-                if (protoProps) defineProperties(Constructor.prototype, protoProps);
-                if (staticProps) defineProperties(Constructor, staticProps);
-                return Constructor;
-              };
-            }();
-
-            function _classCallCheck(instance, Constructor) {
-              if (!(instance instanceof Constructor)) {
-                throw new TypeError("Cannot call a class as a function");
-              }
-            }
-
-            var Helper = __nested_webpack_require_47883__(0);
-
-            var PersianDateParser = __nested_webpack_require_47883__(9);
-            /**
-             * Do every thing about input element like get default value, set new value, set alt field input and etc.
-             */
-
-
-            var Input = function () {
-              /**
-               * @param {Model} model
-               * @param {Element}
-               * @return {Input}
-               */
-              function Input(model, inputElement) {
-                _classCallCheck(this, Input);
-                /**
-                 * @type {Object}
-                 */
-
-
-                this.model = model;
-                /**
-                 * @type {boolean}
-                 * @private
-                 */
-
-                this._firstUpdate = true;
-                /**
-                 * @type {Element}
-                 */
-
-                this.elem = inputElement;
-
-                if (this.model.options.observer) {
-                  this.observe();
-                }
-
-                this.addInitialClass();
-                /**
-                 * @type {Number}
-                 */
-
-                this.initialUnix = null;
-
-                if (this.model.options.inline == false) {
-                  this._attachInputElementEvents();
-                }
-
-                return this;
-              }
-
-              _createClass(Input, [{
-                key: 'addInitialClass',
-                value: function addInitialClass() {
-                  $(this.elem).addClass('pwt-datepicker-input-element');
-                }
-              }, {
-                key: 'parseInput',
-                value: function parseInput(inputString) {
-                  var parse = new PersianDateParser(),
-                      that = this;
-
-                  if (parse.parse(inputString) !== undefined) {
-                    var pd = this.model.PersianDate.date(parse.parse(inputString)).valueOf();
-                    that.model.state.setSelectedDateTime('unix', pd);
-                    that.model.state.setViewDateTime('unix', pd);
-                    that.model.view.render();
-                  }
-                }
-              }, {
-                key: 'observe',
-                value: function observe() {
-                  var that = this; /////////////////   Manipulate by Copy And paste
-
-                  $(that.elem).bind('paste', function (e) {
-                    Helper.delay(function () {
-                      that.parseInput(e.target.value);
-                    }, 60);
-                  });
-                  var typingTimer = void 0,
-                      doneTypingInterval = that.model.options.inputDelay,
-                      ctrlDown = false,
-                      ctrlKey = [17, 91],
-                      vKey = 86;
-                  $(document).keydown(function (e) {
-                    if ($.inArray(e.keyCode, ctrlKey) > 0) ctrlDown = true;
-                  }).keyup(function (e) {
-                    if ($.inArray(e.keyCode, ctrlKey) > 0) ctrlDown = false;
-                  });
-                  $(that.elem).bind('keyup', function (e) {
-                    var $self = $(this);
-                    var trueKey = false;
-
-                    if (e.keyCode === 8 || e.keyCode < 105 && e.keyCode > 96 || e.keyCode < 58 && e.keyCode > 47 || ctrlDown && (e.keyCode == vKey || $.inArray(e.keyCode, ctrlKey) > 0)) {
-                      trueKey = true;
-                    }
-
-                    if (trueKey) {
-                      clearTimeout(typingTimer);
-                      typingTimer = setTimeout(function () {
-                        doneTyping($self);
-                      }, doneTypingInterval);
-                    }
-                  });
-                  $(that.elem).on('keydown', function () {
-                    clearTimeout(typingTimer);
-                  });
-
-                  function doneTyping($self) {
-                    that.parseInput($self.val());
-                  } /////////////////   Manipulate by alt changes
-                  // TODO
-                  // self.model.options.altField.bind("change", function () {
-                  //     //if (!self._flagSelfManipulate) {
-                  //         let newDate = new Date($(this).val());
-                  //         if (newDate !== "Invalid Date") {
-                  //             let newPersainDate = this.model.PersianDate.date(newDate);
-                  //             self.selectDate(newPersainDate.valueOf());
-                  //         }
-                  //   //  }
-                  // });
-
-                }
-                /**
-                 * @private
-                 * @desc attach events to input field
-                 */
-
-              }, {
-                key: '_attachInputElementEvents',
-                value: function _attachInputElementEvents() {
-                  var that = this;
-
-                  var closePickerHandler = function closePickerHandler(e) {
-                    if (!$(e.target).is(that.elem) && !$(e.target).is(that.model.view.$container) && $(e.target).closest('#' + that.model.view.$container.attr('id')).length == 0 && !$(e.target).is($(that.elem).children())) {
-                      that.model.api.hide();
-                      $('body').unbind('click', closePickerHandler);
-                    }
-                  };
-
-                  $(this.elem).on('focus click', Helper.debounce(function (evt) {
-                    that.model.api.show();
-
-                    if (that.model.state.ui.isInline === false) {
-                      $('body').unbind('click', closePickerHandler).bind('click', closePickerHandler);
-                    }
-
-                    if (Helper.isMobile) {
-                      $(this).blur();
-                    }
-
-                    evt.stopPropagation();
-                    return false;
-                  }, 200));
-                  $(this.elem).on('keydown', Helper.debounce(function (evt) {
-                    if (evt.which === 9) {
-                      that.model.api.hide();
-                      return false;
-                    }
-                  }, 200));
-                }
-                /**
-                 * @desc get <input/> element position
-                 * @return {{top: Number, left: Number}}
-                 * @todo remove jquery
-                 */
-
-              }, {
-                key: 'getInputPosition',
-                value: function getInputPosition() {
-                  return $(this.elem).offset();
-                }
-                /**
-                 * @desc get <input/> element size
-                 * @return {{width: Number, height: Number}}
-                 * @todo remove jquery
-                 */
-
-              }, {
-                key: 'getInputSize',
-                value: function getInputSize() {
-                  return {
-                    width: $(this.elem).outerWidth(),
-                    height: $(this.elem).outerHeight()
-                  };
-                }
-                /**
-                 * @desc update <input/> element value
-                 * @param {Number} unix
-                 * @todo remove jquery
-                 * @private
-                 */
-
-              }, {
-                key: '_updateAltField',
-                value: function _updateAltField(unix) {
-                  var value = this.model.options.altFieldFormatter(unix);
-                  $(this.model.options.altField).val(value);
-                }
-                /**
-                 * @desc update <input/> element value
-                 * @param {Number} unix
-                 * @todo remove jquery
-                 * @private
-                 */
-
-              }, {
-                key: '_updateInputField',
-                value: function _updateInputField(unix) {
-                  var value = this.model.options.formatter(unix);
-
-                  if ($(this.elem).val() != value) {
-                    $(this.elem).val(value);
-                  }
-                }
-                /**
-                 * @param unix
-                 */
-
-              }, {
-                key: 'update',
-                value: function update(unix) {
-                  if (this.model.options.initialValue == false && this._firstUpdate) {
-                    this._firstUpdate = false;
-                  } else {
-                    this._updateInputField(unix);
-
-                    this._updateAltField(unix);
-                  }
-                }
-                /**
-                 * @desc return initial value
-                 * @return {Number} - unix
-                 */
-
-              }, {
-                key: 'getOnInitState',
-                value: function getOnInitState() {
-                  var persianDatePickerTimeRegex = '^([0-1][0-9]|2[0-3]):([0-5][0-9])(?::([0-5][0-9]))?$';
-                  var garegurianDate = null,
-                      $inputElem = $(this.elem),
-                      inputValue = void 0; // Define input value by check inline mode and input mode
-
-                  if ($inputElem[0].nodeName === 'INPUT') {
-                    inputValue = $inputElem[0].getAttribute('value');
-                  } else {
-                    inputValue = $inputElem.data('date');
-                  } // Check time string by regex
-
-
-                  if (inputValue && inputValue.match(persianDatePickerTimeRegex)) {
-                    var timeArray = inputValue.split(':'),
-                        tempDate = new Date();
-                    tempDate.setHours(timeArray[0]);
-                    tempDate.setMinutes(timeArray[1]);
-
-                    if (timeArray[2]) {
-                      tempDate.setSeconds(timeArray[2]);
-                    } else {
-                      tempDate.setSeconds(0);
-                    }
-
-                    this.initialUnix = tempDate.valueOf();
-                  } else {
-                    if (this.model.options.initialValueType === 'persian' && inputValue) {
-                      var parse = new PersianDateParser();
-                      var pd = new persianDate(parse.parse(inputValue)).valueOf();
-                      garegurianDate = new Date(pd).valueOf();
-                    } else if (this.model.options.initialValueType === 'unix' && inputValue) {
-                      garegurianDate = parseInt(inputValue);
-                    } else if (inputValue) {
-                      garegurianDate = new Date(inputValue).valueOf();
-                    }
-
-                    if (garegurianDate && garegurianDate != 'undefined') {
-                      this.initialUnix = garegurianDate;
-                    } else {
-                      this.initialUnix = new Date().valueOf();
-                    }
-                  }
-
-                  return this.initialUnix;
-                }
-              }]);
-
-              return Input;
-            }();
-
-            module.exports = Input;
-            /***/
-          },
-          /* 7 */
-
-          /***/
-          function (module, exports, __nested_webpack_require_57977__) {
-            "use strict";
-
-            var _createClass = function () {
-              function defineProperties(target, props) {
-                for (var i = 0; i < props.length; i++) {
-                  var descriptor = props[i];
-                  descriptor.enumerable = descriptor.enumerable || false;
-                  descriptor.configurable = true;
-                  if ("value" in descriptor) descriptor.writable = true;
-                  Object.defineProperty(target, descriptor.key, descriptor);
-                }
-              }
-
-              return function (Constructor, protoProps, staticProps) {
-                if (protoProps) defineProperties(Constructor.prototype, protoProps);
-                if (staticProps) defineProperties(Constructor, staticProps);
-                return Constructor;
-              };
-            }();
-
-            function _classCallCheck(instance, Constructor) {
-              if (!(instance instanceof Constructor)) {
-                throw new TypeError("Cannot call a class as a function");
-              }
-            }
-
-            var Hamster = __nested_webpack_require_57977__(14);
-            /**
-             * This navigator class do every thing about navigate and select date
-             * @public
-             */
-
-
-            var Navigator = function () {
-              /**
-               * @param {object} datepicker
-               * @return {Navigator}
-               */
-              function Navigator(model) {
-                _classCallCheck(this, Navigator);
-                /**
-                 * @type {Datepicker}
-                 */
-
-
-                this.model = model;
-                this.liveAttach();
-
-                this._attachEvents();
-
-                return this;
-              }
-              /**
-               * @desc attach events that needed attach after every render
-               * @public
-               * @todo attach as a live way
-               */
-
-
-              _createClass(Navigator, [{
-                key: 'liveAttach',
-                value: function liveAttach() {
-                  // Check options
-                  if (this.model.options.navigator.scroll.enabled) {
-                    var that = this;
-                    var gridPlot = $('#' + that.model.view.id + ' .datepicker-grid-view')[0];
-                    Hamster(gridPlot).wheel(function (event, delta) {
-                      if (delta > 0) {
-                        that.model.state.navigate('next');
-                      } else {
-                        that.model.state.navigate('prev');
-                      }
-
-                      that.model.view.render();
-                      event.preventDefault();
-                    });
-
-                    if (this.model.options.timePicker.enabled) {
-                      $('#' + that.model.view.id + ' .time-segment').each(function () {
-                        Hamster(this).wheel(function (event, delta) {
-                          var $target = $(event.target);
-                          var key = $target.data('time-key') ? $target.data('time-key') : $target.parents('[data-time-key]').data('time-key');
-
-                          if (key) {
-                            if (delta > 0) {
-                              that.timeUp(key);
-                            } else {
-                              that.timeDown(key);
-                            }
-                          }
-
-                          that.model.view.render();
-                          event.preventDefault();
-                        });
-                      });
-                    }
-                  }
-                }
-                /**
-                 * @desc set time up depend to timekey
-                 * @param {String} timekey - accept hour, minute,second
-                 * @public
-                 */
-
-              }, {
-                key: 'timeUp',
-                value: function timeUp(timekey) {
-                  if (this.model.options.timePicker[timekey] == undefined) {
-                    return;
-                  }
-
-                  var step = void 0,
-                      t = void 0,
-                      that = this;
-
-                  if (timekey == 'meridian') {
-                    step = 12;
-
-                    if (this.model.state.view.meridian == 'PM') {
-                      t = this.model.PersianDate.date(this.model.state.selected.unixDate).add('hour', step).valueOf();
-                    } else {
-                      t = this.model.PersianDate.date(this.model.state.selected.unixDate).subtract('hour', step).valueOf();
-                    }
-
-                    this.model.state.meridianToggle();
-                  } else {
-                    step = this.model.options.timePicker[timekey].step;
-                    t = this.model.PersianDate.date(this.model.state.selected.unixDate).add(timekey, step).valueOf();
-                  }
-
-                  this.model.state.setViewDateTime('unix', t);
-                  this.model.state.setSelectedDateTime('unix', t);
-                  this.model.view.renderTimePartial();
-                  clearTimeout(this.scrollDelayTimeDown);
-                  this.scrollDelayTimeUp = setTimeout(function () {
-                    that.model.view.markSelectedDay();
-                  }, 300);
-                }
-                /**
-                 * @desc set time down depend to timekey
-                 * @param {String} timekey - accept hour, minute,second
-                 * @public
-                 */
-
-              }, {
-                key: 'timeDown',
-                value: function timeDown(timekey) {
-                  if (this.model.options.timePicker[timekey] == undefined) {
-                    return;
-                  }
-
-                  var step = void 0,
-                      t = void 0,
-                      that = this;
-
-                  if (timekey == 'meridian') {
-                    step = 12;
-
-                    if (this.model.state.view.meridian == 'AM') {
-                      t = this.model.PersianDate.date(this.model.state.selected.unixDate).add('hour', step).valueOf();
-                    } else {
-                      t = this.model.PersianDate.date(this.model.state.selected.unixDate).subtract('hour', step).valueOf();
-                    }
-
-                    this.model.state.meridianToggle();
-                  } else {
-                    step = this.model.options.timePicker[timekey].step;
-                    t = this.model.PersianDate.date(this.model.state.selected.unixDate).subtract(timekey, step).valueOf();
-                  }
-
-                  this.model.state.setViewDateTime('unix', t);
-                  this.model.state.setSelectedDateTime('unix', t);
-                  this.model.view.renderTimePartial();
-                  clearTimeout(this.scrollDelayTimeDown);
-                  this.scrollDelayTimeDown = setTimeout(function () {
-                    that.model.view.markSelectedDay();
-                  }, 300);
-                }
-                /**
-                 * @desc attach dom events
-                 * @todo remove jquery
-                 * @private
-                 */
-
-              }, {
-                key: '_attachEvents',
-                value: function _attachEvents() {
-                  var that = this;
-
-                  if (this.model.options.navigator.enabled) {
-                    /**
-                     * @description navigator click event
-                     */
-                    $(document).on('click', '#' + that.model.view.id + ' .pwt-btn', function () {
-                      if ($(this).is('.pwt-btn-next')) {
-                        that.model.state.navigate('next');
-                        that.model.view.render();
-                        that.model.options.navigator.onNext(that.model);
-                      } else if ($(this).is('.pwt-btn-switch')) {
-                        that.model.state.switchViewMode();
-                        that.model.view.render();
-                        that.model.options.navigator.onSwitch(that.model);
-                      } else if ($(this).is('.pwt-btn-prev')) {
-                        that.model.state.navigate('prev');
-                        that.model.view.render();
-                        that.model.options.navigator.onPrev(that.model);
-                      }
-                    });
-                  }
-                  /**
-                   * @description check if timePicker enabled attach Events
-                   */
-
-
-                  if (this.model.options.timePicker.enabled) {
-                    /**
-                     * @description time up btn click event
-                     */
-                    $(document).on('click', '#' + that.model.view.id + ' .up-btn', function () {
-                      var timekey = $(this).data('time-key');
-                      that.timeUp(timekey);
-                      that.model.options.onSelect(that.model.state.selected.unixDate);
-                    });
-                    /**
-                     * @description time down btn click event
-                     */
-
-                    $(document).on('click', '#' + that.model.view.id + ' .down-btn', function () {
-                      var timekey = $(this).data('time-key');
-                      that.timeDown(timekey);
-                      that.model.options.onSelect(that.model.state.selected.unixDate);
-                    });
-                  }
-                  /**
-                   * @description check if dayPicker enabled attach Events
-                   */
-
-
-                  if (this.model.options.dayPicker.enabled) {
-                    /**
-                     * @description days click event
-                     */
-                    $(document).on('click', '#' + that.model.view.id + ' .datepicker-day-view td:not(.disabled)', function () {
-                      var thisUnix = $(this).data('unix'),
-                          mustRender = void 0;
-                      that.model.state.setSelectedDateTime('unix', thisUnix);
-
-                      if (that.model.state.selected.month !== that.model.state.view.month) {
-                        mustRender = true;
-                      } else {
-                        mustRender = false;
-                      }
-
-                      that.model.state.setViewDateTime('unix', that.model.state.selected.unixDate);
-
-                      if (that.model.options.autoClose) {
-                        that.model.view.hide();
-                        that.model.options.onHide(that);
-                      }
-
-                      if (mustRender) {
-                        that.model.view.render();
-                      } else {
-                        that.model.view.markSelectedDay();
-                      }
-
-                      that.model.options.dayPicker.onSelect(thisUnix);
-                      that.model.options.onSelect(thisUnix);
-                    });
-                  }
-                  /**
-                   * @description check if monthPicker enabled attach Events
-                   */
-
-
-                  if (this.model.options.monthPicker.enabled) {
-                    /**
-                     * @description month click event
-                     */
-                    $(document).on('click', '#' + that.model.view.id + ' .datepicker-month-view .month-item:not(.month-item-disable)', function () {
-                      var month = $(this).data('month');
-                      var year = $(this).data('year');
-                      that.model.state.switchViewModeTo('day');
-
-                      if (!that.model.options.onlySelectOnDate) {
-                        that.model.state.setSelectedDateTime('year', year);
-                        that.model.state.setSelectedDateTime('month', month);
-
-                        if (that.model.options.autoClose) {
-                          that.model.view.hide();
-                          that.model.options.onHide(that);
-                        }
-                      }
-
-                      that.model.state.setViewDateTime('month', month);
-                      that.model.view.render();
-                      that.model.options.monthPicker.onSelect(month);
-                      that.model.options.onSelect(that.model.state.selected.unixDate);
-                    });
-                  }
-                  /**
-                   * @description check if yearPicker enabled attach Events
-                   */
-
-
-                  if (this.model.options.yearPicker.enabled) {
-                    /**
-                     * @description year click event
-                     */
-                    $(document).on('click', '#' + that.model.view.id + ' .datepicker-year-view .year-item:not(.year-item-disable)', function () {
-                      var year = $(this).data('year');
-                      that.model.state.switchViewModeTo('month');
-
-                      if (!that.model.options.onlySelectOnDate) {
-                        that.model.state.setSelectedDateTime('year', year);
-
-                        if (that.model.options.autoClose) {
-                          that.model.view.hide();
-                          that.model.options.onHide(that);
-                        }
-                      }
-
-                      that.model.state.setViewDateTime('year', year);
-                      that.model.view.render();
-                      that.model.options.yearPicker.onSelect(year);
-                      that.model.options.onSelect(that.model.state.selected.unixDate);
-                    });
-                  }
-                }
-              }]);
-
-              return Navigator;
-            }();
-
-            module.exports = Navigator;
-            /***/
-          },
-          /* 8 */
-
-          /***/
-          function (module, exports, __nested_webpack_require_70175__) {
-            "use strict";
-
-            var _createClass = function () {
-              function defineProperties(target, props) {
-                for (var i = 0; i < props.length; i++) {
-                  var descriptor = props[i];
-                  descriptor.enumerable = descriptor.enumerable || false;
-                  descriptor.configurable = true;
-                  if ("value" in descriptor) descriptor.writable = true;
-                  Object.defineProperty(target, descriptor.key, descriptor);
-                }
-              }
-
-              return function (Constructor, protoProps, staticProps) {
-                if (protoProps) defineProperties(Constructor.prototype, protoProps);
-                if (staticProps) defineProperties(Constructor, staticProps);
-                return Constructor;
-              };
-            }();
-
-            function _classCallCheck(instance, Constructor) {
-              if (!(instance instanceof Constructor)) {
-                throw new TypeError("Cannot call a class as a function");
-              }
-            }
-
-            var Config = __nested_webpack_require_70175__(4);
-
-            var Template = __nested_webpack_require_70175__(1);
-            /**
-             * Extend default config from user interred and do compatibility works
-             * @public
-             */
-
-
-            var Options = function () {
-              /**
-               * @param {object} options config passed when initialize
-               * @return {object}
-               * @todo remove jquery
-               */
-              function Options(options, model) {
-                _classCallCheck(this, Options);
-
-                this.model = model;
-                return this._compatibility($.extend(true, this, Config, options));
-              }
-              /**
-               * @private
-               * @param options
-               */
-
-
-              _createClass(Options, [{
-                key: '_compatibility',
-                value: function _compatibility(options) {
-                  if (options.inline) {
-                    options.toolbox.submitButton.enabled = false;
-                  }
-
-                  if (!options.template) {
-                    options.template = Template;
-                  }
-
-                  persianDate.toCalendar(options.calendarType);
-                  persianDate.toLocale(options.calendar[options.calendarType].locale);
-
-                  if (options.onlyTimePicker) {
-                    options.dayPicker.enabled = false;
-                    options.monthPicker.enabled = false;
-                    options.yearPicker.enabled = false;
-                    options.navigator.enabled = false;
-                    options.toolbox.enabled = false;
-                    options.timePicker.enabled = true;
-                  }
-
-                  if (options.timePicker.hour.step === null) {
-                    options.timePicker.hour.step = options.timePicker.step;
-                  }
-
-                  if (options.timePicker.minute.step === null) {
-                    options.timePicker.minute.step = options.timePicker.step;
-                  }
-
-                  if (options.timePicker.second.step === null) {
-                    options.timePicker.second.step = options.timePicker.step;
-                  }
-
-                  if (options.dayPicker.enabled === false) {
-                    options.onlySelectOnDate = false;
-                  }
-
-                  options._viewModeList = [];
-
-                  if (options.dayPicker.enabled) {
-                    options._viewModeList.push('day');
-                  }
-
-                  if (options.monthPicker.enabled) {
-                    options._viewModeList.push('month');
-                  }
-
-                  if (options.yearPicker.enabled) {
-                    options._viewModeList.push('year');
-                  }
-                }
-              }]);
-
-              return Options;
-            }();
-
-            module.exports = Options;
-            /***/
-          },
-          /* 9 */
-
-          /***/
-          function (module, exports, __webpack_require__) {
-            "use strict";
-
-            var _createClass = function () {
-              function defineProperties(target, props) {
-                for (var i = 0; i < props.length; i++) {
-                  var descriptor = props[i];
-                  descriptor.enumerable = descriptor.enumerable || false;
-                  descriptor.configurable = true;
-                  if ("value" in descriptor) descriptor.writable = true;
-                  Object.defineProperty(target, descriptor.key, descriptor);
-                }
-              }
-
-              return function (Constructor, protoProps, staticProps) {
-                if (protoProps) defineProperties(Constructor.prototype, protoProps);
-                if (staticProps) defineProperties(Constructor, staticProps);
-                return Constructor;
-              };
-            }();
-
-            function _classCallCheck(instance, Constructor) {
-              if (!(instance instanceof Constructor)) {
-                throw new TypeError("Cannot call a class as a function");
-              }
-            }
-
-            var PersianDateParser = function () {
-              function PersianDateParser() {
-                _classCallCheck(this, PersianDateParser);
-
-                this.pattern = {
-                  iso: /^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[01]|0[1-9]|[12][0-9])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(\\.[0-9]+)?(Z)?$/g,
-                  jalali: /^[1-4]\d{3}(\/|-|\.)((0?[1-6](\/|-|\.)((3[0-1])|([1-2][0-9])|(0?[1-9])))|((1[0-2]|(0?[7-9]))(\/|-|\.)(30|([1-2][0-9])|(0?[1-9]))))$/g
-                };
-              }
-
-              _createClass(PersianDateParser, [{
-                key: 'parse',
-                value: function parse(inputString) {
-                  var that = this,
-                      persianDateArray = void 0,
-                      isoPat = new RegExp(that.pattern.iso),
-                      jalaliPat = new RegExp(that.pattern.jalali);
-
-                  String.prototype.toEnglishDigits = function () {
-                    var charCodeZero = '۰'.charCodeAt(0);
-                    return this.replace(/[۰-۹]/g, function (w) {
-                      return w.charCodeAt(0) - charCodeZero;
-                    });
-                  };
-
-                  inputString = inputString.toEnglishDigits();
-
-                  if (jalaliPat.test(inputString)) {
-                    /* eslint-disable no-useless-escape */
-                    persianDateArray = inputString.split(/\/|-|\,|\./).map(Number);
-                    /* eslint-enable no-useless-escape */
-
-                    return persianDateArray;
-                  } else if (isoPat.test(inputString)) {
-                    /* eslint-disable no-useless-escape */
-                    persianDateArray = inputString.split(/\/|-|\,|\:|\T|\Z/g).map(Number);
-                    return persianDateArray;
-                    /* eslint-enable no-useless-escape */
-                  } else {
-                    return undefined;
-                  }
-                }
-              }]);
-
-              return PersianDateParser;
-            }();
-
-            module.exports = PersianDateParser;
-            /***/
-          },
-          /* 10 */
-
-          /***/
-          function (module, exports, __webpack_require__) {
-            "use strict";
-
-            var _createClass = function () {
-              function defineProperties(target, props) {
-                for (var i = 0; i < props.length; i++) {
-                  var descriptor = props[i];
-                  descriptor.enumerable = descriptor.enumerable || false;
-                  descriptor.configurable = true;
-                  if ("value" in descriptor) descriptor.writable = true;
-                  Object.defineProperty(target, descriptor.key, descriptor);
-                }
-              }
-
-              return function (Constructor, protoProps, staticProps) {
-                if (protoProps) defineProperties(Constructor.prototype, protoProps);
-                if (staticProps) defineProperties(Constructor, staticProps);
-                return Constructor;
-              };
-            }();
-
-            function _classCallCheck(instance, Constructor) {
-              if (!(instance instanceof Constructor)) {
-                throw new TypeError("Cannot call a class as a function");
-              }
-            }
-
-            var PersianDateWrapper = function () {
-              function PersianDateWrapper(model) {
-                _classCallCheck(this, PersianDateWrapper);
-
-                this.model = model;
-                this.model.options.calendar_ = this.model.options.calendarType;
-                this.model.options.locale_ = this.model.options.calendar[this.model.options.calendarType].locale;
-                return this;
-              }
-
-              _createClass(PersianDateWrapper, [{
-                key: "date",
-                value: function date(input) {
-                  if (window.inspdCount || window.inspdCount === 0) {
-                    window.inspdCount++;
-                  } else {
-                    window.inspdCount = 0;
-                  }
-
-                  var that = this;
-                  var output = void 0,
-                      cp = void 0;
-                  cp = persianDate.toCalendar(that.model.options.calendar_);
-
-                  if (this.model.options.calendar[this.model.options.calendarType].leapYearMode) {
-                    cp.toLeapYearMode(this.model.options.calendar[this.model.options.calendarType].leapYearMode);
-                  }
-
-                  output = new cp(input);
-                  return output.toLocale(that.model.options.locale_);
-                }
-              }]);
-
-              return PersianDateWrapper;
-            }();
-
-            module.exports = PersianDateWrapper;
-            /***/
-          },
-          /* 11 */
-
-          /***/
-          function (module, exports, __webpack_require__) {
-            "use strict";
-
-            var _createClass = function () {
-              function defineProperties(target, props) {
-                for (var i = 0; i < props.length; i++) {
-                  var descriptor = props[i];
-                  descriptor.enumerable = descriptor.enumerable || false;
-                  descriptor.configurable = true;
-                  if ("value" in descriptor) descriptor.writable = true;
-                  Object.defineProperty(target, descriptor.key, descriptor);
-                }
-              }
-
-              return function (Constructor, protoProps, staticProps) {
-                if (protoProps) defineProperties(Constructor.prototype, protoProps);
-                if (staticProps) defineProperties(Constructor, staticProps);
-                return Constructor;
-              };
-            }();
-
-            function _classCallCheck(instance, Constructor) {
-              if (!(instance instanceof Constructor)) {
-                throw new TypeError("Cannot call a class as a function");
-              }
-            }
-            /**
-             * All state set in his object and get from this
-             * also this object notify other object to update self or update view or etc.
-             */
-
-
-            var State = function () {
-              /**
-               * @param {model} model
-               * @return {State}
-               */
-              function State(model) {
-                _classCallCheck(this, State);
-                /**
-                 * @type {object}
-                 */
-
-
-                this.model = model;
-                /**
-                 * @type {Boolean}
-                 */
-
-                this.filetredDate = this.model.options.minDate || this.model.options.maxDate;
-                /**
-                 * @desc get generated view mode list from options object
-                 * @type {Array}
-                 */
-
-                this.viewModeList = this.model.options._viewModeList;
-                /**
-                 * @desc view mode string day, month, year
-                 * @type {String}
-                 * @default day
-                 * @todo add time to view modes
-                 */
-
-                this.viewMode = this.viewModeList.indexOf(model.options.viewMode) > 0 ? model.options.viewMode : this.viewModeList[0];
-                /**
-                 * @desc view mode string index in view mode list
-                 * @type {number}
-                 */
-
-                this.viewModeIndex = this.viewModeList.indexOf(model.options.viewMode) > 0 ? this.viewModeList.indexOf(model.options.viewMode) : 0; // defaul 'day'
-
-                /**
-                 * @desc contain filtered date objects
-                 * @type {{start: {year: number, month: number, date: number, hour: number, minute: number, second: number, unixDate: number}, end: {year: number, month: number, date: number, hour: number, minute: number, second: number, unixDate: number}}}
-                 */
-
-                this.filterDate = {
-                  start: {
-                    year: 0,
-                    month: 0,
-                    date: 0,
-                    hour: 0,
-                    minute: 0,
-                    second: 0,
-                    unixDate: 0
-                  },
-                  end: {
-                    year: 0,
-                    month: 0,
-                    date: 0,
-                    hour: 0,
-                    minute: 0,
-                    second: 0,
-                    unixDate: 0
-                  }
-                };
-                /**
-                 * @desc contain view date object
-                 * @type {{year: number, month: number, date: number, hour: number, minute: number, second: number, unixDate: number, dateObject: null, meridian: string}}
-                 */
-
-                this.view = {
-                  year: 0,
-                  month: 0,
-                  date: 0,
-                  hour: 0,
-                  minute: 0,
-                  second: 0,
-                  unixDate: 0,
-                  dateObject: null,
-                  meridian: 'AM'
-                };
-                /**
-                 * @desc contain selected date object
-                 * @type {{year: number, month: number, date: number, hour: number, minute: number, second: number, unixDate: number, dateObject: null}}
-                 */
-
-                this.selected = {
-                  year: 0,
-                  month: 0,
-                  date: 0,
-                  hour: 0,
-                  hour12: 0,
-                  minute: 0,
-                  second: 0,
-                  unixDate: 0,
-                  dateObject: null
-                };
-                this.ui = {
-                  isOpen: false,
-                  isInline: this.model.options.inline
-                };
-
-                this._setFilterDate(this.model.options.minDate, this.model.options.maxDate);
-
-                return this;
-              }
-              /**
-               * @private
-               * @param minDate
-               * @param maxDate
-               */
-
-
-              _createClass(State, [{
-                key: '_setFilterDate',
-                value: function _setFilterDate(minDate, maxDate) {
-                  var self = this;
-
-                  if (!minDate) {
-                    minDate = -2000000000000000;
-                  }
-
-                  if (!maxDate) {
-                    maxDate = 2000000000000000;
-                  }
-
-                  var pd = self.model.PersianDate.date(minDate);
-                  self.filterDate.start.unixDate = minDate;
-                  self.filterDate.start.hour = pd.hour();
-                  self.filterDate.start.minute = pd.minute();
-                  self.filterDate.start.second = pd.second();
-                  self.filterDate.start.month = pd.month();
-                  self.filterDate.start.date = pd.date();
-                  self.filterDate.start.year = pd.year();
-                  var pdEnd = self.model.PersianDate.date(maxDate);
-                  self.filterDate.end.unixDate = maxDate;
-                  self.filterDate.end.hour = pdEnd.hour();
-                  self.filterDate.end.minute = pdEnd.minute();
-                  self.filterDate.end.second = pdEnd.second();
-                  self.filterDate.end.month = pdEnd.month();
-                  self.filterDate.end.date = pdEnd.date();
-                  self.filterDate.end.year = pdEnd.year();
-                }
-                /**
-                 * @desc change view state
-                 * @param {String} nav - accept next, prev
-                 */
-
-              }, {
-                key: 'navigate',
-                value: function navigate(nav) {
-                  if (nav == 'next') {
-                    if (this.viewMode == 'year') {
-                      this.setViewDateTime('year', this.view.year + 12);
-                    }
-
-                    if (this.viewMode == 'month') {
-                      var newYear = this.view.year + 1;
-
-                      if (newYear === 0) {
-                        newYear = 1;
-                      }
-
-                      this.setViewDateTime('year', newYear);
-                    }
-
-                    if (this.viewMode == 'day') {
-                      var _newYear = this.view.year + 1;
-
-                      if (_newYear === 0) {
-                        _newYear = 1;
-                      }
-
-                      if (this.view.month + 1 == 13) {
-                        this.setViewDateTime('year', _newYear);
-                        this.setViewDateTime('month', 1);
-                      } else {
-                        this.setViewDateTime('month', this.view.month + 1);
-                      }
-                    }
-                  } else {
-                    if (this.viewMode == 'year') {
-                      this.setViewDateTime('year', this.view.year - 12);
-                    }
-
-                    if (this.viewMode == 'month') {
-                      var _newYear2 = this.view.year - 1;
-
-                      if (_newYear2 === 0) {
-                        _newYear2 = -1;
-                      }
-
-                      this.setViewDateTime('year', _newYear2);
-                    }
-
-                    if (this.viewMode == 'day') {
-                      if (this.view.month - 1 <= 0) {
-                        var _newYear3 = this.view.year - 1;
-
-                        if (_newYear3 === 0) {
-                          _newYear3 = -1;
-                        }
-
-                        this.setViewDateTime('year', _newYear3);
-                        this.setViewDateTime('month', 12);
-                      } else {
-                        this.setViewDateTime('month', this.view.month - 1);
-                      }
-                    }
-                  }
-                }
-                /**
-                 * @public
-                 * @desc every time called view state changed to next in queue
-                 * @return {State}
-                 */
-
-              }, {
-                key: 'switchViewMode',
-                value: function switchViewMode() {
-                  this.viewModeIndex = this.viewModeIndex + 1 >= this.viewModeList.length ? 0 : this.viewModeIndex + 1;
-                  this.viewMode = this.viewModeList[this.viewModeIndex] ? this.viewModeList[this.viewModeIndex] : this.viewModeList[0];
-
-                  this._setViewDateTimeUnix();
-
-                  return this;
-                }
-                /**
-                 * @desc switch to specified view mode
-                 * @param {String} viewMode - accept date, month, year
-                 */
-
-              }, {
-                key: 'switchViewModeTo',
-                value: function switchViewModeTo(viewMode) {
-                  if (this.viewModeList.indexOf(viewMode) >= 0) {
-                    this.viewMode = viewMode;
-                    this.viewModeIndex = this.viewModeList.indexOf(viewMode);
-                  }
-                }
-                /**
-                 * @desc called on date select
-                 * @param {String} key - accept date, month, year, hour, minute, second
-                 * @param {Number} value
-                 * @public
-                 * @return {State}
-                 */
-
-              }, {
-                key: 'setSelectedDateTime',
-                value: function setSelectedDateTime(key, value) {
-                  var that = this;
-
-                  switch (key) {
-                    case 'unix':
-                      that.selected.unixDate = value;
-                      var pd = this.model.PersianDate.date(value);
-                      that.selected.year = pd.year();
-                      that.selected.month = pd.month();
-                      that.selected.date = pd.date();
-                      that.selected.hour = pd.hour();
-                      that.selected.hour12 = pd.format('hh');
-                      that.selected.minute = pd.minute();
-                      that.selected.second = pd.second();
-                      break;
-
-                    case 'year':
-                      this.selected.year = value;
-                      break;
-
-                    case 'month':
-                      this.selected.month = value;
-                      break;
-
-                    case 'date':
-                      this.selected.date = value;
-                      break;
-
-                    case 'hour':
-                      this.selected.hour = value;
-                      break;
-
-                    case 'minute':
-                      this.selected.minute = value;
-                      break;
-
-                    case 'second':
-                      this.selected.second = value;
-                      break;
-                  }
-
-                  that._updateSelectedUnix();
-
-                  return this;
-                }
-                /**
-                 * @return {State}
-                 * @private
-                 */
-
-              }, {
-                key: '_updateSelectedUnix',
-                value: function _updateSelectedUnix() {
-                  this.selected.dateObject = this.model.PersianDate.date([this.selected.year, this.selected.month, this.selected.date, this.view.hour, this.view.minute, this.view.second]);
-                  this.selected.unixDate = this.selected.dateObject.valueOf();
-                  this.model.updateInput(this.selected.unixDate);
-                  return this;
-                }
-                /**
-                 *
-                 * @return {State}
-                 * @private
-                 */
-
-              }, {
-                key: '_setViewDateTimeUnix',
-                value: function _setViewDateTimeUnix() {
-                  var daysInMonth = new persianDate().daysInMonth(this.view.year, this.view.month);
-
-                  if (this.view.date > daysInMonth) {
-                    this.view.date = daysInMonth;
-                  }
-
-                  this.view.dateObject = this.model.PersianDate.date([this.view.year, this.view.month, this.view.date, this.view.hour, this.view.minute, this.view.second]);
-                  this.view.year = this.view.dateObject.year();
-                  this.view.month = this.view.dateObject.month();
-                  this.view.date = this.view.dateObject.date();
-                  this.view.hour = this.view.dateObject.hour();
-                  this.view.hour12 = this.view.dateObject.format('hh');
-                  this.view.minute = this.view.dateObject.minute();
-                  this.view.second = this.view.dateObject.second();
-                  this.view.unixDate = this.view.dateObject.valueOf();
-                  return this;
-                }
-                /**
-                 *
-                 * @param {String} key -  accept date, month, year, hour, minute, second
-                 * @param {Number} value
-                 * @return {State}
-                 */
-
-              }, {
-                key: 'setViewDateTime',
-                value: function setViewDateTime(key, value) {
-                  var self = this;
-
-                  switch (key) {
-                    case 'unix':
-                      var pd = this.model.PersianDate.date(value);
-                      self.view.year = pd.year();
-                      self.view.month = pd.month();
-                      self.view.date = pd.date();
-                      self.view.hour = pd.hour();
-                      self.view.minute = pd.minute();
-                      self.view.second = pd.second();
-                      break;
-
-                    case 'year':
-                      this.view.year = value;
-                      break;
-
-                    case 'month':
-                      this.view.month = value;
-                      break;
-
-                    case 'date':
-                      this.view.date = value;
-                      break;
-
-                    case 'hour':
-                      this.view.hour = value;
-                      break;
-
-                    case 'minute':
-                      this.view.minute = value;
-                      break;
-
-                    case 'second':
-                      this.view.second = value;
-                      break;
-                  }
-
-                  this._setViewDateTimeUnix();
-
-                  return this;
-                }
-                /**
-                 * desc change meridian state
-                 */
-
-              }, {
-                key: 'meridianToggle',
-                value: function meridianToggle() {
-                  var self = this;
-
-                  if (self.view.meridian === 'AM') {
-                    self.view.meridian = 'PM';
-                  } else if (self.view.meridian === 'PM') {
-                    self.view.meridian = 'AM';
-                  }
-                }
-              }]);
-
-              return State;
-            }();
-
-            module.exports = State;
-            /***/
-          },
-          /* 12 */
-
-          /***/
-          function (module, exports, __webpack_require__) {
-            "use strict";
-
-            var _createClass = function () {
-              function defineProperties(target, props) {
-                for (var i = 0; i < props.length; i++) {
-                  var descriptor = props[i];
-                  descriptor.enumerable = descriptor.enumerable || false;
-                  descriptor.configurable = true;
-                  if ("value" in descriptor) descriptor.writable = true;
-                  Object.defineProperty(target, descriptor.key, descriptor);
-                }
-              }
-
-              return function (Constructor, protoProps, staticProps) {
-                if (protoProps) defineProperties(Constructor.prototype, protoProps);
-                if (staticProps) defineProperties(Constructor, staticProps);
-                return Constructor;
-              };
-            }();
-
-            function _classCallCheck(instance, Constructor) {
-              if (!(instance instanceof Constructor)) {
-                throw new TypeError("Cannot call a class as a function");
-              }
-            }
-            /**
-             * Do every things about toolbox, like attach events to toolbox elements
-             */
-
-
-            var Toolbox = function () {
-              /**
-               * @param {Datepicker} datepicker
-               * @return {Toolbox}
-               */
-              function Toolbox(model) {
-                _classCallCheck(this, Toolbox);
-                /**
-                 * @type {Datepicker}
-                 */
-
-
-                this.model = model;
-
-                this._attachEvents();
-
-                return this;
-              }
-
-              _createClass(Toolbox, [{
-                key: '_toggleCalendartype',
-                value: function _toggleCalendartype() {
-                  var that = this;
-
-                  if (that.model.options.calendar_ == 'persian') {
-                    that.model.options.calendar_ = 'gregorian';
-                    that.model.options.locale_ = this.model.options.calendar.gregorian.locale;
-                  } else {
-                    that.model.options.calendar_ = 'persian';
-                    that.model.options.locale_ = this.model.options.calendar.persian.locale;
-                  }
-                }
-                /**
-                 * attach all events about toolbox
-                 */
-
-              }, {
-                key: '_attachEvents',
-                value: function _attachEvents() {
-                  var that = this;
-                  $(document).on('click', '#' + that.model.view.id + ' .pwt-btn-today', function () {
-                    that.model.state.setSelectedDateTime('unix', new Date().valueOf());
-                    that.model.state.setViewDateTime('unix', new Date().valueOf());
-                    that.model.view.reRender();
-                    /**
-                     * @deprecated
-                     * @todo remove this
-                     */
-
-                    that.model.options.toolbox.onToday(that.model);
-                    that.model.options.toolbox.todayButton.onToday(that.model);
-                  });
-                  $(document).on('click', '#' + that.model.view.id + ' .pwt-btn-calendar', function () {
-                    that._toggleCalendartype();
-
-                    that.model.state.setSelectedDateTime('unix', that.model.state.selected.unixDate);
-                    that.model.state.setViewDateTime('unix', that.model.state.view.unixDate);
-                    that.model.view.render();
-                    that.model.options.toolbox.calendarSwitch.onSwitch(that.model);
-                  });
-                  $(document).on('click', '#' + that.model.view.id + ' .pwt-btn-submit', function () {
-                    that.model.view.hide();
-                    that.model.options.toolbox.submitButton.onSubmit(that.model);
-                    that.model.options.onHide(this);
-                  });
-                }
-              }]);
-
-              return Toolbox;
-            }();
-
-            module.exports = Toolbox;
-            /***/
-          },
-          /* 13 */
-
-          /***/
-          function (module, exports, __nested_webpack_require_94973__) {
-            "use strict";
-
-            var _slicedToArray = function () {
-              function sliceIterator(arr, i) {
-                var _arr = [];
-                var _n = true;
-                var _d = false;
-                var _e = undefined;
-
-                try {
-                  for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
-                    _arr.push(_s.value);
-
-                    if (i && _arr.length === i) break;
-                  }
-                } catch (err) {
-                  _d = true;
-                  _e = err;
-                } finally {
-                  try {
-                    if (!_n && _i["return"]) _i["return"]();
-                  } finally {
-                    if (_d) throw _e;
-                  }
-                }
-
-                return _arr;
-              }
-
-              return function (arr, i) {
-                if (Array.isArray(arr)) {
-                  return arr;
-                } else if (Symbol.iterator in Object(arr)) {
-                  return sliceIterator(arr, i);
-                } else {
-                  throw new TypeError("Invalid attempt to destructure non-iterable instance");
-                }
-              };
-            }();
-
-            var _createClass = function () {
-              function defineProperties(target, props) {
-                for (var i = 0; i < props.length; i++) {
-                  var descriptor = props[i];
-                  descriptor.enumerable = descriptor.enumerable || false;
-                  descriptor.configurable = true;
-                  if ("value" in descriptor) descriptor.writable = true;
-                  Object.defineProperty(target, descriptor.key, descriptor);
-                }
-              }
-
-              return function (Constructor, protoProps, staticProps) {
-                if (protoProps) defineProperties(Constructor.prototype, protoProps);
-                if (staticProps) defineProperties(Constructor, staticProps);
-                return Constructor;
-              };
-            }();
-
-            function _toConsumableArray(arr) {
-              if (Array.isArray(arr)) {
-                for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) {
-                  arr2[i] = arr[i];
-                }
-
-                return arr2;
-              } else {
-                return Array.from(arr);
-              }
-            }
-
-            function _classCallCheck(instance, Constructor) {
-              if (!(instance instanceof Constructor)) {
-                throw new TypeError("Cannot call a class as a function");
-              }
-            }
-
-            var Template = __nested_webpack_require_94973__(1);
-
-            var Helper = __nested_webpack_require_94973__(0);
-
-            var Mustache = __nested_webpack_require_94973__(15);
-            /**
-             * As its name suggests, all rendering works do in this object
-             */
-
-
-            var View = function () {
-              /**
-               *
-               * @param {Datepicker} model
-               * @return {View}
-               */
-              function View(model) {
-                _classCallCheck(this, View);
-                /**
-                 * @type {number}
-                 */
-
-
-                this.yearsViewCount = 12;
-                /**
-                 *
-                 * @type {Datepicker}
-                 */
-
-                this.model = model;
-                /**
-                 *
-                 * @type {null}
-                 */
-
-                this.rendered = null;
-                /**
-                 *
-                 * @type {null}
-                 */
-
-                this.$container = null;
-                /**
-                 *
-                 * @type {string}
-                 */
-
-                this.id = 'persianDateInstance-' + parseInt(Math.random(100) * 1000);
-                var that = this;
-
-                if (this.model.state.ui.isInline) {
-                  this.$container = $('<div  id="' + this.id + '" class="datepicker-container-inline"></div>').appendTo(that.model.inputElement);
-                } else {
-                  this.$container = $('<div  id="' + this.id + '" class="datepicker-container"></div>').appendTo('body');
-                  this.hide();
-                  this.setPickerBoxPosition();
-                  this.addCompatibilityClass();
-                }
-
-                return this;
-              }
-              /**
-               * @desc add css class to handle compatibility ui things
-               */
-
-
-              _createClass(View, [{
-                key: 'addCompatibilityClass',
-                value: function addCompatibilityClass() {
-                  if (Helper.isMobile && this.model.options.responsive) {
-                    this.$container.addClass('pwt-mobile-view');
-                  }
-                }
-                /**
-                 * @desc remove datepicker container element from dom
-                 */
-
-              }, {
-                key: 'destroy',
-                value: function destroy() {
-                  this.$container.remove();
-                }
-                /**
-                 * @desc set datepicker container element based on <input/> element position
-                 */
-
-              }, {
-                key: 'setPickerBoxPosition',
-                value: function setPickerBoxPosition() {
-                  var inputPosition = this.model.input.getInputPosition(),
-                      inputSize = this.model.input.getInputSize();
-
-                  if (Helper.isMobile && this.model.options.responsive) {
-                    return false;
-                  }
-
-                  if (this.model.options.position === 'auto') {
-                    this.$container.css({
-                      left: inputPosition.left + 'px',
-                      top: inputSize.height + inputPosition.top + 'px'
-                    });
-                  } else {
-                    this.$container.css({
-                      left: this.model.options.position[1] + inputPosition.left + 'px',
-                      top: this.model.options.position[0] + inputPosition.top + 'px'
-                    });
-                  }
-                }
-                /**
-                 * @desc show datepicker container element
-                 */
-
-              }, {
-                key: 'show',
-                value: function show() {
-                  this.$container.removeClass('pwt-hide');
-                  this.setPickerBoxPosition();
-                }
-                /**
-                 * @desc hide datepicker container element
-                 */
-
-              }, {
-                key: 'hide',
-                value: function hide() {
-                  this.$container.addClass('pwt-hide');
-                }
-                /**
-                 * @desc toggle datepicker container element
-                 */
-
-              }, {
-                key: 'toggle',
-                value: function toggle() {
-                  this.$container.toggleClass('pwt-hide');
-                }
-                /**
-                 * @desc return navigator switch text
-                 * @param {String} data -  accept day, month, year
-                 * @private
-                 * @return {String}
-                 */
-
-              }, {
-                key: '_getNavSwitchText',
-                value: function _getNavSwitchText(data) {
-                  var output = void 0;
-
-                  if (this.model.state.viewMode == 'day') {
-                    output = this.model.options.dayPicker.titleFormatter.call(this, data.year, data.month);
-                  } else if (this.model.state.viewMode == 'month') {
-                    output = this.model.options.monthPicker.titleFormatter.call(this, data.dateObject.valueOf());
-                  } else if (this.model.state.viewMode == 'year') {
-                    output = this.model.options.yearPicker.titleFormatter.call(this, data.year);
-                  }
-
-                  return output;
-                }
-                /**
-                 * @desc check year is accessible
-                 * @param {Number} year - year number
-                 * @return {Boolean}
-                 */
-
-              }, {
-                key: 'checkYearAccess',
-                value: function checkYearAccess(year) {
-                  var output = true;
-
-                  if (this.model.state.filetredDate) {
-                    var startYear = this.model.state.filterDate.start.year,
-                        endYear = this.model.state.filterDate.end.year;
-
-                    if (startYear && year < startYear) {
-                      return false;
-                    } else if (endYear && year > endYear) {
-                      return false;
-                    }
-                  }
-
-                  if (output) {
-                    return this.model.options.checkYear(year);
-                  }
-                }
-                /**
-                 * @private
-                 * @param viewState
-                 * @return {{enabled: boolean, viewMode: boolean, list: Array}}
-                 */
-
-              }, {
-                key: '_getYearViewModel',
-                value: function _getYearViewModel(viewState) {
-                  var _this = this;
-
-                  var isEnabled = this.model.options.yearPicker.enabled; // Make performance better
-
-                  if (!isEnabled) {
-                    return {
-                      enabled: false
-                    };
-                  }
-                  /**
-                   * @description Generate years list based on viewState year
-                   * @return ['1380',n+12,'1392']
-                   */
-
-
-                  var list = [].concat(_toConsumableArray(Array(this.yearsViewCount).keys())).map(function (value) {
-                    return value + parseInt(viewState.year / _this.yearsViewCount) * _this.yearsViewCount;
-                  });
-                  /*
-                  * @description Generate years object based on list
-                  */
-
-                  var yearsModel = [],
-                      yearStr = this.model.PersianDate.date();
-                  var _iteratorNormalCompletion = true;
-                  var _didIteratorError = false;
-                  var _iteratorError = undefined;
-
-                  try {
-                    for (var _iterator = list[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-                      var i = _step.value;
-                      yearStr.year([i]);
-                      yearsModel.push({
-                        title: yearStr.format('YYYY'),
-                        enabled: this.checkYearAccess(i),
-                        dataYear: i,
-                        selected: this.model.state.selected.year == i
-                      });
-                    }
-                  } catch (err) {
-                    _didIteratorError = true;
-                    _iteratorError = err;
-                  } finally {
-                    try {
-                      if (!_iteratorNormalCompletion && _iterator["return"]) {
-                        _iterator["return"]();
-                      }
-                    } finally {
-                      if (_didIteratorError) {
-                        throw _iteratorError;
-                      }
-                    }
-                  }
-
-                  return {
-                    enabled: isEnabled,
-                    viewMode: this.model.state.viewMode == 'year',
-                    list: yearsModel
-                  };
-                }
-                /**
-                 * @desc check month is accessible
-                 * @param {Number} month - month number
-                 * @return {Boolean}
-                 */
-
-              }, {
-                key: 'checkMonthAccess',
-                value: function checkMonthAccess(month) {
-                  month = month + 1;
-                  var output = true,
-                      y = this.model.state.view.year;
-
-                  if (this.model.state.filetredDate) {
-                    var startMonth = this.model.state.filterDate.start.month,
-                        endMonth = this.model.state.filterDate.end.month,
-                        startYear = this.model.state.filterDate.start.year,
-                        endYear = this.model.state.filterDate.end.year;
-
-                    if (startMonth && endMonth && (y == endYear && month > endMonth || y > endYear) || y == startYear && month < startMonth || y < startYear) {
-                      return false;
-                    } else if (endMonth && (y == endYear && month > endMonth || y > endYear)) {
-                      return false;
-                    } else if (startMonth && (y == startYear && month < startMonth || y < startYear)) {
-                      return false;
-                    }
-                  }
-
-                  if (output) {
-                    return this.model.options.checkMonth(month, y);
-                  }
-                }
-                /**
-                 * @private
-                 * @return {{enabled: boolean, viewMode: boolean, list: Array}}
-                 */
-
-              }, {
-                key: '_getMonthViewModel',
-                value: function _getMonthViewModel() {
-                  var isEnaled = this.model.options.monthPicker.enabled; // Make performance better
-
-                  if (!isEnaled) {
-                    return {
-                      enabled: false
-                    };
-                  }
-
-                  var monthModel = [],
-                      that = this;
-                  var _iteratorNormalCompletion2 = true;
-                  var _didIteratorError2 = false;
-                  var _iteratorError2 = undefined;
-
-                  try {
-                    for (var _iterator2 = that.model.PersianDate.date().rangeName().months.entries()[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-                      var _step2$value = _slicedToArray(_step2.value, 2),
-                          index = _step2$value[0],
-                          month = _step2$value[1];
-
-                      monthModel.push({
-                        title: month,
-                        enabled: this.checkMonthAccess(index),
-                        year: this.model.state.view.year,
-                        dataMonth: index + 1,
-                        selected: this.model.state.selected.year == this.model.state.view.year && this.model.state.selected.month == index + 1
-                      });
-                    }
-                  } catch (err) {
-                    _didIteratorError2 = true;
-                    _iteratorError2 = err;
-                  } finally {
-                    try {
-                      if (!_iteratorNormalCompletion2 && _iterator2["return"]) {
-                        _iterator2["return"]();
-                      }
-                    } finally {
-                      if (_didIteratorError2) {
-                        throw _iteratorError2;
-                      }
-                    }
-                  }
-
-                  return {
-                    enabled: isEnaled,
-                    viewMode: this.model.state.viewMode == 'month',
-                    list: monthModel
-                  };
-                }
-                /**
-                 * @desc check day is accessible
-                 * @param {Number} thisUnix - month number
-                 * @return {Boolean}
-                 */
-
-              }, {
-                key: 'checkDayAccess',
-                value: function checkDayAccess(unixtimespan) {
-                  var self = this,
-                      output = true;
-                  self.minDate = this.model.options.minDate;
-                  self.maxDate = this.model.options.maxDate;
-
-                  if (self.model.state.filetredDate) {
-                    if (self.minDate && self.maxDate) {
-                      self.minDate = self.model.PersianDate.date(self.minDate).startOf('day').valueOf();
-                      self.maxDate = self.model.PersianDate.date(self.maxDate).endOf('day').valueOf();
-
-                      if (!(unixtimespan >= self.minDate && unixtimespan <= self.maxDate)) {
-                        return false;
-                      }
-                    } else if (self.minDate) {
-                      self.minDate = self.model.PersianDate.date(self.minDate).startOf('day').valueOf();
-
-                      if (unixtimespan <= self.minDate) {
-                        return false;
-                      }
-                    } else if (self.maxDate) {
-                      self.maxDate = self.model.PersianDate.date(self.maxDate).endOf('day').valueOf();
-
-                      if (unixtimespan >= self.maxDate) {
-                        return false;
-                      }
-                    }
-                  }
-
-                  if (output) {
-                    return self.model.options.checkDate(unixtimespan);
-                  }
-                }
-                /**
-                 * @private
-                 * @return {object}
-                 */
-
-              }, {
-                key: '_getDayViewModel',
-                value: function _getDayViewModel() {
-                  if (this.model.state.viewMode != 'day') {
-                    return [];
-                  }
-
-                  var isEnabled = this.model.options.dayPicker.enabled; // Make performance better
-
-                  if (!isEnabled) {
-                    return {
-                      enabled: false
-                    };
-                  } //log('if you see this many time your code has performance issue');
-
-
-                  var viewMonth = this.model.state.view.month,
-                      viewYear = this.model.state.view.year;
-                  var pdateInstance = this.model.PersianDate.date(),
-                      daysCount = pdateInstance.daysInMonth(viewYear, viewMonth),
-                      firstWeekDayOfMonth = pdateInstance.getFirstWeekDayOfMonth(viewYear, viewMonth) - 1,
-                      outputList = [],
-                      daysListindex = 0,
-                      nextMonthListIndex = 0,
-                      daysMatrix = [['null', 'null', 'null', 'null', 'null', 'null', 'null'], ['null', 'null', 'null', 'null', 'null', 'null', 'null'], ['null', 'null', 'null', 'null', 'null', 'null', 'null'], ['null', 'null', 'null', 'null', 'null', 'null', 'null'], ['null', 'null', 'null', 'null', 'null', 'null', 'null'], ['null', 'null', 'null', 'null', 'null', 'null', 'null']];
-
-                  var anotherCalendar = this._getAnotherCalendar();
-
-                  var _iteratorNormalCompletion3 = true;
-                  var _didIteratorError3 = false;
-                  var _iteratorError3 = undefined;
-
-                  try {
-                    for (var _iterator3 = daysMatrix.entries()[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
-                      var _step3$value = _slicedToArray(_step3.value, 2),
-                          rowIndex = _step3$value[0],
-                          daysRow = _step3$value[1];
-
-                      outputList[rowIndex] = [];
-                      var _iteratorNormalCompletion4 = true;
-                      var _didIteratorError4 = false;
-                      var _iteratorError4 = undefined;
-
-                      try {
-                        for (var _iterator4 = daysRow.entries()[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
-                          var _step4$value = _slicedToArray(_step4.value, 1),
-                              dayIndex = _step4$value[0];
-
-                          var calcedDate = void 0,
-                              otherMonth = void 0; // Set hour 12 prevent issues with DST times
-
-                          if (rowIndex === 0 && dayIndex < firstWeekDayOfMonth) {
-                            calcedDate = this.model.state.view.dateObject.startOf('month').hour(12).subtract('days', firstWeekDayOfMonth - dayIndex);
-                            otherMonth = true;
-                          } else if (rowIndex === 0 && dayIndex >= firstWeekDayOfMonth || rowIndex <= 5 && daysListindex < daysCount) {
-                            daysListindex += 1;
-                            calcedDate = new persianDate([this.model.state.view.year, this.model.state.view.month, daysListindex]);
-                            otherMonth = false;
-                          } else {
-                            nextMonthListIndex += 1;
-                            calcedDate = this.model.state.view.dateObject.endOf('month').hour(12).add('days', nextMonthListIndex);
-                            otherMonth = true;
-                          }
-
-                          outputList[rowIndex].push({
-                            title: calcedDate.format('D'),
-                            alterCalTitle: new persianDate(calcedDate.valueOf()).toCalendar(anotherCalendar[0]).toLocale(anotherCalendar[1]).format('D'),
-                            dataDate: [calcedDate.year(), calcedDate.month(), calcedDate.date()].join(','),
-                            dataUnix: calcedDate.hour(12).valueOf(),
-                            otherMonth: otherMonth,
-                            // TODO: make configurable
-                            enabled: this.checkDayAccess(calcedDate.valueOf())
-                          });
-                        }
-                      } catch (err) {
-                        _didIteratorError4 = true;
-                        _iteratorError4 = err;
-                      } finally {
-                        try {
-                          if (!_iteratorNormalCompletion4 && _iterator4["return"]) {
-                            _iterator4["return"]();
-                          }
-                        } finally {
-                          if (_didIteratorError4) {
-                            throw _iteratorError4;
-                          }
-                        }
-                      }
-                    }
-                  } catch (err) {
-                    _didIteratorError3 = true;
-                    _iteratorError3 = err;
-                  } finally {
-                    try {
-                      if (!_iteratorNormalCompletion3 && _iterator3["return"]) {
-                        _iterator3["return"]();
-                      }
-                    } finally {
-                      if (_didIteratorError3) {
-                        throw _iteratorError3;
-                      }
-                    }
-                  }
-
-                  return {
-                    enabled: isEnabled,
-                    viewMode: this.model.state.viewMode == 'day',
-                    list: outputList
-                  };
-                }
-              }, {
-                key: 'markSelectedDay',
-                value: function markSelectedDay() {
-                  var selected = this.model.state.selected;
-                  this.$container.find('.table-days td').each(function () {
-                    if ($(this).data('date') == [selected.year, selected.month, selected.date].join(',')) {
-                      $(this).addClass('selected');
-                    } else {
-                      $(this).removeClass('selected');
-                    }
-                  });
-                }
-              }, {
-                key: 'markToday',
-                value: function markToday() {
-                  var today = new persianDate();
-                  this.$container.find('.table-days td').each(function () {
-                    if ($(this).data('date') == [today.year(), today.month(), today.date()].join(',')) {
-                      $(this).addClass('today');
-                    } else {
-                      $(this).removeClass('today');
-                    }
-                  });
-                }
-                /**
-                 * @private
-                 * @return {{enabled: boolean, hour: {title, enabled: boolean}, minute: {title, enabled: boolean}, second: {title, enabled: boolean}, meridian: {title: (meridian|{title, enabled}|ClassDatepicker.ClassConfig.timePicker.meridian|{enabled}|string|string), enabled: boolean}}}
-                 */
-
-              }, {
-                key: '_getTimeViewModel',
-                value: function _getTimeViewModel() {
-                  var isEnabled = this.model.options.timePicker.enabled; // Make performance better
-
-                  if (!isEnabled) {
-                    return {
-                      enabled: false
-                    };
-                  }
-
-                  var hourTitle = void 0;
-
-                  if (this.model.options.timePicker.meridian.enabled) {
-                    hourTitle = this.model.state.view.dateObject.format('hh');
-                  } else {
-                    hourTitle = this.model.state.view.dateObject.format('HH');
-                  }
-
-                  return {
-                    enabled: isEnabled,
-                    hour: {
-                      title: hourTitle,
-                      enabled: this.model.options.timePicker.hour.enabled
-                    },
-                    minute: {
-                      title: this.model.state.view.dateObject.format('mm'),
-                      enabled: this.model.options.timePicker.minute.enabled
-                    },
-                    second: {
-                      title: this.model.state.view.dateObject.format('ss'),
-                      enabled: this.model.options.timePicker.second.enabled
-                    },
-                    meridian: {
-                      title: this.model.state.view.dateObject.format('a'),
-                      enabled: this.model.options.timePicker.meridian.enabled
-                    }
-                  };
-                }
-                /**
-                 *
-                 * @return {{enabled: boolean, list: (*|Array)}}
-                 * @private
-                 */
-
-              }, {
-                key: '_getWeekViewModel',
-                value: function _getWeekViewModel() {
-                  return {
-                    enabled: true,
-                    list: this.model.PersianDate.date().rangeName().weekdaysMin
-                  };
-                }
-                /**
-                 *
-                 * @return {string}
-                 */
-
-              }, {
-                key: 'getCssClass',
-                value: function getCssClass() {
-                  return [this.model.state.ui.isInline ? 'datepicker-plot-area-inline-view' : '', !this.model.options.timePicker.meridian.enabled ? 'datepicker-state-no-meridian' : '', this.model.options.onlyTimePicker ? 'datepicker-state-only-time' : '', !this.model.options.timePicker.second.enabled ? 'datepicker-state-no-second' : '', this.model.options.calendar_ == 'gregorian' ? 'datepicker-gregorian' : 'datepicker-persian'].join(' ');
-                }
-                /**
-                 * @param data
-                 * @return {*}
-                 */
-
-              }, {
-                key: 'getViewModel',
-                value: function getViewModel(data) {
-                  var anotherCalendar = this._getAnotherCalendar();
-
-                  return {
-                    plotId: '',
-                    navigator: {
-                      enabled: this.model.options.navigator.enabled,
-                      "switch": {
-                        enabled: true,
-                        text: this._getNavSwitchText(data)
-                      },
-                      text: this.model.options.navigator.text
-                    },
-                    selected: this.model.state.selected,
-                    time: this._getTimeViewModel(data),
-                    days: this._getDayViewModel(data),
-                    weekdays: this._getWeekViewModel(data),
-                    month: this._getMonthViewModel(data),
-                    year: this._getYearViewModel(data),
-                    toolbox: this.model.options.toolbox,
-                    cssClass: this.getCssClass(),
-                    onlyTimePicker: this.model.options.onlyTimePicker,
-                    altCalendarShowHint: this.model.options.calendar[anotherCalendar[0]].showHint,
-                    calendarSwitchText: this.model.state.view.dateObject.toCalendar(anotherCalendar[0]).toLocale(anotherCalendar[1]).format(this.model.options.toolbox.calendarSwitch.format),
-                    todayButtonText: this._getButtonText().todayButtontext,
-                    submitButtonText: this._getButtonText().submitButtonText
-                  };
-                }
-              }, {
-                key: '_getButtonText',
-                value: function _getButtonText() {
-                  var output = {};
-
-                  if (this.model.options.locale_ == 'fa') {
-                    output.todayButtontext = this.model.options.toolbox.todayButton.text.fa;
-                    output.submitButtonText = this.model.options.toolbox.submitButton.text.fa;
-                  } else if (this.model.options.locale_ == 'en') {
-                    output.todayButtontext = this.model.options.toolbox.todayButton.text.en;
-                    output.submitButtonText = this.model.options.toolbox.submitButton.text.en;
-                  }
-
-                  return output;
-                }
-              }, {
-                key: '_getAnotherCalendar',
-                value: function _getAnotherCalendar() {
-                  var that = this,
-                      cal = void 0,
-                      loc = void 0;
-
-                  if (that.model.options.calendar_ == 'persian') {
-                    cal = 'gregorian';
-                    loc = that.model.options.calendar.gregorian.locale;
-                  } else {
-                    cal = 'persian';
-                    loc = that.model.options.calendar.persian.locale;
-                  }
-
-                  return [cal, loc];
-                }
-                /**
-                 * @desc render times area, prevent performance issue with scroll and time section
-                 */
-
-              }, {
-                key: 'renderTimePartial',
-                value: function renderTimePartial() {
-                  var timeViewModel = this._getTimeViewModel(this.model.state.view);
-
-                  this.$container.find('[data-time-key="hour"] input').val(timeViewModel.hour.title);
-                  this.$container.find('[data-time-key="minute"] input').val(timeViewModel.minute.title);
-                  this.$container.find('[data-time-key="second"] input').val(timeViewModel.second.title);
-                  this.$container.find('[data-time-key="meridian"] input').val(timeViewModel.meridian.title);
-                }
-                /**
-                 * @render datepicker view element
-                 * @param data
-                 */
-
-              }, {
-                key: 'render',
-                value: function render(data) {
-                  if (!data) {
-                    data = this.model.state.view;
-                  }
-
-                  Helper.debug(this, 'render');
-                  Mustache.parse(Template);
-                  this.rendered = $(Mustache.render(this.model.options.template, this.getViewModel(data)));
-                  this.$container.empty().append(this.rendered);
-                  this.markSelectedDay();
-                  this.markToday();
-                  this.afterRender();
-                }
-              }, {
-                key: 'reRender',
-                value: function reRender() {
-                  var data = this.model.state.view;
-                  this.render(data);
-                }
-                /**
-                 * @desc do after render work like attache events
-                 */
-
-              }, {
-                key: 'afterRender',
-                value: function afterRender() {
-                  if (this.model.navigator) {
-                    this.model.navigator.liveAttach();
-                  }
-                }
-              }]);
-
-              return View;
-            }();
-
-            module.exports = View;
-            /***/
-          },
-          /* 14 */
-
-          /***/
-          function (module, exports, __webpack_require__) {
-            /*
-            * Hamster.js v1.1.2
-            * (c) 2013 Monospaced http://monospaced.com
-            * License: MIT
-            */
-            (function (window, document) {
-              'use strict';
-              /**
-               * Hamster
-               * use this to create instances
-               * @returns {Hamster.Instance}
-               * @constructor
-               */
-
-              var Hamster = function Hamster(element) {
-                return new Hamster.Instance(element);
-              }; // default event name
-
-
-              Hamster.SUPPORT = 'wheel'; // default DOM methods
-
-              Hamster.ADD_EVENT = 'addEventListener';
-              Hamster.REMOVE_EVENT = 'removeEventListener';
-              Hamster.PREFIX = ''; // until browser inconsistencies have been fixed...
-
-              Hamster.READY = false;
-
-              Hamster.Instance = function (element) {
-                if (!Hamster.READY) {
-                  // fix browser inconsistencies
-                  Hamster.normalise.browser(); // Hamster is ready...!
-
-                  Hamster.READY = true;
-                }
-
-                this.element = element; // store attached event handlers
-
-                this.handlers = []; // return instance
-
-                return this;
-              };
-              /**
-               * create new hamster instance
-               * all methods should return the instance itself, so it is chainable.
-               * @param   {HTMLElement}       element
-               * @returns {Hamster.Instance}
-               * @constructor
-               */
-
-
-              Hamster.Instance.prototype = {
-                /**
-                 * bind events to the instance
-                 * @param   {Function}    handler
-                 * @param   {Boolean}     useCapture
-                 * @returns {Hamster.Instance}
-                 */
-                wheel: function onEvent(handler, useCapture) {
-                  Hamster.event.add(this, Hamster.SUPPORT, handler, useCapture); // handle MozMousePixelScroll in older Firefox
-
-                  if (Hamster.SUPPORT === 'DOMMouseScroll') {
-                    Hamster.event.add(this, 'MozMousePixelScroll', handler, useCapture);
-                  }
-
-                  return this;
-                },
-
-                /**
-                 * unbind events to the instance
-                 * @param   {Function}    handler
-                 * @param   {Boolean}     useCapture
-                 * @returns {Hamster.Instance}
-                 */
-                unwheel: function offEvent(handler, useCapture) {
-                  // if no handler argument,
-                  // unbind the last bound handler (if exists)
-                  if (handler === undefined && (handler = this.handlers.slice(-1)[0])) {
-                    handler = handler.original;
-                  }
-
-                  Hamster.event.remove(this, Hamster.SUPPORT, handler, useCapture); // handle MozMousePixelScroll in older Firefox
-
-                  if (Hamster.SUPPORT === 'DOMMouseScroll') {
-                    Hamster.event.remove(this, 'MozMousePixelScroll', handler, useCapture);
-                  }
-
-                  return this;
-                }
-              };
-              Hamster.event = {
-                /**
-                 * cross-browser 'addWheelListener'
-                 * @param   {Instance}    hamster
-                 * @param   {String}      eventName
-                 * @param   {Function}    handler
-                 * @param   {Boolean}     useCapture
-                 */
-                add: function add(hamster, eventName, handler, useCapture) {
-                  // store the original handler
-                  var originalHandler = handler; // redefine the handler
-
-                  handler = function handler(originalEvent) {
-                    if (!originalEvent) {
-                      originalEvent = window.event;
-                    } // create a normalised event object,
-                    // and normalise "deltas" of the mouse wheel
-
-
-                    var event = Hamster.normalise.event(originalEvent),
-                        delta = Hamster.normalise.delta(originalEvent); // fire the original handler with normalised arguments
-
-                    return originalHandler(event, delta[0], delta[1], delta[2]);
-                  }; // cross-browser addEventListener
-
-
-                  hamster.element[Hamster.ADD_EVENT](Hamster.PREFIX + eventName, handler, useCapture || false); // store original and normalised handlers on the instance
-
-                  hamster.handlers.push({
-                    original: originalHandler,
-                    normalised: handler
-                  });
-                },
-
-                /**
-                 * removeWheelListener
-                 * @param   {Instance}    hamster
-                 * @param   {String}      eventName
-                 * @param   {Function}    handler
-                 * @param   {Boolean}     useCapture
-                 */
-                remove: function remove(hamster, eventName, handler, useCapture) {
-                  // find the normalised handler on the instance
-                  var originalHandler = handler,
-                      lookup = {},
-                      handlers;
-
-                  for (var i = 0, len = hamster.handlers.length; i < len; ++i) {
-                    lookup[hamster.handlers[i].original] = hamster.handlers[i];
-                  }
-
-                  handlers = lookup[originalHandler];
-                  handler = handlers.normalised; // cross-browser removeEventListener
-
-                  hamster.element[Hamster.REMOVE_EVENT](Hamster.PREFIX + eventName, handler, useCapture || false); // remove original and normalised handlers from the instance
-
-                  for (var h in hamster.handlers) {
-                    if (hamster.handlers[h] == handlers) {
-                      hamster.handlers.splice(h, 1);
-                      break;
-                    }
-                  }
-                }
-              };
-              /**
-               * these hold the lowest deltas,
-               * used to normalise the delta values
-               * @type {Number}
-               */
-
-              var lowestDelta, lowestDeltaXY;
-              Hamster.normalise = {
-                /**
-                 * fix browser inconsistencies
-                 */
-                browser: function normaliseBrowser() {
-                  // detect deprecated wheel events
-                  if (!('onwheel' in document || document.documentMode >= 9)) {
-                    Hamster.SUPPORT = document.onmousewheel !== undefined ? 'mousewheel' : // webkit and IE < 9 support at least "mousewheel"
-                    'DOMMouseScroll'; // assume remaining browsers are older Firefox
-                  } // detect deprecated event model
-
-
-                  if (!window.addEventListener) {
-                    // assume IE < 9
-                    Hamster.ADD_EVENT = 'attachEvent';
-                    Hamster.REMOVE_EVENT = 'detachEvent';
-                    Hamster.PREFIX = 'on';
-                  }
-                },
-
-                /**
-                 * create a normalised event object
-                 * @param   {Function}    originalEvent
-                 * @returns {Object}      event
-                 */
-                event: function normaliseEvent(originalEvent) {
-                  var event = {
-                    // keep a reference to the original event object
-                    originalEvent: originalEvent,
-                    target: originalEvent.target || originalEvent.srcElement,
-                    type: 'wheel',
-                    deltaMode: originalEvent.type === 'MozMousePixelScroll' ? 0 : 1,
-                    deltaX: 0,
-                    deltaZ: 0,
-                    preventDefault: function preventDefault() {
-                      if (originalEvent.preventDefault) {
-                        originalEvent.preventDefault();
-                      } else {
-                        originalEvent.returnValue = false;
-                      }
-                    },
-                    stopPropagation: function stopPropagation() {
-                      if (originalEvent.stopPropagation) {
-                        originalEvent.stopPropagation();
-                      } else {
-                        originalEvent.cancelBubble = false;
-                      }
-                    }
-                  }; // calculate deltaY (and deltaX) according to the event
-                  // 'mousewheel'
-
-                  if (originalEvent.wheelDelta) {
-                    event.deltaY = -1 / 40 * originalEvent.wheelDelta;
-                  } // webkit
-
-
-                  if (originalEvent.wheelDeltaX) {
-                    event.deltaX = -1 / 40 * originalEvent.wheelDeltaX;
-                  } // 'DomMouseScroll'
-
-
-                  if (originalEvent.detail) {
-                    event.deltaY = originalEvent.detail;
-                  }
-
-                  return event;
-                },
-
-                /**
-                 * normalise 'deltas' of the mouse wheel
-                 * @param   {Function}    originalEvent
-                 * @returns {Array}       deltas
-                 */
-                delta: function normaliseDelta(originalEvent) {
-                  var delta = 0,
-                      deltaX = 0,
-                      deltaY = 0,
-                      absDelta = 0,
-                      absDeltaXY = 0,
-                      fn; // normalise deltas according to the event
-                  // 'wheel' event
-
-                  if (originalEvent.deltaY) {
-                    deltaY = originalEvent.deltaY * -1;
-                    delta = deltaY;
-                  }
-
-                  if (originalEvent.deltaX) {
-                    deltaX = originalEvent.deltaX;
-                    delta = deltaX * -1;
-                  } // 'mousewheel' event
-
-
-                  if (originalEvent.wheelDelta) {
-                    delta = originalEvent.wheelDelta;
-                  } // webkit
-
-
-                  if (originalEvent.wheelDeltaY) {
-                    deltaY = originalEvent.wheelDeltaY;
-                  }
-
-                  if (originalEvent.wheelDeltaX) {
-                    deltaX = originalEvent.wheelDeltaX * -1;
-                  } // 'DomMouseScroll' event
-
-
-                  if (originalEvent.detail) {
-                    delta = originalEvent.detail * -1;
-                  } // Don't return NaN
-
-
-                  if (delta === 0) {
-                    return [0, 0, 0];
-                  } // look for lowest delta to normalize the delta values
-
-
-                  absDelta = Math.abs(delta);
-
-                  if (!lowestDelta || absDelta < lowestDelta) {
-                    lowestDelta = absDelta;
-                  }
-
-                  absDeltaXY = Math.max(Math.abs(deltaY), Math.abs(deltaX));
-
-                  if (!lowestDeltaXY || absDeltaXY < lowestDeltaXY) {
-                    lowestDeltaXY = absDeltaXY;
-                  } // convert deltas to whole numbers
-
-
-                  fn = delta > 0 ? 'floor' : 'ceil';
-                  delta = Math[fn](delta / lowestDelta);
-                  deltaX = Math[fn](deltaX / lowestDeltaXY);
-                  deltaY = Math[fn](deltaY / lowestDeltaXY);
-                  return [delta, deltaX, deltaY];
-                }
-              };
-
-              if (typeof window.define === 'function' && window.define.amd) {
-                // AMD
-                window.define('hamster', [], function () {
-                  return Hamster;
-                });
-              } else if (true) {
-                // CommonJS
-                module.exports = Hamster;
-              } else {}
-            })(window, window.document);
-            /***/
-
-          },
-          /* 15 */
-
-          /***/
-          function (module, exports, __webpack_require__) {
-            var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;
-            /*!
-            * mustache.js - Logic-less {{mustache}} templates with JavaScript
-            * http://github.com/janl/mustache.js
-            */
-
-            /*global define: false Mustache: true*/
-
-
-            (function defineMustache(global, factory) {
-              if (_typeof(exports) === 'object' && exports && typeof exports.nodeName !== 'string') {
-                factory(exports); // CommonJS
-              } else if (true) {
-                !(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports], __WEBPACK_AMD_DEFINE_FACTORY__ = factory, __WEBPACK_AMD_DEFINE_RESULT__ = typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? __WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__) : __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)); // AMD
-              } else {}
-            })(this, function mustacheFactory(mustache) {
-              var objectToString = Object.prototype.toString;
-
-              var isArray = Array.isArray || function isArrayPolyfill(object) {
-                return objectToString.call(object) === '[object Array]';
-              };
-
-              function isFunction(object) {
-                return typeof object === 'function';
-              }
-              /**
-               * More correct typeof string handling array
-               * which normally returns typeof 'object'
-               */
-
-
-              function typeStr(obj) {
-                return isArray(obj) ? 'array' : _typeof(obj);
-              }
-
-              function escapeRegExp(string) {
-                return string.replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g, '\\$&');
-              }
-              /**
-               * Null safe way of checking whether or not an object,
-               * including its prototype, has a given property
-               */
-
-
-              function hasProperty(obj, propName) {
-                return obj != null && _typeof(obj) === 'object' && propName in obj;
-              }
-              /**
-               * Safe way of detecting whether or not the given thing is a primitive and
-               * whether it has the given property
-               */
-
-
-              function primitiveHasOwnProperty(primitive, propName) {
-                return primitive != null && _typeof(primitive) !== 'object' && primitive.hasOwnProperty && primitive.hasOwnProperty(propName);
-              } // Workaround for https://issues.apache.org/jira/browse/COUCHDB-577
-              // See https://github.com/janl/mustache.js/issues/189
-
-
-              var regExpTest = RegExp.prototype.test;
-
-              function testRegExp(re, string) {
-                return regExpTest.call(re, string);
-              }
-
-              var nonSpaceRe = /\S/;
-
-              function isWhitespace(string) {
-                return !testRegExp(nonSpaceRe, string);
-              }
-
-              var entityMap = {
-                '&': '&amp;',
-                '<': '&lt;',
-                '>': '&gt;',
-                '"': '&quot;',
-                "'": '&#39;',
-                '/': '&#x2F;',
-                '`': '&#x60;',
-                '=': '&#x3D;'
-              };
-
-              function escapeHtml(string) {
-                return String(string).replace(/[&<>"'`=\/]/g, function fromEntityMap(s) {
-                  return entityMap[s];
-                });
-              }
-
-              var whiteRe = /\s*/;
-              var spaceRe = /\s+/;
-              var equalsRe = /\s*=/;
-              var curlyRe = /\s*\}/;
-              var tagRe = /#|\^|\/|>|\{|&|=|!/;
-              /**
-               * Breaks up the given `template` string into a tree of tokens. If the `tags`
-               * argument is given here it must be an array with two string values: the
-               * opening and closing tags used in the template (e.g. [ "<%", "%>" ]). Of
-               * course, the default is to use mustaches (i.e. mustache.tags).
-               *
-               * A token is an array with at least 4 elements. The first element is the
-               * mustache symbol that was used inside the tag, e.g. "#" or "&". If the tag
-               * did not contain a symbol (i.e. {{myValue}}) this element is "name". For
-               * all text that appears outside a symbol this element is "text".
-               *
-               * The second element of a token is its "value". For mustache tags this is
-               * whatever else was inside the tag besides the opening symbol. For text tokens
-               * this is the text itself.
-               *
-               * The third and fourth elements of the token are the start and end indices,
-               * respectively, of the token in the original template.
-               *
-               * Tokens that are the root node of a subtree contain two more elements: 1) an
-               * array of tokens in the subtree and 2) the index in the original template at
-               * which the closing tag for that section begins.
-               */
-
-              function parseTemplate(template, tags) {
-                if (!template) return [];
-                var sections = []; // Stack to hold section tokens
-
-                var tokens = []; // Buffer to hold the tokens
-
-                var spaces = []; // Indices of whitespace tokens on the current line
-
-                var hasTag = false; // Is there a {{tag}} on the current line?
-
-                var nonSpace = false; // Is there a non-space char on the current line?
-                // Strips all whitespace tokens array for the current line
-                // if there was a {{#tag}} on it and otherwise only space.
-
-                function stripSpace() {
-                  if (hasTag && !nonSpace) {
-                    while (spaces.length) {
-                      delete tokens[spaces.pop()];
-                    }
-                  } else {
-                    spaces = [];
-                  }
-
-                  hasTag = false;
-                  nonSpace = false;
-                }
-
-                var openingTagRe, closingTagRe, closingCurlyRe;
-
-                function compileTags(tagsToCompile) {
-                  if (typeof tagsToCompile === 'string') tagsToCompile = tagsToCompile.split(spaceRe, 2);
-                  if (!isArray(tagsToCompile) || tagsToCompile.length !== 2) throw new Error('Invalid tags: ' + tagsToCompile);
-                  openingTagRe = new RegExp(escapeRegExp(tagsToCompile[0]) + '\\s*');
-                  closingTagRe = new RegExp('\\s*' + escapeRegExp(tagsToCompile[1]));
-                  closingCurlyRe = new RegExp('\\s*' + escapeRegExp('}' + tagsToCompile[1]));
-                }
-
-                compileTags(tags || mustache.tags);
-                var scanner = new Scanner(template);
-                var start, type, value, chr, token, openSection;
-
-                while (!scanner.eos()) {
-                  start = scanner.pos; // Match any text between tags.
-
-                  value = scanner.scanUntil(openingTagRe);
-
-                  if (value) {
-                    for (var i = 0, valueLength = value.length; i < valueLength; ++i) {
-                      chr = value.charAt(i);
-
-                      if (isWhitespace(chr)) {
-                        spaces.push(tokens.length);
-                      } else {
-                        nonSpace = true;
-                      }
-
-                      tokens.push(['text', chr, start, start + 1]);
-                      start += 1; // Check for whitespace on the current line.
-
-                      if (chr === '\n') stripSpace();
-                    }
-                  } // Match the opening tag.
-
-
-                  if (!scanner.scan(openingTagRe)) break;
-                  hasTag = true; // Get the tag type.
-
-                  type = scanner.scan(tagRe) || 'name';
-                  scanner.scan(whiteRe); // Get the tag value.
-
-                  if (type === '=') {
-                    value = scanner.scanUntil(equalsRe);
-                    scanner.scan(equalsRe);
-                    scanner.scanUntil(closingTagRe);
-                  } else if (type === '{') {
-                    value = scanner.scanUntil(closingCurlyRe);
-                    scanner.scan(curlyRe);
-                    scanner.scanUntil(closingTagRe);
-                    type = '&';
-                  } else {
-                    value = scanner.scanUntil(closingTagRe);
-                  } // Match the closing tag.
-
-
-                  if (!scanner.scan(closingTagRe)) throw new Error('Unclosed tag at ' + scanner.pos);
-                  token = [type, value, start, scanner.pos];
-                  tokens.push(token);
-
-                  if (type === '#' || type === '^') {
-                    sections.push(token);
-                  } else if (type === '/') {
-                    // Check section nesting.
-                    openSection = sections.pop();
-                    if (!openSection) throw new Error('Unopened section "' + value + '" at ' + start);
-                    if (openSection[1] !== value) throw new Error('Unclosed section "' + openSection[1] + '" at ' + start);
-                  } else if (type === 'name' || type === '{' || type === '&') {
-                    nonSpace = true;
-                  } else if (type === '=') {
-                    // Set the tags for the next time around.
-                    compileTags(value);
-                  }
-                } // Make sure there are no open sections when we're done.
-
-
-                openSection = sections.pop();
-                if (openSection) throw new Error('Unclosed section "' + openSection[1] + '" at ' + scanner.pos);
-                return nestTokens(squashTokens(tokens));
-              }
-              /**
-               * Combines the values of consecutive text tokens in the given `tokens` array
-               * to a single token.
-               */
-
-
-              function squashTokens(tokens) {
-                var squashedTokens = [];
-                var token, lastToken;
-
-                for (var i = 0, numTokens = tokens.length; i < numTokens; ++i) {
-                  token = tokens[i];
-
-                  if (token) {
-                    if (token[0] === 'text' && lastToken && lastToken[0] === 'text') {
-                      lastToken[1] += token[1];
-                      lastToken[3] = token[3];
-                    } else {
-                      squashedTokens.push(token);
-                      lastToken = token;
-                    }
-                  }
-                }
-
-                return squashedTokens;
-              }
-              /**
-               * Forms the given array of `tokens` into a nested tree structure where
-               * tokens that represent a section have two additional items: 1) an array of
-               * all tokens that appear in that section and 2) the index in the original
-               * template that represents the end of that section.
-               */
-
-
-              function nestTokens(tokens) {
-                var nestedTokens = [];
-                var collector = nestedTokens;
-                var sections = [];
-                var token, section;
-
-                for (var i = 0, numTokens = tokens.length; i < numTokens; ++i) {
-                  token = tokens[i];
-
-                  switch (token[0]) {
-                    case '#':
-                    case '^':
-                      collector.push(token);
-                      sections.push(token);
-                      collector = token[4] = [];
-                      break;
-
-                    case '/':
-                      section = sections.pop();
-                      section[5] = token[2];
-                      collector = sections.length > 0 ? sections[sections.length - 1][4] : nestedTokens;
-                      break;
-
-                    default:
-                      collector.push(token);
-                  }
-                }
-
-                return nestedTokens;
-              }
-              /**
-               * A simple string scanner that is used by the template parser to find
-               * tokens in template strings.
-               */
-
-
-              function Scanner(string) {
-                this.string = string;
-                this.tail = string;
-                this.pos = 0;
-              }
-              /**
-               * Returns `true` if the tail is empty (end of string).
-               */
-
-
-              Scanner.prototype.eos = function eos() {
-                return this.tail === '';
-              };
-              /**
-               * Tries to match the given regular expression at the current position.
-               * Returns the matched text if it can match, the empty string otherwise.
-               */
-
-
-              Scanner.prototype.scan = function scan(re) {
-                var match = this.tail.match(re);
-                if (!match || match.index !== 0) return '';
-                var string = match[0];
-                this.tail = this.tail.substring(string.length);
-                this.pos += string.length;
-                return string;
-              };
-              /**
-               * Skips all text until the given regular expression can be matched. Returns
-               * the skipped string, which is the entire tail if no match can be made.
-               */
-
-
-              Scanner.prototype.scanUntil = function scanUntil(re) {
-                var index = this.tail.search(re),
-                    match;
-
-                switch (index) {
-                  case -1:
-                    match = this.tail;
-                    this.tail = '';
-                    break;
-
-                  case 0:
-                    match = '';
-                    break;
-
-                  default:
-                    match = this.tail.substring(0, index);
-                    this.tail = this.tail.substring(index);
-                }
-
-                this.pos += match.length;
-                return match;
-              };
-              /**
-               * Represents a rendering context by wrapping a view object and
-               * maintaining a reference to the parent context.
-               */
-
-
-              function Context(view, parentContext) {
-                this.view = view;
-                this.cache = {
-                  '.': this.view
-                };
-                this.parent = parentContext;
-              }
-              /**
-               * Creates a new context using the given view with this context
-               * as the parent.
-               */
-
-
-              Context.prototype.push = function push(view) {
-                return new Context(view, this);
-              };
-              /**
-               * Returns the value of the given name in this context, traversing
-               * up the context hierarchy if the value is absent in this context's view.
-               */
-
-
-              Context.prototype.lookup = function lookup(name) {
-                var cache = this.cache;
-                var value;
-
-                if (cache.hasOwnProperty(name)) {
-                  value = cache[name];
-                } else {
-                  var context = this,
-                      intermediateValue,
-                      names,
-                      index,
-                      lookupHit = false;
-
-                  while (context) {
-                    if (name.indexOf('.') > 0) {
-                      intermediateValue = context.view;
-                      names = name.split('.');
-                      index = 0;
-                      /**
-                       * Using the dot notion path in `name`, we descend through the
-                       * nested objects.
-                       *
-                       * To be certain that the lookup has been successful, we have to
-                       * check if the last object in the path actually has the property
-                       * we are looking for. We store the result in `lookupHit`.
-                       *
-                       * This is specially necessary for when the value has been set to
-                       * `undefined` and we want to avoid looking up parent contexts.
-                       *
-                       * In the case where dot notation is used, we consider the lookup
-                       * to be successful even if the last "object" in the path is
-                       * not actually an object but a primitive (e.g., a string, or an
-                       * integer), because it is sometimes useful to access a property
-                       * of an autoboxed primitive, such as the length of a string.
-                       **/
-
-                      while (intermediateValue != null && index < names.length) {
-                        if (index === names.length - 1) lookupHit = hasProperty(intermediateValue, names[index]) || primitiveHasOwnProperty(intermediateValue, names[index]);
-                        intermediateValue = intermediateValue[names[index++]];
-                      }
-                    } else {
-                      intermediateValue = context.view[name];
-                      /**
-                       * Only checking against `hasProperty`, which always returns `false` if
-                       * `context.view` is not an object. Deliberately omitting the check
-                       * against `primitiveHasOwnProperty` if dot notation is not used.
-                       *
-                       * Consider this example:
-                       * ```
-                       * Mustache.render("The length of a football field is {{#length}}{{length}}{{/length}}.", {length: "100 yards"})
-                       * ```
-                       *
-                       * If we were to check also against `primitiveHasOwnProperty`, as we do
-                       * in the dot notation case, then render call would return:
-                       *
-                       * "The length of a football field is 9."
-                       *
-                       * rather than the expected:
-                       *
-                       * "The length of a football field is 100 yards."
-                       **/
-
-                      lookupHit = hasProperty(context.view, name);
-                    }
-
-                    if (lookupHit) {
-                      value = intermediateValue;
-                      break;
-                    }
-
-                    context = context.parent;
-                  }
-
-                  cache[name] = value;
-                }
-
-                if (isFunction(value)) value = value.call(this.view);
-                return value;
-              };
-              /**
-               * A Writer knows how to take a stream of tokens and render them to a
-               * string, given a context. It also maintains a cache of templates to
-               * avoid the need to parse the same template twice.
-               */
-
-
-              function Writer() {
-                this.cache = {};
-              }
-              /**
-               * Clears all cached templates in this writer.
-               */
-
-
-              Writer.prototype.clearCache = function clearCache() {
-                this.cache = {};
-              };
-              /**
-               * Parses and caches the given `template` according to the given `tags` or
-               * `mustache.tags` if `tags` is omitted,  and returns the array of tokens
-               * that is generated from the parse.
-               */
-
-
-              Writer.prototype.parse = function parse(template, tags) {
-                var cache = this.cache;
-                var cacheKey = template + ':' + (tags || mustache.tags).join(':');
-                var tokens = cache[cacheKey];
-                if (tokens == null) tokens = cache[cacheKey] = parseTemplate(template, tags);
-                return tokens;
-              };
-              /**
-               * High-level method that is used to render the given `template` with
-               * the given `view`.
-               *
-               * The optional `partials` argument may be an object that contains the
-               * names and templates of partials that are used in the template. It may
-               * also be a function that is used to load partial templates on the fly
-               * that takes a single argument: the name of the partial.
-               *
-               * If the optional `tags` argument is given here it must be an array with two
-               * string values: the opening and closing tags used in the template (e.g.
-               * [ "<%", "%>" ]). The default is to mustache.tags.
-               */
-
-
-              Writer.prototype.render = function render(template, view, partials, tags) {
-                var tokens = this.parse(template, tags);
-                var context = view instanceof Context ? view : new Context(view);
-                return this.renderTokens(tokens, context, partials, template, tags);
-              };
-              /**
-               * Low-level method that renders the given array of `tokens` using
-               * the given `context` and `partials`.
-               *
-               * Note: The `originalTemplate` is only ever used to extract the portion
-               * of the original template that was contained in a higher-order section.
-               * If the template doesn't use higher-order sections, this argument may
-               * be omitted.
-               */
-
-
-              Writer.prototype.renderTokens = function renderTokens(tokens, context, partials, originalTemplate, tags) {
-                var buffer = '';
-                var token, symbol, value;
-
-                for (var i = 0, numTokens = tokens.length; i < numTokens; ++i) {
-                  value = undefined;
-                  token = tokens[i];
-                  symbol = token[0];
-                  if (symbol === '#') value = this.renderSection(token, context, partials, originalTemplate);else if (symbol === '^') value = this.renderInverted(token, context, partials, originalTemplate);else if (symbol === '>') value = this.renderPartial(token, context, partials, tags);else if (symbol === '&') value = this.unescapedValue(token, context);else if (symbol === 'name') value = this.escapedValue(token, context);else if (symbol === 'text') value = this.rawValue(token);
-                  if (value !== undefined) buffer += value;
-                }
-
-                return buffer;
-              };
-
-              Writer.prototype.renderSection = function renderSection(token, context, partials, originalTemplate) {
-                var self = this;
-                var buffer = '';
-                var value = context.lookup(token[1]); // This function is used to render an arbitrary template
-                // in the current context by higher-order sections.
-
-                function subRender(template) {
-                  return self.render(template, context, partials);
-                }
-
-                if (!value) return;
-
-                if (isArray(value)) {
-                  for (var j = 0, valueLength = value.length; j < valueLength; ++j) {
-                    buffer += this.renderTokens(token[4], context.push(value[j]), partials, originalTemplate);
-                  }
-                } else if (_typeof(value) === 'object' || typeof value === 'string' || typeof value === 'number') {
-                  buffer += this.renderTokens(token[4], context.push(value), partials, originalTemplate);
-                } else if (isFunction(value)) {
-                  if (typeof originalTemplate !== 'string') throw new Error('Cannot use higher-order sections without the original template'); // Extract the portion of the original template that the section contains.
-
-                  value = value.call(context.view, originalTemplate.slice(token[3], token[5]), subRender);
-                  if (value != null) buffer += value;
-                } else {
-                  buffer += this.renderTokens(token[4], context, partials, originalTemplate);
-                }
-
-                return buffer;
-              };
-
-              Writer.prototype.renderInverted = function renderInverted(token, context, partials, originalTemplate) {
-                var value = context.lookup(token[1]); // Use JavaScript's definition of falsy. Include empty arrays.
-                // See https://github.com/janl/mustache.js/issues/186
-
-                if (!value || isArray(value) && value.length === 0) return this.renderTokens(token[4], context, partials, originalTemplate);
-              };
-
-              Writer.prototype.renderPartial = function renderPartial(token, context, partials, tags) {
-                if (!partials) return;
-                var value = isFunction(partials) ? partials(token[1]) : partials[token[1]];
-                if (value != null) return this.renderTokens(this.parse(value, tags), context, partials, value);
-              };
-
-              Writer.prototype.unescapedValue = function unescapedValue(token, context) {
-                var value = context.lookup(token[1]);
-                if (value != null) return value;
-              };
-
-              Writer.prototype.escapedValue = function escapedValue(token, context) {
-                var value = context.lookup(token[1]);
-                if (value != null) return mustache.escape(value);
-              };
-
-              Writer.prototype.rawValue = function rawValue(token) {
-                return token[1];
-              };
-
-              mustache.name = 'mustache.js';
-              mustache.version = '3.0.1';
-              mustache.tags = ['{{', '}}']; // All high-level mustache.* functions use this writer.
-
-              var defaultWriter = new Writer();
-              /**
-               * Clears all cached templates in the default writer.
-               */
-
-              mustache.clearCache = function clearCache() {
-                return defaultWriter.clearCache();
-              };
-              /**
-               * Parses and caches the given template in the default writer and returns the
-               * array of tokens it contains. Doing this ahead of time avoids the need to
-               * parse templates on the fly as they are rendered.
-               */
-
-
-              mustache.parse = function parse(template, tags) {
-                return defaultWriter.parse(template, tags);
-              };
-              /**
-               * Renders the `template` with the given `view` and `partials` using the
-               * default writer. If the optional `tags` argument is given here it must be an
-               * array with two string values: the opening and closing tags used in the
-               * template (e.g. [ "<%", "%>" ]). The default is to mustache.tags.
-               */
-
-
-              mustache.render = function render(template, view, partials, tags) {
-                if (typeof template !== 'string') {
-                  throw new TypeError('Invalid template! Template should be a "string" ' + 'but "' + typeStr(template) + '" was given as the first ' + 'argument for mustache#render(template, view, partials)');
-                }
-
-                return defaultWriter.render(template, view, partials, tags);
-              }; // This is here for backwards compatibility with 0.4.x.,
-
-              /*eslint-disable */
-              // eslint wants camel cased function name
-
-
-              mustache.to_html = function to_html(template, view, partials, send) {
-                /*eslint-enable*/
-                var result = mustache.render(template, view, partials);
-
-                if (isFunction(send)) {
-                  send(result);
-                } else {
-                  return result;
-                }
-              }; // Export the escaping function so that the user may override it.
-              // See https://github.com/janl/mustache.js/issues/244
-
-
-              mustache.escape = escapeHtml; // Export these mainly for testing, but also for advanced usage.
-
-              mustache.Scanner = Scanner;
-              mustache.Context = Context;
-              mustache.Writer = Writer;
-              return mustache;
-            });
-            /***/
-
-          }
-          /******/
-          ])
-        );
-      });
-      /***/
-
-    }
-    /******/
-
-  };
-  /************************************************************************/
-
-  /******/
-  // The module cache
-
-  /******/
-
-  var __webpack_module_cache__ = {};
-  /******/
-
-  /******/
-  // The require function
-
-  /******/
-
-  function __nested_webpack_require_193664__(moduleId) {
-    /******/
-    // Check if module is in cache
-
-    /******/
-    var cachedModule = __webpack_module_cache__[moduleId];
-    /******/
-
-    if (cachedModule !== undefined) {
-      /******/
-      return cachedModule.exports;
-      /******/
-    }
-    /******/
-    // Create a new module (and put it into the cache)
-
-    /******/
-
-
-    var module = __webpack_module_cache__[moduleId] = {
-      /******/
-      // no module.id needed
-
-      /******/
-      // no module.loaded needed
-
-      /******/
-      exports: {}
-      /******/
-
-    };
-    /******/
-
-    /******/
-    // Execute the module function
-
-    /******/
-
-    __webpack_modules__[moduleId].call(module.exports, module, module.exports, __nested_webpack_require_193664__);
-    /******/
-
-    /******/
-    // Return the exports of the module
-
-    /******/
-
-
-    return module.exports;
-    /******/
-  }
-  /******/
-
-  /************************************************************************/
-
-  /******/
-
-  /******/
-  // startup
-
-  /******/
-  // Load entry module and return exports
-
-  /******/
-  // This entry module is referenced by other modules so it can't be inlined
-
-  /******/
-
-
-  var __webpack_exports__ = __nested_webpack_require_193664__("./node_modules/persian-datepicker/dist/js/persian-datepicker.js");
-  /******/
-
-  /******/
-
-})();
-
-/***/ }),
-
 /***/ "./resources/js/app.js":
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
@@ -34973,30 +29997,6 @@ ___CSS_LOADER_EXPORT___.push([module.id, "fieldset[disabled] .multiselect{pointe
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./resources/js/Pages/Auth/persian-datepicker.min.css":
-/*!********************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./resources/js/Pages/Auth/persian-datepicker.min.css ***!
-  \********************************************************************************************************************************************************************************************/
-/***/ ((module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
-// Imports
-
-var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
-// Module
-___CSS_LOADER_EXPORT___.push([module.id, "/*\r\n** persian-datepicker - v1.2.0\r\n** Reza Babakhani <babakhani.reza@gmail.com>\r\n** http://babakhani.github.io/PersianWebToolkit/docs/datepicker\r\n** Under MIT license \r\n*/ \r\n\r\n.datepicker-plot-area{-moz-user-select:none;-khtml-user-select:none;-webkit-user-select:none;-o-user-select:none}.datepicker-plot-area .datepicker-time-view .down-btn,.datepicker-plot-area .datepicker-time-view .up-btn{transition:all 100ms ease}.datepicker-plot-area .datepicker-day-view .table-days td.disabled span,.datepicker-plot-area .datepicker-year-view .year-item-disable,.datepicker-plot-area .datepicker-month-view .month-item-disable{border-radius:0}.datepicker-plot-area .datepicker-time-view .down-btn,.datepicker-plot-area .datepicker-time-view .up-btn{border-radius:0;border-top-left-radius:0;border-top-right-radius:0}.datepicker-plot-area .datepicker-time-view .down-btn{border-radius:0;border-bottom-right-radius:0;border-bottom-left-radius:0}.datepicker-plot-area,.datepicker-plot-area .datepicker-time-view>.time-segment{border-radius:0}.datepicker-plot-area .datepicker-day-view .table-days td span,.datepicker-plot-area .datepicker-year-view .year-item,.datepicker-plot-area .datepicker-month-view .month-item,.datepicker-plot-area .datepicker-navigator .pwt-btn-next,.datepicker-plot-area .datepicker-navigator .pwt-btn-switch,.datepicker-plot-area .datepicker-navigator .pwt-btn-prev{border-radius:0}.datepicker-plot-area{box-shadow:0 5px 10px rgba(0,0,0,0.2)}.datepicker-plot-area .datepicker-day-view .table-days td span,.datepicker-plot-area .datepicker-year-view .year-item,.datepicker-plot-area .datepicker-month-view .month-item,.datepicker-plot-area .datepicker-day-view .table-days td.disabled span,.datepicker-plot-area .datepicker-year-view .year-item-disable,.datepicker-plot-area .datepicker-month-view .month-item-disable,.datepicker-plot-area .datepicker-time-view>.time-segment,.datepicker-plot-area .datepicker-time-view .down-btn,.datepicker-plot-area .datepicker-time-view .up-btn,.datepicker-plot-area .datepicker-time-view input,.datepicker-plot-area .datepicker-navigator .pwt-btn-next,.datepicker-plot-area .datepicker-navigator .pwt-btn-switch,.datepicker-plot-area .datepicker-navigator .pwt-btn-prev,.datepicker-plot-area .toolbox .pwt-btn-submit,.datepicker-plot-area .toolbox .pwt-btn-calendar,.datepicker-plot-area .toolbox .pwt-btn-today{cursor:pointer}.datepicker-plot-area .datepicker-day-view .table-days td span,.datepicker-plot-area .datepicker-year-view .year-item,.datepicker-plot-area .datepicker-month-view .month-item{font:14px;background-color:#fff;color:#333;border:0;text-shadow:none}.datepicker-plot-area .datepicker-day-view .table-days td.disabled span,.datepicker-plot-area .datepicker-year-view .year-item-disable,.datepicker-plot-area .datepicker-month-view .month-item-disable{background-color:#f1f1f1;color:#ccc;border:none;text-shadow:none;cursor:default}.datepicker-plot-area .datepicker-day-view .table-days td.today span{background-color:#333;color:#fff;border:0;text-shadow:none}.datepicker-plot-area .datepicker-day-view .table-days td span.other-month{background-color:\"\";color:#ccc;border:none;text-shadow:none}.datepicker-plot-area .datepicker-day-view .table-days td.selected span,.datepicker-plot-area .datepicker-year-view .year-item.selected,.datepicker-plot-area .datepicker-month-view .month-item.selected{background-color:#005299;color:#fff;border:none;text-shadow:1px 1px 1px #000}.datepicker-plot-area .datepicker-day-view .table-days td.selected span .datepicker-plot-area .datepicker-day-view .table-days td:hover,.datepicker-plot-area .datepicker-day-view .table-days td span:hover,.datepicker-plot-area .datepicker-year-view .year-item:hover,.datepicker-plot-area .datepicker-month-view .month-item:hover{background-color:#007be6;color:#fff;border:0;text-shadow:none}.datepicker-container{display:block;position:absolute;z-index:100000;top:0;direction:ltr}.datepicker-container.pwt-hide{display:none}.datepicker-plot-area{box-sizing:border-box;overflow:hidden;min-height:70px;display:block;width:200px;min-width:200px;padding:3px;position:absolute;font:12px tahoma;border:1px solid #ccc;background-color:#fff}.datepicker-plot-area.datepicker-state-only-time{padding:0}.datepicker-plot-area table,.datepicker-plot-area th,.datepicker-plot-area td{border:0;background:none}.datepicker-plot-area *{text-align:center;color:#333}.datepicker-plot-area .datepicker-day-view,.datepicker-plot-area .datepicker-month-view,.datepicker-plot-area .datepicker-year-view{display:block;width:100%;float:left;min-height:200px;margin:0}.datepicker-plot-area-inline-view{display:block;width:100%;position:static;float:left}.datepicker-plot-area .datepicker-time-view{display:block;float:left;width:100%;padding:5px;background:#f9f9f9;border-top:1px solid #f1f1f1}.datepicker-plot-area .datepicker-time-view>.time-segment{display:block;width:22%;float:left;overflow:hidden}.datepicker-plot-area .datepicker-time-view>.time-segment:hover .down-btn,.datepicker-plot-area .datepicker-time-view>.time-segment:hover .up-btn{font-weight:bold}.datepicker-plot-area .datepicker-time-view .divider{display:block;width:3%;height:60px;line-height:60px;float:left;overflow:hidden;font:12px bold}.datepicker-plot-area .datepicker-time-view .divider span{height:60px;line-height:60px}.datepicker-plot-area .datepicker-time-view .down-btn,.datepicker-plot-area .datepicker-time-view .up-btn{display:block;float:left;width:100%;margin:0;height:20px;line-height:22px;color:#ccc}.datepicker-plot-area .datepicker-time-view .down-btn:hover,.datepicker-plot-area .datepicker-time-view .up-btn:hover{background-color:rgba(250,250,250,0.3);color:#807f7f}.datepicker-plot-area .datepicker-time-view input{display:block;width:90%;margin:0 5%;height:20px;padding:0;outline:none;border:none;background:transparent}.datepicker-plot-area.datepicker-state-only-time .datepicker-time-view{padding:0 5px;margin:0}.datepicker-plot-area.datepicker-state-only-time .datepicker-time-view>.time-segment,.datepicker-plot-area.datepicker-state-only-time .datepicker-time-view>.divider{padding:5px 0}.datepicker-plot-area.datepicker-state-no-meridian .datepicker-time-view>.time-segment{width:31.33%}.datepicker-plot-area.datepicker-state-no-meridian .datepicker-time-view>.meridian-divider{display:none}.datepicker-plot-area.datepicker-state-no-second .datepicker-time-view>.time-segment{width:31.33%}.datepicker-plot-area.datepicker-state-no-second .datepicker-time-view>.second-divider{display:none}.datepicker-plot-area.datepicker-state-no-meridian.datepicker-state-no-second .datepicker-time-view>.time-segment{width:48%}.datepicker-plot-area.datepicker-state-no-meridian.datepicker-state-no-second .datepicker-time-view>.second-divider,.datepicker-plot-area.datepicker-state-no-meridian.datepicker-state-no-second .datepicker-time-view>.meridian-divider{display:none}.datepicker-plot-area .datepicker-day-view .table-days{width:100%;float:left;direction:rtl}.datepicker-plot-area .datepicker-day-view .table-days td{width:14.2%;height:26px;padding:0;margin:0;position:relative}.datepicker-plot-area .datepicker-day-view .table-days td .alter-calendar-day{font-style:normal;position:absolute;font-size:8.5px;bottom:0;right:2px;color:#f1f1f1}.datepicker-plot-area .datepicker-day-view .table-days td span{display:block;width:100%;height:26px;line-height:26px;padding:0;margin:0}.datepicker-plot-area .datepicker-day-view .month-grid-box{display:block;width:100%;float:right;min-height:180px;margin:8px 0}.datepicker-plot-area .datepicker-day-view .month-grid-box .header{display:block;width:100%;float:left;padding-bottom:8px}.datepicker-plot-area .datepicker-day-view .month-grid-box .header .header-row{display:block;width:100%;height:25px;float:left}.datepicker-plot-area .datepicker-day-view .month-grid-box .header .header-row-cell{display:block;width:14.2%;height:25px;float:right;line-height:25px;font:11px;font-weight:bold;color:#333}.datepicker-plot-area .datepicker-year-view,.datepicker-plot-area .datepicker-month-view{padding-top:10px}.datepicker-plot-area .datepicker-year-view .year-item,.datepicker-plot-area .datepicker-month-view .month-item{display:block;width:33.333333%;margin:2px 0 0;float:right;height:42px;line-height:42px}.datepicker-plot-area .datepicker-navigator{display:block;width:100%;float:left}.datepicker-plot-area .datepicker-navigator .pwt-btn-next,.datepicker-plot-area .datepicker-navigator .pwt-btn-switch,.datepicker-plot-area .datepicker-navigator .pwt-btn-prev{display:block;float:left;height:28px;line-height:28px;font-weight:bold;background-color:rgba(250,250,250,0.1);color:#333}.datepicker-plot-area .datepicker-navigator .pwt-btn-next:hover,.datepicker-plot-area .datepicker-navigator .pwt-btn-switch:hover,.datepicker-plot-area .datepicker-navigator .pwt-btn-prev:hover{background-color:rgba(250,250,250,0.3)}.datepicker-plot-area .datepicker-navigator .pwt-btn-next{display:block;width:15%;float:left}.datepicker-plot-area .datepicker-navigator .pwt-btn-switch{display:block;width:66%;margin:0 2%;float:left}.datepicker-plot-area .datepicker-navigator .pwt-btn-prev{display:block;width:15%;float:left}.datepicker-plot-area .toolbox{display:block;float:left;width:100%;margin-top:5px}.datepicker-plot-area .toolbox .pwt-btn-submit,.datepicker-plot-area .toolbox .pwt-btn-calendar,.datepicker-plot-area .toolbox .pwt-btn-today{background-color:rgba(250,250,250,0.1);float:right;display:block;font-weight:bold;font-size:11px;height:24px;line-height:24px;white-space:nowrap;margin:0 auto;margin-left:5px;padding:0 5px;min-width:50px}.datepicker-plot-area .toolbox .pwt-btn-submit:hover,.datepicker-plot-area .toolbox .pwt-btn-calendar:hover,.datepicker-plot-area .toolbox .pwt-btn-today:hover{background-color:rgba(250,250,250,0.3)}.datepicker-plot-area .datepicker-navigator{display:block;width:100%;float:left}.datepicker-plot-area .datepicker-navigator .pwt-btn-next,.datepicker-plot-area .datepicker-navigator .pwt-btn-switch,.datepicker-plot-area .datepicker-navigator .pwt-btn-prev{display:block;float:left;height:28px;line-height:28px;font-weight:bold;background-color:rgba(250,250,250,0.1);color:#333}.datepicker-plot-area .datepicker-navigator .pwt-btn-next:hover,.datepicker-plot-area .datepicker-navigator .pwt-btn-switch:hover,.datepicker-plot-area .datepicker-navigator .pwt-btn-prev:hover{background-color:rgba(250,250,250,0.3)}.datepicker-plot-area .datepicker-navigator .pwt-btn-next{display:block;width:15%;float:left}.datepicker-plot-area .datepicker-navigator .pwt-btn-switch{display:block;width:66%;margin:0 2%;float:left}.datepicker-plot-area .datepicker-navigator .pwt-btn-prev{display:block;width:15%;float:left}.datepicker-container.pwt-mobile-view{position:fixed;width:100%;height:100%;top:0;left:0;bottom:0;overflow:hidden;transition:all 1s}.datepicker-container.pwt-mobile-view.pwt-hide{top:100vh;height:0}.datepicker-container.pwt-mobile-view .datepicker-plot-area.datepicker-state-only-time .pwt-btn-submit{color:#fff;background:#ccc}.datepicker-container.pwt-mobile-view .datepicker-plot-area{position:absolute;width:100%;height:100%;top:0;left:0;right:0;bottom:0}.datepicker-container.pwt-mobile-view .datepicker-plot-area .table-days td,.datepicker-container.pwt-mobile-view .datepicker-plot-area .table-days td span{height:44px;line-height:44px;font-size:14px}.datepicker-container.pwt-mobile-view .datepicker-plot-area .datepicker-year-view .year-item,.datepicker-container.pwt-mobile-view .datepicker-plot-area .datepicker-month-view .month-item{height:70px;line-height:70px}.datepicker-container.pwt-mobile-view .datepicker-plot-area [class*='pwt-btn']{height:48px;line-height:48px}.datepicker-container.pwt-mobile-view .datepicker-plot-area .pwt-btn-today{float:left}.datepicker-container.pwt-mobile-view .datepicker-plot-area.datepicker-state-only-time{background:rgba(0,0,0,0.7);border:0;padding-top:60%}.datepicker-container.pwt-mobile-view .datepicker-plot-area.datepicker-state-only-time .pwt-btn-submit{margin-right:5px}.datepicker-container.pwt-mobile-view .datepicker-plot-area.datepicker-state-only-time .datepicker-time-view input{height:40px;line-height:40px;font-size:24px;margin:5px 0}.datepicker-container.pwt-mobile-view .datepicker-plot-area.datepicker-state-only-time .datepicker-time-view .divider,.datepicker-container.pwt-mobile-view .datepicker-plot-area.datepicker-state-only-time .datepicker-time-view .divider span{font-size:16px;display:block;height:144px;line-height:144px}.datepicker-container.pwt-mobile-view .datepicker-plot-area.datepicker-state-only-time .datepicker-time-view .down-btn,.datepicker-container.pwt-mobile-view .datepicker-plot-area.datepicker-state-only-time .datepicker-time-view .up-btn{height:48px;line-height:48px}.datepicker-container.pwt-mobile-view .datepicker-time-view input{height:32px;line-height:34px;font-size:18px}.datepicker-container.pwt-mobile-view .datepicker-time-view .divider,.datepicker-container.pwt-mobile-view .datepicker-time-view .divider span{height:120px;line-height:120px}.datepicker-container.pwt-mobile-view .datepicker-time-view .down-btn,.datepicker-container.pwt-mobile-view .datepicker-time-view .up-btn{height:40px;line-height:40px}\r\n", ""]);
-// Exports
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
-
-
-/***/ }),
-
 /***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Welcome.vue?vue&type=style&index=0&id=317d1a6e&scoped=true&lang=css":
 /*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Welcome.vue?vue&type=style&index=0&id=317d1a6e&scoped=true&lang=css ***!
@@ -35014,7 +30014,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.bg-gray-100[data-v-317d1a6e] {\n    background-color: #f7fafc;\n    background-color: rgba(247, 250, 252, var(--tw-bg-opacity));\n}\n.border-gray-200[data-v-317d1a6e] {\n    border-color: #edf2f7;\n    border-color: rgba(237, 242, 247, var(--tw-border-opacity));\n}\n.text-gray-400[data-v-317d1a6e] {\n    color: #cbd5e0;\n    color: rgba(203, 213, 224, var(--tw-text-opacity));\n}\n.text-gray-500[data-v-317d1a6e] {\n    color: #a0aec0;\n    color: rgba(160, 174, 192, var(--tw-text-opacity));\n}\n.text-gray-600[data-v-317d1a6e] {\n    color: #718096;\n    color: rgba(113, 128, 150, var(--tw-text-opacity));\n}\n.text-gray-700[data-v-317d1a6e] {\n    color: #4a5568;\n    color: rgba(74, 85, 104, var(--tw-text-opacity));\n}\n.text-gray-900[data-v-317d1a6e] {\n    color: #1a202c;\n    color: rgba(26, 32, 44, var(--tw-text-opacity));\n}\n@media (prefers-color-scheme: dark) {\n.dark\\:bg-gray-800[data-v-317d1a6e] {\n        background-color: #2d3748;\n        background-color: rgba(45, 55, 72, var(--tw-bg-opacity));\n}\n.dark\\:bg-gray-900[data-v-317d1a6e] {\n        background-color: #1a202c;\n        background-color: rgba(26, 32, 44, var(--tw-bg-opacity));\n}\n.dark\\:border-gray-700[data-v-317d1a6e] {\n        border-color: #4a5568;\n        border-color: rgba(74, 85, 104, var(--tw-border-opacity));\n}\n.dark\\:text-white[data-v-317d1a6e] {\n        color: #fff;\n        color: rgba(255, 255, 255, var(--tw-text-opacity));\n}\n.dark\\:text-gray-400[data-v-317d1a6e] {\n        color: #cbd5e0;\n        color: rgba(203, 213, 224, var(--tw-text-opacity));\n}\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.bg-gray-100[data-v-317d1a6e] {\r\n    background-color: #f7fafc;\r\n    background-color: rgba(247, 250, 252, var(--tw-bg-opacity));\n}\n.border-gray-200[data-v-317d1a6e] {\r\n    border-color: #edf2f7;\r\n    border-color: rgba(237, 242, 247, var(--tw-border-opacity));\n}\n.text-gray-400[data-v-317d1a6e] {\r\n    color: #cbd5e0;\r\n    color: rgba(203, 213, 224, var(--tw-text-opacity));\n}\n.text-gray-500[data-v-317d1a6e] {\r\n    color: #a0aec0;\r\n    color: rgba(160, 174, 192, var(--tw-text-opacity));\n}\n.text-gray-600[data-v-317d1a6e] {\r\n    color: #718096;\r\n    color: rgba(113, 128, 150, var(--tw-text-opacity));\n}\n.text-gray-700[data-v-317d1a6e] {\r\n    color: #4a5568;\r\n    color: rgba(74, 85, 104, var(--tw-text-opacity));\n}\n.text-gray-900[data-v-317d1a6e] {\r\n    color: #1a202c;\r\n    color: rgba(26, 32, 44, var(--tw-text-opacity));\n}\n@media (prefers-color-scheme: dark) {\n.dark\\:bg-gray-800[data-v-317d1a6e] {\r\n        background-color: #2d3748;\r\n        background-color: rgba(45, 55, 72, var(--tw-bg-opacity));\n}\n.dark\\:bg-gray-900[data-v-317d1a6e] {\r\n        background-color: #1a202c;\r\n        background-color: rgba(26, 32, 44, var(--tw-bg-opacity));\n}\n.dark\\:border-gray-700[data-v-317d1a6e] {\r\n        border-color: #4a5568;\r\n        border-color: rgba(74, 85, 104, var(--tw-border-opacity));\n}\n.dark\\:text-white[data-v-317d1a6e] {\r\n        color: #fff;\r\n        color: rgba(255, 255, 255, var(--tw-text-opacity));\n}\n.dark\\:text-gray-400[data-v-317d1a6e] {\r\n        color: #cbd5e0;\r\n        color: rgba(203, 213, 224, var(--tw-text-opacity));\n}\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -79461,36 +74461,6 @@ var update = _style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMP
 
 /***/ }),
 
-/***/ "./resources/js/Pages/Auth/persian-datepicker.min.css":
-/*!************************************************************!*\
-  !*** ./resources/js/Pages/Auth/persian-datepicker.min.css ***!
-  \************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
-/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_use_1_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_use_2_persian_datepicker_min_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./persian-datepicker.min.css */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./resources/js/Pages/Auth/persian-datepicker.min.css");
-
-            
-
-var options = {};
-
-options.insert = "head";
-options.singleton = false;
-
-var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_use_1_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_use_2_persian_datepicker_min_css__WEBPACK_IMPORTED_MODULE_1__["default"], options);
-
-
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_use_1_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_use_2_persian_datepicker_min_css__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
-
-/***/ }),
-
 /***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Welcome.vue?vue&type=style&index=0&id=317d1a6e&scoped=true&lang=css":
 /*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Welcome.vue?vue&type=style&index=0&id=317d1a6e&scoped=true&lang=css ***!
@@ -79834,12 +74804,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _ApplicationLogo_vue_vue_type_template_id_3ac4aa20__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ApplicationLogo.vue?vue&type=template&id=3ac4aa20 */ "./resources/js/Components/ApplicationLogo.vue?vue&type=template&id=3ac4aa20");
-/* harmony import */ var C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 const script = {}
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_1__["default"])(script, [['render',_ApplicationLogo_vue_vue_type_template_id_3ac4aa20__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Components/ApplicationLogo.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_1__["default"])(script, [['render',_ApplicationLogo_vue_vue_type_template_id_3ac4aa20__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Components/ApplicationLogo.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -79861,13 +74831,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Button_vue_vue_type_template_id_067f8786__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Button.vue?vue&type=template&id=067f8786 */ "./resources/js/Components/Button.vue?vue&type=template&id=067f8786");
 /* harmony import */ var _Button_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Button.vue?vue&type=script&setup=true&lang=js */ "./resources/js/Components/Button.vue?vue&type=script&setup=true&lang=js");
-/* harmony import */ var C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Button_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Button_vue_vue_type_template_id_067f8786__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Components/Button.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Button_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Button_vue_vue_type_template_id_067f8786__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Components/Button.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -79889,13 +74859,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Checkbox_vue_vue_type_template_id_71756f8e__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Checkbox.vue?vue&type=template&id=71756f8e */ "./resources/js/Components/Checkbox.vue?vue&type=template&id=71756f8e");
 /* harmony import */ var _Checkbox_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Checkbox.vue?vue&type=script&setup=true&lang=js */ "./resources/js/Components/Checkbox.vue?vue&type=script&setup=true&lang=js");
-/* harmony import */ var C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Checkbox_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Checkbox_vue_vue_type_template_id_71756f8e__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Components/Checkbox.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Checkbox_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Checkbox_vue_vue_type_template_id_71756f8e__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Components/Checkbox.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -79917,13 +74887,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Dropdown_vue_vue_type_template_id_4210c0dc__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Dropdown.vue?vue&type=template&id=4210c0dc */ "./resources/js/Components/Dropdown.vue?vue&type=template&id=4210c0dc");
 /* harmony import */ var _Dropdown_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Dropdown.vue?vue&type=script&setup=true&lang=js */ "./resources/js/Components/Dropdown.vue?vue&type=script&setup=true&lang=js");
-/* harmony import */ var C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Dropdown_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Dropdown_vue_vue_type_template_id_4210c0dc__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Components/Dropdown.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Dropdown_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Dropdown_vue_vue_type_template_id_4210c0dc__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Components/Dropdown.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -79945,13 +74915,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _DropdownLink_vue_vue_type_template_id_6e0ef414__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DropdownLink.vue?vue&type=template&id=6e0ef414 */ "./resources/js/Components/DropdownLink.vue?vue&type=template&id=6e0ef414");
 /* harmony import */ var _DropdownLink_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DropdownLink.vue?vue&type=script&setup=true&lang=js */ "./resources/js/Components/DropdownLink.vue?vue&type=script&setup=true&lang=js");
-/* harmony import */ var C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_DropdownLink_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_DropdownLink_vue_vue_type_template_id_6e0ef414__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Components/DropdownLink.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_DropdownLink_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_DropdownLink_vue_vue_type_template_id_6e0ef414__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Components/DropdownLink.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -79973,13 +74943,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Input_vue_vue_type_template_id_43da0f8f__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Input.vue?vue&type=template&id=43da0f8f */ "./resources/js/Components/Input.vue?vue&type=template&id=43da0f8f");
 /* harmony import */ var _Input_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Input.vue?vue&type=script&setup=true&lang=js */ "./resources/js/Components/Input.vue?vue&type=script&setup=true&lang=js");
-/* harmony import */ var C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Input_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Input_vue_vue_type_template_id_43da0f8f__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Components/Input.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Input_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Input_vue_vue_type_template_id_43da0f8f__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Components/Input.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -80001,13 +74971,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Label_vue_vue_type_template_id_8c3adc8e__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Label.vue?vue&type=template&id=8c3adc8e */ "./resources/js/Components/Label.vue?vue&type=template&id=8c3adc8e");
 /* harmony import */ var _Label_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Label.vue?vue&type=script&setup=true&lang=js */ "./resources/js/Components/Label.vue?vue&type=script&setup=true&lang=js");
-/* harmony import */ var C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Label_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Label_vue_vue_type_template_id_8c3adc8e__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Components/Label.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Label_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Label_vue_vue_type_template_id_8c3adc8e__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Components/Label.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -80029,13 +74999,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _NavLink_vue_vue_type_template_id_337232c2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./NavLink.vue?vue&type=template&id=337232c2 */ "./resources/js/Components/NavLink.vue?vue&type=template&id=337232c2");
 /* harmony import */ var _NavLink_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./NavLink.vue?vue&type=script&setup=true&lang=js */ "./resources/js/Components/NavLink.vue?vue&type=script&setup=true&lang=js");
-/* harmony import */ var C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_NavLink_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_NavLink_vue_vue_type_template_id_337232c2__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Components/NavLink.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_NavLink_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_NavLink_vue_vue_type_template_id_337232c2__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Components/NavLink.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -80057,13 +75027,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _ResponsiveNavLink_vue_vue_type_template_id_9d824fa4__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ResponsiveNavLink.vue?vue&type=template&id=9d824fa4 */ "./resources/js/Components/ResponsiveNavLink.vue?vue&type=template&id=9d824fa4");
 /* harmony import */ var _ResponsiveNavLink_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ResponsiveNavLink.vue?vue&type=script&setup=true&lang=js */ "./resources/js/Components/ResponsiveNavLink.vue?vue&type=script&setup=true&lang=js");
-/* harmony import */ var C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_ResponsiveNavLink_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_ResponsiveNavLink_vue_vue_type_template_id_9d824fa4__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Components/ResponsiveNavLink.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_ResponsiveNavLink_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_ResponsiveNavLink_vue_vue_type_template_id_9d824fa4__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Components/ResponsiveNavLink.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -80085,13 +75055,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _ValidationErrors_vue_vue_type_template_id_4f3624e2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ValidationErrors.vue?vue&type=template&id=4f3624e2 */ "./resources/js/Components/ValidationErrors.vue?vue&type=template&id=4f3624e2");
 /* harmony import */ var _ValidationErrors_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ValidationErrors.vue?vue&type=script&setup=true&lang=js */ "./resources/js/Components/ValidationErrors.vue?vue&type=script&setup=true&lang=js");
-/* harmony import */ var C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_ValidationErrors_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_ValidationErrors_vue_vue_type_template_id_4f3624e2__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Components/ValidationErrors.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_ValidationErrors_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_ValidationErrors_vue_vue_type_template_id_4f3624e2__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Components/ValidationErrors.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -80113,13 +75083,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Authenticated_vue_vue_type_template_id_7412da4a__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Authenticated.vue?vue&type=template&id=7412da4a */ "./resources/js/Layouts/Authenticated.vue?vue&type=template&id=7412da4a");
 /* harmony import */ var _Authenticated_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Authenticated.vue?vue&type=script&setup=true&lang=js */ "./resources/js/Layouts/Authenticated.vue?vue&type=script&setup=true&lang=js");
-/* harmony import */ var C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Authenticated_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Authenticated_vue_vue_type_template_id_7412da4a__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Layouts/Authenticated.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Authenticated_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Authenticated_vue_vue_type_template_id_7412da4a__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Layouts/Authenticated.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -80141,13 +75111,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Guest_vue_vue_type_template_id_5421e404__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Guest.vue?vue&type=template&id=5421e404 */ "./resources/js/Layouts/Guest.vue?vue&type=template&id=5421e404");
 /* harmony import */ var _Guest_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Guest.vue?vue&type=script&setup=true&lang=js */ "./resources/js/Layouts/Guest.vue?vue&type=script&setup=true&lang=js");
-/* harmony import */ var C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Guest_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Guest_vue_vue_type_template_id_5421e404__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Layouts/Guest.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Guest_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Guest_vue_vue_type_template_id_5421e404__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Layouts/Guest.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -80169,13 +75139,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Navbar_vue_vue_type_template_id_e2c0ecd8__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Navbar.vue?vue&type=template&id=e2c0ecd8 */ "./resources/js/Layouts/Navbar.vue?vue&type=template&id=e2c0ecd8");
 /* harmony import */ var _Navbar_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Navbar.vue?vue&type=script&setup=true&lang=js */ "./resources/js/Layouts/Navbar.vue?vue&type=script&setup=true&lang=js");
-/* harmony import */ var C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Navbar_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Navbar_vue_vue_type_template_id_e2c0ecd8__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Layouts/Navbar.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Navbar_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Navbar_vue_vue_type_template_id_e2c0ecd8__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Layouts/Navbar.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -80197,13 +75167,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _pagination_vue_vue_type_template_id_d4e2a404__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./pagination.vue?vue&type=template&id=d4e2a404 */ "./resources/js/Layouts/pagination.vue?vue&type=template&id=d4e2a404");
 /* harmony import */ var _pagination_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./pagination.vue?vue&type=script&lang=js */ "./resources/js/Layouts/pagination.vue?vue&type=script&lang=js");
-/* harmony import */ var C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_pagination_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_pagination_vue_vue_type_template_id_d4e2a404__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Layouts/pagination.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_pagination_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_pagination_vue_vue_type_template_id_d4e2a404__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Layouts/pagination.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -80225,13 +75195,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _ConfirmPassword_vue_vue_type_template_id_475ae21d__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ConfirmPassword.vue?vue&type=template&id=475ae21d */ "./resources/js/Pages/Auth/ConfirmPassword.vue?vue&type=template&id=475ae21d");
 /* harmony import */ var _ConfirmPassword_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ConfirmPassword.vue?vue&type=script&setup=true&lang=js */ "./resources/js/Pages/Auth/ConfirmPassword.vue?vue&type=script&setup=true&lang=js");
-/* harmony import */ var C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_ConfirmPassword_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_ConfirmPassword_vue_vue_type_template_id_475ae21d__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Pages/Auth/ConfirmPassword.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_ConfirmPassword_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_ConfirmPassword_vue_vue_type_template_id_475ae21d__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Pages/Auth/ConfirmPassword.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -80253,13 +75223,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _ForgotPassword_vue_vue_type_template_id_2d73eca8__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ForgotPassword.vue?vue&type=template&id=2d73eca8 */ "./resources/js/Pages/Auth/ForgotPassword.vue?vue&type=template&id=2d73eca8");
 /* harmony import */ var _ForgotPassword_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ForgotPassword.vue?vue&type=script&setup=true&lang=js */ "./resources/js/Pages/Auth/ForgotPassword.vue?vue&type=script&setup=true&lang=js");
-/* harmony import */ var C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_ForgotPassword_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_ForgotPassword_vue_vue_type_template_id_2d73eca8__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Pages/Auth/ForgotPassword.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_ForgotPassword_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_ForgotPassword_vue_vue_type_template_id_2d73eca8__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Pages/Auth/ForgotPassword.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -80281,13 +75251,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Login_vue_vue_type_template_id_a2ac2cea__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Login.vue?vue&type=template&id=a2ac2cea */ "./resources/js/Pages/Auth/Login.vue?vue&type=template&id=a2ac2cea");
 /* harmony import */ var _Login_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Login.vue?vue&type=script&setup=true&lang=js */ "./resources/js/Pages/Auth/Login.vue?vue&type=script&setup=true&lang=js");
-/* harmony import */ var C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Login_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Login_vue_vue_type_template_id_a2ac2cea__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Pages/Auth/Login.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Login_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Login_vue_vue_type_template_id_a2ac2cea__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Pages/Auth/Login.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -80309,13 +75279,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Add_vue_vue_type_template_id_40b81798__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Add.vue?vue&type=template&id=40b81798 */ "./resources/js/Pages/Auth/Permissions/Add.vue?vue&type=template&id=40b81798");
 /* harmony import */ var _Add_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Add.vue?vue&type=script&setup=true&lang=js */ "./resources/js/Pages/Auth/Permissions/Add.vue?vue&type=script&setup=true&lang=js");
-/* harmony import */ var C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Add_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Add_vue_vue_type_template_id_40b81798__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Pages/Auth/Permissions/Add.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Add_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Add_vue_vue_type_template_id_40b81798__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Pages/Auth/Permissions/Add.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -80337,13 +75307,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _AddRole_vue_vue_type_template_id_e9675da4__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AddRole.vue?vue&type=template&id=e9675da4 */ "./resources/js/Pages/Auth/Permissions/AddRole.vue?vue&type=template&id=e9675da4");
 /* harmony import */ var _AddRole_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AddRole.vue?vue&type=script&setup=true&lang=js */ "./resources/js/Pages/Auth/Permissions/AddRole.vue?vue&type=script&setup=true&lang=js");
-/* harmony import */ var C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_AddRole_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_AddRole_vue_vue_type_template_id_e9675da4__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Pages/Auth/Permissions/AddRole.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_AddRole_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_AddRole_vue_vue_type_template_id_e9675da4__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Pages/Auth/Permissions/AddRole.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -80365,13 +75335,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Edit_vue_vue_type_template_id_fbdcfaba__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Edit.vue?vue&type=template&id=fbdcfaba */ "./resources/js/Pages/Auth/Permissions/Edit.vue?vue&type=template&id=fbdcfaba");
 /* harmony import */ var _Edit_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Edit.vue?vue&type=script&setup=true&lang=js */ "./resources/js/Pages/Auth/Permissions/Edit.vue?vue&type=script&setup=true&lang=js");
-/* harmony import */ var C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Edit_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Edit_vue_vue_type_template_id_fbdcfaba__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Pages/Auth/Permissions/Edit.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Edit_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Edit_vue_vue_type_template_id_fbdcfaba__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Pages/Auth/Permissions/Edit.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -80393,13 +75363,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Index_vue_vue_type_template_id_01d68b89__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Index.vue?vue&type=template&id=01d68b89 */ "./resources/js/Pages/Auth/Permissions/Index.vue?vue&type=template&id=01d68b89");
 /* harmony import */ var _Index_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Index.vue?vue&type=script&setup=true&lang=js */ "./resources/js/Pages/Auth/Permissions/Index.vue?vue&type=script&setup=true&lang=js");
-/* harmony import */ var C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Index_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Index_vue_vue_type_template_id_01d68b89__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Pages/Auth/Permissions/Index.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Index_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Index_vue_vue_type_template_id_01d68b89__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Pages/Auth/Permissions/Index.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -80421,13 +75391,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _AddCityToProvince_vue_vue_type_template_id_03ea7189__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AddCityToProvince.vue?vue&type=template&id=03ea7189 */ "./resources/js/Pages/Auth/Regions/AddCityToProvince.vue?vue&type=template&id=03ea7189");
 /* harmony import */ var _AddCityToProvince_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AddCityToProvince.vue?vue&type=script&lang=js */ "./resources/js/Pages/Auth/Regions/AddCityToProvince.vue?vue&type=script&lang=js");
-/* harmony import */ var C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_AddCityToProvince_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_AddCityToProvince_vue_vue_type_template_id_03ea7189__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Pages/Auth/Regions/AddCityToProvince.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_AddCityToProvince_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_AddCityToProvince_vue_vue_type_template_id_03ea7189__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Pages/Auth/Regions/AddCityToProvince.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -80449,13 +75419,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _CreateProvince_vue_vue_type_template_id_808d1b6c__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CreateProvince.vue?vue&type=template&id=808d1b6c */ "./resources/js/Pages/Auth/Regions/CreateProvince.vue?vue&type=template&id=808d1b6c");
 /* harmony import */ var _CreateProvince_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CreateProvince.vue?vue&type=script&lang=js */ "./resources/js/Pages/Auth/Regions/CreateProvince.vue?vue&type=script&lang=js");
-/* harmony import */ var C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_CreateProvince_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_CreateProvince_vue_vue_type_template_id_808d1b6c__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Pages/Auth/Regions/CreateProvince.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_CreateProvince_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_CreateProvince_vue_vue_type_template_id_808d1b6c__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Pages/Auth/Regions/CreateProvince.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -80477,13 +75447,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _EditProvince_vue_vue_type_template_id_48198850__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./EditProvince.vue?vue&type=template&id=48198850 */ "./resources/js/Pages/Auth/Regions/EditProvince.vue?vue&type=template&id=48198850");
 /* harmony import */ var _EditProvince_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EditProvince.vue?vue&type=script&lang=js */ "./resources/js/Pages/Auth/Regions/EditProvince.vue?vue&type=script&lang=js");
-/* harmony import */ var C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_EditProvince_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_EditProvince_vue_vue_type_template_id_48198850__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Pages/Auth/Regions/EditProvince.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_EditProvince_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_EditProvince_vue_vue_type_template_id_48198850__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Pages/Auth/Regions/EditProvince.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -80505,13 +75475,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Index_vue_vue_type_template_id_26eaf378__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Index.vue?vue&type=template&id=26eaf378 */ "./resources/js/Pages/Auth/Regions/Index.vue?vue&type=template&id=26eaf378");
 /* harmony import */ var _Index_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Index.vue?vue&type=script&lang=js */ "./resources/js/Pages/Auth/Regions/Index.vue?vue&type=script&lang=js");
-/* harmony import */ var C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Index_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Index_vue_vue_type_template_id_26eaf378__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Pages/Auth/Regions/Index.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Index_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Index_vue_vue_type_template_id_26eaf378__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Pages/Auth/Regions/Index.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -80532,14 +75502,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _Register_vue_vue_type_template_id_e59c811e__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Register.vue?vue&type=template&id=e59c811e */ "./resources/js/Pages/Auth/Register.vue?vue&type=template&id=e59c811e");
-/* harmony import */ var _Register_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Register.vue?vue&type=script&lang=js */ "./resources/js/Pages/Auth/Register.vue?vue&type=script&lang=js");
-/* harmony import */ var C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var _Register_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Register.vue?vue&type=script&setup=true&lang=js */ "./resources/js/Pages/Auth/Register.vue?vue&type=script&setup=true&lang=js");
+/* harmony import */ var C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Register_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Register_vue_vue_type_template_id_e59c811e__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Pages/Auth/Register.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Register_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Register_vue_vue_type_template_id_e59c811e__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Pages/Auth/Register.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -80561,13 +75531,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _ResetPassword_vue_vue_type_template_id_1da614ac__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ResetPassword.vue?vue&type=template&id=1da614ac */ "./resources/js/Pages/Auth/ResetPassword.vue?vue&type=template&id=1da614ac");
 /* harmony import */ var _ResetPassword_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ResetPassword.vue?vue&type=script&setup=true&lang=js */ "./resources/js/Pages/Auth/ResetPassword.vue?vue&type=script&setup=true&lang=js");
-/* harmony import */ var C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_ResetPassword_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_ResetPassword_vue_vue_type_template_id_1da614ac__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Pages/Auth/ResetPassword.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_ResetPassword_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_ResetPassword_vue_vue_type_template_id_1da614ac__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Pages/Auth/ResetPassword.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -80589,13 +75559,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _VerifyEmail_vue_vue_type_template_id_9f895776__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./VerifyEmail.vue?vue&type=template&id=9f895776 */ "./resources/js/Pages/Auth/VerifyEmail.vue?vue&type=template&id=9f895776");
 /* harmony import */ var _VerifyEmail_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./VerifyEmail.vue?vue&type=script&setup=true&lang=js */ "./resources/js/Pages/Auth/VerifyEmail.vue?vue&type=script&setup=true&lang=js");
-/* harmony import */ var C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_VerifyEmail_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_VerifyEmail_vue_vue_type_template_id_9f895776__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Pages/Auth/VerifyEmail.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_VerifyEmail_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_VerifyEmail_vue_vue_type_template_id_9f895776__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Pages/Auth/VerifyEmail.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -80616,14 +75586,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _ChangePassword_vue_vue_type_template_id_8afbea58__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ChangePassword.vue?vue&type=template&id=8afbea58 */ "./resources/js/Pages/ChangePassword.vue?vue&type=template&id=8afbea58");
-/* harmony import */ var _ChangePassword_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ChangePassword.vue?vue&type=script&lang=js */ "./resources/js/Pages/ChangePassword.vue?vue&type=script&lang=js");
-/* harmony import */ var C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var _ChangePassword_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ChangePassword.vue?vue&type=script&setup=true&lang=js */ "./resources/js/Pages/ChangePassword.vue?vue&type=script&setup=true&lang=js");
+/* harmony import */ var C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_ChangePassword_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_ChangePassword_vue_vue_type_template_id_8afbea58__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Pages/ChangePassword.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_ChangePassword_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_ChangePassword_vue_vue_type_template_id_8afbea58__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Pages/ChangePassword.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -80645,13 +75615,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Dashboard_vue_vue_type_template_id_097ba13b__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Dashboard.vue?vue&type=template&id=097ba13b */ "./resources/js/Pages/Dashboard.vue?vue&type=template&id=097ba13b");
 /* harmony import */ var _Dashboard_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Dashboard.vue?vue&type=script&setup=true&lang=js */ "./resources/js/Pages/Dashboard.vue?vue&type=script&setup=true&lang=js");
-/* harmony import */ var C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Dashboard_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Dashboard_vue_vue_type_template_id_097ba13b__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Pages/Dashboard.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Dashboard_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Dashboard_vue_vue_type_template_id_097ba13b__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Pages/Dashboard.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -80673,13 +75643,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _EditProfile_vue_vue_type_template_id_921354b4__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./EditProfile.vue?vue&type=template&id=921354b4 */ "./resources/js/Pages/EditProfile.vue?vue&type=template&id=921354b4");
 /* harmony import */ var _EditProfile_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EditProfile.vue?vue&type=script&lang=js */ "./resources/js/Pages/EditProfile.vue?vue&type=script&lang=js");
-/* harmony import */ var C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_EditProfile_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_EditProfile_vue_vue_type_template_id_921354b4__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Pages/EditProfile.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_EditProfile_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_EditProfile_vue_vue_type_template_id_921354b4__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Pages/EditProfile.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -80701,13 +75671,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Create_vue_vue_type_template_id_f332ac32__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Create.vue?vue&type=template&id=f332ac32 */ "./resources/js/Pages/Post/Category/Create.vue?vue&type=template&id=f332ac32");
 /* harmony import */ var _Create_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Create.vue?vue&type=script&lang=js */ "./resources/js/Pages/Post/Category/Create.vue?vue&type=script&lang=js");
-/* harmony import */ var C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Create_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Create_vue_vue_type_template_id_f332ac32__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Pages/Post/Category/Create.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Create_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Create_vue_vue_type_template_id_f332ac32__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Pages/Post/Category/Create.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -80728,14 +75698,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _Edit_vue_vue_type_template_id_0fc38e96__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Edit.vue?vue&type=template&id=0fc38e96 */ "./resources/js/Pages/Post/Category/Edit.vue?vue&type=template&id=0fc38e96");
-/* harmony import */ var _Edit_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Edit.vue?vue&type=script&lang=js */ "./resources/js/Pages/Post/Category/Edit.vue?vue&type=script&lang=js");
-/* harmony import */ var C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var _Edit_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Edit.vue?vue&type=script&setup=true&lang=js */ "./resources/js/Pages/Post/Category/Edit.vue?vue&type=script&setup=true&lang=js");
+/* harmony import */ var C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Edit_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Edit_vue_vue_type_template_id_0fc38e96__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Pages/Post/Category/Edit.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Edit_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Edit_vue_vue_type_template_id_0fc38e96__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Pages/Post/Category/Edit.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -80756,14 +75726,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _Index_vue_vue_type_template_id_4d6097b7__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Index.vue?vue&type=template&id=4d6097b7 */ "./resources/js/Pages/Post/Category/Index.vue?vue&type=template&id=4d6097b7");
-/* harmony import */ var _Index_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Index.vue?vue&type=script&lang=js */ "./resources/js/Pages/Post/Category/Index.vue?vue&type=script&lang=js");
-/* harmony import */ var C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var _Index_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Index.vue?vue&type=script&setup=true&lang=js */ "./resources/js/Pages/Post/Category/Index.vue?vue&type=script&setup=true&lang=js");
+/* harmony import */ var C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Index_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Index_vue_vue_type_template_id_4d6097b7__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Pages/Post/Category/Index.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Index_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Index_vue_vue_type_template_id_4d6097b7__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Pages/Post/Category/Index.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -80785,13 +75755,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Create_vue_vue_type_template_id_49740cd2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Create.vue?vue&type=template&id=49740cd2 */ "./resources/js/Pages/Post/Create.vue?vue&type=template&id=49740cd2");
 /* harmony import */ var _Create_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Create.vue?vue&type=script&lang=js */ "./resources/js/Pages/Post/Create.vue?vue&type=script&lang=js");
-/* harmony import */ var C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Create_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Create_vue_vue_type_template_id_49740cd2__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Pages/Post/Create.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Create_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Create_vue_vue_type_template_id_49740cd2__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Pages/Post/Create.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -80813,13 +75783,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Edit_vue_vue_type_template_id_126d5a60__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Edit.vue?vue&type=template&id=126d5a60 */ "./resources/js/Pages/Post/Edit.vue?vue&type=template&id=126d5a60");
 /* harmony import */ var _Edit_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Edit.vue?vue&type=script&lang=js */ "./resources/js/Pages/Post/Edit.vue?vue&type=script&lang=js");
-/* harmony import */ var C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Edit_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Edit_vue_vue_type_template_id_126d5a60__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Pages/Post/Edit.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Edit_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Edit_vue_vue_type_template_id_126d5a60__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Pages/Post/Edit.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -80840,14 +75810,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _Index_vue_vue_type_template_id_7cf5ab6c__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Index.vue?vue&type=template&id=7cf5ab6c */ "./resources/js/Pages/Post/Index.vue?vue&type=template&id=7cf5ab6c");
-/* harmony import */ var _Index_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Index.vue?vue&type=script&lang=js */ "./resources/js/Pages/Post/Index.vue?vue&type=script&lang=js");
-/* harmony import */ var C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var _Index_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Index.vue?vue&type=script&setup=true&lang=js */ "./resources/js/Pages/Post/Index.vue?vue&type=script&setup=true&lang=js");
+/* harmony import */ var C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Index_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Index_vue_vue_type_template_id_7cf5ab6c__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Pages/Post/Index.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Index_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Index_vue_vue_type_template_id_7cf5ab6c__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Pages/Post/Index.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -80869,13 +75839,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Show_vue_vue_type_template_id_c283d45a__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Show.vue?vue&type=template&id=c283d45a */ "./resources/js/Pages/Post/Show.vue?vue&type=template&id=c283d45a");
 /* harmony import */ var _Show_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Show.vue?vue&type=script&setup=true&lang=js */ "./resources/js/Pages/Post/Show.vue?vue&type=script&setup=true&lang=js");
-/* harmony import */ var C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Show_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Show_vue_vue_type_template_id_c283d45a__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Pages/Post/Show.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Show_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Show_vue_vue_type_template_id_c283d45a__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Pages/Post/Show.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -80897,13 +75867,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Add_vue_vue_type_template_id_bd63133e__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Add.vue?vue&type=template&id=bd63133e */ "./resources/js/Pages/SiteAdmin/Add.vue?vue&type=template&id=bd63133e");
 /* harmony import */ var _Add_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Add.vue?vue&type=script&setup=true&lang=js */ "./resources/js/Pages/SiteAdmin/Add.vue?vue&type=script&setup=true&lang=js");
-/* harmony import */ var C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Add_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Add_vue_vue_type_template_id_bd63133e__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Pages/SiteAdmin/Add.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Add_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Add_vue_vue_type_template_id_bd63133e__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Pages/SiteAdmin/Add.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -80925,13 +75895,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Index_vue_vue_type_template_id_d35f47dc__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Index.vue?vue&type=template&id=d35f47dc */ "./resources/js/Pages/SiteAdmin/Index.vue?vue&type=template&id=d35f47dc");
 /* harmony import */ var _Index_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Index.vue?vue&type=script&setup=true&lang=js */ "./resources/js/Pages/SiteAdmin/Index.vue?vue&type=script&setup=true&lang=js");
-/* harmony import */ var C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Index_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Index_vue_vue_type_template_id_d35f47dc__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Pages/SiteAdmin/Index.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Index_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Index_vue_vue_type_template_id_d35f47dc__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Pages/SiteAdmin/Index.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -80952,14 +75922,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _UsersIndex_vue_vue_type_template_id_234f5dda__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./UsersIndex.vue?vue&type=template&id=234f5dda */ "./resources/js/Pages/UsersIndex.vue?vue&type=template&id=234f5dda");
-/* harmony import */ var _UsersIndex_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./UsersIndex.vue?vue&type=script&lang=js */ "./resources/js/Pages/UsersIndex.vue?vue&type=script&lang=js");
-/* harmony import */ var C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var _UsersIndex_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./UsersIndex.vue?vue&type=script&setup=true&lang=js */ "./resources/js/Pages/UsersIndex.vue?vue&type=script&setup=true&lang=js");
+/* harmony import */ var C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_UsersIndex_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_UsersIndex_vue_vue_type_template_id_234f5dda__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Pages/UsersIndex.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_UsersIndex_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_UsersIndex_vue_vue_type_template_id_234f5dda__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Pages/UsersIndex.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -80982,7 +75952,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Welcome_vue_vue_type_template_id_317d1a6e_scoped_true__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Welcome.vue?vue&type=template&id=317d1a6e&scoped=true */ "./resources/js/Pages/Welcome.vue?vue&type=template&id=317d1a6e&scoped=true");
 /* harmony import */ var _Welcome_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Welcome.vue?vue&type=script&setup=true&lang=js */ "./resources/js/Pages/Welcome.vue?vue&type=script&setup=true&lang=js");
 /* harmony import */ var _Welcome_vue_vue_type_style_index_0_id_317d1a6e_scoped_true_lang_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Welcome.vue?vue&type=style&index=0&id=317d1a6e&scoped=true&lang=css */ "./resources/js/Pages/Welcome.vue?vue&type=style&index=0&id=317d1a6e&scoped=true&lang=css");
-/* harmony import */ var C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
@@ -80990,7 +75960,7 @@ __webpack_require__.r(__webpack_exports__);
 ;
 
 
-const __exports__ = /*#__PURE__*/(0,C_Projects_Dorniplus_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_Welcome_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Welcome_vue_vue_type_template_id_317d1a6e_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render],['__scopeId',"data-v-317d1a6e"],['__file',"resources/js/Pages/Welcome.vue"]])
+const __exports__ = /*#__PURE__*/(0,C_laragon_www_myapp_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_Welcome_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Welcome_vue_vue_type_template_id_317d1a6e_scoped_true__WEBPACK_IMPORTED_MODULE_0__.render],['__scopeId',"data-v-317d1a6e"],['__file',"resources/js/Pages/Welcome.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -81383,18 +76353,18 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/Pages/Auth/Register.vue?vue&type=script&lang=js":
-/*!**********************************************************************!*\
-  !*** ./resources/js/Pages/Auth/Register.vue?vue&type=script&lang=js ***!
-  \**********************************************************************/
+/***/ "./resources/js/Pages/Auth/Register.vue?vue&type=script&setup=true&lang=js":
+/*!*********************************************************************************!*\
+  !*** ./resources/js/Pages/Auth/Register.vue?vue&type=script&setup=true&lang=js ***!
+  \*********************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Register_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Register_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Register_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Register.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Auth/Register.vue?vue&type=script&lang=js");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Register_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Register.vue?vue&type=script&setup=true&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Auth/Register.vue?vue&type=script&setup=true&lang=js");
  
 
 /***/ }),
@@ -81431,18 +76401,18 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/Pages/ChangePassword.vue?vue&type=script&lang=js":
-/*!***********************************************************************!*\
-  !*** ./resources/js/Pages/ChangePassword.vue?vue&type=script&lang=js ***!
-  \***********************************************************************/
+/***/ "./resources/js/Pages/ChangePassword.vue?vue&type=script&setup=true&lang=js":
+/*!**********************************************************************************!*\
+  !*** ./resources/js/Pages/ChangePassword.vue?vue&type=script&setup=true&lang=js ***!
+  \**********************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_ChangePassword_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_ChangePassword_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_ChangePassword_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./ChangePassword.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/ChangePassword.vue?vue&type=script&lang=js");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_ChangePassword_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./ChangePassword.vue?vue&type=script&setup=true&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/ChangePassword.vue?vue&type=script&setup=true&lang=js");
  
 
 /***/ }),
@@ -81495,34 +76465,34 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/Pages/Post/Category/Edit.vue?vue&type=script&lang=js":
-/*!***************************************************************************!*\
-  !*** ./resources/js/Pages/Post/Category/Edit.vue?vue&type=script&lang=js ***!
-  \***************************************************************************/
+/***/ "./resources/js/Pages/Post/Category/Edit.vue?vue&type=script&setup=true&lang=js":
+/*!**************************************************************************************!*\
+  !*** ./resources/js/Pages/Post/Category/Edit.vue?vue&type=script&setup=true&lang=js ***!
+  \**************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Edit_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Edit_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Edit_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Edit.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Post/Category/Edit.vue?vue&type=script&lang=js");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Edit_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Edit.vue?vue&type=script&setup=true&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Post/Category/Edit.vue?vue&type=script&setup=true&lang=js");
  
 
 /***/ }),
 
-/***/ "./resources/js/Pages/Post/Category/Index.vue?vue&type=script&lang=js":
-/*!****************************************************************************!*\
-  !*** ./resources/js/Pages/Post/Category/Index.vue?vue&type=script&lang=js ***!
-  \****************************************************************************/
+/***/ "./resources/js/Pages/Post/Category/Index.vue?vue&type=script&setup=true&lang=js":
+/*!***************************************************************************************!*\
+  !*** ./resources/js/Pages/Post/Category/Index.vue?vue&type=script&setup=true&lang=js ***!
+  \***************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Index_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Index_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Index_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Index.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Post/Category/Index.vue?vue&type=script&lang=js");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Index_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Index.vue?vue&type=script&setup=true&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Post/Category/Index.vue?vue&type=script&setup=true&lang=js");
  
 
 /***/ }),
@@ -81559,18 +76529,18 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/Pages/Post/Index.vue?vue&type=script&lang=js":
-/*!*******************************************************************!*\
-  !*** ./resources/js/Pages/Post/Index.vue?vue&type=script&lang=js ***!
-  \*******************************************************************/
+/***/ "./resources/js/Pages/Post/Index.vue?vue&type=script&setup=true&lang=js":
+/*!******************************************************************************!*\
+  !*** ./resources/js/Pages/Post/Index.vue?vue&type=script&setup=true&lang=js ***!
+  \******************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Index_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Index_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Index_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Index.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Post/Index.vue?vue&type=script&lang=js");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Index_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Index.vue?vue&type=script&setup=true&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Post/Index.vue?vue&type=script&setup=true&lang=js");
  
 
 /***/ }),
@@ -81623,18 +76593,18 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/Pages/UsersIndex.vue?vue&type=script&lang=js":
-/*!*******************************************************************!*\
-  !*** ./resources/js/Pages/UsersIndex.vue?vue&type=script&lang=js ***!
-  \*******************************************************************/
+/***/ "./resources/js/Pages/UsersIndex.vue?vue&type=script&setup=true&lang=js":
+/*!******************************************************************************!*\
+  !*** ./resources/js/Pages/UsersIndex.vue?vue&type=script&setup=true&lang=js ***!
+  \******************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_UsersIndex_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_UsersIndex_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_UsersIndex_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./UsersIndex.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/UsersIndex.vue?vue&type=script&lang=js");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_UsersIndex_vue_vue_type_script_setup_true_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./UsersIndex.vue?vue&type=script&setup=true&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/UsersIndex.vue?vue&type=script&setup=true&lang=js");
  
 
 /***/ }),
@@ -89126,7 +84096,7 @@ webpackContext.id = "./resources/js/Pages sync recursive ^\\.\\/.*\\.vue$";
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"Promise based HTTP client for the browser and node.js","main":"index.js","scripts":{"test":"grunt test","start":"node ./sandbox/server.js","build":"NODE_ENV=production grunt build","preversion":"npm test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json","postversion":"git push && git push --tags","examples":"node ./examples/server.js","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","fix":"eslint --fix lib/**/*.js"},"repository":{"type":"git","url":"https://github.com/axios/axios.git"},"keywords":["xhr","http","ajax","promise","node"],"author":"Matt Zabriskie","license":"MIT","bugs":{"url":"https://github.com/axios/axios/issues"},"homepage":"https://axios-http.com","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"jsdelivr":"dist/axios.min.js","unpkg":"dist/axios.min.js","typings":"./index.d.ts","dependencies":{"follow-redirects":"^1.14.0"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}]}');
+module.exports = JSON.parse('{"_args":[["axios@0.21.4","C:\\\\laragon\\\\www\\\\Dorniplus"]],"_from":"axios@0.21.4","_id":"axios@0.21.4","_inBundle":false,"_integrity":"sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==","_location":"/axios","_phantomChildren":{},"_requested":{"type":"version","registry":true,"raw":"axios@0.21.4","name":"axios","escapedName":"axios","rawSpec":"0.21.4","saveSpec":null,"fetchSpec":"0.21.4"},"_requiredBy":["#DEV:/","/@inertiajs/inertia"],"_resolved":"https://registry.npmjs.org/axios/-/axios-0.21.4.tgz","_spec":"0.21.4","_where":"C:\\\\laragon\\\\www\\\\Dorniplus","author":{"name":"Matt Zabriskie"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"bugs":{"url":"https://github.com/axios/axios/issues"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}],"dependencies":{"follow-redirects":"^1.14.0"},"description":"Promise based HTTP client for the browser and node.js","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"homepage":"https://axios-http.com","jsdelivr":"dist/axios.min.js","keywords":["xhr","http","ajax","promise","node"],"license":"MIT","main":"index.js","name":"axios","repository":{"type":"git","url":"git+https://github.com/axios/axios.git"},"scripts":{"build":"NODE_ENV=production grunt build","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","examples":"node ./examples/server.js","fix":"eslint --fix lib/**/*.js","postversion":"git push && git push --tags","preversion":"npm test","start":"node ./sandbox/server.js","test":"grunt test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json"},"typings":"./index.d.ts","unpkg":"dist/axios.min.js","version":"0.21.4"}');
 
 /***/ })
 
