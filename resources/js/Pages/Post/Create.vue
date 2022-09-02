@@ -30,19 +30,21 @@
                                         focus:ring-1
                                         focus:ring-blue-600
                                     "
-                                    type="text"
                                     required
+                                    type="text"
                                 />
                             </div>
 
                             <div class="mt-2">
 
-                                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" for="avatar">آپلود
+                                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                                       for="avatar">آپلود
                                     عکس</label>
                                 <input id="avatar" aria-describedby="avatar_help"
                                        class="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                                       type="file" @input="form.post_image = $event.target.files[0]" required>
-                                <p id="avatar_help" class="mt-1 text-sm text-gray-500 dark:text-gray-300">PNG, JPG, JPEG or GIF (MAX
+                                       required type="file" @input="form.post_image = $event.target.files[0]">
+                                <p id="avatar_help" class="mt-1 text-sm text-gray-500 dark:text-gray-300">PNG, JPG, JPEG
+                                    or GIF (MAX
                                     :200KB).</p>
 
                                 <progress v-if="form.progress" :value="form.progress.percentage" max="100">
@@ -50,14 +52,19 @@
                                 </progress>
                             </div>
                             <div>
-                           خلاصه متن : <editor v-model="form.summary" api-key="API_KEY" :init="{language:'fa', plugins: 'wordcount'}" />
+                                خلاصه متن :
+                                <editor v-model="form.summary" :init="{language:'fa', plugins: 'wordcount'}"
+                                        api-key="API_KEY"/>
                             </div>
                             <div>
-                            متن اصلی:    <editor v-model="form.text" api-key="API_KEY"  :init="{language:'fa', plugins: 'wordcount'}" />
+                                متن اصلی:
+                                <editor v-model="form.text" :init="{language:'fa', plugins: 'wordcount'}"
+                                        api-key="API_KEY"/>
                             </div>
                             <div>
                                 <select v-model="form.category_id">
-                                    <option v-for="category in categories" :value="category.id">{{category.title}}</option>
+                                    <option v-for="category in categories" :value="category.id">{{ category.title }}
+                                    </option>
                                 </select>
                             </div>
                             <!-- submit -->
@@ -83,30 +90,30 @@
 </template>
 
 <script>
-import BreezeAuthenticatedLayout from "@/Layouts/Authenticated.vue";
-import BreezeLabel from "@/Components/Label";
-import {Head} from "@inertiajs/inertia-vue3";
-import {useForm} from "@inertiajs/inertia-vue3";
-import Editor from '@tinymce/tinymce-vue';
-import BreezeValidationErrors from '@/Components/ValidationErrors.vue';
+import BreezeAuthenticatedLayout from "@/Layouts/Authenticated.vue"
+import BreezeLabel from "@/Components/Label"
+import {Head} from "@inertiajs/inertia-vue3"
+import {useForm} from "@inertiajs/inertia-vue3"
+import Editor from '@tinymce/tinymce-vue'
+import BreezeValidationErrors from '@/Components/ValidationErrors.vue'
 
 export default {
     components: {
         BreezeAuthenticatedLayout,
         BreezeValidationErrors,
         Head,
-        editor:Editor
+        editor: Editor
     },
     props: {
-      categories:[]
+        categories: []
     },
     setup(props) {
         const form = useForm({
             title: null,
-            post_image:null,
-            summary:null,
-            text:null,
-            category_id:null,
+            post_image: null,
+            summary: null,
+            text: null,
+            category_id: null,
         });
 
         return {form};

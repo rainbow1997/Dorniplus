@@ -12,6 +12,8 @@
             <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
                 <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
                     <div class="p-6 bg-white border-b border-gray-200">
+                        <BreezeValidationErrors class="mb-4"/>
+
                         <form method="post" @submit.prevent="submit">
                             <div>
                                 <label for="title">عنوان</label>
@@ -28,7 +30,7 @@
                                         focus:ring-1
                                         focus:ring-blue-600
                                     "
-                                    type="text"
+                                    required type="text"
                                 />
                             </div>
 
@@ -56,10 +58,11 @@
 </template>
 
 <script>
-import BreezeAuthenticatedLayout from "@/Layouts/Authenticated.vue";
-import BreezeLabel from "@/Components/Label";
-import {Head} from "@inertiajs/inertia-vue3";
-import {useForm} from "@inertiajs/inertia-vue3";
+import BreezeAuthenticatedLayout from "@/Layouts/Authenticated.vue"
+import BreezeLabel from "@/Components/Label"
+import {Head} from "@inertiajs/inertia-vue3"
+import {useForm} from "@inertiajs/inertia-vue3"
+import BreezeValidationErrors from '@/Components/ValidationErrors.vue'
 
 export default {
     components: {

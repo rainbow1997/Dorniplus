@@ -5,7 +5,7 @@
         <template #header>
             <h2 class="text-xl font-semibold leading-tight text-gray-800">
                 ویرایش مجوز(Permission)
-                {{form.name}}
+                {{ form.name }}
             </h2>
         </template>
 
@@ -31,8 +31,8 @@
                                         focus:ring-1
                                         focus:ring-blue-600
                                     "
-                                    type="text"
                                     name="name"
+                                    type="text"
                                 />
                             </div>
 
@@ -60,24 +60,23 @@
 </template>
 
 <script setup>
-import BreezeValidationErrors from '@/Components/ValidationErrors.vue';
+import BreezeValidationErrors from '@/Components/ValidationErrors.vue'
 
-import BreezeAuthenticatedLayout from "@/Layouts/Authenticated.vue";
-import BreezeLabel from "@/Components/Label";
-import {Head} from "@inertiajs/inertia-vue3";
-import { useForm } from '@inertiajs/inertia-vue3'
+import BreezeAuthenticatedLayout from "@/Layouts/Authenticated.vue"
+import BreezeLabel from "@/Components/Label"
+import {Head} from "@inertiajs/inertia-vue3"
+import {useForm} from '@inertiajs/inertia-vue3'
 
 import {ref, reactive, computed} from 'vue'
 import {Inertia} from '@inertiajs/inertia'
 
 const form = useForm({
-    name : ''
+    name: ''
 });
-const submit = () =>
-{
-    Inertia.post(route("permissions.store"),{
+const submit = () => {
+    Inertia.post(route("permissions.store"), {
 
-        data:form
+        data: form
     })
 }
 </script>

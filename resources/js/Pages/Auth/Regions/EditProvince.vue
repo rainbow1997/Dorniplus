@@ -12,11 +12,13 @@
             <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
                 <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
                     <div class="p-6 bg-white border-b border-gray-200">
+                        <BreezeValidationErrors class="mb-4"/>
+
                         <form method="post" @submit.prevent="submit">
                             <div>
                                 <label for="title">عنوان</label>
                                 <input
-                                    v-model="form.title"
+                                    v-model="states.form.title"
                                     class="
                                         w-full
                                         px-4
@@ -28,7 +30,7 @@
                                         focus:ring-1
                                         focus:ring-blue-600
                                     "
-                                    type="text"
+                                    required type="text"
                                 />
                             </div>
 
@@ -55,34 +57,24 @@
     </BreezeAuthenticatedLayout>
 </template>
 
-<script>
-import BreezeAuthenticatedLayout from "@/Layouts/Authenticated.vue";
-import BreezeLabel from "@/Components/Label";
-import {Head} from "@inertiajs/inertia-vue3";
-import {useForm} from "@inertiajs/inertia-vue3";
+<script setup>
+import BreezeAuthenticatedLayout from "@/Layouts/Authenticated.vue"
+import BreezeLabel from "@/Components/Label"
+import {Head} from "@inertiajs/inertia-vue3"
+import {useForm} from "@inertiajs/inertia-vue3"
+import {Inertia} from '@inertiajs/inertia'
+import BreezeValidationErrors from '@/Components/ValidationErrors.vue'
 
-export default {
-    components: {
-        BreezeAuthenticatedLayout,
-        Head,
-    },
-    data() {
-        return {
-            form: this.$inertia.form({
-                method: 'put',
-                title: this.province.title,
-
-            })
-        }
-    },
-    methods: {
-        submit() {
-            this.form.put(route("regions.province.update", this.province.id));
-        },
-    },
-    props:
-        {
-            province: {}
-        }
-};
+const props = defineProps({
+    province: {}
+});
+const states = {
+    form: useForm({
+        method: 'put',
+        title: props.province.title,
+    })
+}
+const submit = () => {
+    Inertia.put(route("regions.province.update", props.province.id), states.form);
+}
 </script>

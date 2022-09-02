@@ -41,16 +41,18 @@
                                        placeholder="عنوان موضوع..."
                                        type="text">
 
-                                <date-picker editable
+                                <date-picker v-model="ourData.search.created_at"
+                                             autofocus
                                              class="rounded-none rounded-l-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block min-w-0  text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                             placeholder="ابتدای بازه زمانی ایجاد..." v-model="ourData.search.created_at"
-                                             format="YYYY/MM/DD" display-format="jYYYY/jMM/jDD" autofocus/>
+                                             display-format="jYYYY/jMM/jDD"
+                                             editable format="YYYY/MM/DD" placeholder="ابتدای بازه زمانی ایجاد..."/>
 
 
-                                <date-picker editable
+                                <date-picker v-model="ourData.search.updated_at"
+                                             autofocus
                                              class="rounded-none rounded-l-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block min-w-0  text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                             placeholder="ابتدای بازه زمانی بروزرسانی..." v-model="ourData.search.updated_at"
-                                             format="YYYY/MM/DD" display-format="jYYYY/jMM/jDD" autofocus/>
+                                             display-format="jYYYY/jMM/jDD"
+                                             editable format="YYYY/MM/DD" placeholder="ابتدای بازه زمانی بروزرسانی..."/>
 
 
                             </div>
@@ -112,18 +114,18 @@
 </template>
 <script setup>
 import {Inertia} from '@inertiajs/inertia'
-import BreezeButton from '@/Components/Button.vue';
-import BreezeAuthenticatedLayout from '@/Layouts/Authenticated.vue';
-import BreezeInput from '@/Components/Input.vue';
-import BreezeCheckbox from '@/Components/Checkbox.vue';
-import BreezeLabel from '@/Components/Label.vue';
-import BreezeValidationErrors from '@/Components/ValidationErrors.vue';
-import {Head, Link, useForm} from '@inertiajs/inertia-vue3';
+import BreezeButton from '@/Components/Button.vue'
+import BreezeAuthenticatedLayout from '@/Layouts/Authenticated.vue'
+import BreezeInput from '@/Components/Input.vue'
+import BreezeCheckbox from '@/Components/Checkbox.vue'
+import BreezeLabel from '@/Components/Label.vue'
+import BreezeValidationErrors from '@/Components/ValidationErrors.vue'
+import {Head, Link, useForm} from '@inertiajs/inertia-vue3'
 import Pagination from '@/Layouts/pagination'
 import DatePicker from 'vue3-persian-datetime-picker'
 import {ref, watch} from 'vue'
 
-let ourData = useForm({
+const ourData = useForm({
     test: {},
     search: {
         title: '',

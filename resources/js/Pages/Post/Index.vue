@@ -31,7 +31,8 @@
                             <div
                                 class="p-4 mb-4 text-sm text-yellow-700 bg-yellow-100 rounded-lg dark:bg-yellow-200 dark:text-yellow-800"
                                 role="alert">
-                                <span class="font-medium">دقت کنید!</span> برای جست و جو می توانید از پارامتر های مختلف به طور همزمان استفاده کنید.
+                                <span class="font-medium">دقت کنید!</span> برای جست و جو می توانید از پارامتر های مختلف
+                                به طور همزمان استفاده کنید.
                             </div>
                             <div class="flex  items-center justify-evenly">
 
@@ -62,8 +63,6 @@
                                              class="rounded-none rounded-l-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block min-w-0  text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                              display-format="jYYYY/jMM/jDD" editable
                                              format="YYYY/MM/DD" placeholder="انتهای بازه زمانی موردنظر..."/>
-
-
 
 
                             </div>
@@ -108,7 +107,9 @@
                                             class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                                             type="button">
 
-                                            <Link :href="route('posts.show',{post: post.id,title:post.title})" class="btn btn-info">مشاهده</Link>
+                                            <Link :href="route('posts.show',{post: post.id,title:post.title})"
+                                                  class="btn btn-info">مشاهده
+                                            </Link>
                                         </button>
                                         <button
                                             class="text-white bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:focus:ring-yellow-900"
@@ -148,7 +149,7 @@ import Pagination from '@/Layouts/pagination'
 import DatePicker from 'vue3-persian-datetime-picker'
 import {ref, watch} from 'vue'
 
-let ourData = useForm({
+const ourData = useForm({
     test: {},
     newPosts: {},
     search: {

@@ -5,7 +5,7 @@
         <template #header>
             <h2 class="text-xl font-semibold leading-tight text-gray-800">
                 ویرایش مجوز(Permission)
-                {{form.name}}
+                {{ form.name }}
             </h2>
         </template>
 
@@ -31,8 +31,8 @@
                                         focus:ring-1
                                         focus:ring-blue-600
                                     "
-                                    type="text"
                                     name="name"
+                                    type="text"
                                 />
                             </div>
 
@@ -60,25 +60,25 @@
 </template>
 
 <script setup>
-import BreezeAuthenticatedLayout from "@/Layouts/Authenticated.vue";
-import BreezeLabel from "@/Components/Label";
-import {Head} from "@inertiajs/inertia-vue3";
-import { useForm } from '@inertiajs/inertia-vue3'
-import BreezeValidationErrors from '@/Components/ValidationErrors.vue';
+import BreezeAuthenticatedLayout from "@/Layouts/Authenticated.vue"
+import BreezeLabel from "@/Components/Label"
+import {Head} from "@inertiajs/inertia-vue3"
+import {useForm} from '@inertiajs/inertia-vue3'
+import BreezeValidationErrors from '@/Components/ValidationErrors.vue'
 
 import {ref, reactive, computed} from 'vue'
 import {Inertia} from '@inertiajs/inertia'
+
 const props = defineProps({
-    permission:{}
+    permission: {}
 });
 const form = reactive({
-    name : props.permission.name
+    name: props.permission.name
 });
-const submit = () =>
-{
-    Inertia.put(route("permissions.update",props.permission.id),{
-        method : 'put',
-        data:form
+const submit = () => {
+    Inertia.put(route("permissions.update", props.permission.id), {
+        method: 'put',
+        data: form
     })
 }
 </script>

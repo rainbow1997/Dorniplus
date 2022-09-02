@@ -1,29 +1,28 @@
 <template>
-<users-index v-if="chosenUser.status == false" @set-user="callback" :users="users" :is-from-site-admin-add="true">
+    <users-index v-if="chosenUser.status == false" :is-from-site-admin-add="true" :users="props.users"
+                 @set-user="callback">
 
-</users-index>
-<div v-if="chosenUser.status">
-    کاربر انتخابی
+    </users-index>
+    <div v-if="chosenUser.status">
+        کاربر انتخابی
 
-</div>
+    </div>
 </template>
 
 <script setup>
-import UsersIndex from '../UsersIndex';
-import {Head, useForm} from '@inertiajs/inertia-vue3';
-import { ref, reactive, computed } from 'vue'
-import { Inertia } from '@inertiajs/inertia'
+import UsersIndex from '../UsersIndex'
+import {reactive} from 'vue'
+import {Inertia} from '@inertiajs/inertia'
 
-defineProps({
+const props = defineProps({
     users: [],
 });
-let chosenUser = reactive({
-    status:false,
-    user_id:null
+const chosenUser = reactive({
+    status: false,
+    user_id: null
 });
 const callback = (n) => {
-    if ( confirm('آیا مطمئنید ؟') )
-    {
+    if (confirm('آیا مطمئنید ؟')) {
         console.log('hi');
         chosenUser.user_id = n;
         chosenUser.status = true;
@@ -32,13 +31,12 @@ const callback = (n) => {
     }
 
 };
-const storeNewAdmin = () =>{
-  Inertia.visit(route('site_admin.store'),{
-      method : 'post',
-      data : { id:chosenUser.user_id}
-  });
+const storeNewAdmin = () => {
+    Inertia.visit(route('site_admin.store'), {
+        method: 'post',
+        data: {id: chosenUser.user_id}
+    });
 }
-
 
 
 </script>

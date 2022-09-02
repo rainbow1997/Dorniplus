@@ -1,4 +1,3 @@
-
 <template>
     <BreezeGuestLayout>
         <Head title="ثبت نام"/>
@@ -33,8 +32,9 @@
             </div>
             <div class="mt-4">
                 <BreezeLabel for="birth" value="تاریخ تولد"/>
-                <date-picker initial-value="1970/01/01" class="mt-1 block w-full  bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                             v-model="form.birth" format="YYYY/MM/DD" display-format="jYYYY/jMM/jDD"  autofocus />
+                <date-picker v-model="form.birth"
+                             autofocus
+                             class="mt-1 block w-full  bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" display-format="jYYYY/jMM/jDD" format="YYYY/MM/DD" initial-value="1970/01/01"/>
 
 
             </div>
@@ -155,17 +155,17 @@ import BreezeInput from '@/Components/Input.vue'
 import BreezeLabel from '@/Components/Label.vue'
 import BreezeValidationErrors from '@/Components/ValidationErrors.vue'
 import {Inertia} from '@inertiajs/inertia'
-import {ref, reactive} from 'vue'
 
 import {Head, Link, useForm} from '@inertiajs/inertia-vue3'
 import DatePicker from 'vue3-persian-datetime-picker'
+
 const props = defineProps({
     regions: {}
 });
-let ourData = useForm({
-    cities : {}
+const ourData = useForm({
+    cities: {}
 });
-let form = useForm({
+const form = useForm({
 
     fname: '',
     lname: '',
@@ -184,7 +184,7 @@ let form = useForm({
     terms: false,
     captcha_num: null
 });
-const provinceChange = (event)=> {
+const provinceChange = (event) => {
 
     let t = props.regions.filter(function (province) {
         if (province.id == event.target.value)
@@ -199,8 +199,8 @@ const genderChange = (event) => {
         form.military_status = null;
 }
 
-const submit = ()=>{
-    Inertia.post(route('register'),form);
+const submit = () => {
+    Inertia.post(route('register'), form);
 }
 
 </script>

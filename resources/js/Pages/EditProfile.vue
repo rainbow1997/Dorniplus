@@ -1,9 +1,9 @@
 <script>
-import BreezeButton from '@/Components/Button.vue';
-import BreezeGuestLayout from '@/Layouts/Guest.vue';
-import BreezeInput from '@/Components/Input.vue';
-import BreezeLabel from '@/Components/Label.vue';
-import BreezeValidationErrors from '@/Components/ValidationErrors.vue';
+import BreezeButton from '@/Components/Button.vue'
+import BreezeGuestLayout from '@/Layouts/Guest.vue'
+import BreezeInput from '@/Components/Input.vue'
+import BreezeLabel from '@/Components/Label.vue'
+import BreezeValidationErrors from '@/Components/ValidationErrors.vue'
 import {Head, Link, useForm} from '@inertiajs/inertia-vue3'
 import {reactive} from 'vue'
 import DatePicker from 'vue3-persian-datetime-picker'
@@ -33,7 +33,7 @@ export default {
         //let datepickerValue;
         const needs = reactive({
             ourProvince: {},
-            url:''
+            url: ''
         });
 
         const form = useForm('EditProfile', {
@@ -65,7 +65,7 @@ export default {
             let ourCity = tempCities[0];
 
         }
-        if(form.province_id != null)
+        if (form.province_id != null)
             provinceSetter();
         const provinceChange = (event) => {
             console.log('hi -> province is :');
@@ -78,22 +78,22 @@ export default {
             needs.ourProvince = t[0];
 
         };
-        let genderChange = (event) => {
+        const genderChange = (event) => {
             if (event.target.value != 'male')
                 form.military_status = null;
         };
-        let previewImage = (e) => {
+        const previewImage = (e) => {
             const file = e.target.files[0];
             needs.url = URL.createObjectURL(file);
         };
-        let submit = () => {
+        const submit = () => {
 
             form.post(`/storeProfile/${props.user.id}`, {
                 onSuccess: () => form.reset('password', 'avatar'),
                 preserveState: true
             });
         };
-        return {form, provinceChange, genderChange, previewImage,submit, needs}
+        return {form, provinceChange, genderChange, previewImage, submit, needs}
     },
 };
 
@@ -135,8 +135,10 @@ export default {
             <div class="mt-2">
                 <BreezeLabel for="birth" value="تاریخ تولد"/>
 
-                <date-picker  class="rounded-none rounded-l-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block min-w-0  text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                             placeholder="تاریخ تولد" v-model="form.birth" editable  format="jYYYY/jMM/jDD" display-format="jYYYY/jMM/jDD"  autofocus />
+                <date-picker
+                    v-model="form.birth"
+                    autofocus class="rounded-none rounded-l-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block min-w-0  text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" display-format="jYYYY/jMM/jDD" editable
+                    format="jYYYY/jMM/jDD" placeholder="تاریخ تولد"/>
 
 
             </div>
@@ -190,7 +192,7 @@ export default {
                     عکس</label>
                 <input id="avatar" aria-describedby="avatar_help"
                        class="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                       type="file" @input="form.avatar = $event.target.files[0]" @change="previewImage">
+                       type="file" @change="previewImage" @input="form.avatar = $event.target.files[0]">
                 <p id="avatar_help" class="mt-1 text-sm text-gray-500 dark:text-gray-300">PNG, JPG, JPEG or GIF (MAX
                     :200KB).</p>
 

@@ -78,7 +78,7 @@
                             >
                                 افزودن نقش به این مجوز
                             </Link>
-                            <table class="table-fixed mt-5" >
+                            <table class="table-fixed mt-5">
                                 <thead class="font-bold bg-gray-300 border-b-2">
                                 <td class="px-4 py-2">شناسه</td>
                                 <td class="px-4 py-2">عنوان</td>
@@ -111,12 +111,12 @@
 </template>
 
 <script setup>
-import BreezeAuthenticatedLayout from "@/Layouts/Authenticated.vue";
-import BreezeButton from '@/Components/Button';
-import BreezeNavLink from "@/Components/NavLink.vue";
-import {Head} from "@inertiajs/inertia-vue3";
-import {Link} from "@inertiajs/inertia-vue3";
-import { useForm } from '@inertiajs/inertia-vue3'
+import BreezeAuthenticatedLayout from "@/Layouts/Authenticated.vue"
+import BreezeButton from '@/Components/Button'
+import BreezeNavLink from "@/Components/NavLink.vue"
+import {Head} from "@inertiajs/inertia-vue3"
+import {Link} from "@inertiajs/inertia-vue3"
+import {useForm} from '@inertiajs/inertia-vue3'
 
 import {ref, reactive, computed} from 'vue'
 import {Inertia} from '@inertiajs/inertia'
@@ -125,9 +125,9 @@ defineProps({
     permissions: {}
 });
 let needs = useForm({
-    selectedPermission:{
-        type:Object,
-        default:null
+    selectedPermission: {
+        type: Object,
+        default: null
     },
     canShow: false
 });
@@ -138,11 +138,11 @@ const destroy = (id) => {
 
 const destroyPermissionFromRole = (id) => {
 
-    Inertia.delete(route("destroyRoleFromPermission",{
-        permission:needs.selectedPermission.id,
-        role:id
+    Inertia.delete(route("destroyRoleFromPermission", {
+        permission: needs.selectedPermission.id,
+        role: id
     }), {
-        replace:true,
+        replace: true,
 
     });
     needs.selectedPermission = null;

@@ -4,7 +4,7 @@
     <BreezeAuthenticatedLayout>
         <template #header>
             <h2 class="text-xl font-semibold leading-tight text-gray-800">
-                ویرایش موضوع {{form.title}}
+                ویرایش موضوع {{ form.title }}
             </h2>
         </template>
 
@@ -28,7 +28,7 @@
                                         focus:ring-1
                                         focus:ring-blue-600
                                     "
-                                    type="text"
+                                    required type="text"
                                 />
                             </div>
 
@@ -64,15 +64,16 @@ import {ref, watch} from 'vue'
 
 import {Head} from "@inertiajs/inertia-vue3"
 import {useForm} from "@inertiajs/inertia-vue3"
+
 const props = defineProps({
     category: {}
 
 });
-let form = useForm({
+const form = useForm({
     method: 'put',
     title: props.category.title,
 });
 const submit = () => {
-    Inertia.put(route("categories.update", props.category.id),form);
+    Inertia.put(route("categories.update", props.category.id), form);
 };
 </script>

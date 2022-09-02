@@ -1,13 +1,13 @@
 <template>
-    <users-index :users="users" is-from-site-admin="true"></users-index>
+    <users-index :users="props.users" is-from-site-admin="true"></users-index>
 
 </template>
 <script setup>
-import UsersIndex from '../UsersIndex';
-import {Head, useForm} from '@inertiajs/inertia-vue3';
+import UsersIndex from '../UsersIndex'
+import {Head, useForm} from '@inertiajs/inertia-vue3'
 import { ref, reactive, computed } from 'vue'
 import { Inertia } from '@inertiajs/inertia'
-defineProps({
+const props = defineProps({
     users:{}
 });
 </script>

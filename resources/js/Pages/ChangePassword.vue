@@ -1,16 +1,16 @@
 <script setup>
-import BreezeButton from '@/Components/Button.vue';
-import BreezeGuestLayout from '@/Layouts/Guest.vue';
-import BreezeInput from '@/Components/Input.vue';
-import BreezeLabel from '@/Components/Label.vue';
-import BreezeValidationErrors from '@/Components/ValidationErrors.vue';
-import {Head, useForm} from '@inertiajs/inertia-vue3';
+import BreezeButton from '@/Components/Button.vue'
+import BreezeGuestLayout from '@/Layouts/Guest.vue'
+import BreezeInput from '@/Components/Input.vue'
+import BreezeLabel from '@/Components/Label.vue'
+import BreezeValidationErrors from '@/Components/ValidationErrors.vue'
+import {Head, useForm} from '@inertiajs/inertia-vue3'
 import {Inertia} from '@inertiajs/inertia'
 
 const props = defineProps({
     user: {}
 })
-let form = useForm({
+const form = useForm({
     password: '',
     password_confirmation: '',
     user_id: null

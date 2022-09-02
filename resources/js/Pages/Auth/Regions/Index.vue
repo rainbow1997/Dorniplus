@@ -36,7 +36,7 @@
                             <td class="px-4 py-2">عملیات</td>
                             </thead>
                             <tbody>
-                            <tr v-for="province in provinces.data" :key="province.id">
+                            <tr v-for="province in props.provinces.data" :key="province.id">
                                 <td class="px-4 py-2">{{ province.id }}</td>
                                 <td class="px-4 py-2">{{ province.title }}</td>
                                 <td class="px-4 py-2 font-extrabold flex flex-row space-around">
@@ -64,12 +64,13 @@
                             </tr>
                             </tbody>
                         </table>
-                        <pagination :links="provinces.links"/>
-                        <div>
-                            <h3 class="mb-3">شهر ها</h3>
+                        <pagination :links="props.provinces.links"/>
+
+                        <div v-if="states.selectedProvince">
+                            <h3 class="mb-3"  >شهر ها</h3>
 
                             <Link
-                                :href="route('regions.city.create',(selectedProvince.id) ? selectedProvince.id:0)"
+                                :href="route('regions.city.create',states.selectedProvince.id)"
                                 class="
                                     px-6
                                     py-2
@@ -86,7 +87,7 @@
                                 <td class="px-4 py-2">عملیات</td>
                                 </thead>
                                 <tbody>
-                                <tr v-for="city in this.selectedProvince.cities" :key="city.id">
+                                <tr v-for="city in states.selectedProvince.cities" :key="city.id">
                                     <td class="px-4 py-2">{{ city.id }}</td>
                                     <td class="px-4 py-2">{{ city.title }}</td>
                                     <td class="px-4 py-2 font-extrabold">
@@ -110,64 +111,41 @@
     </BreezeAuthenticatedLayout>
 </template>
 
-<script>
-import BreezeAuthenticatedLayout from "@/Layouts/Authenticated.vue";
-import BreezeNavLink from "@/Components/NavLink.vue";
-import {Head} from "@inertiajs/inertia-vue3";
-import {Link} from "@inertiajs/inertia-vue3";
-import BreezeButton from '@/Components/Button';
+<script setup>
+import BreezeAuthenticatedLayout from "@/Layouts/Authenticated.vue"
+import BreezeNavLink from "@/Components/NavLink.vue"
+import {Head, Link, useForm} from '@inertiajs/inertia-vue3'
 
-export default {
-    components: {
-        BreezeAuthenticatedLayout,
-        Head,
-        BreezeNavLink,
-        Link,
-        BreezeButton
-    },
-    data() {
-        return {
-            selectedProvince: {},
-            canShow: false
-        }
-    },
-    props: {
-        provinces: Object,
-    },
-    methods: {
-        destroy(id) {
-            this.$inertia.delete(route("regions.province.destroy", id));
-        },
-        destroyCity(id) {
-            this.$inertia.delete(route("regions.city.destroy", id));
-        },
-        chooseProvince(id) {
-            //alert(id);
-            let t = this.provinces.data.filter(function (province) {
-                if (province.id == id) {
-                    //alert(province.title);
-                    return province;
-                }
+import {ref, reactive} from 'vue'
+import Pagination from '@/Layouts/pagination'
 
-            });
-            console.log(t[0].title);//remember that filter methods in javascript always return array*
-            this.selectedProvince = Object.assign({}, t[0]);
-            this.canShow = true;
-            console.log(this.selectedProvince);
-            //alert(this.canShow);
+import {Inertia} from '@inertiajs/inertia'
+
+import BreezeButton from '@/Components/Button'
+const props = defineProps({
+   provinces:{},
+});
+const states = reactive({
+    selectedProvince:null,
+    canShow:false
+});
+const destroy = (id) => {
+    Inertia.delete(route("regions.province.destroy", id));
+}
+const destroyCity = (id) => {
+    Inertia.delete(route("regions.city.destroy", id),{replace:true});
+    states.selectedProvince = null;
+
+}
+const chooseProvince = (id) => {
+    const filteredProvinces = props.provinces.data.filter(function (province) {
+        if (province.id == id) {
+            //alert(province.title);
+            return province;
         }
-    },
-    // computed:{
-    //     getCities()
-    //     {
-    //         //alert(typeof(this.selectedProvince));
-    //         return (_.isNull(this.selectedProvince)) ?  '' :  this.selectedProvince.cities
-    //     }
-    // },
-    mounted() {
-        //this.selectedProvince = thsis.provinces.data[0];
-        //alert(this.selectedProvince);
-        this.selectedProvince = '';
-    },
+
+    });
+    states.selectedProvince = {...filteredProvinces[0]};
+    states.canShow = true;
 };
 </script>
