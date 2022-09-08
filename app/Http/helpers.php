@@ -63,6 +63,7 @@ if (!function_exists('captchaMaking')) {
             $date = (new Jalalian($date[0], $date[1], $date[2]))->toCarbon();
 
     }
+
     function convertDateForDB(string $date): Carbon
     {
         $date = convertToEngNums($date);
@@ -76,10 +77,11 @@ if (!function_exists('captchaMaking')) {
     {
         Storage::disk('public')->delete($files);
     }
+
     function apartSearchParameters(Collection $data, array $searchParams): Collection
     {
         $searchValues = collect();
-        $data->each(function ($item, $key) use ($searchValues,$searchParams) {
+        $data->each(function ($item, $key) use ($searchValues, $searchParams) {
             foreach ($searchParams as $searchParam)
                 if ($key == $searchParam) {
 
@@ -90,6 +92,18 @@ if (!function_exists('captchaMaking')) {
 
         return $searchValues;
 
+    }
+
+    function str_to_slug(string $string, string $separator = '-')
+    {
+        $string = convertToEngNums(trim(mb_strtolower($string)));
+        $string = preg_replace('![' . preg_quote($separator === '-' ? '_' : '-') . ']+!u', $separator, $string);
+
+        return preg_replace(
+            '/\\' . $separator . '{2,}/',
+            $separator,
+            preg_replace('/[^A-Za-z0-9\x{0620}-\x{064A}\x{0698}\x{067E}\x{0686}\x{06AF}\x{06CC}\x{06A9}]/ui', $separator, $string)
+        );
     }
 }
 

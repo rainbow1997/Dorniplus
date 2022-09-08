@@ -22,25 +22,25 @@ const props = defineProps({
 
         </header>
         <main class="container mx-auto ">
-            <section class=" flex flex-col flex-wrap  bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
+            <section class="relative flex flex-col flex-wrap  bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
 
 
                 <!-- For testing -->
                 <div
-                    class="shadow bg-white  md:p-2  flex flex-col   md:flex-row   box-header-color md:gap-y-2 md:mt-8  dark:bg-gray-800  md:gap-x-3 shadow text-right">
+                    class="shadow bg-white  md:p-2  flex flex-col   md:flex-row   box-header-color gap-y-2 md:mt-8  dark:bg-gray-800  md:gap-x-3 shadow text-right">
                     <section v-for="post in posts.data" class=" flex bg-white md:w-1/3 items-center px-3 ">
-                        <article class=" shadow flex flex-col  my-4 bg-slate-50 gap-1 overflow-hidden h-full relative ">
+                        <article class=" shadow flex flex-col  my-4 bg-slate-50 gap-1 overflow-hidden h-full w-full relative ">
                             <div class="">
-                                <Link :href="route('posts.show',{post: post.id,title: post.title})"
+                                <Link :href="route('posts.show',{post: post.id,slug: post.slug})"
                                       class="opacity-80 hover:opacity-100">
                                     <img :alt="post.title" :src="'/storage/'+post.post_image"
                                          class=" object-fill h-48  w-full rounded">
                                 </Link>
                             </div>
-                            <div class="flex flex-1 flex-col gap-3 ps-4 pt-2 px-2">
+                            <div class="flex flex-1 flex-col gap-x-3 gap-y-1   justify-between ps-4 pt-2 px-2">
                                 <div
                                     class="shadow border-gray-200 flex h-10 items-center justify-center overflow-hidden">
-                                    <Link :href="route('posts.show',{post: post.id,title: post.title})"
+                                    <Link :href="route('posts.show',{post: post.id,slug: post.slug})"
                                           class="max-w-sm text-xs text-black md:text-base font-medium box-text-color-darker paragraph-ellipsis-2 leading-relaxed">
                                         <h1 class="text-sm  text-black md:text-base font-bold box-text-color-darker paragraph-ellipsis-2 leading-relaxed">
                                             {{ post.title }}</h1>
@@ -66,11 +66,11 @@ const props = defineProps({
                                     <span v-html="post.summary"></span>
 
                                 </div>
-                                <div class="flex items-center justify-center  ">
+                                <div class="flex items-center justify-center pb-2  ">
                                     <button
                                         class="  w-28 h-10 text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm  dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
                                         type="button">
-                                        <Link :href="route('posts.show',{post: post.id,title: post.title})">
+                                        <Link :href="route('posts.show',{post: post.id,slug: post.slug})">
                                             ادامه مطلب
                                         </Link>
 

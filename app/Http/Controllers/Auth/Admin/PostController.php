@@ -90,6 +90,7 @@ class PostController extends Controller
             $validData->put('post_image', $this->uploadPostImage($request));
         $validData->put('estimated_time', $this->estimatedTimeCaculating($validData['text']));
         $validData->put('user_id', Auth::id());
+        $validData['slug'] = str_to_slug($validData['title'], '_');// ofcourse we can use put but it's a good way too.
         //dd($validData->toArray());
         $post = Post::create($validData->toArray());
         activity()->performedOn($post)
@@ -150,6 +151,7 @@ class PostController extends Controller
         return ($datetime = date('i:s', $secondDuration));
     }
 
+
     public function create()
     {
         $categories = Category::all();
@@ -169,13 +171,15 @@ class PostController extends Controller
     {
 
         $validated = $this->validateEditedPost($request, $post);
+        $validated['slug'] = str_to_slug($validated['title'], '_');// ofcourse we can use put but it's a good way too.
+
         if ($request->hasFile('post_image')) {
             removeFiles($post->post_image);
             $validated['post_image'] = $this->uploadPostImage($request);
             $post->post_image = $validated['post_image'];
         }
 
-
+        $post->slug = $validated['slug'];
         $post->category_id = $validated['category_id'];
         $post->title = $validated['title'];
         $post->text = $validated['text'];
