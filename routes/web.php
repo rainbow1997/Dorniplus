@@ -28,7 +28,9 @@ use Inertia\Inertia;
 |
 */
 
+
 Route::get('/', [HomeController::class, 'index'])->name('homepage');
+Route::get('/posts/{post}/{slug}', [HomeController::class, 'showPost'])->name('home.post.show');
 
 Route::group([
     'middleware' => 'guest'
@@ -38,7 +40,6 @@ Route::group([
     })->name('code_verification');
 
 
-    Route::resource('categories', CategoryController::class);//permissions in its controller
 
     Route::get('/captcha', function () {
         return view('helpers/captcha_show');
@@ -61,6 +62,8 @@ Route::group([
 Route::group([
     'middleware' => ['auth', 'verified']
 ], function () {
+    Route::resource('categories', CategoryController::class);//permissions in its controller
+
     Route::resource('users', UserController::class);
     Route::resource('posts', PostController::class);
 

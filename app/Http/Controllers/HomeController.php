@@ -20,7 +20,10 @@ class HomeController extends Controller
             'posts' => $this->getPosts()//for test *
         ]);
     }
-
+    public function showPost(Post $post){
+        $post->load(['writerPerson', 'category']);
+        return Inertia::render('Post/Show', ['post' => $post]);
+    }
     private function getPosts()
     {
         $posts = Post::query()->with(['category', 'writerPerson']);

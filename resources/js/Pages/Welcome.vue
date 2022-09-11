@@ -27,12 +27,12 @@ const props = defineProps({
 
                 <!-- For testing -->
                 <div
-                    class="shadow bg-white  md:p-2  flex flex-col   md:flex-row   box-header-color gap-y-2 md:mt-8  dark:bg-gray-800  md:gap-x-3 shadow text-right">
+                    class="shadow bg-white  md:p-2  flex flex-col   md:flex-row   box-header-color gap-y-2 dark:bg-gray-800  md:gap-x-3 shadow text-right">
                     <section v-for="post in posts.data" class=" flex bg-white md:w-1/3 items-center px-3 ">
                         <article
                             class=" shadow flex flex-col  my-4 bg-slate-50 gap-1 overflow-hidden h-full w-full relative ">
                             <div class="">
-                                <Link :href="route('posts.show',{post: post.id,slug: post.slug})"
+                                <Link :href="route('home.post.show',{post: post.id,slug: post.slug})"
                                       class="opacity-80 hover:opacity-100">
                                     <img :alt="post.title" :src="'/storage/'+post.post_image"
                                          class=" object-fill h-48  w-full rounded">
@@ -41,7 +41,7 @@ const props = defineProps({
                             <div class="flex flex-1 flex-col gap-x-3 gap-y-1   justify-between ps-4 pt-2 px-2">
                                 <div
                                     class="shadow border-gray-200 flex h-10 items-center justify-center overflow-hidden">
-                                    <Link :href="route('posts.show',{post: post.id,slug: post.slug})"
+                                    <Link :href="route('home.post.show',{post: post.id,slug: post.slug})"
                                           class="max-w-sm text-xs text-black md:text-base font-medium box-text-color-darker paragraph-ellipsis-2 leading-relaxed">
                                         <h1 class="text-sm  text-black md:text-base font-bold box-text-color-darker paragraph-ellipsis-2 leading-relaxed">
                                             {{ post.title }}</h1>
@@ -52,7 +52,7 @@ const props = defineProps({
                                     <div class="flex  justify-between  ">
                                         <h6 class="font-light rtl italic ">
                                             نویسنده:</h6>
-                                        <h5 class=" mr-10 font-medium">موضوع:</h5>
+                                        <h5 class=" mr-12 font-medium">موضوع:</h5>
                                         <h6 class="font-light">زمان تقریبی مطالعه:</h6>
                                     </div>
                                     <div class="flex flex-row justify-between ">
@@ -73,7 +73,7 @@ const props = defineProps({
                                     <button
                                         class="  w-28 h-10 text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm  dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
                                         type="button">
-                                        <Link :href="route('posts.show',{post: post.id,slug: post.slug})">
+                                        <Link :href="route('home.post.show',{post: post.id,slug: post.slug})">
                                             ادامه مطلب
                                         </Link>
 

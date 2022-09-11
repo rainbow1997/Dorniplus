@@ -17,7 +17,8 @@ class LogController extends Controller
     public function index()
     {
 
-        $activities = Activity::all();
+        $activities = Activity::all()->sortDesc();
+
         $activities->each(function ($item, $key) {
             $item->user = $item->causer_type::find($item->causer_id);
         });
