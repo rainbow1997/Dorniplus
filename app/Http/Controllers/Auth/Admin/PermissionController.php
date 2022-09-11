@@ -4,16 +4,18 @@ namespace App\Http\Controllers\Auth\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
-use Illuminate\Support\Facades\Auth;
+
 class PermissionController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
@@ -24,22 +26,10 @@ class PermissionController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-
-        return Inertia::render('Auth/Permissions/Add');
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return Response
      */
     public function store(Request $request)
     {
@@ -57,10 +47,22 @@ class PermissionController extends Controller
     }
 
     /**
+     * Show the form for creating a new resource.
+     *
+     * @return Response
+     */
+    public function create()
+    {
+        //
+
+        return Inertia::render('Auth/Permissions/Add');
+    }
+
+    /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return Response
      */
     public function show($id)
     {
@@ -70,8 +72,8 @@ class PermissionController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return Response
      */
     public function edit(Permission $permission)
     {
@@ -84,9 +86,9 @@ class PermissionController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param int $id
+     * @return Response
      */
     public function update(Request $request, Permission $permission)
     {
@@ -107,8 +109,8 @@ class PermissionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return Response
      */
     public function destroy(Permission $permission)
     {
@@ -120,7 +122,9 @@ class PermissionController extends Controller
         return redirect()->route('permissions.index')
             ->with('message', 'مجوز با موفقیت حذف گردید');
     }
-    public function destroyRoleFromPermission(Role $role, Permission $permission){
+
+    public function destroyRoleFromPermission(Role $role, Permission $permission)
+    {
         activity()->performedOn($permission)
             ->causedBy(Auth::user())
             ->log("مجوز $permissio->name از نقش کاربری $role->name سلب شد.");
@@ -131,13 +135,14 @@ class PermissionController extends Controller
 
     public function addRole(Permission $permission)
     {
-        $roles = Role::select(['name','id'])->get()->toArray();
+        $roles = Role::select(['name', 'id'])->get()->toArray();
 
         return Inertia::render('Auth/Permissions/AddRole', [
             'permission' => $permission,
             'roles' => $roles
         ]);
     }
+
     public function setRoleToPermission(Permission $permission, Request $request)
     {
 
@@ -146,8 +151,7 @@ class PermissionController extends Controller
             'data' => 'required|array',
             'data.*' => 'integer|exists:roles,id',
         ]);
-        foreach ($request['data'] as $role_id)
-        {
+        foreach ($request['data'] as $role_id) {
             $role = Role::find($role_id);
             $permission->assignRole($role);
             activity()->performedOn($permission)

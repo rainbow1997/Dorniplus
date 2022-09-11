@@ -10,7 +10,7 @@ class Post extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'summary','text', 'post_image', 'estimated_time', 'category_id', 'user_id','updated_at','slug'];
+    protected $fillable = ['title', 'summary', 'text', 'post_image', 'estimated_time', 'category_id', 'user_id', 'updated_at', 'slug'];
 
     public function category()
     {
@@ -59,7 +59,7 @@ class Post extends Model
 
     public function scopeStartDate($query, $startDate)
     {
-       // dd($startDate->timestamp);
+        // dd($startDate->timestamp);
         if (!is_null($startDate))
             return $query->whereDate('updated_at', '>=', $startDate->toDateString());
     }
@@ -75,7 +75,7 @@ class Post extends Model
     {
 
         if (!is_null($startDate) && !is_null($endDate)) {
-           return $query->whereBetween('updated_at', [$startDate->toDateString(), $endDate->toDateString()]);
+            return $query->whereBetween('updated_at', [$startDate->toDateString(), $endDate->toDateString()]);
 
         }
 

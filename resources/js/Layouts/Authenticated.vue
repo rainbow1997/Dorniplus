@@ -6,7 +6,7 @@ import BreezeDropdownLink from '@/Components/DropdownLink.vue'
 import BreezeNavLink from '@/Components/NavLink.vue'
 import BreezeResponsiveNavLink from '@/Components/ResponsiveNavLink.vue'
 import {Link} from '@inertiajs/inertia-vue3'
-import flowbite from 'flowbite/dist/flowbite'
+
 const showingNavigationDropdown = ref(false);
 </script>
 
@@ -37,7 +37,7 @@ const showingNavigationDropdown = ref(false);
                                 <BreezeNavLink :href="route('roles.index')">
                                     نقش های کاربری
                                 </BreezeNavLink>
-                                <BreezeNavLink class="" :href="route('permissions.index')">
+                                <BreezeNavLink :href="route('permissions.index')" class="">
                                     دسترسی و مجوز ها
                                 </BreezeNavLink>
                                 <BreezeNavLink :href="route('site_admin.index')">

@@ -16,6 +16,7 @@ class Category extends Model
     {
         return $this->hasMany(Post::class);
     }
+
     public function getCreatedAtAttribute($value)
     {
         return CalendarUtils::strftime('Y/m/d', strtotime($value));
@@ -29,18 +30,21 @@ class Category extends Model
 
 
     }
+
     public function scopeTitle($query, $title)
     {
 
-        return $query->where('title','like',"%{$title}%");
+        return $query->where('title', 'like', "%{$title}%");
     }
-    public function scopeCreatedat($query,$created_at)
+
+    public function scopeCreatedat($query, $created_at)
     {
 
         if (!is_null($created_at))
             return $query->whereDate('created_at', '>=', $created_at->toDateString());
     }
-    public function scopeUpdatedat($query,$updated_at)
+
+    public function scopeUpdatedat($query, $updated_at)
     {
         if (!is_null($updated_at))
             return $query->whereDate('updated_at', '>=', $updated_at->toDateString());

@@ -67,7 +67,7 @@
                         <pagination :links="props.provinces.links"/>
 
                         <div v-if="states.selectedProvince">
-                            <h3 class="mb-3"  >شهر ها</h3>
+                            <h3 class="mb-3">شهر ها</h3>
 
                             <Link
                                 :href="route('regions.city.create',states.selectedProvince.id)"
@@ -122,18 +122,19 @@ import Pagination from '@/Layouts/pagination'
 import {Inertia} from '@inertiajs/inertia'
 
 import BreezeButton from '@/Components/Button'
+
 const props = defineProps({
-   provinces:{},
+    provinces: {},
 });
 const states = reactive({
-    selectedProvince:null,
-    canShow:false
+    selectedProvince: null,
+    canShow: false
 });
 const destroy = (id) => {
     Inertia.delete(route("regions.province.destroy", id));
 }
 const destroyCity = (id) => {
-    Inertia.delete(route("regions.city.destroy", id),{replace:true});
+    Inertia.delete(route("regions.city.destroy", id), {replace: true});
     states.selectedProvince = null;
 
 }

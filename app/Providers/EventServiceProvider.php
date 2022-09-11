@@ -5,7 +5,6 @@ namespace App\Providers;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
-use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -16,7 +15,7 @@ class EventServiceProvider extends ServiceProvider
      */
     protected $listen = [
         'App\Events\TempFileDownloaded' => [
-          'App\Listeners\DeleteTempFiles',
+            'App\Listeners\DeleteTempFiles',
         ],
         Registered::class => [
             SendEmailVerificationNotification::class,

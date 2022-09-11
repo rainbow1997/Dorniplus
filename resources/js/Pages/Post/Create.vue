@@ -14,7 +14,7 @@
                     <div class="p-6 bg-white border-b border-gray-200">
                         <BreezeValidationErrors class="mb-4"/>
 
-                        <form method="post" @submit.prevent="submit" enctype="multipart/form-data">
+                        <form enctype="multipart/form-data" method="post" @submit.prevent="submit">
                             <div>
                                 <label for="title">عنوان</label>
                                 <input
@@ -120,7 +120,7 @@ export default {
     },
     methods: {
         submit() {
-            this.form.post(route("posts.store"),{forceFormData:true});
+            this.form.post(route("posts.store"), {forceFormData: true});
         },
     },
 };

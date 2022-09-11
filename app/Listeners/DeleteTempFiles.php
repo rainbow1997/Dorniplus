@@ -4,7 +4,6 @@ namespace App\Listeners;
 
 use App\Events\TempFileDownloaded;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\Storage;
 
 class DeleteTempFiles implements ShouldQueue
@@ -22,7 +21,7 @@ class DeleteTempFiles implements ShouldQueue
     /**
      * Handle the event.
      *
-     * @param  \App\Events\TempFileDownloaded  $event
+     * @param TempFileDownloaded $event
      * @return void
      */
     public function handle(TempFileDownloaded $event)
@@ -30,10 +29,10 @@ class DeleteTempFiles implements ShouldQueue
 
         //
 
-            if($event->tempFile->type == 'directory')
-                Storage::disk('public')->deleteDirectory($event->tempFile->path); //remove template folder
-            else
-                Storage::disk('public')->delete($event->tempFile->path);//remove .zipfile
+        if ($event->tempFile->type == 'directory')
+            Storage::disk('public')->deleteDirectory($event->tempFile->path); //remove template folder
+        else
+            Storage::disk('public')->delete($event->tempFile->path);//remove .zipfile
 
     }
 }

@@ -6,18 +6,20 @@ use App\Http\Controllers\Controller;
 use App\Models\City;
 use App\Models\Province;
 use Illuminate\Http\Request;
-use Inertia\Inertia;
 use Illuminate\Support\Facades\Auth;
+use Inertia\Inertia;
 
 class RegionController extends Controller
 {
     //
-    public function __construct(){
+    public function __construct()
+    {
         $this->middleware('permission:region-list|region-create|region-edit|region-delete', ['only' => ['index', 'store']]);
-        $this->middleware('permission:region-create', ['only' => ['createProvince','CreateCity', 'storeProvince','storeCity']]);
-        $this->middleware('permission:region-edit', ['only' => ['editProvince','editCity', 'updateProvince','updateCity']]);
-        $this->middleware('permission:region-delete', ['only' => ['destroyCity','destroyProvince']]);
+        $this->middleware('permission:region-create', ['only' => ['createProvince', 'CreateCity', 'storeProvince', 'storeCity']]);
+        $this->middleware('permission:region-edit', ['only' => ['editProvince', 'editCity', 'updateProvince', 'updateCity']]);
+        $this->middleware('permission:region-delete', ['only' => ['destroyCity', 'destroyProvince']]);
     }
+
     public function index()
     {
         $provinces = Province::with('cities')->latest()->paginate(10);

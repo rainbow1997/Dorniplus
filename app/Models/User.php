@@ -7,7 +7,6 @@ use App\Enum\MilitaryStatus;
 use App\Notification\RegisterNotification;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -97,37 +96,41 @@ class User extends Authenticatable implements MustVerifyEmail, \Illuminate\Contr
     {
         return $this->city->title;
     }
-    public function scopeFullname($query, $fullname){
 
-        return $query->where('fname' , 'like' , "%{$fullname}%")
-                     ->orWhere('lname', 'like',"%{$fullname}%");
+    public function scopeFullname($query, $fullname)
+    {
+
+        return $query->where('fname', 'like', "%{$fullname}%")
+            ->orWhere('lname', 'like', "%{$fullname}%");
     }
+
     public function scopeEmail($query, $email)
     {
-        return $query->where('email','like',"%{$email}%");
+        return $query->where('email', 'like', "%{$email}%");
     }
-    public function scopeProvince($query,$province)
+
+    public function scopeProvince($query, $province)
     {
-        return $query->whereHas('province',function($query) use($province){
-            return $query->where('title','like',"%{$province}%");
-        });
-    }
-    public function scopeCity($query,$city)
-    {
-        return $query->whereHas('city',function($query) use($city){
-            return $query->where('title','like',"%{$city}%");
+        return $query->whereHas('province', function ($query) use ($province) {
+            return $query->where('title', 'like', "%{$province}%");
         });
     }
 
+    public function scopeCity($query, $city)
+    {
+        return $query->whereHas('city', function ($query) use ($city) {
+            return $query->where('title', 'like', "%{$city}%");
+        });
+    }
 
 
-    public function scopeBirth($query,$birth)
+    public function scopeBirth($query, $birth)
     {
         if (!is_null($birth))
             return $query->whereDate('birth', '=', $birth->toDateString());
     }
 
-    public function scopeCreatedat($query,$created_at)
+    public function scopeCreatedat($query, $created_at)
     {
         if (!is_null($created_at))
             return $query->whereDate('created_at', '>=', $created_at->toDateString());

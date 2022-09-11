@@ -8,8 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class TempFile extends Model
 {
     use HasFactory;
+
     protected $table = 'temp_files';
-    protected $fillable = ['path' ,'type','user_id','description'];
+    protected $fillable = ['path', 'type', 'user_id', 'description'];
+
     public function user()
     {
         return $this->belongsTo(User::class);

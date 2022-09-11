@@ -26,7 +26,7 @@ class HomeController extends Controller
         $posts = Post::query()->with(['category', 'writerPerson']);
 
 
-         $posts = $posts->orderBy('updated_at','DESC')->paginate(10);
+        $posts = $posts->orderBy('updated_at', 'DESC')->paginate(10);
 //         $updated_posts = $posts->getCollection();
 //         $posts->each(function($post){
 //             $post->hasContinue = FALSE;
@@ -41,9 +41,9 @@ class HomeController extends Controller
 //                 $post->text = substr(html_entity_decode($post->text),0,$postTextLength - 1);
 //             return $post;
 //         });
-         //$posts->setCollection($updated_posts);
+        //$posts->setCollection($updated_posts);
 //         dd($posts);
-         return $posts;
+        return $posts;
 
     }
 }

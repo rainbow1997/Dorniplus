@@ -16,7 +16,8 @@
                         <form @submit.prevent="submit">
                             <div class="flex flex-row gap-3 p-6 items-center">
                                 <label id="myLabel" class="typo__label" for="mySelect">نقش کاربری هدف</label>
-                                <multiselect id="mySelect" v-model="form.values" :clear-on-select="false" :close-on-select="false"
+                                <multiselect id="mySelect" v-model="form.values" :clear-on-select="false"
+                                             :close-on-select="false"
                                              :multiple="true" :options="roles" :preselect-first="true"
                                              :preserve-search="true" class="max-w-3xl" label="name"
                                              placeholder="انتخاب کنید..." track-by="id">

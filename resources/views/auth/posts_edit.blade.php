@@ -55,7 +55,8 @@
                         </div>
                         <div class="mt-4">
                             <x-label value="متن خود را وارد کنید"></x-label>
-                            <x-forms.tinymce-editor nameAttr="text" valueAttr="{{!! html_entity_decode($post->text) !!}}"/>
+                            <x-forms.tinymce-editor nameAttr="text"
+                                                    valueAttr="{{!! html_entity_decode($post->text) !!}}"/>
 
                         </div>
                         <div class="mt-4">

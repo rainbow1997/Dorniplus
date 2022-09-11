@@ -71,11 +71,6 @@ class PostController extends Controller
 
     }
 
-    protected function validatePostSearchStrings()
-    {
-
-    }
-
     public function show(Post $post)
     {
         $post->load(['writerPerson', 'category']);
@@ -151,7 +146,6 @@ class PostController extends Controller
         return ($datetime = date('i:s', $secondDuration));
     }
 
-
     public function create()
     {
         $categories = Category::all();
@@ -222,5 +216,10 @@ class PostController extends Controller
 
         return redirect()->route('posts.index')
             ->with('message', 'مطلب مورد نظر حذف گردید.');
+    }
+
+    protected function validatePostSearchStrings()
+    {
+
     }
 }

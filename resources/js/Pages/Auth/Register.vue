@@ -34,7 +34,8 @@
                 <BreezeLabel for="birth" value="تاریخ تولد"/>
                 <date-picker v-model="form.birth"
                              autofocus
-                             class="mt-1 block w-full  bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" display-format="jYYYY/jMM/jDD" format="YYYY/MM/DD" initial-value="1970/01/01"/>
+                             class="mt-1 block w-full  bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                             display-format="jYYYY/jMM/jDD" format="YYYY/MM/DD" initial-value="1970/01/01"/>
 
 
             </div>

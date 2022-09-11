@@ -173,7 +173,6 @@ class RegisteredUserController extends Controller
         $validData = collect($this->storeValidating($user, $request));
 
 
-
         if ($request->hasFile('avatar')) {
             removeFiles($user->avatar);
             $validData['avatar'] = $this->uploadAvatar($request);

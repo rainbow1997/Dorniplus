@@ -30,8 +30,10 @@
         @foreach ($styles as $style)
         {{ $style['selector'] }}
 
+
         {
         {{ $style['style'] }}
+
 
 
         }

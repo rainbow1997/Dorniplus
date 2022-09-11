@@ -2,11 +2,6 @@
  * @license MIT */
 
 /*!
-            * mustache.js - Logic-less {{mustache}} templates with JavaScript
-            * http://github.com/janl/mustache.js
-            */
-
-/*!
  * Sizzle CSS Selector Engine v2.3.6
  * https://sizzlejs.com/
  *
@@ -30,10 +25,6 @@
  *
  * Date: 2021-03-02T17:08Z
  */
-
-/*!***********************************************************************!*\
-    !*** ./node_modules/persian-datepicker/dist/js/persian-datepicker.js ***!
-    \***********************************************************************/
 
 //! moment.js
 

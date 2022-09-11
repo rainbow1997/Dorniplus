@@ -3,21 +3,35 @@
 namespace App\Http\Controllers\Auth\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Builder as EloquentBuilder;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Request as RequestFacade;
 use Inertia\Inertia;
-use Illuminate\Support\Facades\Auth;
 
-use Illuminate\Database\Eloquent\Builder as EloquentBuilder;
 class SiteAdminController extends Controller
 {
     protected array $searchParams = ['fullname', 'email', 'province', 'city', 'birth', 'created_at'];
 
+    public function index()
+    {
+        //
+
+        $users = User::role('Admin');
+        $users = $this->searchFiltering($users);
+        $users = $users->orderBy('id', 'ASC')->paginate(5);
+
+
+        return
+            Inertia::render('SiteAdmin/Index', ['users' => $users]);
+    }
+
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     protected function searchFiltering(EloquentBuilder $users)
     {
@@ -54,37 +68,25 @@ class SiteAdminController extends Controller
 
         return $users = $users->with(['province', 'city', 'roles']);
     }
-    public function index()
-    {
-        //
-
-        $users = User::role('Admin');
-        $users = $this->searchFiltering($users);
-        $users = $users->orderBy('id', 'ASC')->paginate(5);
-
-
-        return
-            Inertia::render('SiteAdmin/Index',['users' => $users]);
-    }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
         //
         $users = User::query();
-        $users = $this->searchFiltering($users)->orderBy('id','DESC')->paginate(5);
-        return Inertia::render('SiteAdmin/Add',['users' => $users]);
+        $users = $this->searchFiltering($users)->orderBy('id', 'DESC')->paginate(5);
+        return Inertia::render('SiteAdmin/Add', ['users' => $users]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return Response
      */
     public function store(Request $request)
     {
@@ -95,14 +97,14 @@ class SiteAdminController extends Controller
         activity()->performedOn($user)
             ->causedBy(Auth::user())
             ->log("مدیر جدید با ایمیل $user->email افزوده شد. ");
-        return redirect()->route('site_admin.index')->with('message','مدیر جدید با موفقیت افزوده گردید');
+        return redirect()->route('site_admin.index')->with('message', 'مدیر جدید با موفقیت افزوده گردید');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return Response
      */
     public function show($id)
     {
@@ -112,8 +114,8 @@ class SiteAdminController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return Response
      */
     public function edit($id)
     {
@@ -123,9 +125,9 @@ class SiteAdminController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param int $id
+     * @return Response
      */
     public function update(Request $request, $id)
     {
@@ -135,8 +137,8 @@ class SiteAdminController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return Response
      */
     public function destroy($id)
     {

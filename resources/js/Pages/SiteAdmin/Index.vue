@@ -4,10 +4,8 @@
 </template>
 <script setup>
 import UsersIndex from '../UsersIndex'
-import {Head, useForm} from '@inertiajs/inertia-vue3'
-import { ref, reactive, computed } from 'vue'
-import { Inertia } from '@inertiajs/inertia'
+
 const props = defineProps({
-    users:{}
+    users: {}
 });
 </script>

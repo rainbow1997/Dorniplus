@@ -25,7 +25,7 @@ class UsersChart extends Controller
         $this->provincesTitles = collect();
         $this->provincesCounts = collect();
         foreach (Province::all() as $province) {
-            if($province == null)
+            if ($province == null)
                 dd($province);
             $this->provincesTitles->push($province->title);
             $this->provincesCounts->push($province->users()->count());

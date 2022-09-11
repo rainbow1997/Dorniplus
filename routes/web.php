@@ -1,14 +1,14 @@
 <?php
 
 use App\Charts\UsersChart;
+use App\Http\Controllers\Auth\Admin\CategoryController;
 use App\Http\Controllers\Auth\Admin\LogController;
+use App\Http\Controllers\Auth\Admin\PermissionController;
 use App\Http\Controllers\Auth\Admin\PostController;
 use App\Http\Controllers\Auth\Admin\RegionController;
 use App\Http\Controllers\Auth\Admin\RoleController;
-use App\Http\Controllers\Auth\Admin\PermissionController;
-use App\Http\Controllers\Auth\Admin\UserController;
-use App\Http\Controllers\Auth\Admin\CategoryController;
 use App\Http\Controllers\Auth\Admin\SiteAdminController;
+use App\Http\Controllers\Auth\Admin\UserController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\HomeController;
@@ -30,113 +30,112 @@ use Inertia\Inertia;
 
 Route::get('/', [HomeController::class, 'index'])->name('homepage');
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::group([
+    'middleware' => 'guest'
+], function () {
+    Route::get('/code_verification', function () {
+        return view('auth/code_verification');
+    })->name('code_verification');
 
 
-Route::get('/code_verification', function () {
-    return view('auth/code_verification');
-})->name('code_verification');
-Route::post('/checking_verification', [VerifyEmailController::class, 'checkingCode'])
-    ->name('checking_verification')
-    ->withoutMiddleware(['auth']);
+    Route::resource('categories', CategoryController::class);//permissions in its controller
 
-Route::get('/changePassword', [RegisteredUserController::class, 'changePasswordIndex'])
-    ->middleware(['auth', 'verified', 'password.confirm'])->name('changePassword');
+    Route::get('/captcha', function () {
+        return view('helpers/captcha_show');
+    });
+    Route::get('/captcha2', function () {
+        return captchaMaking();
+    });
+    Route::get('/information', function () {
 
-Route::post('/changePassword', [RegisteredUserController::class, 'changePassword'])
-    ->middleware(['auth', 'verified', 'password.confirm'])->name('changePassword.save');
+        return phpinfo();
+        //return $provinces;
+    });
 
-Route::get('/editProfile', [RegisteredUserController::class, 'editProfile'])
-    ->middleware(['auth', 'verified'])->name('editProfile');
-
-Route::put('/storeProfile/{user}', [RegisteredUserController::class, 'storeProfile'])
-    ->middleware(['auth', 'verified'])->name('storeProfile');
-
-Route::get('/regions', [RegionController::class, 'index'])
-    ->middleware(['auth', 'verified'])->name('regions.index');
-Route::get('/regions/province/{province}', [RegionController::class, 'showProvince'])
-    ->middleware(['auth', 'verified'])->name('regions.province.show');
-
-Route::get('province/create', [RegionController::class, 'createProvince'])
-    ->middleware(['auth', 'verified'])->name('regions.province.create');
-
-Route::post('/province/storeProvince', [RegionController::class, 'storeProvince'])
-    ->middleware(['auth', 'verified'])->name('regions.province.store');
-
-Route::get('/province/edit/{province}', [RegionController::class, 'editProvince'])
-    ->middleware(['auth', 'verified'])->name('regions.province.edit');
-
-Route::put('/province/update/{province}', [RegionController::class, 'updateProvince'])
-    ->middleware(['auth', 'verified'])->name('regions.province.update');
-
-Route::delete('/province/destroy/{province}', [RegionController::class, 'destroyProvince'])
-    ->middleware(['auth', 'verified'])->name('regions.province.destroy');
-
-Route::get('/city/create/{province}', [RegionController::class, 'createCity'])
-    ->middleware(['auth', 'verified'])->name('regions.city.create');
-
-Route::post('/city/storeCity/{province}', [RegionController::class, 'storeCity'])
-    ->middleware(['auth', 'verified'])->name('regions.city.store');
-Route::delete('/city/destroy/{city}', [RegionController::class, 'destroyCity'])
-    ->middleware(['auth', 'verified'])->name('regions.city.destroy');
-
-//Route::get('/posts/edit/{post}', [PostController::class, 'edit'])
-//    ->middleware(['auth', 'verified'])->name('posts.edit');  //////We have resource controller
-//
-//Route::post('/posts/update/{post}', [PostController::class, 'update'])
-//    ->middleware(['auth', 'verified'])->name('posts.update');
-
-Route::group(['middleware' => ['role:Super Admin']],function(){
-
-    Route::resource('roles', RoleController::class);
-
-    Route::resource('permissions',PermissionController::class);
-
-    Route::get('/addRoleToPermission/{permission}',[PermissionController::class,'addRole'])
-        ->name('addRoleToPermission');
-    Route::put('/setRoleToPermission/{permission}',[PermissionController::class,'setRoleToPermission'])
-        ->name('setRoleToPermission');
-
-    Route::delete('/destroyRoleFromPermission/role/{role}/permission/{permission}',[PermissionController::class,'destroyRoleFromPermission'])
-        ->name('destroyRoleFromPermission');
-    Route::resource('site_admin',SiteAdminController::class);
-
-
+    Route::get('/test-mail', function () {
+        Notification::route('mail', 'personal@mostafajamali.ir')->notify(new RegisterNotification(Auth::user()));
+        return 'Sent';
+    });
 });
-Route::group(['middleware' => ['auth', 'verified']], function () {
 
-
+Route::group([
+    'middleware' => ['auth', 'verified']
+], function () {
     Route::resource('users', UserController::class);
     Route::resource('posts', PostController::class);
 
     Route::get('/reporting/{method}', [UserController::class, 'displayUsersReport'])->name('reporting');
-    Route::get('/downloading/{tempFile}',[UserController::class,'downloading'])->name('downloading');
-    Route::post('getReport',[UserController::class,'getReport'])->name('users.report');
+    Route::get('/downloading/{tempFile}', [UserController::class, 'downloading'])->name('downloading');
+    Route::post('getReport', [UserController::class, 'getReport'])->name('users.report');
     Route::get('/chart', [UsersChart::class, 'showChart'])->name('chart');
     Route::get('/logs', [LogController::class, 'index'])
         ->name('logs');
+    Route::get('/dashboard', function () {
+        return Inertia::render('Dashboard');
+    })->name('dashboard');
+
+    Route::post('/checking_verification', [VerifyEmailController::class, 'checkingCode'])
+        ->name('checking_verification')
+        ->withoutMiddleware(['auth']);
+
+    Route::get('/changePassword', [RegisteredUserController::class, 'changePasswordIndex'])
+        ->middleware(['password.confirm'])->name('changePassword');
+
+    Route::post('/changePassword', [RegisteredUserController::class, 'changePassword'])
+        ->middleware(['password.confirm'])->name('changePassword.save');
+
+    Route::get('/editProfile', [RegisteredUserController::class, 'editProfile'])
+        ->name('editProfile');
+
+    Route::put('/storeProfile/{user}', [RegisteredUserController::class, 'storeProfile'])
+        ->name('storeProfile');
+
+    Route::get('/regions', [RegionController::class, 'index'])
+        ->name('regions.index');
+    Route::get('/regions/province/{province}', [RegionController::class, 'showProvince'])
+        ->name('regions.province.show');
+
+    Route::get('province/create', [RegionController::class, 'createProvince'])
+        ->name('regions.province.create');
+
+    Route::post('/province/storeProvince', [RegionController::class, 'storeProvince'])
+        ->name('regions.province.store');
+
+    Route::get('/province/edit/{province}', [RegionController::class, 'editProvince'])
+        ->name('regions.province.edit');
+
+    Route::put('/province/update/{province}', [RegionController::class, 'updateProvince'])
+        ->name('regions.province.update');
+
+    Route::delete('/province/destroy/{province}', [RegionController::class, 'destroyProvince'])
+        ->name('regions.province.destroy');
+
+    Route::get('/city/create/{province}', [RegionController::class, 'createCity'])
+        ->name('regions.city.create');
+
+    Route::post('/city/storeCity/{province}', [RegionController::class, 'storeCity'])
+        ->name('regions.city.store');
+    Route::delete('/city/destroy/{city}', [RegionController::class, 'destroyCity'])
+        ->name('regions.city.destroy');
 
 
 });
-Route::resource('categories',CategoryController::class);//permissions in its controller
+Route::group(['middleware' => ['role:Super Admin']], function () {
 
-Route::get('/captcha', function () {
-    return view('helpers/captcha_show');
-});
-Route::get('/captcha2', function () {
-    return captchaMaking();
-});
-Route::get('/information', function () {
+    Route::resource('roles', RoleController::class);
 
-    return phpinfo();
-    //return $provinces;
+    Route::resource('permissions', PermissionController::class);
+
+    Route::get('/addRoleToPermission/{permission}', [PermissionController::class, 'addRole'])
+        ->name('addRoleToPermission');
+    Route::put('/setRoleToPermission/{permission}', [PermissionController::class, 'setRoleToPermission'])
+        ->name('setRoleToPermission');
+
+    Route::delete('/destroyRoleFromPermission/role/{role}/permission/{permission}', [PermissionController::class, 'destroyRoleFromPermission'])
+        ->name('destroyRoleFromPermission');
+    Route::resource('site_admin', SiteAdminController::class);
+
+
 });
-Route::get('/post/{post}/{slug}', [PostController::class, 'show'])
-    ->name('posts.show');
-Route::get('/test-mail', function () {
-    Notification::route('mail', 'personal@mostafajamali.ir')->notify(new RegisterNotification(Auth::user()));
-    return 'Sent';
-});
+
 require __DIR__ . '/auth.php';

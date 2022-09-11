@@ -203,9 +203,9 @@ return [
         'expire_datetime' => 'تاریخ انقضا',
         'birth' => 'تاریخ تولد',
         "summary" => "خلاصه متن",
-          "text" => "متن",
-          "post_image"=> "تصویر پست",
-          "category_id" => "موضوع متن"
+        "text" => "متن",
+        "post_image" => "تصویر پست",
+        "category_id" => "موضوع متن"
 
     ],
 ];

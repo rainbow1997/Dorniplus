@@ -17,7 +17,8 @@
                             </h2>
 
                             <div class="my-2 flex flex-row justify-between ">
-                                <Link :href="route('site_admin.create')" class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                                <Link :href="route('site_admin.create')"
+                                      class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                                       type="button">
                                     افزودن مدیر
                                 </link>
@@ -231,7 +232,8 @@
                                 <!--                                </div>-->
                                 <date-picker v-model="ourData.search.birth"
                                              autofocus
-                                             class="rounded-none rounded-l-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block min-w-0  text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" display-format="jYYYY/jMM/jDD"
+                                             class="rounded-none rounded-l-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block min-w-0  text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                             display-format="jYYYY/jMM/jDD"
                                              editable format="YYYY/MM/DD" placeholder="تاریخ تولد ..."/>
 
 

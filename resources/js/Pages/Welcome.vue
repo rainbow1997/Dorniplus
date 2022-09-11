@@ -29,7 +29,8 @@ const props = defineProps({
                 <div
                     class="shadow bg-white  md:p-2  flex flex-col   md:flex-row   box-header-color gap-y-2 md:mt-8  dark:bg-gray-800  md:gap-x-3 shadow text-right">
                     <section v-for="post in posts.data" class=" flex bg-white md:w-1/3 items-center px-3 ">
-                        <article class=" shadow flex flex-col  my-4 bg-slate-50 gap-1 overflow-hidden h-full w-full relative ">
+                        <article
+                            class=" shadow flex flex-col  my-4 bg-slate-50 gap-1 overflow-hidden h-full w-full relative ">
                             <div class="">
                                 <Link :href="route('posts.show',{post: post.id,slug: post.slug})"
                                       class="opacity-80 hover:opacity-100">
@@ -55,7 +56,9 @@ const props = defineProps({
                                         <h6 class="font-light">زمان تقریبی مطالعه:</h6>
                                     </div>
                                     <div class="flex flex-row justify-between ">
-                                        <h6 class=""> {{ post.writer_person.fname }} {{ post.writer_person.lname }} </h6>
+                                        <h6 class=""> {{ post.writer_person.fname }} {{
+                                                post.writer_person.lname
+                                            }} </h6>
                                         <h5 class=" ml-7 font-medium">{{ post.category.title }}</h5>
                                         <h6 class=" ml-5 font-light">{{ post.estimated_time }}</h6>
                                     </div>

@@ -7,20 +7,20 @@ use App\Events\TempFileDownloaded;
 use App\Http\Controllers\Controller;
 use App\Models\TempFile;
 use App\Models\User;
-use Illuminate\Support\Facades\Auth;
 use DB;
 use ExcelReport;
 use Hash;
+use Illuminate\Database\Eloquent\Builder as DBBuilder;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Request as RequestFacade;
 use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 use PdfReport;
 use Spatie\Permission\Models\Role;
 use ZanySoft\Zip\Zip;
-use Illuminate\Database\Eloquent\Builder as DBBuilder;
 
 class UserController extends Controller
 {
@@ -33,17 +33,12 @@ class UserController extends Controller
     protected array $searchParams = ['fullname', 'email', 'province', 'city', 'birth', 'created_at'];
     protected $tempDirectoryPath;
 
-    public function __construct(){
-        $this->middleware('permission:user-list|user-create|user-edit|user-delete', ['only' => ['index', 'store','getReport']]);
+    public function __construct()
+    {
+        $this->middleware('permission:user-list|user-create|user-edit|user-delete', ['only' => ['index', 'store', 'getReport']]);
         $this->middleware('permission:user-create', ['only' => ['create', 'store']]);
         $this->middleware('permission:user-edit', ['only' => ['edit', 'update']]);
         $this->middleware('permission:user-delete', ['only' => ['destroy']]);
-    }
-    public function excludeSuperAdmin(DBBuilder $users)
-    {
-        return
-            $users->whereNotIn('id',User::select('id')->role('Super Admin')->get()->toArray());
-
     }
 
     public function index()
@@ -82,11 +77,18 @@ class UserController extends Controller
         }
 
         $users = $users->with(['province', 'city', 'roles']);
-        $users =  $this->excludeSuperAdmin($users);
+        $users = $this->excludeSuperAdmin($users);
         $users = $users->orderBy('id', 'DESC')->paginate(5);
 
         return Inertia::render('UsersIndex', ['users' => $users]);
 
+
+    }
+
+    public function excludeSuperAdmin(DBBuilder $users)
+    {
+        return
+            $users->whereNotIn('id', User::select('id')->role('Super Admin')->get()->toArray());
 
     }
 

@@ -48,7 +48,8 @@
                                     <td>{{ $activity->subject_type }}</td>
                                     <td>{{ @$activity->event }}</td>
 
-                                    <td class="mx-2 px-2 ">{{ @$activity->user->fname }} - {{ @$activity->user->lname }}</td>
+                                    <td class="mx-2 px-2 ">{{ @$activity->user->fname }}
+                                        - {{ @$activity->user->lname }}</td>
                                     <td>{{ verta($activity->created_at) }} </td>
 
                                 </tr>
