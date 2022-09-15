@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 use Tightenco\Ziggy\Ziggy;
-
+use Illuminate\Support\Facades\Lang;
 class HandleInertiaRequests extends Middleware
 {
     /**
@@ -41,6 +41,11 @@ class HandleInertiaRequests extends Middleware
             ],
             'flash' => [
                 'message' => fn() => $request->session()->get('message')
+            ],
+            'langs' => [
+                'site_locale' => app()->getLocale(),
+                'fa' => Lang::get('site',[],'fa'),
+                'en' => Lang::get('site',[],'en')
             ],
             'ziggy' => function () {
                 return (new Ziggy)->toArray();

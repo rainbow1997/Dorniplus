@@ -1,8 +1,14 @@
 <script setup>
 import {Head, Link} from '@inertiajs/inertia-vue3'
 import Pagination from '@/Layouts/pagination'
+import { computed } from 'vue'
+
+import { useStore } from 'vuex'
+
 import Navbar from '@/Layouts/Navbar'
 
+const store = useStore();
+const lang = store.state.lang;
 const props = defineProps({
     canLogin: Boolean,
     canRegister: Boolean,
@@ -11,12 +17,13 @@ const props = defineProps({
     posts: {},
     Pagination,
     Navbar,
+
 });
 </script>
 
 <template>
     <div class="">
-        <Head title="Welcome"/>
+        <Head :title="lang.homepage"/>
         <header>
             <navbar></navbar>
 
@@ -51,9 +58,9 @@ const props = defineProps({
                                     class=" flex text-xs flex flex-col  p-1 rounded  flex-wrap  bg-zinc-400 text-white gap-y-2">
                                     <div class="flex  justify-between  ">
                                         <h6 class="font-light rtl italic ">
-                                            نویسنده:</h6>
-                                        <h5 class=" mr-12 font-medium">موضوع:</h5>
-                                        <h6 class="font-light">زمان تقریبی مطالعه:</h6>
+                                            {{ lang.author}}:</h6>
+                                        <h5 class=" mr-12 font-medium">{{ lang.subject }}:</h5>
+                                        <h6 class="font-light">{{lang.estimated_time}}:</h6>
                                     </div>
                                     <div class="flex flex-row justify-between ">
                                         <h6 class=""> {{ post.writer_person.fname }} {{
@@ -74,7 +81,7 @@ const props = defineProps({
                                         class="  w-28 h-10 text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm  dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
                                         type="button">
                                         <Link :href="route('home.post.show',{post: post.id,slug: post.slug})">
-                                            ادامه مطلب
+                                            {{ lang.read_more }}
                                         </Link>
 
                                     </button>
