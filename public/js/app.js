@@ -24766,7 +24766,8 @@ __webpack_require__.r(__webpack_exports__);
     expose();
     var props = __props;
     var store = (0,vuex__WEBPACK_IMPORTED_MODULE_4__.useStore)();
-    var lang = store.state.lang;
+    console.log(store.state);
+    var lang = store.state.language.core;
     var __returned__ = {
       store: store,
       lang: lang,
@@ -30197,22 +30198,25 @@ var _window$document$getE;
 
 
 
-
 var appName = ((_window$document$getE = window.document.getElementsByTagName('title')[0]) === null || _window$document$getE === void 0 ? void 0 : _window$document$getE.innerText) || 'Laravel';
 window.$ = window.jQuery = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 var store = (0,vuex__WEBPACK_IMPORTED_MODULE_4__.createStore)({
   state: function state() {
     return {
-      count: 0,
-      lang: {}
+      language: {
+        langName: '',
+        langInfo: {},
+        core: {}
+      }
     };
   },
   mutations: {
-    increment: function increment(state) {
-      state.count++;
-    },
     setLang: function setLang(state, lang) {
-      state.lang = lang;
+      state.language.core = lang.lang;
+      state.language.langInfo = lang.langInfo;
+    },
+    setLangName: function setLangName(state, langName) {
+      state.language.langName = langName;
     }
   }
 });
@@ -30229,7 +30233,9 @@ var app = (0,_inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__.createInertiaA
         app = _ref.app,
         props = _ref.props,
         plugin = _ref.plugin;
-    store.commit('setLang', props.initialPage.props.langs[props.initialPage.props.langs.site_locale]); //what is the another way?
+    var langsFromInertia = props.initialPage.props.langs;
+    store.commit('setLangName', langsFromInertia.site_locale);
+    store.commit('setLang', langsFromInertia[store.state.language.langName]); //what is the another way?
 
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.createApp)({
       render: function render() {
@@ -30241,12 +30247,12 @@ var app = (0,_inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__.createInertiaA
       }
     }).mount(el);
   }
-}); //store.commit('setLangs','fa');
+}); //store.commit('setLangs','fa_IR');
 
-window.document.body.setAttribute('dir', 'rtl');
 _inertiajs_progress__WEBPACK_IMPORTED_MODULE_2__.InertiaProgress.init({
   color: '#4B5563'
 });
+console.log(store.state.language.langInfo.direction);
 
 /***/ }),
 

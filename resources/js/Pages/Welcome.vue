@@ -8,7 +8,8 @@ import { useStore } from 'vuex'
 import Navbar from '@/Layouts/Navbar'
 
 const store = useStore();
-const lang = store.state.lang;
+console.log(store.state);
+const lang = store.state.language.core;
 const props = defineProps({
     canLogin: Boolean,
     canRegister: Boolean,

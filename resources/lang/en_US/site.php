@@ -3,8 +3,9 @@ return [
     'homepage' => 'Home',
     'dashboard' => 'dashboard',
     'read_more' => 'Read more...',
-    'writer' => 'Writer',
+    'author' => 'Writer',
     'subject' => 'Subject',
     'estimated_time' => 'Read time:',
+    'dir' => 'ltr',
 
 ];

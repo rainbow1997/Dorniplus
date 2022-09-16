@@ -1,8 +1,7 @@
 import {createApp, h} from 'vue'
 import {createInertiaApp} from '@inertiajs/inertia-vue3'
 import {InertiaProgress} from '@inertiajs/progress'
-import { createStore } from 'vuex'
-import { usePage } from '@inertiajs/inertia-vue3'
+import {createStore} from 'vuex'
 
 import 'flowbite';
 
@@ -10,29 +9,36 @@ import 'flowbite';
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
 window.$ = window.jQuery = require('jquery');
 const store = createStore({
-    state () {
+    state() {
         return {
-            count: 0,
-            lang:{}
+            language: {
+                langName: '',
+                langInfo: {},
+                core: {},
+            },
         }
     },
     mutations: {
-        increment (state) {
-            state.count++
-        },
-        setLang(state,lang)
-        {
-            state.lang = lang
+        setLang(state, lang) {
+            state.language.core = lang.lang;
+            state.language.langInfo = lang.langInfo;
         }
+        ,
+        setLangName(state, langName) {
+            state.language.langName = langName;
+        },
+
     }
 })
-
 let temp = {};
 const app = createInertiaApp({
     title: (title) => `${title} - ${appName}`,
     resolve: (name) => require(`./Pages/${name}.vue`),
     setup({el, app, props, plugin}) {
-       store.commit('setLang',props.initialPage.props.langs[props.initialPage.props.langs.site_locale]);//what is the another way?
+        const langsFromInertia = props.initialPage.props.langs;
+        store.commit('setLangName', langsFromInertia.site_locale);
+        store.commit('setLang', langsFromInertia[store.state.language.langName]);//what is the another way?
+
         return createApp({render: () => h(app, props)})
             .use(plugin)
             .use(store)
@@ -40,7 +46,7 @@ const app = createInertiaApp({
             .mount(el);
     },
 });
-//store.commit('setLangs','fa');
-window.document.body.setAttribute('dir', 'rtl');
+//store.commit('setLangs','fa_IR');
 
 InertiaProgress.init({color: '#4B5563'});
+console.log(store.state.language.langInfo.direction);

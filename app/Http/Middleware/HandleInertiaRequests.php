@@ -34,6 +34,7 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request)
     {
+
         return array_merge(parent::share($request), [
             'appName' => config('app.name'),
             'auth' => [
@@ -43,9 +44,11 @@ class HandleInertiaRequests extends Middleware
                 'message' => fn() => $request->session()->get('message')
             ],
             'langs' => [
+                'fa_IR' => ['lang' => Lang::get('site',[],'fa_IR'),'langInfo' => ['direction'=>'rtl']],
+                'en_US' => ['lang' => Lang::get('site',[],'en_US'),'langInfo' => ['direction'=>'ltr']],
+
                 'site_locale' => app()->getLocale(),
-                'fa' => Lang::get('site',[],'fa'),
-                'en' => Lang::get('site',[],'en')
+
             ],
             'ziggy' => function () {
                 return (new Ziggy)->toArray();
