@@ -35,7 +35,7 @@ const props = defineProps({
 
                 <!-- For testing -->
                 <div
-                    class=" bg-white  md:p-2  flex flex-col   md:flex-row   box-header-color gap-y-2 dark:bg-gray-800  md:gap-x-3  text-right">
+                    class=" md:w-full bg-white  md:p-2  flex flex-col   md:flex-row   box-header-color gap-y-2 dark:bg-gray-800  md:gap-x-3  text-right">
                     <section v-for="post in posts.data" class=" flex bg-white md:w-1/3 items-center px-1 ">
                         <article
                             class=" shadow flex flex-col  my-4 bg-slate-50 gap-1 overflow-hidden h-full w-full relative ">
