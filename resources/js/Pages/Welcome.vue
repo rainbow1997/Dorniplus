@@ -23,20 +23,20 @@ const props = defineProps({
 </script>
 
 <template>
-    <div class="">
+    <div class="shadow  ">
         <Head :title="lang.homepage"/>
         <header>
             <navbar></navbar>
 
         </header>
-        <main class="container mx-auto ">
+        <main class=" container mx-auto shadow-2xl  ">
             <section class="relative flex flex-col flex-wrap  bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
 
 
                 <!-- For testing -->
                 <div
-                    class="shadow bg-white  md:p-2  flex flex-col   md:flex-row   box-header-color gap-y-2 dark:bg-gray-800  md:gap-x-3 shadow text-right">
-                    <section v-for="post in posts.data" class=" flex bg-white md:w-1/3 items-center px-3 ">
+                    class=" bg-white  md:p-2  flex flex-col   md:flex-row   box-header-color gap-y-2 dark:bg-gray-800  md:gap-x-3  text-right">
+                    <section v-for="post in posts.data" class=" flex bg-white md:w-1/3 items-center px-1 ">
                         <article
                             class=" shadow flex flex-col  my-4 bg-slate-50 gap-1 overflow-hidden h-full w-full relative ">
                             <div class="">
@@ -60,7 +60,7 @@ const props = defineProps({
                                     <div class="flex  justify-between  ">
                                         <h6 class="font-light rtl italic ">
                                             {{ lang.author}}:</h6>
-                                        <h5 class=" mr-12 font-medium">{{ lang.subject }}:</h5>
+                                        <h5 class=" mx-14 font-medium">{{ lang.subject }}:</h5>
                                         <h6 class="font-light">{{lang.estimated_time}}:</h6>
                                     </div>
                                     <div class="flex flex-row justify-between ">
@@ -77,9 +77,9 @@ const props = defineProps({
                                     <span v-html="post.summary"></span>
 
                                 </div>
-                                <div class="flex items-center justify-center pb-2  ">
+                                <div class="flex items-center justify-center py-4  ">
                                     <button
-                                        class="  w-28 h-10 text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm  dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
+                                        class="  w-32 h-7  md:w-28 md:h-10 text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium md:rounded-lg text-sm  dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
                                         type="button">
                                         <Link :href="route('home.post.show',{post: post.id,slug: post.slug})">
                                             {{ lang.read_more }}

@@ -28,13 +28,18 @@ use Inertia\Inertia;
 |
 */
 
-
+Route::get('/setLang/{lang}',function($lang){
+    request()->session()->put('lang',$lang);
+    sleep(2);
+    return redirect(route('homepage'));
+})->name('setLang');
 Route::get('/', [HomeController::class, 'index'])->name('homepage');
 Route::get('/posts/{post}/{slug}', [HomeController::class, 'showPost'])->name('home.post.show');
 
 Route::group([
     'middleware' => 'guest'
 ], function () {
+
     Route::get('/code_verification', function () {
         return view('auth/code_verification');
     })->name('code_verification');

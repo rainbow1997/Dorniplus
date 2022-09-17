@@ -80,7 +80,7 @@ return [
     |
     */
 
-    'locale' => 'fa_IR',
+    'locale' => 'en_US',
 
 
     /*
