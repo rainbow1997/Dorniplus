@@ -30,7 +30,7 @@ use Inertia\Inertia;
 
 Route::get('/setLang/{lang}',function($lang){
     request()->session()->put('lang',$lang);
-    sleep(2);
+    sleep(1);
     return redirect(route('homepage'));
 })->name('setLang');
 Route::get('/', [HomeController::class, 'index'])->name('homepage');

@@ -2,11 +2,8 @@
 import {Head, Link} from '@inertiajs/inertia-vue3'
 import Pagination from '@/Layouts/pagination'
 import { computed } from 'vue'
-
-import { useStore } from 'vuex'
-
 import Navbar from '@/Layouts/Navbar'
-
+import { useStore } from 'vuex'
 const store = useStore();
 console.log(store.state);
 const lang = store.state.language.core;
@@ -38,7 +35,7 @@ const props = defineProps({
                     class=" md:w-full bg-white  md:p-2  flex flex-col   md:flex-row   box-header-color gap-y-2 dark:bg-gray-800  md:gap-x-3  text-right">
                     <section v-for="post in posts.data" class=" flex bg-white md:w-1/3 items-center px-1 ">
                         <article
-                            class=" shadow flex flex-col  my-4 bg-slate-50 gap-1 overflow-hidden h-full w-full relative ">
+                            class=" shadow flex flex-col  my-2 bg-slate-50 gap-1 overflow-hidden h-full w-full relative ">
                             <div class="">
                                 <Link :href="route('home.post.show',{post: post.id,slug: post.slug})"
                                       class="opacity-80 hover:opacity-100">
@@ -46,9 +43,9 @@ const props = defineProps({
                                          class=" object-fill h-48  w-full rounded">
                                 </Link>
                             </div>
-                            <div class="flex flex-1 flex-col gap-x-3 gap-y-1   justify-between ps-4 pt-2 px-2">
+                            <div class="flex flex-1 flex-col gap-x-3 gap-y-1 mt-3 relative h-10 justify-between px-2">
                                 <div
-                                    class="shadow border-gray-200 flex h-10 items-center justify-center overflow-hidden">
+                                    class=" border-gray-200 flex    h-16 items-center justify-center  overflow-hidden relative">
                                     <Link :href="route('home.post.show',{post: post.id,slug: post.slug})"
                                           class="max-w-sm text-xs text-black md:text-base font-medium box-text-color-darker paragraph-ellipsis-2 leading-relaxed">
                                         <h1 class="text-sm  text-black md:text-base font-bold box-text-color-darker paragraph-ellipsis-2 leading-relaxed">
@@ -56,24 +53,24 @@ const props = defineProps({
                                     </Link>
                                 </div>
                                 <div
-                                    class=" flex text-xs flex flex-col  p-1 rounded  flex-wrap  bg-zinc-400 text-white gap-y-2">
-                                    <div class="flex  justify-between  ">
-                                        <h6 class="font-light rtl italic ">
+                                    class=" flex text-xs flex flex-col  leading-3 rounded  flex-wrap  shadow bg-gray-300 pt-2">
+                                    <div class="flex   text-center  ">
+                                        <h6 class="px-2 font-light rtl italic  w-1/3">
                                             {{ lang.author}}:</h6>
-                                        <h5 class=" mx-14 font-medium">{{ lang.subject }}:</h5>
-                                        <h6 class="font-light">{{lang.estimated_time}}:</h6>
+                                        <h5 class="  font-medium w-1/3" >{{ lang.subject }}:</h5>
+                                        <h6 class="px-2 font-light w-1/3">{{lang.estimated_time}}</h6>
                                     </div>
-                                    <div class="flex flex-row justify-between ">
-                                        <h6 class=""> {{ post.writer_person.fname }} {{
+                                    <div class="flex text-center    flex-row justify-between ">
+                                        <h6 class="px-2 w-1/3"> {{ post.writer_person.fname }} {{
                                                 post.writer_person.lname
                                             }} </h6>
-                                        <h5 class=" ml-7 font-medium">{{ post.category.title }}</h5>
-                                        <h6 class=" ml-5 font-light">{{ post.estimated_time }}</h6>
+                                        <h5 class="  font-medium w-1/3">{{ post.category.title }}</h5>
+                                        <h6 class="  px-2 font-light w-1/3">{{ post.estimated_time }}</h6>
                                     </div>
                                 </div>
 
                                 <div
-                                    class="text-sm 2xl:text-2xs farsiparagraph leading-loose relative flex  h-48  overflow-hidden">
+                                    class="text-sm 2xl:text-2xs farsiparagraph leading-loose relative flex  h-48  mt-3 overflow-hidden">
                                     <span v-html="post.summary"></span>
 
                                 </div>

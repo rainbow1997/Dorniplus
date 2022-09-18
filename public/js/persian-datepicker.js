@@ -11,8 +11,8 @@
 ** persian-datepicker - v1.2.0
 ** Reza Babakhani <babakhani.reza@gmail.com>
 ** http://babakhani.github.io/PersianWebToolkit/docs/datepicker
-** Under MIT license 
-*/ 
+** Under MIT license
+*/
 
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(true)
@@ -469,13 +469,13 @@ var Config = {
    * @example
    * {
    *     'persian': {
-   *         'locale': 'fa',
+   *         'locale': 'fa_IR',
    *         'showHint': false,
    *         'leapYearMode': 'algorithmic' // "astronomical"
    *     },
    *
    *     'gregorian': {
-   *         'locale': 'en',
+   *         'locale': 'en_US',
    *         'showHint': false
    *     }
    * }
@@ -493,8 +493,8 @@ var Config = {
     'persian': {
 
       /**
-       * @description set locale of Persian calendar available options: 'fa', 'en'
-       * @default 'fa'
+       * @description set locale of Persian calendar available options: 'fa_IR', 'en_US'
+       * @default 'fa_IR'
        * @type string
        * @since 1.0.0
        */
@@ -526,8 +526,8 @@ var Config = {
     'gregorian': {
 
       /**
-       * @description set locale of Gregorian calendar available options: 'fa', 'en'
-       * @default 'en'
+       * @description set locale of Gregorian calendar available options: 'fa_IR', 'en_US'
+       * @default 'en_US'
        * @type string
        * @since 1.0.0
        */
@@ -3838,7 +3838,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
    * Safe way of detecting whether or not the given thing is a primitive and
    * whether it has the given property
    */
-  function primitiveHasOwnProperty (primitive, propName) {  
+  function primitiveHasOwnProperty (primitive, propName) {
     return (
       primitive != null
       && typeof primitive !== 'object'
@@ -4207,7 +4207,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
           while (intermediateValue != null && index < names.length) {
             if (index === names.length - 1)
               lookupHit = (
-                hasProperty(intermediateValue, names[index]) 
+                hasProperty(intermediateValue, names[index])
                 || primitiveHasOwnProperty(intermediateValue, names[index])
               );
 
@@ -4481,7 +4481,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 /************************************************************************/
 /******/ 	// The module cache
 /******/ 	var __webpack_module_cache__ = {};
-/******/ 	
+/******/
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
 /******/ 		// Check if module is in cache
@@ -4495,20 +4495,20 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 /******/ 			// no module.loaded needed
 /******/ 			exports: {}
 /******/ 		};
-/******/ 	
+/******/
 /******/ 		// Execute the module function
 /******/ 		__webpack_modules__[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-/******/ 	
+/******/
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
-/******/ 	
+/******/
 /************************************************************************/
-/******/ 	
+/******/
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module is referenced by other modules so it can't be inlined
 /******/ 	var __webpack_exports__ = __webpack_require__("./node_modules/persian-datepicker/dist/js/persian-datepicker.js");
-/******/ 	
+/******/
 /******/ })()
 ;

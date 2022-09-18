@@ -4,34 +4,34 @@
 
         <BreezeValidationErrors class="mb-4"/>
 
-        <form class="rtl text-right" @submit.prevent="submit">
+        <form :class="lang.direction == 'rtl'?'text-right':'text-left'" @submit.prevent="submit">
 
             <div class="mt-4">
-                <BreezeLabel for="fname" value="نام*"/>
+                <BreezeLabel for="fname" :value="lang.fname +'*'"/>
                 <BreezeInput id="fname" v-model="form.fname" autocomplete="fname" autofocus class="mt-1 block w-full"
                              required
                              type="text"/>
             </div>
 
             <div class="mt-4">
-                <BreezeLabel for="lname" value="نام خانوادگی*"/>
+                <BreezeLabel for="lname" :value="lang.lname + '*'"/>
                 <BreezeInput id="lname" v-model="form.lname" autocomplete="lname" autofocus class="mt-1 block w-full"
                              required
                              type="text"/>
             </div>
             <div class="mt-4">
-                <BreezeLabel for="national_code" value="کدملی*"/>
+                <BreezeLabel for="national_code" :value="lang.national_code + '*'"/>
                 <BreezeInput id="national_code" v-model="form.national_code" autocomplete="national_code" autofocus
                              class="mt-1 block w-full" required type="number"/>
             </div>
             <div class="mt-4">
-                <BreezeLabel for="phone" value="شماره همراه*"/>
+                <BreezeLabel for="phone" :value="lang.phone + '*'"/>
                 <BreezeInput id="phone" v-model="form.phone" autocomplete="phone" autofocus class="mt-1 block w-full"
                              required
                              type="tel"/>
             </div>
             <div class="mt-4">
-                <BreezeLabel for="birth" value="تاریخ تولد"/>
+                <BreezeLabel for="birth" :value="lang.birth"/>
                 <date-picker v-model="form.birth"
                              autofocus
                              class="mt-1 block w-full  bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -40,16 +40,16 @@
 
             </div>
             <div class="mt-4">
-                <BreezeLabel for="gender" value="جنسیت*"/>
+                <BreezeLabel for="gender" :value="lang.gender"/>
                 <div class="flex flex-row content-around ">
                     <div class="px-3">
-                        <BreezeLabel for="genderMale" value="مذکر"/>
+                        <BreezeLabel for="genderMale" :value="lang.male"/>
                         <BreezeInput id="genderMale" v-model="form.gender" autocomplete="gender" autofocus class="mt-1 "
                                      name="gender" required type="radio" value="male"
                                      @click="genderChange($event)"/>
                     </div>
                     <div class="">
-                        <BreezeLabel for="genderFemale" value="مونث"/>
+                        <BreezeLabel for="genderFemale" :value="lang.female"/>
                         <BreezeInput id="genderFemale" v-model="form.gender" autocomplete="gender" autofocus
                                      class="mt-1"
                                      name="gender" required type="radio" value="female"
@@ -58,33 +58,32 @@
                 </div>
             </div>
             <div v-show="form.gender == 'male'" class="mt-4 flex flex-row content-around flex-wrap">
-                <BreezeLabel class=" flex-1 mt-4" value="وضعیت نظام وظیفه*"/>
+                <BreezeLabel class=" flex-1 mt-4" :value="lang.martial_status"/>
                 <div class="breacontent-around pt-5">
                     <BreezeInput id="military_status" v-model="form.military_status" autocomplete="military_status"
                                  autofocus
                                  class="" name="military_status" type="radio"
                                  value="permanent_exemption"/>
-                    معاف دائم
+                    {{lang.permanent_exemption}}
                     <BreezeInput id="military_status2" v-model="form.military_status" autocomplete="military_status"
                                  autofocus
                                  class="" name="military_status" type="radio"
                                  value="temporary_exemption"/>
-                    معاف موقت
+                    {{ lang.temporary_exemption }}
                     <BreezeInput id="military_status3" v-model="form.military_status" autocomplete="military_status"
                                  autofocus
                                  class="" name="military_status" type="radio" value="done"/>
-                    پایان خدمت
+                    {{lang.done}}
                 </div>
             </div>
             <div class="mt-4">
-                <BreezeLabel for="email" value="ایمیل*"/>
+                <BreezeLabel for="email" :value="lang.email"/>
                 <BreezeInput id="email" v-model="form.email" autocomplete="username" class="mt-1 block w-full" required
                              type="email"/>
             </div>
             <div class="mt-4">
 
-                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" for="avatar">آپلود
-                    عکس</label>
+                <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" for="avatar">{{lang.upload_avatar}}</label>
                 <input id="avatar" aria-describedby="avatar_help"
                        class="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                        type="file" @input="form.avatar = $event.target.files[0]">
@@ -96,24 +95,24 @@
                 </progress>
             </div>
             <div class="mt-4">
-                <BreezeLabel for="username" value="نام کاربری*"/>
+                <BreezeLabel for="username" :value="lang.username + '*'"/>
                 <BreezeInput id="username" v-model="form.username" autocomplete="username" autofocus
                              class="mt-1 block w-full"
                              required type="text"/>
             </div>
             <div class="mt-4">
-                <BreezeLabel for="password" value="رمز عبور*"/>
+                <BreezeLabel for="password" :value="lang.password + '*'"/>
                 <BreezeInput id="password" v-model="form.password" autocomplete="new-password" class="mt-1 block w-full"
                              required
                              type="password"/>
             </div>
             <div class="mt-4">
-                <BreezeLabel for="password_confirmation" value="تکرار رمز عبور*"/>
+                <BreezeLabel for="password_confirmation" :value="lang.password_confirmation"/>
                 <BreezeInput id="password_confirmation" v-model="form.password_confirmation" autocomplete="new-password"
                              class="mt-1 block w-full" required type="password"/>
             </div>
             <div class="mt-4">
-                <BreezeLabel for="province" value="استان "/>
+                <BreezeLabel for="province" :value="lang.province"/>
 
                 <select v-model="form.province_id" name="province_id" @change="provinceChange($event)">
                     <option v-for="item in props.regions" :value="item.id">{{ item.title }}</option>
@@ -124,25 +123,25 @@
 
             </div>
             <div class="mt-4">
-                <BreezeLabel for="captcha" value="کد امنیتی*"/>
+                <BreezeLabel for="captcha" :value="lang.security_code + '*'"/>
 
                 <img id="captcha" class="" src="/captcha2">
 
 
             </div>
             <div class="mt-4">
-                <BreezeLabel value="کد بالا را با دقت وارد کنید"></BreezeLabel>
+                <BreezeLabel :value="lang.input_correctly"></BreezeLabel>
                 <BreezeInput id="captcha_code" v-model="form.captcha_num" autofocus class="block mt-1 w-full"
                              name="captcha_num" required type="number"/>
 
             </div>
             <div class="flex items-center justify-end mt-4">
-                <Link :href="route('login')" class="underline text-sm text-gray-600 hover:text-gray-900">
-                    پیش از این ثبت نام کرده اید؟ برای ورود کلیک کنید.
+                <Link :href="route('login')" class="underline text-sm text-gray-600 hover:text-gray-900 mx-4">
+                    {{lang.register_before_click}}
                 </Link>
 
                 <BreezeButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing" class=" pl-2 mr-4">
-                    ثبت نام
+                    {{lang.register}}
                 </BreezeButton>
             </div>
         </form>
@@ -159,7 +158,11 @@ import {Inertia} from '@inertiajs/inertia'
 
 import {Head, Link, useForm} from '@inertiajs/inertia-vue3'
 import DatePicker from 'vue3-persian-datetime-picker'
-
+import { useStore } from 'vuex'
+const store = useStore();
+console.log(store.state);
+const lang = store.state.language.core;
+lang.direction = store.state.language.langInfo.direction;
 const props = defineProps({
     regions: {}
 });
