@@ -1,6 +1,6 @@
 <?php
 return [
-    'appName' => 'درنیپلاس',
+    'appName' => env('APP_NAME'),
 
     'homepage' => 'صفحه اصلی',
     'dashboard' => 'پنل کاربری',

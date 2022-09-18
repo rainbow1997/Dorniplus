@@ -1,6 +1,6 @@
 <?php
 return [
-    'appName' => 'Dorniplus',
+    'appName' => env('APP_NAME'),
     'homepage' => 'Home',
     'dashboard' => 'dashboard',
     'read_more' => 'Read more...',
