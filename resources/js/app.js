@@ -2,6 +2,8 @@ import {createApp, h} from 'vue'
 import {createInertiaApp} from '@inertiajs/inertia-vue3'
 import {InertiaProgress} from '@inertiajs/progress'
 import {createStore} from 'vuex'
+import {computed} from 'vue'
+import createPersistedState from "vuex-persistedstate";
 
 import 'flowbite';
 
@@ -9,6 +11,7 @@ import 'flowbite';
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
 window.$ = window.jQuery = require('jquery');
 const store = createStore({
+    // plugins : [createPersistedState()],
     state() {
         return {
             language: {
@@ -35,10 +38,9 @@ const app = createInertiaApp({
     title: (title) => `${title} - ${appName}`,
     resolve: (name) => require(`./Pages/${name}.vue`),
     setup({el, app, props, plugin}) {
-        const langsFromInertia = props.initialPage.props.langs;
+        let langsFromInertia = props.initialPage.props.langs;
         store.commit('setLangName', langsFromInertia.site_locale);
         store.commit('setLang', langsFromInertia[store.state.language.langName]);//what is the another way?
-
         return createApp({render: () => h(app, props)})
             .use(plugin)
             .use(store)

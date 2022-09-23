@@ -1,23 +1,28 @@
 <script setup>
 import BreezeApplicationLogo from '@/Components/ApplicationLogo.vue';
 import {Link} from '@inertiajs/inertia-vue3';
-import { Inertia } from '@inertiajs/inertia'
+import {Inertia} from '@inertiajs/inertia'
+import {computed} from 'vue'
+import { usePage } from '@inertiajs/inertia-vue3'
 
 import NavLink from '@/Components/NavLink'
 import {useStore} from 'vuex'
 
 let store = useStore();
-let lang = store.state.language.core;
+let lang = computed(() => store.state.language.core);
 
-defineProps({
+const props = defineProps({
     smWidthClass: {type: String, default: 'max-w-md'}
 });
-const changeLang = ()=>{
-    Inertia.visit(route('setLang','fa_IR'),{replace:true});
 
-    store = useStore();
-    console.log(store);
-    lang = store.state.language.core;
+const changeLang = (site_locale) => {
+    Inertia.visit(route('setLang', site_locale), {replace: true});
+    let langsFromInertia = usePage().props.value.langs;
+    store.commit('setLangName', langsFromInertia.site_locale);
+    store.commit('setLang', langsFromInertia[store.state.language.langName]);//what is the anothe
+    // store = useStore();
+    // console.log(store);
+    // lang = store.state.language.core;
 
 
 }
@@ -43,15 +48,17 @@ const changeLang = ()=>{
                 <div class="flex items-center order-2 justify-between gap-x-4">
                     <div class="flex gap-x-4 ">
                         <button
-                            @click="changeLang"
-                            class=" ">
+                            class=" "
+                            @click="changeLang('fa_IR')">
                             <img alt="Iran" class="w-full h-10" src="/img/flag-for-iran-svgrepo-com.svg">
                         </button>
 
                         <nav-link
                             class=" "
-                            href="/setLang/en_US">
-                            <img alt="United states of America" class="w-full h-10" src="/img/united-states-of-america-svgrepo-com.svg">
+                            @click="changeLang('en_US')">
+
+                            <img alt="United states of America" class="w-full h-10"
+                                 src="/img/united-states-of-america-svgrepo-com.svg">
                         </nav-link>
 
                     </div>

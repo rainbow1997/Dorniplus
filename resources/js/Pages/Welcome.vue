@@ -6,7 +6,7 @@ import Navbar from '@/Layouts/Navbar'
 import { useStore } from 'vuex'
 const store = useStore();
 console.log(store.state);
-const lang = store.state.language.core;
+const lang = computed(()=> store.state.language.core);
 const props = defineProps({
     canLogin: Boolean,
     canRegister: Boolean,
