@@ -6,7 +6,7 @@ import Navbar from '@/Layouts/Navbar'
 import { useStore } from 'vuex'
 const store = useStore();
 console.log(store.state);
-let lang = computed(()=> store.state.language.core);
+const lang = computed(()=> store.state.language.core);
 const props = defineProps({
     canLogin: Boolean,
     canRegister: Boolean,
@@ -55,16 +55,16 @@ const props = defineProps({
                                 <div
                                     class=" flex text-xs flex flex-col  leading-3 rounded  flex-wrap  shadow bg-gray-300 pt-2">
                                     <div class="flex   text-center  ">
-                                        <h6 class="px-2 font-light rtl italic  w-1/3">
+                                        <h6 class="px-2 font-bold rtl  w-1/3">
                                             {{ lang.author}}:</h6>
-                                        <h5 class="  font-medium w-1/3" >{{ lang.subject }}:</h5>
-                                        <h6 class="px-2 font-light w-1/3">{{lang.estimated_time}}</h6>
+                                        <h5 class="  font-bold w-1/3 " >{{ lang.subject }}:</h5>
+                                        <h6 class="px-2 font-bold w-1/3 ">{{lang.estimated_time}}:</h6>
                                     </div>
                                     <div class="flex text-center    flex-row justify-between ">
                                         <h6 class="px-2 w-1/3"> {{ post.writer_person.fname }} {{
                                                 post.writer_person.lname
                                             }} </h6>
-                                        <h5 class="  font-medium w-1/3">{{ post.category.title }}</h5>
+                                        <h5 class="  font-medium w-1/3 font-semibold">{{ post.category.title }}</h5>
                                         <h6 class="  px-2 font-light w-1/3">{{ post.estimated_time }}</h6>
                                     </div>
                                 </div>

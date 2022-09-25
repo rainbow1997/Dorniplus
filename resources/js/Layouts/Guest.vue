@@ -1,6 +1,6 @@
 <script setup>
 import BreezeApplicationLogo from '@/Components/ApplicationLogo.vue';
-import {Link, usePage} from '@inertiajs/inertia-vue3';
+import {Link} from '@inertiajs/inertia-vue3';
 import Navbar from '@/Layouts/Navbar'
 import { Inertia } from '@inertiajs/inertia'
 
@@ -17,14 +17,14 @@ defineProps({
         <navbar></navbar>
 
     </header>
-    <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 rtl text-right">
+    <div class="container shadow mx-auto min-h-screen flex flex-col sm:justify-center shadow-2xl items-center pt-6 sm:pt-0 bg-gray-100 rtl text-right">
         <div>
             <Link href="/">
-                <BreezeApplicationLogo class="w-20 h-20 fill-current text-gray-500"/>
+                <BreezeApplicationLogo class="w-20 h-30 fill-current pt-5"/>
             </Link>
         </div>
 
-        <div :class=" 'w-full sm:'+ smWidthClass +' mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg'">
+        <div :class=" 'w-full sm:'+ smWidthClass +' mt-6 px-6 overflow-hidden sm:rounded-lg my-2'">
             <slot/>
         </div>
     </div>
