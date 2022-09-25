@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="{{__('site.dir')}}"> <!-- temprary method -->
+<html lang="{{  app()->getLocale() }}" dir="{{__('site.dir')}}"> <!-- temprary method -->
 
 <head>
     <meta charset="utf-8">

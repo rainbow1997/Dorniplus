@@ -16,7 +16,7 @@ use App\Notifications\RegisterNotification;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
-
+use Illuminate\Support\Facades\Redirect;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,8 +30,8 @@ use Inertia\Inertia;
 
 Route::get('/setLang/{lang}',function($lang){
     request()->session()->put('lang',$lang);
-
-    return redirect(route('homepage'));
+    return Inertia::location(route('homepage'));
+    //return Redirect::route('homepage');
 })->name('setLang');
 Route::get('/', [HomeController::class, 'index'])->name('homepage');
 Route::get('/posts/{post}/{slug}', [HomeController::class, 'showPost'])->name('home.post.show');

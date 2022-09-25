@@ -16,7 +16,7 @@ module.exports = {
             },
         },
     },
-
+    experiments: {     topLevelAwait: true   },
     plugins: [require('@tailwindcss/forms'),
                 require('flowbite/plugin')],
 };

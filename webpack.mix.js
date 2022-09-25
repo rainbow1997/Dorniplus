@@ -1,3 +1,17 @@
+
+module.exports = {
+    //...
+    experiments: {
+        asyncWebAssembly: true,
+        buildHttp: true,
+        layers: true,
+        lazyCompilation: true,
+        outputModule: true,
+        syncWebAssembly: true,
+        topLevelAwait: true,
+    },
+};
+
 const mix = require('laravel-mix');
 
 /*
@@ -23,3 +37,5 @@ mix.copyDirectory('vendor/tinymce/tinymce', 'public/js/tinymce');
 if (mix.inProduction()) {
     mix.version();
 }
+
+

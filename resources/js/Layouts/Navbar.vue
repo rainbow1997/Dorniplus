@@ -1,9 +1,8 @@
 <script setup>
 import BreezeApplicationLogo from '@/Components/ApplicationLogo.vue';
-import {Link} from '@inertiajs/inertia-vue3';
+import {Link, usePage} from '@inertiajs/inertia-vue3';
 import {Inertia} from '@inertiajs/inertia'
 import {computed} from 'vue'
-import { usePage } from '@inertiajs/inertia-vue3'
 
 import NavLink from '@/Components/NavLink'
 import {useStore} from 'vuex'
@@ -15,14 +14,21 @@ const props = defineProps({
     smWidthClass: {type: String, default: 'max-w-md'}
 });
 
-const changeLang = (site_locale) => {
-    Inertia.visit(route('setLang', site_locale), {replace: true});
-    let langsFromInertia = usePage().props.value.langs;
-    store.commit('setLangName', langsFromInertia.site_locale);
-    store.commit('setLang', langsFromInertia[store.state.language.langName]);//what is the anothe
-    // store = useStore();
-    // console.log(store);
-    // lang = store.state.language.core;
+const changeLangInVuex = async(site_locale) =>{
+
+    try {
+        const langsFromInertia = await usePage().props.value.langs;
+        await store.commit('setLangName', langsFromInertia.site_locale);
+        await store.commit('setLang', langsFromInertia[store.state.language.langName]);//what is the anothe
+    }
+    catch (e) {
+
+    }
+};
+const changeLang = async(site_locale) => {
+    Inertia.visit(route('setLang', site_locale),
+        {forceFormData:true,replace: true, onFinish:()=>{changeLangInVuex(site_locale)}});
+
 
 
 }
