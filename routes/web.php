@@ -34,7 +34,7 @@ Route::get('/setLang/{lang}',function($lang){
     //return Redirect::route('homepage');
 })->name('setLang');
 Route::get('/', [HomeController::class, 'index'])->name('homepage');
-Route::get('/posts/{post}/{slug}', [HomeController::class, 'showPost'])->name('home.post.show');
+Route::get('/posts/{post}/title/{slug}', [HomeController::class, 'showPost'])->name('home.post.show');
 
 Route::group([
     'middleware' => 'guest'
