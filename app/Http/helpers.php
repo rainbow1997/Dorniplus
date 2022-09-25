@@ -1,7 +1,9 @@
 <?php
 
+use App\Models\Detector;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Request as RequestFacade;
 use Illuminate\Support\Facades\Storage;
 use Morilog\Jalali\Jalalian;
 
@@ -104,6 +106,58 @@ if (!function_exists('captchaMaking')) {
             $separator,
             preg_replace('/[^A-Za-z0-9\x{0620}-\x{064A}\x{0698}\x{067E}\x{0686}\x{06AF}\x{06CC}\x{06A9}]/ui', $separator, $string)
         );
+    }
+
+    function hasUserDetectionCookie()
+    {
+        if (RequestFacade::hasCookie('detection_id'))
+            return decrypt(RequestFacade::cookie('detection_id'));
+        return false;
+    }
+    function isAuthenticatedUser()
+    {
+        $user = auth()->user();
+        if($user)
+            return $user;
+        return null;
+
+    }
+    function getAuthenticatedUserId()
+    {
+        return isAuthenticatedUser()->id;
+    }
+    function registerDetectionCookieForUser()
+    {
+        $detector =  Detector::create()->id;
+        cookie()->queue(cookie()->forever('detection_id',encrypt($detector), 365 * 24 * 60));
+        return $detector;
+    }
+
+    function givingUserDetector()
+    {
+        $request = RequestFacade::all();
+        $user['cookie'] = hasUserDetectionCookie();
+
+        if (!$user['cookie'])
+            $user['cookie'] = registerDetectionCookieForUser();
+
+        return $user['cookie'];
+
+    }
+
+    function givingNormalUserData()
+    {
+        $user['ip'] = RequestFacade::ip();
+        $user['agent'] = RequestFacade::userAgent();
+        return $user;
+    }
+
+    function giveUserData()
+    {
+        $user['detector'] = givingUserDetector();
+        $user ['normal'] = givingNormalUserData();
+        return $user;
+
     }
 }
 

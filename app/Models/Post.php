@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Morilog\Jalali\CalendarUtils;
-
+use App\Models\Comment;
 class Post extends Model
 {
     use HasFactory;
@@ -16,7 +16,10 @@ class Post extends Model
     {
         return $this->belongsTo(Category::class);
     }
-
+    public function comments()
+    {
+        return $this->morphMany(Comment::class,'commentable');
+    }
     public function writerPerson()
     {
         return $this->belongsTo(User::class, 'user_id');

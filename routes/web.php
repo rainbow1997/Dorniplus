@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Redirect;
+use App\Http\Controllers\CommentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,6 +36,7 @@ Route::get('/setLang/{lang}',function($lang){
 })->name('setLang');
 Route::get('/', [HomeController::class, 'index'])->name('homepage');
 Route::get('/posts/{post}/title/{slug}', [HomeController::class, 'showPost'])->name('home.post.show');
+Route::post('/sendComment/{post}',[CommentController::class,'store'])->name('sendNewComment');
 
 Route::group([
     'middleware' => 'guest'
@@ -43,7 +45,6 @@ Route::group([
     Route::get('/code_verification', function () {
         return view('auth/code_verification');
     })->name('code_verification');
-
 
 
     Route::get('/captcha', function () {
@@ -68,7 +69,7 @@ Route::group([
     'middleware' => ['auth', 'verified']
 ], function () {
     Route::resource('categories', CategoryController::class);//permissions in its controller
-
+    Route::resource('comments',CommentController::class);
     Route::resource('users', UserController::class);
     Route::resource('posts', PostController::class);
 

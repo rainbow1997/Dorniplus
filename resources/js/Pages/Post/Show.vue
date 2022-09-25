@@ -23,6 +23,10 @@
 
             </span>
             </div>
+            <div class="container mx-auto text-left p-3">
+                <send-new-comment :post="props.post"></send-new-comment>
+                <comments :comments="props.post.comments"></comments>
+            </div>
         </div>
     </BreezeGuestLayout>
 </template>
@@ -32,6 +36,8 @@ import BreezeGuestLayout from '@/Layouts/Guest.vue'
 
 import {Head} from '@inertiajs/inertia-vue3'
 import { useStore } from 'vuex'
+import Comments from './Comment/Index'
+import SendNewComment from "@/Pages/Post/Comment/SendNewComment";
 const store = useStore();
 console.log(store.state);
 const lang = store.state.language.core;

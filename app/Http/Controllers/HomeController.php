@@ -22,7 +22,10 @@ class HomeController extends Controller
         ]);
     }
     public function showPost(Post $post){
-        $post->load(['writerPerson', 'category']);
+        $post->load(['writerPerson', 'category','comments'=>function($query){
+            $query->where('status','Public')->latest('id');
+        }]);
+
         return Inertia::render('Post/Show', ['post' => $post]);
     }
     private function getPosts()
