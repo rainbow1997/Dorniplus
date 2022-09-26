@@ -124,7 +124,8 @@ if (!function_exists('captchaMaking')) {
     }
     function getAuthenticatedUserId()
     {
-        return isAuthenticatedUser()->id;
+        if(isAuthenticatedUser())
+            return isAuthenticatedUser()->id;
     }
     function registerDetectionCookieForUser()
     {
