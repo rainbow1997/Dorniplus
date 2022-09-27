@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\Auth\Admin\CommentManagerController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -130,7 +131,7 @@ Route::group([
 
 });
 Route::group(['middleware' => ['role:Super Admin']], function () {
-
+    Route::resource('comments',CommentManagerController::class);
     Route::resource('roles', RoleController::class);
 
     Route::resource('permissions', PermissionController::class);

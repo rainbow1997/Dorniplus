@@ -24,7 +24,7 @@
         }
     </style>
 </head>
-<body direction="rtl">
+<body @if(app()->getLocale('fa_IR')) direction="rtl" @endif>
 
 <table class="wrapper" width="100%" cellpadding="0" cellspacing="0" role="presentation">
     <tr>

@@ -55,6 +55,9 @@ const showingNavigationDropdown = ref(false);
                                 <BreezeNavLink :href="route('chart')">
                                     نمودار
                                 </BreezeNavLink>
+                                <BreezeNavLink :href="route('comments.index')">
+                                    نظرات
+                                </BreezeNavLink>
                                 <BreezeNavLink :href="route('logs')">
                                     گزارشات(لاگ)
                                 </BreezeNavLink>

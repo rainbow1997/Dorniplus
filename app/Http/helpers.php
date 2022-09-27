@@ -13,7 +13,9 @@ if (!function_exists('captchaMaking')) {
     {
         refreshSession();
         setCaptchaSession();
-        return captchaImageMaking();
+        if(app()->getLocale('fa_IR'))
+            return captchaImageMaking();
+        return createEnCaptcha();
 
 
     }
@@ -34,10 +36,25 @@ if (!function_exists('captchaMaking')) {
         $captcha_num = rand(100000, 99999999);
         session(['captcha_num' => $captcha_num]);
     }
-
+    function createEnCaptcha()
+    {
+        $pass = getCaptchaCode();
+        $width = 100;
+        $height = 20;
+        $image = imagecreate( $width, $height );
+        $white = imagecolorallocate( $image, 255, 255, 255 );
+        $black = imagecolorallocate( $image, 0, 0, 0 );
+        $grey = imagecolorallocate( $image, 204, 204, 204 );
+        imagefill( $image, 0, 0, $black );
+        imagestring( $image, 3, 30, 3, $pass, $white );
+        imagerectangle( $image,0,0,$width-1,$height-1,$grey );
+        header("Content-Type: image/jpeg");
+        return imagejpeg( $image );
+        //imagedestroy( $image );
+    }
     function captchaImageMaking()
     {
-        $gdTool = new Quince\PersianGD\GDTool();
+            $gdTool = new Quince\PersianGD\GDTool();
         $imageContent = $gdTool->setOutputImage(false)
             ->addLine(getCaptchaCode())
             ->setFont('fonts/Shabnam.ttf')

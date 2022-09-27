@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Enum\CommentStatus;
+use App\Events\CommentSent;
 use App\Http\Requests\CommentRequest;
 use Illuminate\Http\Request;
 use App\Models\Post;
@@ -44,7 +45,8 @@ class CommentController extends Controller
         $validated['user_id'] = getAuthenticatedUserId();
         $validated['status'] = CommentStatus::HIDDEN;
         $comment = $post->comments()->create($validated);
-        return redirect()->back()->with(['message'=>'Your comment has been sent successfully,After admin approving you can see it.']);
+        event(new CommentSent($comment));
+        return redirect()->back()->with(['message'=>'Your comment has been sent successfully, After the admin approval, you can see it.']);
     }
 
     /**
@@ -88,8 +90,8 @@ class CommentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Comment $comment)
     {
-        //
+
     }
 }

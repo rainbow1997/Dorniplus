@@ -1,18 +1,22 @@
 <template>
-    <div class="grid grid-cols-3 ">
+    <div class="grid grid-cols-3 space-y-2 mt-2 w-full ">
         <div>
-            Name : {{ props.comment.fullname }}
+            <span class="font-bold">Name</span> :
+            <span class="font-serif text-base	">{{ props.comment.fullname }}</span>
         </div>
         <div>
-            Email : {{ props.comment.email }}
+            <span class="font-bold">Email</span> :
+            <span class="font-serif">{{ props.comment.email }} </span>
         </div>
         <div>
-            Text:
-            {{ props.comment.text }}
+            <span class="font-bold">Datetime</span> :
+            <span class="font-mono">{{ props.comment.created_at }}</span>
         </div>
-        <div>
-            Datetime:
-            {{ props.comment.created_at }}
+
+        <div class="flex flex-col w-full col-span-3 ">
+            <span class="break-after-column font-bold">Content :</span>
+
+            <p>{{ props.comment.text }}</p>
         </div>
 
     </div>
@@ -21,6 +25,9 @@
 </template>
 
 <script setup>
+import Button from "@/Components/Button";
+
+
 const props = defineProps({
     comment: []
 })

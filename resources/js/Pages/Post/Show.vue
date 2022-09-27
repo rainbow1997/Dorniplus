@@ -23,7 +23,14 @@
 
             </span>
             </div>
+            <div>
+
+            </div>
+            <div class="flex w-full items-center justify-center text-green-500 text-center font-bold italic my-3">
+                {{usePage().props.value.flash.message}}
+            </div>
             <div class="container mx-auto text-left p-3">
+
                 <send-new-comment :post="props.post"></send-new-comment>
                 <comments :comments="props.post.comments"></comments>
             </div>
@@ -38,6 +45,8 @@ import {Head} from '@inertiajs/inertia-vue3'
 import { useStore } from 'vuex'
 import Comments from './Comment/Index'
 import SendNewComment from "@/Pages/Post/Comment/SendNewComment";
+import { usePage } from '@inertiajs/inertia-vue3'
+
 const store = useStore();
 console.log(store.state);
 const lang = store.state.language.core;

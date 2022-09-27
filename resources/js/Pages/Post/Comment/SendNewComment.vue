@@ -2,6 +2,9 @@
     <form @submit.prevent="submit">
     <div class="grid auto-cols-auto gap-5">
         <BreezeValidationErrors class="mb-4"/>
+        <div v-if="messages">
+         DD   {{messages}}
+        </div>
         <div class="grid md:grid-cols-2 md:gap-6">
 
             <div class="relative z-0 mb-6 w-full group">
@@ -33,8 +36,9 @@
 </template>
 
 <script setup>
-import { useForm } from '@inertiajs/inertia-vue3'
+import { useForm,usePage } from '@inertiajs/inertia-vue3'
 import BreezeValidationErrors from '@/Components/ValidationErrors.vue'
+const messages = usePage().props.value.flash.message;
 const props = defineProps({
     post:{}
 });
