@@ -36,7 +36,9 @@ return [
     'permanent_exemption' => 'Permanent exemption',
     'temporary_exemption' => 'Temporary exemption',
     'done' => 'Done',
-    'security_code_problem' => ' The security code is wrong'
+    'security_code_problem' => ' The security code is wrong',
+    'solve_errors' => 'Sorry!Please Solve the below problems.'
+
 
 
 ];

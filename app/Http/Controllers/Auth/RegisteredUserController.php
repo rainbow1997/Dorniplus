@@ -80,7 +80,7 @@ class RegisteredUserController extends Controller
 
             'captcha_num' => ['required', 'numeric', function ($attribute, $value, $fail) {
                 if (session('captcha_num') != $value)
-                    $fail('کد امنیتی صحیح نمی باشد');
+                    $fail(__('site.security_code_problem'));
             }]
         ]);
     }
