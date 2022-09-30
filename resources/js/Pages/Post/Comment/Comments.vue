@@ -260,8 +260,8 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr v-for="comment in props.comments.data"
-                                    class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+                                <tr :style="comment.is_seen ? '':'background-color:#DDD'" @mouseenter="setSeen(comment.id)" v-for="comment in props.comments.data"
+                                    class=" border-b dark:bg-gray-900 dark:border-gray-700">
                                     <td class="py-4 px-6">{{ comment.id }}</td>
                                     <td class="py-4 px-6">{{ comment.fullname }}</td>
                                     <td class="py-4 ">{{ comment.email }}</td>
@@ -365,6 +365,14 @@ const props = defineProps({
     isFromSiteAdmin: false,
     isFromSiteAdminAdd: false
 });
+
+const setSeen = (commentId) =>{
+
+    Inertia.reload({only:['comments'],
+    data:{
+        comment_id:commentId
+    }});
+}
 watch(ourData.search, (newValue, oldValue) => {
         Inertia.reload({
             replace: true,

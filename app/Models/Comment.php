@@ -13,7 +13,7 @@ class Comment extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['fullname', 'email', 'phone', 'user_id', 'text', 'data', 'status','commentable_type', 'commentable_id'];
+    protected $fillable = ['fullname', 'email', 'phone', 'user_id', 'text', 'data', 'status','is_seen','commentable_type', 'commentable_id'];
     protected $casts = [
         'data' => 'array',
         'created_at' => 'datetime:Y/m/d H:i:s',
@@ -89,7 +89,14 @@ class Comment extends Model
         if (!is_null($endDate)) // it's not a good way, is  it? ask!
             return $query->whereDate('updated_at', '<=', $endDate->toDateString());
     }
-
+    public function scopeUnseen($query)
+    {
+        return $query->where('is_seen',FALSE);
+    }
+    public function scopeUnseenCount($query)
+    {
+        return $query->unseen()->count();
+    }
     public function scopeDateRange($query, $startDate, $endDate)
     {
 

@@ -5,10 +5,10 @@ namespace App\Http\Controllers\Auth\Admin;
 use App\Enum\CommentStatus;
 use App\Http\Controllers\Controller;
 use App\Models\Comment;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Request as RequestFacade;
 use Inertia\Inertia;
+
 class CommentManagerController extends Controller
 {
     /**
@@ -24,6 +24,10 @@ class CommentManagerController extends Controller
         $request = collect(RequestFacade::all());
         $search = apartSearchParameters($request, $this->searchParams);
         $comments = Comment::query();
+
+        if ($request->has('comment_id'))
+            $this->setSeen($request['comment_id']);
+
         if ($search->isNotEmpty()) {
 
             $comments->when($search['fullname'], function ($query, $search) {// $search['title] become $search
@@ -50,9 +54,9 @@ class CommentManagerController extends Controller
 
         }
 
-        $comments = $comments->with(['user','commentable']);
+        $comments = $comments->with(['user', 'commentable']);
         $comments = $comments->orderBy('id', 'DESC')->paginate(10);
-        return Inertia::render('Post/Comment/Comments',['comments' => $comments]);
+        return Inertia::render('Post/Comment/Comments', ['comments' => $comments]);
     }
 
     /**
@@ -60,6 +64,14 @@ class CommentManagerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function setSeen($commentId)
+    {
+        $comment = Comment::find($commentId);
+        $comment->is_seen = TRUE;
+        $comment->save();
+        return true;
+    }
+
     public function create()
     {
         //
@@ -68,7 +80,7 @@ class CommentManagerController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -79,7 +91,7 @@ class CommentManagerController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -90,7 +102,7 @@ class CommentManagerController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -101,8 +113,8 @@ class CommentManagerController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Comment $comment)
@@ -111,7 +123,7 @@ class CommentManagerController extends Controller
         activity()->performedOn($comment)
             ->causedBy(\Auth::user())
             ->log(" نظر ارسالی  با نام $comment->fullname تایید شده است .");
-        $comment->status=CommentStatus::PUBLIC;
+        $comment->status = CommentStatus::PUBLIC;
         $comment->save();
         return redirect()->route('comments.index')
             ->with('message', 'نظر مورد نظر تایید گردید.');
@@ -120,7 +132,7 @@ class CommentManagerController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy(Comment $comment)

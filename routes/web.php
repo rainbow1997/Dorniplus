@@ -131,7 +131,9 @@ Route::group([
 
 });
 Route::group(['middleware' => ['role:Super Admin']], function () {
+
     Route::resource('comments',CommentManagerController::class);
+
     Route::resource('roles', RoleController::class);
 
     Route::resource('permissions', PermissionController::class);

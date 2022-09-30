@@ -1,5 +1,5 @@
 <template>
-    <div class="grid grid-cols-3 space-y-2 mt-2 w-full ">
+    <div class="grid grid-cols-3 space-y-2 mt-2 w-full " >
         <div>
             <span class="font-bold">Name</span> :
             <span class="font-serif text-base	">{{ props.comment.fullname }}</span>
@@ -25,8 +25,8 @@
 </template>
 
 <script setup>
-import Button from "@/Components/Button";
-
+import Button from "@/Components/Button"
+import {Inertia} from "@inertiajs/inertia"
 
 const props = defineProps({
     comment: []
