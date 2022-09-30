@@ -7,6 +7,7 @@ import BreezeLabel from '@/Components/Label.vue'
 import BreezeValidationErrors from '@/Components/ValidationErrors.vue'
 import {Head, Link, useForm} from '@inertiajs/inertia-vue3'
 import { useStore } from 'vuex'
+import Captcha from '../../Components/Captcha'
 const store = useStore();
 console.log(store.state);
 const lang = store.state.language.core;
@@ -19,9 +20,14 @@ defineProps({
 const form = useForm({
     email: '',
     password: '',
-    remember: false
+    remember: false,
+    captcha_status:false,
+    captcha_num:null
 });
+const receiveCaptcha = (code)=>{
+    form.captcha_num = code;
 
+}
 const submit = () => {
     form.post(route('login'), {
         onFinish: () => form.reset('password'),
@@ -59,6 +65,10 @@ const submit = () => {
                     <BreezeCheckbox v-model:checked="form.remember" name="remember"/>
                     <span class="ml-2 text-sm text-gray-600">{{lang.remember_me}}</span>
                 </label>
+            </div>
+
+            <div class="block mt-4">
+                <captcha @entered-captcha="receiveCaptcha"></captcha>
             </div>
 
             <div class="flex items-center justify-end mt-4">
