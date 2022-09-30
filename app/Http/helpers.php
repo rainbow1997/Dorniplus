@@ -13,8 +13,9 @@ if (!function_exists('captchaMaking')) {
     {
         refreshSession();
         setCaptchaSession();
-        if(app()->getLocale('fa_IR'))
+        if (app()->getLocale() == 'fa_IR')
             return captchaImageMaking();
+
         return createEnCaptcha();
 
 
@@ -24,6 +25,7 @@ if (!function_exists('captchaMaking')) {
     {
         if (session()->exists('captcha_num'))
             session()->forget('captcha_num');
+        session()->regenerate();
     }
 
     function getCaptchaCode()
@@ -36,25 +38,25 @@ if (!function_exists('captchaMaking')) {
         $captcha_num = rand(100000, 99999999);
         session(['captcha_num' => $captcha_num]);
     }
+
     function createEnCaptcha()
     {
         $pass = getCaptchaCode();
-        $width = 100;
-        $height = 20;
-        $image = imagecreate( $width, $height );
-        $white = imagecolorallocate( $image, 255, 255, 255 );
-        $black = imagecolorallocate( $image, 0, 0, 0 );
-        $grey = imagecolorallocate( $image, 204, 204, 204 );
-        imagefill( $image, 0, 0, $black );
-        imagestring( $image, 3, 30, 3, $pass, $white );
-        imagerectangle( $image,0,0,$width-1,$height-1,$grey );
-        header("Content-Type: image/jpeg");
-        return imagejpeg( $image );
-        //imagedestroy( $image );
+        $width = 168;
+        $height = 50;
+        $layer = imagecreatetruecolor($width, $height);
+        $captcha_bg = imagecolorallocate($layer, 135,62,35);
+        imagefill($layer, 0, 0, $captcha_bg);
+        $captcha_text_color = imagecolorallocate($layer, 238,238,228);
+        imagestring($layer, 5, 15, 15, implode(" ",str_split(getCaptchaCode(),1)), $captcha_text_color);
+        header('content-type', 'image/png');
+        return imagepng($layer);
+
     }
+
     function captchaImageMaking()
     {
-            $gdTool = new Quince\PersianGD\GDTool();
+        $gdTool = new Quince\PersianGD\GDTool();
         $imageContent = $gdTool->setOutputImage(false)
             ->addLine(getCaptchaCode())
             ->setFont('fonts/Shabnam.ttf')
@@ -131,23 +133,26 @@ if (!function_exists('captchaMaking')) {
             return decrypt(RequestFacade::cookie('detection_id'));
         return false;
     }
+
     function isAuthenticatedUser()
     {
         $user = auth()->user();
-        if($user)
+        if ($user)
             return $user;
         return null;
 
     }
+
     function getAuthenticatedUserId()
     {
-        if(isAuthenticatedUser())
+        if (isAuthenticatedUser())
             return isAuthenticatedUser()->id;
     }
+
     function registerDetectionCookieForUser()
     {
-        $detector =  Detector::create()->id;
-        cookie()->queue(cookie()->forever('detection_id',encrypt($detector), 365 * 24 * 60));
+        $detector = Detector::create()->id;
+        cookie()->queue(cookie()->forever('detection_id', encrypt($detector), 365 * 24 * 60));
         return $detector;
     }
 

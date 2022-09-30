@@ -36,4 +36,6 @@ return [
     'permanent_exemption' => 'معاف دائم',
     'temporary_exemption' => 'معاف موقت',
     'done' => 'پایان خدمت',
+    'security_code_problem' => ' کد امنیتی اشتباه است.'
+
 ];
