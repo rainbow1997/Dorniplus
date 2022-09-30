@@ -2,6 +2,7 @@
 
 use App\Charts\UsersChart;
 use App\Http\Controllers\Auth\Admin\CategoryController;
+use App\Http\Controllers\Auth\Admin\CommentManagerController;
 use App\Http\Controllers\Auth\Admin\LogController;
 use App\Http\Controllers\Auth\Admin\PermissionController;
 use App\Http\Controllers\Auth\Admin\PostController;
@@ -11,14 +12,13 @@ use App\Http\Controllers\Auth\Admin\SiteAdminController;
 use App\Http\Controllers\Auth\Admin\UserController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\HomeController;
 use App\Notifications\RegisterNotification;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
-use Illuminate\Support\Facades\Redirect;
-use App\Http\Controllers\CommentController;
-use App\Http\Controllers\Auth\Admin\CommentManagerController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,14 +30,18 @@ use App\Http\Controllers\Auth\Admin\CommentManagerController;
 |
 */
 
-Route::get('/setLang/{lang}',function($lang){
-    request()->session()->put('lang',$lang);
+Route::get('/setLang/{lang}', function ($lang) {
+    request()->session()->put('lang', $lang);
     return Inertia::location(route('homepage'));
     //return Redirect::route('homepage');
 })->name('setLang');
 Route::get('/', [HomeController::class, 'index'])->name('homepage');
 Route::get('/posts/{post}/title/{slug}', [HomeController::class, 'showPost'])->name('home.post.show');
-Route::post('/sendComment/{post}',[CommentController::class,'store'])->name('sendNewComment');
+Route::post('/sendComment/{post}', [CommentController::class, 'store'])->name('sendNewComment');
+
+Route::get('captcha2', function () {
+    return captchaMaking();
+})->name('captchaImg');
 
 Route::group([
     'middleware' => 'guest'
@@ -51,9 +55,7 @@ Route::group([
     Route::get('/captcha', function () {
         return view('helpers/captcha_show');
     });
-    Route::get('/captcha2', function () {
-        return captchaMaking();
-    });
+
     Route::get('/information', function () {
 
         return phpinfo();
@@ -70,7 +72,7 @@ Route::group([
     'middleware' => ['auth', 'verified']
 ], function () {
     Route::resource('categories', CategoryController::class);//permissions in its controller
-    Route::resource('comments',CommentController::class);
+    Route::resource('comments', CommentController::class);
     Route::resource('users', UserController::class);
     Route::resource('posts', PostController::class);
 
@@ -132,7 +134,7 @@ Route::group([
 });
 Route::group(['middleware' => ['role:Super Admin']], function () {
 
-    Route::resource('comments',CommentManagerController::class);
+    Route::resource('comments', CommentManagerController::class);
 
     Route::resource('roles', RoleController::class);
 
