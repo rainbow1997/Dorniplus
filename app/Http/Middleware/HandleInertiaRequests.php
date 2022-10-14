@@ -20,7 +20,18 @@ class HandleInertiaRequests extends Middleware
      *
      * @param Request $request
      * @return string|null
+     *
      */
+    public function rootView(Request $request)
+    {
+
+        if ($request->route()->getPrefix() == '/admin') {
+
+            return 'layouts.AdminPanel.masterpage';
+        }
+
+        return parent::rootView($request);
+    }
     public function version(Request $request)
     {
         return parent::version($request);

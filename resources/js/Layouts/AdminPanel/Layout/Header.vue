@@ -1,5 +1,7 @@
 <template>
     <!-- Header -->
+
+
     <header class="w-full shadow-lg bg-white dark:bg-gray-700 items-center h-16 rounded-2xl z-40">
         <div class="relative z-20 flex flex-col justify-center h-full px-3 mx-auto flex-center">
             <div class="relative items-center pl-1 flex w-full lg:max-w-68 sm:pr-2 sm:ml-0">
@@ -26,10 +28,10 @@
                     </div>
                 </div>
                 <div class="relative p-1 flex items-center justify-end w-1/4 ml-5 mr-4 sm:mr-0 sm:right-auto">
-                    <a href="#" class="block relative">
-                        <img alt="profil" src="/img/amin.jpg"
+                    <Link :href="route('editProfile')" class="block relative">
+                        <img alt="profile" :src="'/storage/'+usePage().props.value.auth.user.avatar"
                              class="mx-auto object-cover rounded-full h-10 w-10 " />
-                    </a>
+                    </Link>
                 </div>
             </div>
         </div>
@@ -37,10 +39,9 @@
     <!-- Header -->
 </template>
 
-<script>
-export default {
-    name: "Header"
-}
+<script setup>
+import {usePage,Link} from "@inertiajs/inertia-vue3"
+
 </script>
 
 <style scoped>

@@ -1,16 +1,12 @@
 <template>
     <Head title="مدیریت کاربری"/>
 
-    <BreezeAuthenticatedLayout>
-        <template #header>
+        <masterpage class="">
 
-        </template>
-
-
-        <div class="max-w-7xl mx-auto mt-5 sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
-                    <div class="flex flex-col space-y-8">
+        <div class="max-w-7xl mx-auto mt-5 sm:px-6 lg:px-8 min-h-screen">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg min-h-screen">
+                <div class="p-6 bg-white border-b border-gray-200 min-h-screen">
+                    <div class="flex flex-col space-y-8 h-screen">
                         <div class="flex flex-col">
                             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                                 کاربران
@@ -246,7 +242,7 @@
 
                             </div>
                         </div>
-                        <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
+                        <div class="overflow-x-auto relative shadow-md sm:rounded-lg min-h-screen">
                             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                                 <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
                                 <tr>
@@ -311,7 +307,7 @@
                                 </tr>
                                 </tbody>
                             </table>
-                            <pagination :links="props.users.links" class="mt-6"/>
+                            <pagination :links="props.users.links" class="min-h-screen "/>
 
                             {{ $page.props.flash.message }}
                         </div>
@@ -319,7 +315,7 @@
                 </div>
             </div>
         </div>
-    </BreezeAuthenticatedLayout>
+        </masterpage>
 </template>
 <script setup>
 import {Inertia} from '@inertiajs/inertia'
@@ -336,6 +332,7 @@ import Pagination from '@/Layouts/pagination'
 // import VueMultiselect from 'vue-multiselect'
 import DatePicker from 'vue3-persian-datetime-picker'
 import 'flowbite'
+import Masterpage from "@/Layouts/AdminPanel/Layout/Masterpage";
 
 const ourData = useForm({
     chosenUser: {},

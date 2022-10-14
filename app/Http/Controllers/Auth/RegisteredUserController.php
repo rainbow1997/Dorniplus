@@ -174,7 +174,7 @@ class RegisteredUserController extends Controller
 
 
         if ($request->hasFile('avatar')) {
-            removeFiles($user->avatar);
+            $user->avatar ? removeFiles($user->avatar):null;
             $validData['avatar'] = $this->uploadAvatar($request);
         }
 

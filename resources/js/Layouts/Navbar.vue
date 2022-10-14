@@ -14,21 +14,23 @@ const props = defineProps({
     smWidthClass: {type: String, default: 'max-w-md'}
 });
 
-const changeLangInVuex = async(site_locale) =>{
+const changeLangInVuex = async (site_locale) => {
 
     try {
         const langsFromInertia = await usePage().props.value.langs;
         await store.commit('setLangName', langsFromInertia.site_locale);
         await store.commit('setLang', langsFromInertia[store.state.language.langName]);//what is the anothe
-    }
-    catch (e) {
+    } catch (e) {
 
     }
 };
-const changeLang = async(site_locale) => {
+const changeLang = async (site_locale) => {
     Inertia.visit(route('setLang', site_locale),
-        {forceFormData:true,replace: true, onFinish:()=>{changeLangInVuex(site_locale)}});
-
+        {
+            forceFormData: true, replace: true, onFinish: () => {
+                changeLangInVuex(site_locale)
+            }
+        });
 
 
 }
@@ -45,7 +47,7 @@ const changeLang = async(site_locale) => {
 
                     <nav-link aria-current="page"
                               class="focus:outline-none text-white focus:text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900"
-                              href="/">{{ lang.homepage }}
+                              href="{{route('dashboard')}}">{{ lang.homepage }}
                     </nav-link>
 
                 </div>
@@ -118,7 +120,7 @@ const changeLang = async(site_locale) => {
                             <nav-link
                                 class="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 mx-2  dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900 focus:text-white"
 
-                                href="/dashboard">
+                                href="/admin/dashboard">
                                 {{ lang.panel }}
                             </nav-link>
 

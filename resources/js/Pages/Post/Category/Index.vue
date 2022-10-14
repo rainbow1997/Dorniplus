@@ -1,8 +1,7 @@
 <template>
     <Head title="مدیریت موضوعات"/>
 
-    <BreezeAuthenticatedLayout>
-        <template #header>
+        <masterpage>
             <div class="flex flex-col">
                 <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                     موضوعات سایت
@@ -20,7 +19,6 @@
 
                 </div>
             </div>
-        </template>
 
 
         <div class="max-w-7xl mx-auto mt-5 sm:px-6 lg:px-8">
@@ -110,20 +108,17 @@
                 </div>
             </div>
         </div>
-    </BreezeAuthenticatedLayout>
+        </masterpage>
 </template>
 <script setup>
 import {Inertia} from '@inertiajs/inertia'
-import BreezeButton from '@/Components/Button.vue'
-import BreezeAuthenticatedLayout from '@/Layouts/Authenticated.vue'
-import BreezeInput from '@/Components/Input.vue'
-import BreezeCheckbox from '@/Components/Checkbox.vue'
-import BreezeLabel from '@/Components/Label.vue'
+
 import BreezeValidationErrors from '@/Components/ValidationErrors.vue'
 import {Head, Link, useForm} from '@inertiajs/inertia-vue3'
 import Pagination from '@/Layouts/pagination'
 import DatePicker from 'vue3-persian-datetime-picker'
 import {ref, watch} from 'vue'
+import Masterpage from "@/Layouts/AdminPanel/Layout/Masterpage";
 
 const ourData = useForm({
     test: {},

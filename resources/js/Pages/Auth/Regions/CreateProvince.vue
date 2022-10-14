@@ -1,12 +1,12 @@
 <template>
     <Head title="افزودن استان"/>
 
-    <BreezeAuthenticatedLayout>
-        <template #header>
+
+<masterpage>
             <h2 class="text-xl font-semibold leading-tight text-gray-800">
                 افزودن استان
             </h2>
-        </template>
+
 
         <div class="py-12">
             <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
@@ -54,7 +54,7 @@
                 </div>
             </div>
         </div>
-    </BreezeAuthenticatedLayout>
+</masterpage>
 </template>
 
 <script>
@@ -63,9 +63,11 @@ import BreezeLabel from "@/Components/Label"
 import {Head} from "@inertiajs/inertia-vue3"
 import {useForm} from "@inertiajs/inertia-vue3"
 import BreezeValidationErrors from '@/Components/ValidationErrors.vue'
+import Masterpage from "@/Layouts/AdminPanel/Layout/Masterpage";
 
 export default {
     components: {
+        Masterpage,
         BreezeAuthenticatedLayout,
         Head,
     },

@@ -1,12 +1,11 @@
 <template>
+    <masterpage>
     <Head title="ویرایش موضوع"/>
 
-    <BreezeAuthenticatedLayout>
-        <template #header>
             <h2 class="text-xl font-semibold leading-tight text-gray-800">
                 ویرایش موضوع {{ form.title }}
             </h2>
-        </template>
+
 
         <div class="py-12">
             <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
@@ -52,18 +51,14 @@
                 </div>
             </div>
         </div>
-    </BreezeAuthenticatedLayout>
+    </masterpage>
 </template>
 
 <script setup>
-import BreezeAuthenticatedLayout from "@/Layouts/Authenticated.vue"
-import BreezeLabel from "@/Components/Label"
 import {Inertia} from '@inertiajs/inertia'
-import {ref, watch} from 'vue'
-
-
 import {Head} from "@inertiajs/inertia-vue3"
 import {useForm} from "@inertiajs/inertia-vue3"
+import Masterpage from "@/Layouts/AdminPanel/Layout/Masterpage";
 
 const props = defineProps({
     category: {}

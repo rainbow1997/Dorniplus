@@ -7,9 +7,11 @@ import BreezeValidationErrors from '@/Components/ValidationErrors.vue'
 import {Head, Link, useForm} from '@inertiajs/inertia-vue3'
 import {reactive} from 'vue'
 import DatePicker from 'vue3-persian-datetime-picker'
+import Masterpage from "@/Layouts/AdminPanel/Layout/Masterpage";
 
 export default {
     components: {
+        Masterpage,
         Head,
         Link,
         useForm,
@@ -88,7 +90,7 @@ export default {
         };
         const submit = () => {
 
-            form.post(`/storeProfile/${props.user.id}`, {
+            form.post(route('storeProfile',props.user.id), {
                 onSuccess: () => form.reset('password', 'avatar'),
                 preserveState: true
             });
@@ -102,9 +104,9 @@ export default {
 
 
 <template>
-    <BreezeGuestLayout>
-        <Head title="ویرایش پروفایل"/>
 
+        <Head title="ویرایش پروفایل"/>
+<masterpage class="h-full">
         <BreezeValidationErrors class="mb-4"/>
 
         <form class="rtl text-right" @submit.prevent="submit">
@@ -229,7 +231,7 @@ export default {
 
             </div>
 
-            <div class="flex items-center justify-end mt-2">
+            <div class="flex items-center justify-end mt-2 gap-x-4">
                 <Link :href="route('dashboard')" class="underline text-sm text-gray-600 hover:text-gray-900">
                     بازگشت به داشبورد
                 </Link>
@@ -240,5 +242,5 @@ export default {
             </div>
         </form>
 
-    </BreezeGuestLayout>
+</masterpage>
 </template>

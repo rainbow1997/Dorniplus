@@ -3,13 +3,16 @@
 import Index from '@/Layouts/AdminPanel/Index'
 import {Head} from '@inertiajs/inertia-vue3'
 import { usePage } from '@inertiajs/inertia-vue3'
+import {defineProps} from "vue";
 
-
+const props = defineProps({
+    dashboardData:{}
+})
 </script>
 
 <template>
     <Head title="داشبورد"/>
-<index></index>
+<index :dashboard-data="props.dashboardData"></index>
 
 <!--    <BreezeAuthenticatedLayout>-->
 <!--        <template #header>-->
@@ -31,3 +34,4 @@ import { usePage } from '@inertiajs/inertia-vue3'
 <!--        </div>-->
 <!--    </BreezeAuthenticatedLayout>-->
 </template>
+

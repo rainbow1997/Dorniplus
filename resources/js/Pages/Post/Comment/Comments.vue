@@ -1,10 +1,7 @@
 <template>
     <Head title="مدیریت نظرات"/>
 
-    <BreezeAuthenticatedLayout>
-        <template #header>
-
-        </template>
+<masterpage>
 
 
         <div class="max-w-7xl mx-auto mt-5 sm:px-6 lg:px-8">
@@ -318,16 +315,11 @@
                 </div>
             </div>
         </div>
-    </BreezeAuthenticatedLayout>
+</masterpage>
 </template>
 <script setup>
 import {Inertia} from '@inertiajs/inertia'
-import BreezeButton from '@/Components/Button.vue'
-import BreezeAuthenticatedLayout from '@/Layouts/Authenticated.vue'
-import BreezeInput from '@/Components/Input.vue'
-import BreezeCheckbox from '@/Components/Checkbox.vue'
-import BreezeLabel from '@/Components/Label.vue'
-import BreezeValidationErrors from '@/Components/ValidationErrors.vue'
+
 import {Head, Link, useForm} from '@inertiajs/inertia-vue3'
 import {ref, watch} from 'vue'
 
@@ -335,6 +327,7 @@ import Pagination from '@/Layouts/pagination'
 // import VueMultiselect from 'vue-multiselect'
 import DatePicker from 'vue3-persian-datetime-picker'
 import 'flowbite'
+import Masterpage from "@/Layouts/AdminPanel/Layout/Masterpage";
 
 const ourData = useForm({
     chosenComment: {},
