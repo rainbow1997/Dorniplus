@@ -3,5 +3,11 @@
     "app": "laravel-starter",
     "laravel": {
         "phpVersion": "8.1"
+    },
+     "disks": [
+    {
+      "name": "publicdisk",
+      "mountTo": "storage"
     }
+  ]
 }
