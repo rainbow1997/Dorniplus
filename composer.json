@@ -32,10 +32,9 @@
         "tinymce/tinymce": "^6.2",
         "zanysoft/laravel-zip": "^2.0",
                 "spatie/laravel-ignition": "^1.0",
-        "fakerphp/faker": "^1.9.1",
+        "fakerphp/faker": "^1.9.1"
     },
     "require-dev": {
-
         "laravel/sail": "^1.0.1",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^6.1",
