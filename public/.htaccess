@@ -3,6 +3,11 @@
         Options -MultiViews -Indexes
     </IfModule>
 
+    Header always set X-Frame-Options "DENY"
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-XSS-Protection "1; mode=block"
+    Header always set Strict-Transport-Security "max-age=63072000; includeSubdomains; preload"
+
     RewriteEngine On
 
     # Handle Authorization Header
