@@ -30,11 +30,12 @@
         "spatie/laravel-permission": "^5.5",
         "tightenco/ziggy": "^1.0",
         "tinymce/tinymce": "^6.2",
-        "zanysoft/laravel-zip": "^2.0"
+        "zanysoft/laravel-zip": "^2.0",
+                "spatie/laravel-ignition": "^1.0",
+        "fakerphp/faker": "^1.9.1",
     },
     "require-dev": {
-        "spatie/laravel-ignition": "^1.0",
-        "fakerphp/faker": "^1.9.1",
+
         "laravel/sail": "^1.0.1",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^6.1",
