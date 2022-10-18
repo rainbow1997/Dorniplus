@@ -47,7 +47,7 @@ const changeLang = async (site_locale) => {
 
                     <nav-link aria-current="page"
                               class="focus:outline-none text-white focus:text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900"
-                              href="{{route('dashboard')}}">{{ lang.homepage }}
+                              :href="route('dashboard')">{{ lang.homepage }}
                     </nav-link>
 
                 </div>
