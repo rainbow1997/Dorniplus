@@ -43,7 +43,7 @@
 <script setup>
 import { useForm,usePage } from '@inertiajs/inertia-vue3'
 import BreezeValidationErrors from '@/Components/ValidationErrors.vue'
-import Captcha from '../../../Components/Captcha'
+import Captcha from '../../../Components/Captcha.vue'
 const props = defineProps({
     post:{},
 });

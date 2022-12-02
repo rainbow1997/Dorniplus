@@ -8,12 +8,12 @@
     <meta charset="UTF-8">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+    <link rel="stylesheet" href="@vite('css/app.css')">
 
 
     <!-- Scripts -->
     @routes
-    <script src="{{ mix('js/app.js') }}" defer></script>
+    <script src="@vite('js/app.js')" defer></script>
 
     @inertiaHead
 

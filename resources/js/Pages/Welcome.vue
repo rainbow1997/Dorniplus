@@ -1,8 +1,8 @@
 <script setup>
 import {Head, Link} from '@inertiajs/inertia-vue3'
-import Pagination from '@/Layouts/pagination'
+import Pagination from '@/Layouts/pagination.vue'
 import { computed } from 'vue'
-import Navbar from '@/Layouts/Navbar'
+import Navbar from '@/Layouts/Navbar.vue'
 import { useStore } from 'vuex'
 const store = useStore();
 console.log(store.state);

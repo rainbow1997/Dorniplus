@@ -10,7 +10,7 @@
 </template>
 
 <script setup>
-import CommentItem  from "./CommentItem";
+import CommentItem  from "./CommentItem.vue";
 const props = defineProps({
     comments:[]
 })

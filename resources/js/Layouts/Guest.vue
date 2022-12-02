@@ -1,7 +1,7 @@
 <script setup>
 import BreezeApplicationLogo from '@/Components/ApplicationLogo.vue';
 import {Link} from '@inertiajs/inertia-vue3';
-import Navbar from '@/Layouts/Navbar'
+import Navbar from '@/Layouts/Navbar.vue'
 import { Inertia } from '@inertiajs/inertia'
 
 console.log(Inertia.restore('ourlang'));

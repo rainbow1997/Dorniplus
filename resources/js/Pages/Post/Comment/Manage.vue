@@ -3,7 +3,7 @@
 
 </template>
 <script setup>
-import Comments from './Comments'
+import Comments from './Comments.vue'
 
 const props = defineProps({
     comments: {}

@@ -4,12 +4,15 @@ import {InertiaProgress} from '@inertiajs/progress'
 import {createStore} from 'vuex'
 import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
-
+import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import 'flowbite';
-
-
+import './bootstrap.js';
+import.meta.glob([
+    // '../images/**',
+    '../fonts/**'
+]);
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
-window.$ = window.jQuery = require('jquery');
+window.$ = window.jQuery = import('jquery');
 const store = createStore({
     // plugins : [createPersistedState()],
     state() {
@@ -38,7 +41,7 @@ let temp = {};
 
 const app = createInertiaApp({
     title: (title) => `${title} - ${appName}`,
-    resolve: (name) => require(`./Pages/${name}.vue`),
+    resolve: (name) => resolvePageComponent(`./Pages/${name}.vue`, import.meta.glob('./Pages/**/*.vue')),
     setup({el, app, props, plugin}) {
         // setlang(props);
         const langsFromInertia = props.initialPage.props.langs;
@@ -56,4 +59,4 @@ const app = createInertiaApp({
 //store.commit('setLangs','fa_IR');
 
 InertiaProgress.init({color: '#4B5563'});
-console.log(store.state.language.langInfo.direction);
+// console.log(store.state.language.langInfo.direction);

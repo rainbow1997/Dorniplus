@@ -8,11 +8,12 @@
         "php": "^8.1",
         "based/laravel-typescript": "^0.0.3",
         "doctrine/dbal": "^3.3",
+        "fakerphp/faker": "^1.9.1",
         "fruitcake/laravel-cors": "^2.0",
         "garygreen/pretty-routes": "^1.0",
         "guzzlehttp/guzzle": "^7.4",
         "hekmatinasser/verta": "^8.1",
-        "inertiajs/inertia-laravel": "^0.5.4",
+        "inertiajs/inertia-laravel": "0.6.3",
         "intervention/image": "^2.7",
         "khill/lavacharts": "^3.1",
         "laravel/breeze": "1.9.2",
@@ -27,12 +28,11 @@
         "psr/simple-cache": "2.0",
         "quince/persian-gd": "~1.0",
         "spatie/laravel-activitylog": "^4.5",
+        "spatie/laravel-ignition": "^1.0",
         "spatie/laravel-permission": "^5.5",
         "tightenco/ziggy": "^1.0",
         "tinymce/tinymce": "^6.2",
-        "zanysoft/laravel-zip": "^2.0",
-                "spatie/laravel-ignition": "^1.0",
-        "fakerphp/faker": "^1.9.1"
+        "zanysoft/laravel-zip": "^2.0"
     },
     "require-dev": {
         "laravel/sail": "^1.0.1",

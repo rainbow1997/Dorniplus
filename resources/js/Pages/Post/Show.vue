@@ -20,7 +20,7 @@
                 class="flex flex-col gap-y-1 my-2 w-full box-header-color rounded p-5 md:p-6 lg:p-8 xl:p-10 text-3xs font:medium leading-loose  justify-center">
                 <h1 class="font-extrabold text-center">{{ props.post.title }}</h1>
                 <span class="w-full " v-html="props.post.text" >
-      
+
 
             </span>
             </div>
@@ -44,8 +44,8 @@ import BreezeGuestLayout from '@/Layouts/Guest.vue'
 
 import {Head} from '@inertiajs/inertia-vue3'
 import { useStore } from 'vuex'
-import Comments from './Comment/Index'
-import SendNewComment from "@/Pages/Post/Comment/SendNewComment";
+import Comments from './Comment/Index.vue'
+import SendNewComment from "@/Pages/Post/Comment/SendNewComment.vue";
 import { usePage } from '@inertiajs/inertia-vue3'
 
 const store = useStore();

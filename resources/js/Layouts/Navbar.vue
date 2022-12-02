@@ -4,7 +4,7 @@ import {Link, usePage} from '@inertiajs/inertia-vue3';
 import {Inertia} from '@inertiajs/inertia'
 import {computed} from 'vue'
 
-import NavLink from '@/Components/NavLink'
+import NavLink from '@/Components/NavLink.vue'
 import {useStore} from 'vuex'
 
 let store = useStore();

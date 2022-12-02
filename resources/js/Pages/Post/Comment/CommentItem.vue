@@ -25,8 +25,6 @@
 </template>
 
 <script setup>
-import Button from "@/Components/Button"
-import {Inertia} from "@inertiajs/inertia"
 
 const props = defineProps({
     comment: []
