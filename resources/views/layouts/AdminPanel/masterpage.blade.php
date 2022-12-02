@@ -8,12 +8,11 @@
     <meta charset="UTF-8">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="@vite('css/app.css')">
 
 
     <!-- Scripts -->
     @routes
-    <script src="@vite('js/app.js')" defer></script>
+    @vite('resources/js/app.js')
 
     @inertiaHead
 
