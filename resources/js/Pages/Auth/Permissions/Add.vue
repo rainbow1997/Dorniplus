@@ -65,7 +65,7 @@ import {Head} from "@inertiajs/inertia-vue3"
 import {useForm} from '@inertiajs/inertia-vue3'
 
 import {Inertia} from '@inertiajs/inertia'
-import Masterpage from "@/Layouts/AdminPanel/Layout/Masterpage";
+import Masterpage from "@/Layouts/AdminPanel/Layout/Masterpage.vue";
 
 const form = useForm({
     name: ''

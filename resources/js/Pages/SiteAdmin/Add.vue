@@ -10,7 +10,7 @@
 </template>
 
 <script setup>
-import UsersIndex from '../UsersIndex'
+import UsersIndex from '../UsersIndex.vue'
 import {reactive} from 'vue'
 import {Inertia} from '@inertiajs/inertia'
 

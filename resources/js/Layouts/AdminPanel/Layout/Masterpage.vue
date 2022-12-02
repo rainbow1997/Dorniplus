@@ -13,8 +13,8 @@
 </template>
 
 <script setup>
-import Navbar from './Navbar'
-import MyHeader from './Header'
+import Navbar from './Navbar.vue'
+import MyHeader from './Header.vue'
 </script>
 
 <style scoped>

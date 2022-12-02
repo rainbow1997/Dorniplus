@@ -63,7 +63,7 @@ import {Head} from "@inertiajs/inertia-vue3"
 import {useForm} from "@inertiajs/inertia-vue3"
 import {Inertia} from '@inertiajs/inertia'
 import BreezeValidationErrors from '@/Components/ValidationErrors.vue'
-import Masterpage from "@/Layouts/AdminPanel/Layout/Masterpage";
+import Masterpage from "@/Layouts/AdminPanel/Layout/Masterpage.vue";
 
 const props = defineProps({
     province: {}

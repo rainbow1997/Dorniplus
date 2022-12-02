@@ -1,6 +1,6 @@
 <script setup>
 // import BreezeAuthenticatedLayout from '@/Layouts/Authenticated.vue'
-import Index from '@/Layouts/AdminPanel/Index'
+import Index from '@/Layouts/AdminPanel/Index.vue'
 import {Head} from '@inertiajs/inertia-vue3'
 import { usePage } from '@inertiajs/inertia-vue3'
 import {defineProps} from "vue";

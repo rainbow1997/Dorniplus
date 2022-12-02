@@ -3,7 +3,7 @@
 
 </template>
 <script setup>
-import UsersIndex from '../UsersIndex'
+import UsersIndex from '../UsersIndex.vue'
 
 const props = defineProps({
     users: {}

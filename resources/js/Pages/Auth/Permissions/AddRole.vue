@@ -48,7 +48,7 @@ import BreezeValidationErrors from '@/Components/ValidationErrors.vue'
 import {Inertia} from '@inertiajs/inertia'
 import Multiselect from 'vue-multiselect'
 import "vue-multiselect/dist/vue-multiselect.css"
-import Masterpage from "@/Layouts/AdminPanel/Layout/Masterpage";
+import Masterpage from "@/Layouts/AdminPanel/Layout/Masterpage.vue";
 
 const props = defineProps({
     permission: {},

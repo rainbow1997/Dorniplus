@@ -115,12 +115,12 @@
 import {Head, Link, useForm} from '@inertiajs/inertia-vue3'
 
 import {ref, reactive} from 'vue'
-import Pagination from '@/Layouts/pagination'
+import Pagination from '@/Layouts/pagination.vue'
 
 import {Inertia} from '@inertiajs/inertia'
 
-import BreezeButton from '@/Components/Button'
-import Masterpage from "@/Layouts/AdminPanel/Layout/Masterpage";
+import BreezeButton from '@/Components/Button.vue'
+import Masterpage from "@/Layouts/AdminPanel/Layout/Masterpage.vue";
 
 const props = defineProps({
     provinces: {},
