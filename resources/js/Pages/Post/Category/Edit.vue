@@ -58,7 +58,7 @@
 import {Inertia} from '@inertiajs/inertia'
 import {Head} from "@inertiajs/inertia-vue3"
 import {useForm} from "@inertiajs/inertia-vue3"
-import Masterpage from "@/Layouts/AdminPanel/Layout/Masterpage";
+import Masterpage from "@/Layouts/AdminPanel/Layout/Masterpage.vue";
 
 const props = defineProps({
     category: {}

@@ -64,7 +64,7 @@ import BreezeValidationErrors from '@/Components/ValidationErrors.vue'
 
 import {ref, reactive, computed} from 'vue'
 import {Inertia} from '@inertiajs/inertia'
-import Masterpage from "@/Layouts/AdminPanel/Layout/Masterpage";
+import Masterpage from "@/Layouts/AdminPanel/Layout/Masterpage.vue";
 
 const props = defineProps({
     permission: {}

@@ -59,11 +59,11 @@
 
 <script>
 import BreezeAuthenticatedLayout from "@/Layouts/Authenticated.vue"
-import BreezeLabel from "@/Components/Label"
+import BreezeLabel from "@/Components/Label.vue"
 import {Head} from "@inertiajs/inertia-vue3"
 import {useForm} from "@inertiajs/inertia-vue3"
 import BreezeValidationErrors from '@/Components/ValidationErrors.vue'
-import Masterpage from "@/Layouts/AdminPanel/Layout/Masterpage";
+import Masterpage from "@/Layouts/AdminPanel/Layout/Masterpage.vue";
 
 export default {
     components: {

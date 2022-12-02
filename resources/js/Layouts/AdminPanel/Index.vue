@@ -87,7 +87,7 @@
 const props = defineProps({
     dashboardData:{}
 });
-import Masterpage from "@/Layouts/AdminPanel/Layout/Masterpage";
+import Masterpage from "@/Layouts/AdminPanel/Layout/Masterpage.vue";
 
 </script>
 

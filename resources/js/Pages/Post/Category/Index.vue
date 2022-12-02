@@ -115,10 +115,10 @@ import {Inertia} from '@inertiajs/inertia'
 
 import BreezeValidationErrors from '@/Components/ValidationErrors.vue'
 import {Head, Link, useForm} from '@inertiajs/inertia-vue3'
-import Pagination from '@/Layouts/pagination'
+import Pagination from '@/Layouts/pagination.vue'
 import DatePicker from 'vue3-persian-datetime-picker'
 import {ref, watch} from 'vue'
-import Masterpage from "@/Layouts/AdminPanel/Layout/Masterpage";
+import Masterpage from "@/Layouts/AdminPanel/Layout/Masterpage.vue";
 
 const ourData = useForm({
     test: {},

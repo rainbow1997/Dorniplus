@@ -110,13 +110,13 @@
 </template>
 
 <script setup>
-import BreezeButton from '@/Components/Button'
+import BreezeButton from '@/Components/Button.vue'
 import {Head} from "@inertiajs/inertia-vue3"
 import {Link} from "@inertiajs/inertia-vue3"
 import {useForm} from '@inertiajs/inertia-vue3'
 
 import {Inertia} from '@inertiajs/inertia'
-import Masterpage from "@/Layouts/AdminPanel/Layout/Masterpage";
+import Masterpage from "@/Layouts/AdminPanel/Layout/Masterpage.vue";
 
 defineProps({
     permissions: {}

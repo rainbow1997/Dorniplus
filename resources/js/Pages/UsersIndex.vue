@@ -328,11 +328,11 @@ import BreezeValidationErrors from '@/Components/ValidationErrors.vue'
 import {Head, Link, useForm} from '@inertiajs/inertia-vue3'
 import {ref, watch} from 'vue'
 
-import Pagination from '@/Layouts/pagination'
+import Pagination from '@/Layouts/pagination.vue'
 // import VueMultiselect from 'vue-multiselect'
 import DatePicker from 'vue3-persian-datetime-picker'
 import 'flowbite'
-import Masterpage from "@/Layouts/AdminPanel/Layout/Masterpage";
+import Masterpage from "@/Layouts/AdminPanel/Layout/Masterpage.vue";
 
 const ourData = useForm({
     chosenUser: {},
