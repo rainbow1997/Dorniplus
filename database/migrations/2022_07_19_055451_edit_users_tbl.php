@@ -25,8 +25,7 @@ class EditUsersTbl extends Migration
             $table->enum('gender', ['male', 'female']);
             $table->enum('military_status', ['done', 'doing', 'temporary-exemption', 'permanent-exemption']);
             $table->string('avatar');
-            $table->foreignIdFor(Province::class);
-            $table->foreignIdFor(City::class);
+
 
         });
     }

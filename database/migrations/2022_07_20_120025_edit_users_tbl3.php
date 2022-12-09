@@ -3,7 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-
+use App\Models\Province;
+use App\Models\City;
 class EditUsersTbl3 extends Migration
 {
     /**
@@ -15,6 +16,8 @@ class EditUsersTbl3 extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
+            $table->foreignIdFor(Province::class)->nullable()->constrained()->onUpdate('cascade');
+            $table->foreignIdFor(City::class)->nullable()->constrained()->onUpdate('cascade');
             $table->text('avatar')->nullable()->change();
         });
     }

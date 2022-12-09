@@ -15,7 +15,7 @@ class EditPostsTable extends Migration
     {
         Schema::table('posts', function (Blueprint $table) {
             //
-            $table->text('summary');
+            $table->text('summary')->fulltext();
         });
     }
 

@@ -16,11 +16,11 @@ return new class extends Migration
         //
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->string('fullname');
-            $table->string('email');
-            $table->bigInteger('phone')->nullable();
-            $table->foreignIdFor(User::class)->nullable();
-            $table->text('text');
+            $table->string('fullname')->fulltext();
+            $table->string('email')->fulltext();
+            $table->bigInteger('phone')->nullable()->index();
+            $table->foreignIdFor(User::class)->nullable()->constrained()->onUpdate('cascade');
+            $table->text('text')->fulltext();
             $table->json('data');
             $table->timestamps();
             $table->morphs('commentable');
