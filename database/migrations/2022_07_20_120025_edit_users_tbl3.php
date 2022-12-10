@@ -16,8 +16,8 @@ class EditUsersTbl3 extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
-            $table->foreignIdFor(Province::class)->nullable()->constrained()->onUpdate('cascade');
-            $table->foreignIdFor(City::class)->nullable()->constrained()->onUpdate('cascade');
+            $table->foreignIdFor(Province::class)->nullable()->constrained()->onUpdate('cascade')->onDelete('set null');
+            $table->foreignIdFor(City::class)->nullable()->constrained()->onUpdate('cascade')->onDelete('set null');
             $table->text('avatar')->nullable()->change();
         });
     }

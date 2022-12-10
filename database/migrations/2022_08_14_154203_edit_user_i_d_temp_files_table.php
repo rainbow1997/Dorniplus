@@ -15,7 +15,7 @@ class EditUserIDTempFilesTable extends Migration
     {
         Schema::table('temp_files', function (Blueprint $table) {
             //
-            $table->foreignId('user_id')->constrained()->onUpdate('cascade');
+            $table->foreignId('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

@@ -19,7 +19,7 @@ class EditUsersTbl extends Migration
             //
             $table->renameColumn('name', 'fname');
             $table->string('lname');
-            $table->bigInteger('national_code');
+            $table->bigInteger('national_code')->unique();
             $table->bigInteger('phone');
             $table->date('birth');
             $table->enum('gender', ['male', 'female']);

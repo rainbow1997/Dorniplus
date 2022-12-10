@@ -22,8 +22,8 @@ class CreatePostsTable extends Migration
             $table->text('text');
             $table->time('estimated_time');
             $table->string('post_image');
-            $table->foreignIdFor(Category::class)->constrained()->onUpdate('cascade');
-            $table->foreignIdFor(User::class)->constrained()->onUpdate('cascade');
+            $table->foreignIdFor(Category::class)->nullable()->constrained()->onUpdate('cascade')->nullOnDelete();
+            $table->foreignIdFor(User::class)->constrained()->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

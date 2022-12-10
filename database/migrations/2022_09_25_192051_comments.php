@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('fullname')->fulltext();
             $table->string('email')->fulltext();
             $table->bigInteger('phone')->nullable()->index();
-            $table->foreignIdFor(User::class)->nullable()->constrained()->onUpdate('cascade');
+            $table->foreignIdFor(User::class)->nullable()->constrained()->onUpdate('cascade')->onDelete('set null');
             $table->text('text')->fulltext();
             $table->json('data');
             $table->timestamps();

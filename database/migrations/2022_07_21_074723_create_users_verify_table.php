@@ -16,7 +16,7 @@ class CreateUsersVerifyTable extends Migration
         Schema::create('users_verify', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->foreignId('user_id')->constrained()->onUpdate('cascade');
+            $table->foreignId('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->string('token');
 
         });

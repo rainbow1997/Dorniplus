@@ -19,7 +19,7 @@ class CreateCitiesTable extends Migration
             $table->timestamps();
             $table->string('title');
 
-            $table->foreignIdFor(Province::class);
+            $table->foreignIdFor(Province::class)->constrained()->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
