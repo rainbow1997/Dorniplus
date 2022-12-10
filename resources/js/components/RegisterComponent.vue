@@ -50,9 +50,7 @@ export default {
     },
     methods: {
         provinceChange(event) {
-            console.log('hi -> province is :');
             let t = this.provinces.filter(function (province) {
-                console.log(province.cities);
                 if (province.id == event.target.value)
                     return province;
             });
@@ -70,8 +68,6 @@ export default {
     mounted() {
 
         this.provinces = JSON.parse(this.regions);
-        console.log(this.regions);
-        console.log('Component mounted.')
     }
 }
 </script>
