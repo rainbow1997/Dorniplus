@@ -26,7 +26,7 @@ class RedirectIfAuthenticated
         $guards = empty($guards) ? [null] : $guards;
 
         foreach ($guards as $guard) {
-            if (Auth::guard($guard)->check()) {
+            if (Auth::guard($guard)->check() &&  !in_array($request->url(),getAuthCheckingUrls()) ) {
                 return redirect(RouteServiceProvider::HOME);
             }
         }

@@ -6,7 +6,7 @@ use Auth;
 use Closure;
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Redirect;
 class Authenticate extends Middleware
 {
     /**
@@ -17,10 +17,10 @@ class Authenticate extends Middleware
      */
     public function handle($request, Closure $next, ...$guards)
     {
-        if (Auth::check())
-            if (!$request->user()->is_email_verified) {
 
-                return redirect()->route('code_verification');
+        if (Auth::check())
+            if (!$request->user()->is_email_verified && !in_array($request->url(),getAuthCheckingUrls()) ) {
+                return Redirect::route('code_verification');
             } else
                 return $next($request);
         return abort(403);

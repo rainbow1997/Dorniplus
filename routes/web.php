@@ -19,6 +19,7 @@ use App\Notifications\RegisterNotification;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,10 +49,6 @@ Route::group([
     'middleware' => 'guest'
 ], function () {
 
-    Route::get('/code_verification', function () {
-        return view('auth/code_verification');
-    })->name('code_verification');
-
 
     Route::get('/captcha', function () {
         return view('helpers/captcha_show');
@@ -68,7 +65,17 @@ Route::group([
         return 'Sent';
     });
 });
+Route::group([
+    'middleware' => ['auth'],
+    'prefix' => 'auth'
+], function () {
 
+    Route::get('code_verification',[AuthenticatedSessionController::class,'code_verification'])
+        ->name('code_verification');
+
+    Route::post('checking_verification', [AuthenticatedSessionController::class, 'checkingCode'])
+        ->name('checking_verification');
+});
 Route::group([
     'middleware' => ['auth', 'verified'],
     'prefix' => 'admin'
@@ -86,49 +93,46 @@ Route::group([
         ->name('logs');
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-Route::post('/checking_verification', [VerifyEmailController::class, 'checkingCode'])
-    ->name('checking_verification')
-    ->withoutMiddleware(['auth']);
 
-Route::get('/changePassword', [RegisteredUserController::class, 'changePasswordIndex'])
-    ->middleware(['password.confirm'])->name('changePassword');
+    Route::get('/changePassword', [RegisteredUserController::class, 'changePasswordIndex'])
+        ->middleware(['password.confirm'])->name('changePassword');
 
-Route::post('/changePassword', [RegisteredUserController::class, 'changePassword'])
-    ->middleware(['password.confirm'])->name('changePassword.save');
+    Route::post('/changePassword', [RegisteredUserController::class, 'changePassword'])
+        ->middleware(['password.confirm'])->name('changePassword.save');
 
-Route::get('/editProfile', [RegisteredUserController::class, 'editProfile'])
-    ->name('editProfile');
+    Route::get('/editProfile', [RegisteredUserController::class, 'editProfile'])
+        ->name('editProfile');
 
-Route::put('/storeProfile/{user}', [RegisteredUserController::class, 'storeProfile'])
-    ->name('storeProfile');
+    Route::put('/storeProfile/{user}', [RegisteredUserController::class, 'storeProfile'])
+        ->name('storeProfile');
 
-Route::get('/regions', [RegionController::class, 'index'])
-    ->name('regions.index');
-Route::get('/regions/province/{province}', [RegionController::class, 'showProvince'])
-    ->name('regions.province.show');
+    Route::get('/regions', [RegionController::class, 'index'])
+        ->name('regions.index');
+    Route::get('/regions/province/{province}', [RegionController::class, 'showProvince'])
+        ->name('regions.province.show');
 
-Route::get('province/create', [RegionController::class, 'createProvince'])
-    ->name('regions.province.create');
+    Route::get('province/create', [RegionController::class, 'createProvince'])
+        ->name('regions.province.create');
 
-Route::post('/province/storeProvince', [RegionController::class, 'storeProvince'])
-    ->name('regions.province.store');
+    Route::post('/province/storeProvince', [RegionController::class, 'storeProvince'])
+        ->name('regions.province.store');
 
-Route::get('/province/edit/{province}', [RegionController::class, 'editProvince'])
-    ->name('regions.province.edit');
+    Route::get('/province/edit/{province}', [RegionController::class, 'editProvince'])
+        ->name('regions.province.edit');
 
-Route::put('/province/update/{province}', [RegionController::class, 'updateProvince'])
-    ->name('regions.province.update');
+    Route::put('/province/update/{province}', [RegionController::class, 'updateProvince'])
+        ->name('regions.province.update');
 
-Route::delete('/province/destroy/{province}', [RegionController::class, 'destroyProvince'])
-    ->name('regions.province.destroy');
+    Route::delete('/province/destroy/{province}', [RegionController::class, 'destroyProvince'])
+        ->name('regions.province.destroy');
 
-Route::get('/city/create/{province}', [RegionController::class, 'createCity'])
-    ->name('regions.city.create');
+    Route::get('/city/create/{province}', [RegionController::class, 'createCity'])
+        ->name('regions.city.create');
 
-Route::post('/city/storeCity/{province}', [RegionController::class, 'storeCity'])
-    ->name('regions.city.store');
-Route::delete('/city/destroy/{city}', [RegionController::class, 'destroyCity'])
-    ->name('regions.city.destroy');
+    Route::post('/city/storeCity/{province}', [RegionController::class, 'storeCity'])
+        ->name('regions.city.store');
+    Route::delete('/city/destroy/{city}', [RegionController::class, 'destroyCity'])
+        ->name('regions.city.destroy');
 
 
 });

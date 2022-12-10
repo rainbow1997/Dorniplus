@@ -9,7 +9,6 @@ import {Head, Link, useForm} from '@inertiajs/inertia-vue3'
 import { useStore } from 'vuex'
 import Captcha from '../../Components/Captcha.vue'
 const store = useStore();
-console.log(store.state);
 const lang = store.state.language.core;
 lang.direction = store.state.language.langInfo.direction;
 defineProps({

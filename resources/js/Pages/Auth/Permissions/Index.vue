@@ -160,10 +160,8 @@ const chooseRole = (id) => {
         }
 
     });
-    console.log(t[0].title);//remember that filter methods in javascript always return array*
     needs.selectedPermission = Object.assign({}, t[0]);
     needs.canShow = true;
-    console.log(this.selectedPermission);
     //alert(this.canShow);
 };
 

@@ -70,9 +70,7 @@ export default {
         if (form.province_id != null)
             provinceSetter();
         const provinceChange = (event) => {
-            console.log('hi -> province is :');
             let t = props.regions.filter(function (province) {
-                console.log(province.cities);
 
                 if (province.id == event.target.value)
                     return province;

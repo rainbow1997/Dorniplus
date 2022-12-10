@@ -37,7 +37,10 @@ return [
     'temporary_exemption' => 'Temporary exemption',
     'done' => 'Done',
     'security_code_problem' => ' The security code is wrong',
-    'solve_errors' => 'Sorry!Please Solve the below problems.'
+    'solve_errors' => 'Sorry!Please Solve the below problems.',
+    'code_verification' => 'Code Verification',
+    'enter_code_verification' => 'Enter your verification code, please.',
+    'submit'=>'Submit'
 
 
 

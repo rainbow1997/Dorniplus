@@ -49,7 +49,6 @@ import SendNewComment from "@/Pages/Post/Comment/SendNewComment.vue";
 import { usePage } from '@inertiajs/inertia-vue3'
 
 const store = useStore();
-console.log(store.state);
 const lang = store.state.language.core;
 lang.direction = store.state.language.langInfo.direction;
 

@@ -45,11 +45,12 @@ if (!function_exists('captchaMaking')) {
         $width = 168;
         $height = 50;
         $layer = imagecreatetruecolor($width, $height);
-        $captcha_bg = imagecolorallocate($layer, 135,62,35);
+        $captcha_bg = imagecolorallocate($layer, 135, 62, 35);
         imagefill($layer, 0, 0, $captcha_bg);
-        $captcha_text_color = imagecolorallocate($layer, 238,238,228);
-        imagestring($layer, 5, 15, 15, implode(" ",str_split(getCaptchaCode(),1)), $captcha_text_color);
-        header('content-type', 'image/png');
+        $captcha_text_color = imagecolorallocate($layer, 238, 238, 228);
+        imagestring($layer, 5, 15, 15, implode(" ", str_split(getCaptchaCode(), 1)), $captcha_text_color);
+        header('Content-Type: image/png');
+
         return imagepng($layer);
 
     }
@@ -66,10 +67,17 @@ if (!function_exists('captchaMaking')) {
             ->setVerticalPosition(25)
             ->build();
 
-        header('content-type', 'image/png');
-        return $imageContent;
+        header('Content-Type: image/png');
+
+
+        echo $imageContent;
     }
 
+
+    function getAuthCheckingUrls()
+    {
+        return [route('code_verification'), route('checking_verification')];
+    }
     function convertToEngNums($string)
     {
         return strtr($string, array('۰' => '0', '۱' => '1', '۲' => '2', '۳' => '3', '۴' => '4', '۵' => '5', '۶' => '6', '۷' => '7', '۸' => '8', '۹' => '9', '٠' => '0', '١' => '1', '٢' => '2', '٣' => '3', '٤' => '4', '٥' => '5', '٦' => '6', '٧' => '7', '٨' => '8', '٩' => '9'));

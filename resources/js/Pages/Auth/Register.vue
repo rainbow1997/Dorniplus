@@ -57,9 +57,10 @@
                     </div>
                 </div>
             </div>
-            <div v-show="form.gender == 'male'" class="mt-4 flex flex-row content-around flex-wrap">
-                <BreezeLabel class=" flex-1 mt-4" :value="lang.martial_status"/>
-                <div class="breacontent-around pt-5">
+            <div v-show="form.gender == 'male'" class="my-4 flex flex-row content-around flex-wrap">
+                <div class="flex gap-x-2 text-nowrap">
+                    <BreezeLabel class=" flex-1 w-100" :value="lang.military_status"/>
+
                     <BreezeInput id="military_status" v-model="form.military_status" autocomplete="military_status"
                                  autofocus
                                  class="" name="military_status" type="radio"
@@ -77,7 +78,7 @@
                 </div>
             </div>
             <div class="mt-4">
-                <BreezeLabel for="email" :value="lang.email"/>
+                <BreezeLabel for="email" :value="lang.email_address"/>
                 <BreezeInput id="email" v-model="form.email" autocomplete="username" class="mt-1 block w-full" required
                              type="email"/>
             </div>
@@ -160,7 +161,6 @@ import {Head, Link, useForm} from '@inertiajs/inertia-vue3'
 import DatePicker from 'vue3-persian-datetime-picker'
 import { useStore } from 'vuex'
 const store = useStore();
-console.log(store.state);
 const lang = store.state.language.core;
 lang.direction = store.state.language.langInfo.direction;
 const props = defineProps({
@@ -194,7 +194,6 @@ const provinceChange = (event) => {
         if (province.id == event.target.value)
             return province;
     });
-    console.log(t[0]);
     ourData.cities = {...t[0].cities};
 
 };

@@ -4,7 +4,6 @@ import {Link} from '@inertiajs/inertia-vue3';
 import Navbar from '@/Layouts/Navbar.vue'
 import { Inertia } from '@inertiajs/inertia'
 
-console.log(Inertia.restore('ourlang'));
 defineProps({
     smWidthClass: {type: String, default: 'max-w-md'},
     Navbar,

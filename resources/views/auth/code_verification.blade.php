@@ -12,12 +12,13 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     <div class="flex flex-col text-right justify-center">
                         <x-auth-validation-errors class="mb-4" :errors="$errors"/>
-
+                        @dump($errors)
                         <form action="{{route('checking_verification')}}" method="post">
                             @csrf
                             <div class="flex flex-col m-3">
                                 <label for="token"
-                                       class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"> کد احراز
+                                       class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                                    کد احراز
                                     هویت خود را وارد نمائید.
                                 </label>
 

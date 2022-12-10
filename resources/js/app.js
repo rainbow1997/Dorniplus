@@ -61,4 +61,3 @@ const app = createInertiaApp({
 //store.commit('setLangs','fa_IR');
 
 InertiaProgress.init({color: '#4B5563'});
-// console.log(store.state.language.langInfo.direction);

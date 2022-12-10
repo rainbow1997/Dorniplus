@@ -14,7 +14,6 @@ import CommentItem  from "./CommentItem.vue";
 const props = defineProps({
     comments:[]
 })
-console.log(props.comments[0]);
 </script>
 
 <style scoped>

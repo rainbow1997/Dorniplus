@@ -23,10 +23,8 @@ const chosenUser = reactive({
 });
 const callback = (n) => {
     if (confirm('آیا مطمئنید ؟')) {
-        console.log('hi');
         chosenUser.user_id = n;
         chosenUser.status = true;
-        console.log(chosenUser);
         storeNewAdmin();
     }
 

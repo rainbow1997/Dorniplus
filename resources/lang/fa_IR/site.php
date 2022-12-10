@@ -18,12 +18,12 @@ return [
     'forgot_password' => 'فراموشی رمز عبور',
     'remember_me' => 'مرا به یاد داشته باش؟',
     'fname' => 'نام',
-    'lname'=> 'نام خانوادگی',
+    'lname' => 'نام خانوادگی',
     'national_code' => 'کد ملی',
     'phone' => 'موبایل',
     'birth' => 'تاریخ تولد',
     'gender' => 'جنسیت',
-    'male'=> 'مذکر',
+    'male' => 'مذکر',
     'female' => 'مونث',
     'upload_avatar' => 'آپلود عکس',
     'username' => 'نام کاربری',
@@ -32,11 +32,15 @@ return [
     'security_code' => 'کد امنیتی',
     'input_correctly' => 'لطفا مقدار خواسته شده را با دقت وارد کنید.',
     'register_before_click' => 'آیا از پیش ثبت نام کرده اید؟ برای ورود کلیک کنید.',
-    'military_status' => 'وضعیت نظام وظیفه',
+    'military_status' => 'نظام وظیفه :',
     'permanent_exemption' => 'معاف دائم',
     'temporary_exemption' => 'معاف موقت',
     'done' => 'پایان خدمت',
     'security_code_problem' => ' کد امنیتی اشتباه است.',
-    'solve_errors' => 'متاسفیم! خطا های زیر را رفع کنید.'
+    'solve_errors' => 'متاسفیم! خطا های زیر را رفع کنید.',
+    'code_verification' => 'احراز هویت کاربری',
+    'submit' => 'ثبت',
+    'enter_code_verification' => '   کد احراز
+            هویت خود را وارد نمائید.'
 
 ];
