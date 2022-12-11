@@ -3,8 +3,6 @@
     "app": "laravel-starter",
     "laravel": {
         "phpVersion": "8.1",
-        "configCache": true,
-        "routeCache": true
     },
      "disks": [
     {
