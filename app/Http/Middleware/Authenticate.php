@@ -17,7 +17,7 @@ class Authenticate extends Middleware
      */
     public function handle($request, Closure $next, ...$guards)
     {
-
+        dd($request->url());
         if (Auth::check())
             if (!$request->user()->is_email_verified && !in_array($request->url(),getAuthCheckingUrls()) ) {
                 return Redirect::route('code_verification');
