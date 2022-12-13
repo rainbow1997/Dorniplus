@@ -1,13 +1,12 @@
 <template>
     <Head title="مدیریت کاربری"/>
 
-        <masterpage class="">
-
-        <div class="max-w-7xl mx-auto mt-5 sm:px-6 lg:px-8 min-h-screen">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg min-h-screen">
-                <div class="p-6 bg-white border-b border-gray-200 min-h-screen">
-                    <div class="flex flex-col space-y-8 h-screen">
-                        <div class="flex flex-col">
+    <masterpage>
+        <div class=" w-full  mx-auto mt-5 sm:px-6 lg:px-8 h-full py-6">
+            <div class="bg-white  shadow-sm sm:rounded-lg ">
+                <div class="p-6 bg-white border-b border-gray-200 ">
+                    <div class="flex gap-1 flex-col">
+                        <div class="flex flex-col gap-2">
                             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                                 کاربران
                             </h2>
@@ -173,6 +172,7 @@
 
                             </div>
                         </div>
+
                         <div class="flex-1">
 
 
@@ -237,85 +237,91 @@
                                              autofocus
                                              class="rounded-none rounded-l-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block min-w-0  text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                              display-format="jYYYY/jMM/jDD" editable
-                                             format="YYYY/MM/DD" placeholder="ابتدای بازه تاریخ عضویت..."/>
+                                             format="YYYY/MM/DD" placeholder="ابتدای بازه  عضویت..."/>
 
 
                             </div>
                         </div>
-                        <div class="overflow-x-auto relative shadow-md sm:rounded-lg min-h-screen">
-                            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                                <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
-                                <tr>
-                                    <th class="py-3 px-6 bg-gray-50 dark:bg-gray-800" scope="col">شناسه</th>
-                                    <th class="py-3 px-6 bg-gray-50 dark:bg-gray-800" scope="col">نام</th>
-                                    <th class="py-3 px-6 bg-gray-50 dark:bg-gray-800" scope="col">نام خانوادگی</th>
-                                    <th class="py-3 px-6 bg-gray-50 dark:bg-gray-800" scope="col">ایمیل</th>
-                                    <th class="py-3 px-6 bg-gray-50 dark:bg-gray-800" scope="col">استان</th>
-                                    <th class="py-3 px-6 bg-gray-50 dark:bg-gray-800" scope="col">>شهرستان</th>
-                                    <th class="py-3 px-6 bg-gray-50 dark:bg-gray-800" scope="col">نقش ها</th>
-                                    <th class="py-3 px-6 bg-gray-50 dark:bg-gray-800" scope="col" width="280px">
-                                        عملیات
-                                    </th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr v-for="user in props.users.data"
-                                    class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
-                                    <td class="py-4 px-6">{{ user.id }}</td>
-                                    <td class="py-4 px-6">{{ user.fname }}</td>
-                                    <td class="py-4 px-6">{{ user.lname }}</td>
-                                    <td class="py-4 ">{{ user.email }}</td>
-                                    <td v-if="user.province != null" class="py-4 mr-3">{{ user.province.title ?? '' }}
-                                    </td>
-                                    <td v-if="user.city != null" class="py-4 px-6">{{ user.city.title ?? '' }}</td>
-                                    <td class="py-4 px-6">
-                                        <div v-if="!!user.roles" class="flex flex-row">
+                    </div>
+
+                    <div class="  py-2 shadow-md sm:rounded-lg  ">
+                        <table class="w-full h-full text-sm text-left text-gray-500 dark:text-gray-400">
+                            <thead class="text-xs text-center text-gray-700 uppercase dark:text-gray-400">
+                            <tr>
+                                <th class="py-3 bg-gray-50 dark:bg-gray-800" scope="col">شناسه</th>
+                                <th class=" text-center bg-gray-50 dark:bg-gray-800" scope="col">نام</th>
+                                <th class="py-3 bg-gray-50 dark:bg-gray-800" scope="col">نام خانوادگی</th>
+                                <th class="py-3 px-6 bg-gray-50 dark:bg-gray-800" scope="col">ایمیل</th>
+                                <th class="py-3 px-6 bg-gray-50 dark:bg-gray-800" scope="col">استان</th>
+                                <th class="py-3 px-6 bg-gray-50 dark:bg-gray-800" scope="col">شهرستان</th>
+                                <th class="py-3 px-6 bg-gray-50 dark:bg-gray-800" scope="col">نقش ها</th>
+                                <th class="py-3 px-6 bg-gray-50 dark:bg-gray-800" scope="col" width="280px">
+                                    عملیات
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr v-for="user in props.users.data"
+                                class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+                                <td class="py-4 px-6">{{ user.id }}</td>
+                                <td class="py-4 px-6">{{ user.fname }}</td>
+                                <td class="py-4 px-6">{{ user.lname }}</td>
+                                <td class="py-4 ">{{ user.email }}</td>
+                                <td v-if="user.province != null" class="py-4 mr-3">{{ user.province.title ?? '' }}
+                                </td>
+                                <td v-if="user.city != null" class="py-4 px-6">{{ user.city.title ?? '' }}</td>
+                                <td class="py-4 px-6">
+                                    <div v-if="!user.roles" class="flex flex-row">
                                             <span v-for="role in user.roles" class="m-1">
                                                 {{ role.name }}
                                             </span>
-                                        </div>
-                                    </td>
+                                    </div>
+                                    <div v-else>
+                                        عادی
+                                    </div>
+                                </td>
 
-                                    <td v-if="props.isFromSiteAdminAdd">
-                                        <button
-                                            class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                                            @click="$emit('setUser',user.id)">
-                                            انتخاب کاربر
-                                        </button>
+                                <td v-if="props.isFromSiteAdminAdd">
+                                    <button
+                                        class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                                        @click="$emit('setUser',user.id)">
+                                        انتخاب کاربر
+                                    </button>
 
-                                    </td>
-                                    <td v-if="props.isFromSiteAdminAdd!=true" class="py-4 flex flex-row">
-                                        <button
-                                            class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                                            type="button">
+                                </td>
+                                <td v-if="props.isFromSiteAdminAdd!=true" class="py-4 flex flex-row">
+                                    <button
+                                        class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium  text-sm px-5  text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                                        type="button">
 
-                                            <Link :href="route('users.show',user.id)" class="btn btn-info">مشاهده</Link>
-                                        </button>
-                                        <button
-                                            class="text-white bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:focus:ring-yellow-900"
-                                            type="button">
+                                        <Link :href="route('users.show',user.id)" class="btn btn-info">مشاهده</Link>
+                                    </button>
+                                    <button
+                                        class="text-white bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium  text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:focus:ring-yellow-900"
+                                        type="button">
 
-                                            <a :href="route('users.edit',user.id)" class="btn btn-primary">ویرایش</a>
-                                        </button>
-                                        <button
-                                            class="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
-                                            type="button">
+                                        <a :href="route('users.edit',user.id)" class="btn btn-primary">ویرایش</a>
+                                    </button>
+                                    <button
+                                        class="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium  text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
+                                        type="button">
 
-                                            <a class="btn btn-primary" @click="destroyUser(user.id)">حذف کاربر</a>
-                                        </button>
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
-                            <pagination :links="props.users.links" class="min-h-screen "/>
-
-                            {{ $page.props.flash.message }}
+                                        <a class="btn btn-primary" @click="destroyUser(user.id)">حذف کاربر</a>
+                                    </button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <div class="flex justify-center py-3">
+                            <pagination :links="props.users.links" class=" "/>
                         </div>
+                        {{ $page.props.flash.message }}
                     </div>
                 </div>
             </div>
         </div>
-        </masterpage>
+
+    </masterpage>
 </template>
 <script setup>
 import {Inertia} from '@inertiajs/inertia'

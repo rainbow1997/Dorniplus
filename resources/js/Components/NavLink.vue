@@ -2,7 +2,7 @@
 import {computed} from 'vue';
 import {Link} from '@inertiajs/inertia-vue3';
 
-const props = defineProps(['href', 'active','type','as']);
+const props = defineProps(['href', 'active', 'type', 'as']);
 
 const classes = computed(() => props.active
     ? 'inline-flex items-center p-3 border-b-2 border-indigo-400 text-sm font-medium leading-5 text-gray-900 focus:outline-none focus:border-indigo-700 transition  duration-150 ease-in-out'
@@ -11,7 +11,7 @@ const classes = computed(() => props.active
 </script>
 
 <template>
-    <Link :class="classes" :href="props.href" :type="props.type" :as="props.as">
+    <Link :as="props.as" :class="classes" :href="props.href" :type="props.type">
         <slot/>
     </Link>
 </template>

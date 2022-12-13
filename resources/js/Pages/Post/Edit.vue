@@ -1,11 +1,11 @@
 <template>
     <Head title="ویرایش پست"/>
-<masterpage>
+    <masterpage>
 
-            <h2 class="text-xl font-semibold leading-tight text-gray-800">
-                ویرایش پست -
-                {{ form.title }}
-            </h2>
+        <h2 class="text-xl font-semibold leading-tight text-gray-800">
+            ویرایش پست -
+            {{ form.title }}
+        </h2>
 
 
         <div class="py-12">
@@ -91,7 +91,7 @@
                 </div>
             </div>
         </div>
-</masterpage>
+    </masterpage>
 </template>
 
 <script>

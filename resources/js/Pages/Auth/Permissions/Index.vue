@@ -1,15 +1,16 @@
 <template>
     <Head title="مدیریت دسترسی ها"/>
 
-<masterpage>
-            <h2 class="text-xl font-semibold leading-tight text-gray-800">
-                دسترسی ها و مجوز - Permissions
-            </h2>
+    <masterpage>
 
-
-        <div class="py-12">
-            <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
+        <div class="">
+            <div class=" w-full  mx-auto mt-5 sm:px-6 lg:px-8 h-full py-6">
                 <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
+                    <h2 class="p-3 text-xl font-semibold leading-tight text-gray-800">
+                        دسترسی ها و مجوز - Permissions
+                    </h2>
+
+
                     <div class="p-6 bg-white border-b border-gray-200">
                         <div class="mb-4">
                             <Link
@@ -106,7 +107,7 @@
                 </div>
             </div>
         </div>
-</masterpage>
+    </masterpage>
 </template>
 
 <script setup>

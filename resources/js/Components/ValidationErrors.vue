@@ -11,7 +11,7 @@ const store = useStore();
 
 <template>
     <div v-if="hasErrors">
-        <div class="font-medium text-red-600">{{store.state.language.core.solve_errors}}</div>
+        <div class="font-medium text-red-600">{{ store.state.language.core.solve_errors }}</div>
 
         <ul class="mt-3 list-disc list-inside text-sm text-red-600">
             <li v-for="(error, key) in errors" :key="key">{{ error }}</li>

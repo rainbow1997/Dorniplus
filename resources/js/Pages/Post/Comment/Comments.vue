@@ -1,10 +1,10 @@
 <template>
     <Head title="مدیریت نظرات"/>
 
-<masterpage>
+    <masterpage>
 
 
-        <div class="max-w-7xl mx-auto mt-5 sm:px-6 lg:px-8">
+        <div class=" w-full  mx-auto mt-5 sm:px-6 lg:px-8 h-full py-6">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <div class="flex flex-col space-y-8">
@@ -14,11 +14,11 @@
                             </h2>
 
                             <div class="my-2 flex flex-row justify-between ">
-<!--                                <Link :href="route('site_admin.create')"-->
-<!--                                      class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"-->
-<!--                                      type="button">-->
-<!--                                    افزودن مدیر-->
-<!--                                </link>-->
+                                <!--                                <Link :href="route('site_admin.create')"-->
+                                <!--                                      class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"-->
+                                <!--                                      type="button">-->
+                                <!--                                    افزودن مدیر-->
+                                <!--                                </link>-->
 
                                 <button
                                     class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
@@ -234,9 +234,6 @@
                                              editable format="YYYY/MM/DD" placeholder="تاریخ ارسال ..."/>
 
 
-
-
-
                             </div>
                         </div>
                         <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
@@ -244,7 +241,8 @@
                                 <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
                                 <tr>
                                     <th class="py-3 px-6 bg-gray-50 dark:bg-gray-800" scope="col">شناسه</th>
-                                    <th class="py-3 px-6 bg-gray-50 dark:bg-gray-800" scope="col"> نام و نام خانوادگی</th>
+                                    <th class="py-3 px-6 bg-gray-50 dark:bg-gray-800" scope="col"> نام و نام خانوادگی
+                                    </th>
                                     <th class="py-3 px-6 bg-gray-50 dark:bg-gray-800" scope="col">ایمیل</th>
                                     <th class="py-3 px-6 bg-gray-50 dark:bg-gray-800" scope="col">شماره تماس</th>
                                     <th class="py-3 px-6 bg-gray-50 dark:bg-gray-800" scope="col">متن پیام</th>
@@ -257,31 +255,36 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr :style="comment.is_seen ? '':'background-color:#DDD'" @mouseenter="setSeen(comment.id)" v-for="comment in props.comments.data"
-                                    class=" border-b dark:bg-gray-900 dark:border-gray-700">
+                                <tr v-for="comment in props.comments.data"
+                                    :style="comment.is_seen ? '':'background-color:#DDD'"
+                                    class=" border-b dark:bg-gray-900 dark:border-gray-700"
+                                    @mouseenter="setSeen(comment.id)">
                                     <td class="py-4 px-6">{{ comment.id }}</td>
                                     <td class="py-4 px-6">{{ comment.fullname }}</td>
                                     <td class="py-4 ">{{ comment.email }}</td>
-                                    <td class="py-4 px-6 " v-if="comment.phone">{{ comment.phone }}</td>
-                                    <td class="py-4 px-6 " v-if="comment.text">{{ comment.text }}</td>
-                                    <td class="py-4 px-6 " v-if="comment.created_at">{{ comment.created_at }}</td>
+                                    <td v-if="comment.phone" class="py-4 px-6 ">{{ comment.phone }}</td>
+                                    <td v-if="comment.text" class="py-4 px-6 ">{{ comment.text }}</td>
+                                    <td v-if="comment.created_at" class="py-4 px-6 ">{{ comment.created_at }}</td>
 
-                                    <td class="py-4 px-6 " v-if="comment.commentable.title">{{ comment.commentable.title }}</td>
+                                    <td v-if="comment.commentable.title" class="py-4 px-6 ">{{
+                                            comment.commentable.title
+                                        }}
+                                    </td>
 
 
                                     <!--                                    -->
-<!--                                    <td v-if="props.isFromSiteAdminAdd">-->
-<!--                                        <button-->
-<!--                                            class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"-->
-<!--                                            @click="$emit('setcomment',comment.id)">-->
-<!--                                            انتخاب کاربر-->
-<!--                                        </button>-->
+                                    <!--                                    <td v-if="props.isFromSiteAdminAdd">-->
+                                    <!--                                        <button-->
+                                    <!--                                            class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"-->
+                                    <!--                                            @click="$emit('setcomment',comment.id)">-->
+                                    <!--                                            انتخاب کاربر-->
+                                    <!--                                        </button>-->
 
-<!--                                    </td>-->
+                                    <!--                                    </td>-->
                                     <td v-if="props.isFromSiteAdminAdd!=true" class="py-4 flex flex-row">
                                         <button v-if="comment.status == 'hidden'"
-                                            class="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
-                                            type="button">
+                                                class="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
+                                                type="button">
 
                                             <a class="btn btn-primary" @click="ApproveComment(comment.id)">تائید نظر</a>
                                         </button>
@@ -289,14 +292,16 @@
                                             class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                                             type="button">
 
-                                            <Link :href="route('posts.show',comment.commentable.id)" class="btn btn-info">مشاهده</Link>
+                                            <Link :href="route('posts.show',comment.commentable.id)"
+                                                  class="btn btn-info">مشاهده
+                                            </Link>
                                         </button>
-<!--                                        <button-->
-<!--                                            class="text-white bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:focus:ring-yellow-900"-->
-<!--                                            type="button">-->
+                                        <!--                                        <button-->
+                                        <!--                                            class="text-white bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:focus:ring-yellow-900"-->
+                                        <!--                                            type="button">-->
 
-<!--                                            <a :href="route('comments.edit',comment.id)" class="btn btn-primary">ویرایش</a>-->
-<!--                                        </button>-->
+                                        <!--                                            <a :href="route('comments.edit',comment.id)" class="btn btn-primary">ویرایش</a>-->
+                                        <!--                                        </button>-->
                                         <button
                                             class="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
                                             type="button">
@@ -315,7 +320,7 @@
                 </div>
             </div>
         </div>
-</masterpage>
+    </masterpage>
 </template>
 <script setup>
 import {Inertia} from '@inertiajs/inertia'
@@ -331,13 +336,13 @@ import Masterpage from "@/Layouts/AdminPanel/Layout/Masterpage.vue";
 
 const ourData = useForm({
     chosenComment: {},
-    newComments :{},
+    newComments: {},
     report: useForm({
         parameters: {
             fullname: false,
             email: false,
             phone: false,
-            content:'',
+            content: '',
             created_at: '',
         },
         methods: []
@@ -359,12 +364,14 @@ const props = defineProps({
     isFromSiteAdminAdd: false
 });
 
-const setSeen = (commentId) =>{
+const setSeen = (commentId) => {
 
-    Inertia.reload({only:['comments'],
-    data:{
-        comment_id:commentId
-    }});
+    Inertia.reload({
+        only: ['comments'],
+        data: {
+            comment_id: commentId
+        }
+    });
 }
 watch(ourData.search, (newValue, oldValue) => {
         Inertia.reload({
@@ -398,7 +405,7 @@ const submitReportGenerator = () => {
 
 };
 
-const destroyComment= (id) => {
+const destroyComment = (id) => {
     Inertia.delete(route("comments.destroy", id));
 
 }

@@ -75,7 +75,7 @@ class AuthenticatedSessionController extends Controller
             return redirect()->route('dashboard')
                 ->with('status', 'اکانت شما با موفقیت فعال سازی شد');
         }
-        return redirect()->route('dashboard')
+        return redirect()->route('code_verification')
             ->with('status', 'اکانت شما فعال سازی نگردید.');
 
 

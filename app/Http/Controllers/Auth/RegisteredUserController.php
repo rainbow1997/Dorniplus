@@ -25,13 +25,11 @@ class RegisteredUserController extends Controller
 {
     public function store(Request $request)
     {
-
         $validData = $this->userValidating($request);
         $validData = collect($validData);
         $this->securePassword($validData);
         if ($request->hasFile('avatar'))
             $validData->put('avatar', $this->uploadAvatar($request));
-
         $user = User::create($validData->toArray());
         $userVerify = new UserVerify;
         $userVerify->setToken();

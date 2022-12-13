@@ -67,6 +67,7 @@ Route::group([
 });
 Route::group([
     'middleware' => ['auth'],
+    'withoutMiddleware' => ['guest'],
     'prefix' => 'auth'
 ], function () {
 

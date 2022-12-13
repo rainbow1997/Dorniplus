@@ -15,15 +15,11 @@ class Authenticate extends Middleware
      * @param Request $request
      * @return string|null
      */
-    private function httpsSanitize(string $url)
-    {
-        return str_replace("http","https",$url);
-    }
     public function handle($request, Closure $next, ...$guards)
     {
-   
+
         if (Auth::check())
-            if (!$request->user()->is_email_verified && !in_array($this->httpsSanitize($request->url()),getAuthCheckingUrls()) ) {
+            if (!$request->user()->is_email_verified && !in_array($request->url(), getAuthCheckingUrls())) {
                 return Redirect::route('code_verification');
             } else
                 return $next($request);

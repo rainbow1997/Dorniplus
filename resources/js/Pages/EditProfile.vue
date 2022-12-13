@@ -88,7 +88,7 @@ export default {
         };
         const submit = () => {
 
-            form.post(route('storeProfile',props.user.id), {
+            form.post(route('storeProfile', props.user.id), {
                 onSuccess: () => form.reset('password', 'avatar'),
                 preserveState: true
             });
@@ -103,8 +103,8 @@ export default {
 
 <template>
 
-        <Head title="ویرایش پروفایل"/>
-<masterpage class="h-full">
+    <Head title="ویرایش پروفایل"/>
+    <masterpage class="h-full">
         <BreezeValidationErrors class="mb-4"/>
 
         <form class="rtl text-right" @submit.prevent="submit">
@@ -240,5 +240,5 @@ export default {
             </div>
         </form>
 
-</masterpage>
+    </masterpage>
 </template>

@@ -38,16 +38,17 @@ const changeLang = async (site_locale) => {
 
 <template>
 
-    <div class=" container mx-auto w-50 ">
+    <div class=" container mx-auto w-50  ">
         <nav
             class="shadow-2xl navbar-sticky px-2 sm:px-4 py-2.5 justify-between dark:bg-gray-900  w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600">
             <div class=" flex flex-wrap   b md:justify-between justify-around ">
 
                 <div class="self-center order-1">
 
-                    <nav-link aria-current="page"
-                              class="focus:outline-none text-white focus:text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900"
-                              :href="route('homepage')">{{ lang.homepage }}
+                    <nav-link :href="route('homepage')"
+                              aria-current="page"
+                              class="focus:outline-none text-white focus:text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900">
+                        {{ lang.homepage }}
                     </nav-link>
 
                 </div>
@@ -92,7 +93,7 @@ const changeLang = async (site_locale) => {
 
                 </div>
                 <div id="navbar-sticky" class="hidden w-full md:flex md:w-auto order-3">
-                    <ul class="md:order-3  flex md:flex-row flex-col p-4 mt-4 justify-between bg-gray-50  rounded-lg border border-gray-100 md:flex-row  w-full md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                    <ul class="md:order-3  flex md:flex-row flex-col p-4 mt-4 justify-between bg-gray-50  rounded-lg border border-gray-100 md:flex-row  w-full md:mt-0 md:text-sm md:font-medium md:border-0  dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
                         <li class="text-center">
                         <span v-if="!$page.props.auth.user"
                               class="flex md:flex-row flex-col w-full gap-x-4 gap-y-4   text-center ">

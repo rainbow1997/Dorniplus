@@ -1,10 +1,10 @@
 <template>
     <Head title="افزودن موضوع"/>
-<masterpage>
+    <masterpage>
 
-            <h2 class="text-xl font-semibold leading-tight text-gray-800">
-                افزودن موضوع
-            </h2>
+        <h2 class="text-xl font-semibold leading-tight text-gray-800">
+            افزودن موضوع
+        </h2>
 
 
         <div class="py-12">
@@ -51,7 +51,7 @@
                 </div>
             </div>
         </div>
-</masterpage>
+    </masterpage>
 </template>
 <script>
 import {Head} from "@inertiajs/inertia-vue3"

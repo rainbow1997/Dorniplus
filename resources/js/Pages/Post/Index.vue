@@ -1,30 +1,31 @@
 <template>
     <Head title="مدیریت مطالب"/>
-<masterpage>
-
-            <div class="flex flex-col">
-                <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                    مطالب سایت
-                </h2>
-
-                <div class="my-2 flex flex-row space-around ">
-
-                    <button
-                        class="mx-2 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
-                        <a :href="route('posts.create')">
-                            افزودن مطلب جدید
-                        </a>
-
-                    </button>
-
-                </div>
-            </div>
+    <masterpage>
 
 
+        <div class=" w-full  mx-auto mt-5 sm:px-6 lg:px-8 h-full py-6">
 
-        <div class="max-w-7xl mx-auto mt-5 sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
+                <div class="flex flex-col">
+                    <h2 class="p-3 font-semibold text-xl text-gray-800 leading-tight">
+                        مطالب سایت
+                    </h2>
+
+                    <div class="my-2 flex flex-row space-around ">
+
+                        <button
+                            class="mx-2 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                            <a :href="route('posts.create')">
+                                افزودن مطلب جدید
+                            </a>
+
+                        </button>
+
+                    </div>
+                </div>
+
+
+                <div class="p-5 bg-white border-b border-gray-200">
                     <div class="flex flex-col space-y-8">
                         <div class="flex-1">
                             <div
@@ -133,7 +134,7 @@
                 </div>
             </div>
         </div>
-</masterpage>
+    </masterpage>
 </template>
 <script setup>
 import {Inertia} from '@inertiajs/inertia'

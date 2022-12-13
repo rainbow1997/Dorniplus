@@ -9,17 +9,17 @@
                     <div class=" text-xs flex flex-row items-center gap-x-2 shadow ">
 
                         <h6 class="font-light rtl italic ">
-                            {{lang.author}}:
+                            {{ lang.author }}:
                             {{ props.post.writer_person.fname }} {{ props.post.writer_person.lname }} </h6>
-                        <h5 class=" font-bold">{{lang.subject}}:{{ props.post.category.title }}</h5>
-                        <h6 class="font-light">{{lang.estimated_time}}:{{ props.post.estimated_time }}</h6>
+                        <h5 class=" font-bold">{{ lang.subject }}:{{ props.post.category.title }}</h5>
+                        <h6 class="font-light">{{ lang.estimated_time }}:{{ props.post.estimated_time }}</h6>
                     </div>
                 </div>
             </div>
             <div
                 class="flex flex-col gap-y-1 my-2 w-full box-header-color rounded p-5 md:p-6 lg:p-8 xl:p-10 text-3xs font:medium leading-loose  justify-center">
                 <h1 class="font-extrabold text-center">{{ props.post.title }}</h1>
-                <span class="w-full " v-html="props.post.text" >
+                <span class="w-full " v-html="props.post.text">
 
 
             </span>
@@ -28,7 +28,7 @@
 
             </div>
             <div class="flex w-full items-center justify-center text-green-500 text-center font-bold italic my-3">
-                {{usePage().props.value.flash.message}}
+                {{ usePage().props.value.flash.message }}
             </div>
             <div class="container mx-auto text-left p-3">
 
@@ -42,11 +42,10 @@
 <script setup>
 import BreezeGuestLayout from '@/Layouts/Guest.vue'
 
-import {Head} from '@inertiajs/inertia-vue3'
-import { useStore } from 'vuex'
+import {Head, usePage} from '@inertiajs/inertia-vue3'
+import {useStore} from 'vuex'
 import Comments from './Comment/Index.vue'
 import SendNewComment from "@/Pages/Post/Comment/SendNewComment.vue";
-import { usePage } from '@inertiajs/inertia-vue3'
 
 const store = useStore();
 const lang = store.state.language.core;

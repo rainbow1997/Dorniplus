@@ -1,9 +1,9 @@
 <template>
     <Head title="افزودن شهر به استان"/>
-<masterpage>
-            <h2 class="text-xl font-semibold leading-tight text-gray-800">
-                افزودن شهر به استان {{ province.title }}
-            </h2>
+    <masterpage>
+        <h2 class="text-xl font-semibold leading-tight text-gray-800">
+            افزودن شهر به استان {{ province.title }}
+        </h2>
 
 
         <div class="py-12">
@@ -52,7 +52,7 @@
                 </div>
             </div>
         </div>
-</masterpage>
+    </masterpage>
 </template>
 
 <script>

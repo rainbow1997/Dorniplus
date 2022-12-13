@@ -1,21 +1,21 @@
 <template>
     <div class="flex items-start justify-between">
         <navbar></navbar>
-        <div class="flex flex-col w-full pl-0 md:p-4 md:space-y-4 h-screen">
+        <div class="flex h-screen flex-col w-full pl-0 md:p-4">
 
-        <my-header></my-header>
-        <slot>
+            <my-header></my-header>
 
-        </slot>
-    </div>
+            <slot>
+
+            </slot>
+        </div>
     </div>
 
 </template>
 
 <script setup>
 import Navbar from './Navbar.vue'
-import MyHeader from './Header.vue'
-</script>
+import MyHeader from './Header.vue'</script>
 
 <style scoped>
 

@@ -1,28 +1,28 @@
 <template>
     <Head title="مدیریت موضوعات"/>
 
-        <masterpage>
-            <div class="flex flex-col">
-                <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                    موضوعات سایت
-                </h2>
+    <masterpage>
 
-                <div class="my-2 flex flex-row space-around ">
+        <div class=" w-full  mx-auto mt-5 sm:px-6 lg:px-8 h-full py-6">
 
-                    <button
-                        class="mx-2 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
-                        <a :href="route('categories.create')">
-                            افزودن موضوع جدید
-                        </a>
-
-                    </button>
-
-                </div>
-            </div>
-
-
-        <div class="max-w-7xl mx-auto mt-5 sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="flex flex-col">
+                    <h2 class="p-3 font-semibold text-xl text-gray-800 leading-tight">
+                        موضوعات سایت
+                    </h2>
+
+                    <div class="my-2 flex flex-row space-around ">
+
+                        <button
+                            class="mx-2 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                            <a :href="route('categories.create')">
+                                افزودن موضوع جدید
+                            </a>
+
+                        </button>
+
+                    </div>
+                </div>
                 <div class="p-6 bg-white border-b border-gray-200">
                     <div class="flex flex-col space-y-8">
                         <div class="flex-1">
@@ -85,13 +85,13 @@
                                     <td class="py-4 flex flex-row">
 
                                         <button
-                                            class="text-white bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:focus:ring-yellow-900"
+                                            class="text-white bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium  text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:focus:ring-yellow-900"
                                             type="button">
 
                                             <a :href="route('categories.edit',category.id)" class="btn btn-primary">ویرایش</a>
                                         </button>
                                         <button
-                                            class="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
+                                            class="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium  text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
                                             type="button">
 
                                             <a class="btn btn-primary" @click="destroyUser(category.id)">حذف</a>
@@ -108,7 +108,7 @@
                 </div>
             </div>
         </div>
-        </masterpage>
+    </masterpage>
 </template>
 <script setup>
 import {Inertia} from '@inertiajs/inertia'

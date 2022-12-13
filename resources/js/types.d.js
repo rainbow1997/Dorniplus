@@ -1,5 +1,8 @@
-declare interface User {
-    id:number;
-    name:string;
-    email:string;
+declare
+interface
+User
+{
+    number;
+    string;
+    string;
 }

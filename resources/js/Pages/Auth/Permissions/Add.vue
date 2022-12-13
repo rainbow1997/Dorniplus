@@ -1,11 +1,11 @@
 <template>
     <Head title="ویرایش مجوز"/>
 
-<masterpage>
-            <h2 class="text-xl font-semibold leading-tight text-gray-800">
-                ویرایش مجوز(Permission)
-                {{ form.name }}
-            </h2>
+    <masterpage>
+        <h2 class="text-xl font-semibold leading-tight text-gray-800">
+            ویرایش مجوز(Permission)
+            {{ form.name }}
+        </h2>
 
 
         <div class="py-12">
@@ -55,7 +55,7 @@
                 </div>
             </div>
         </div>
-</masterpage>
+    </masterpage>
 </template>
 
 <script setup>

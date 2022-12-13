@@ -1,10 +1,10 @@
 <template>
     <masterpage>
-    <Head title="ویرایش موضوع"/>
+        <Head title="ویرایش موضوع"/>
 
-            <h2 class="text-xl font-semibold leading-tight text-gray-800">
-                ویرایش موضوع {{ form.title }}
-            </h2>
+        <h2 class="text-xl font-semibold leading-tight text-gray-800">
+            ویرایش موضوع {{ form.title }}
+        </h2>
 
 
         <div class="py-12">
@@ -56,8 +56,7 @@
 
 <script setup>
 import {Inertia} from '@inertiajs/inertia'
-import {Head} from "@inertiajs/inertia-vue3"
-import {useForm} from "@inertiajs/inertia-vue3"
+import {Head, useForm} from "@inertiajs/inertia-vue3"
 import Masterpage from "@/Layouts/AdminPanel/Layout/Masterpage.vue";
 
 const props = defineProps({
