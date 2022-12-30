@@ -18,7 +18,7 @@
 
 </head>
 
-<body dir="rtl" class="bg-gray-100 dark:bg-gray-800 rounded-2xl  overflow-scroll relative font-body">
+<body dir="rtl" class="bg-gray-100 dark:bg-gray-800 rounded-2xl  overflow-y-scroll relative font-body">
 @inertia
 
 <script src="{{asset('js/flowbite.js')}} " defer></script>

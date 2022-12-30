@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Data;
+use App\Models\Detector;
 use App\Models\Post;
 use Illuminate\Foundation\Application;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -52,5 +55,16 @@ class HomeController extends Controller
 //         dd($posts);
         return $posts;
 
+    }
+    public function getData(Request $request)
+    {
+        $request->validate([
+            'posted_data'=>['required','json']
+        ]);
+ 
+        $d = new Data;
+        $d->posted_data = $request->posted_data;
+        $d->save();
+        return response()->json('ok',200);
     }
 }

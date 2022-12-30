@@ -1,7 +1,9 @@
 <template>
-    <div class="flex items-start justify-between">
+    <div class="grid grid-cols-4 items-start justify-between">
+        <div>
         <navbar></navbar>
-        <div class="flex h-screen flex-col w-full pl-0 md:p-4">
+        </div>
+        <div class="col-span-3 flex h-screen flex-col w-full pl-0 md:p-4">
 
             <my-header></my-header>
 

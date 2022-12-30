@@ -2,7 +2,7 @@
     <Head title="مدیریت کاربری"/>
 
     <masterpage>
-        <div class=" w-full  mx-auto mt-5 sm:px-6 lg:px-8 h-full py-6">
+        <div class=" w-full   mt-5 h-full ">
             <div class="bg-white  shadow-sm sm:rounded-lg ">
                 <div class="p-6 bg-white border-b border-gray-200 ">
                     <div class="flex gap-1 flex-col">
@@ -228,14 +228,14 @@
                                 <!--                                </div>-->
                                 <date-picker v-model="ourData.search.birth"
                                              autofocus
-                                             class="rounded-none rounded-l-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block min-w-0  text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                             class="overflow-hidden rounded-none rounded-l-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block min-w-0  text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                              display-format="jYYYY/jMM/jDD"
                                              editable format="YYYY/MM/DD" placeholder="تاریخ تولد ..."/>
 
 
                                 <date-picker v-model="ourData.search.created_at"
                                              autofocus
-                                             class="rounded-none rounded-l-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block min-w-0  text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                             class="overflow-hidden rounded-none rounded-l-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block min-w-0  text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                              display-format="jYYYY/jMM/jDD" editable
                                              format="YYYY/MM/DD" placeholder="ابتدای بازه  عضویت..."/>
 
@@ -245,7 +245,7 @@
                     </div>
 
                     <div class="  py-2 shadow-md sm:rounded-lg  ">
-                        <table class="w-full h-full text-sm text-left text-gray-500 dark:text-gray-400">
+                        <table class="overflow-scroll w-full h-full text-sm text-left text-gray-500 dark:text-gray-400">
                             <thead class="text-xs text-center text-gray-700 uppercase dark:text-gray-400">
                             <tr>
                                 <th class="py-3 bg-gray-50 dark:bg-gray-800" scope="col">شناسه</th>

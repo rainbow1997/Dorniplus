@@ -31,7 +31,6 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/setLang/{lang}', function ($lang) {
     request()->session()->put('lang', $lang);
     return Inertia::location(route('homepage'));

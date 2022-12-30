@@ -13,9 +13,9 @@ class DashboardController extends Controller
     //role checking in middlewares
     public function index(Request $request, User $admin)
     {
-        $dashboardData['users'] = User::all()->count();
-        $dashboardData['posts'] = Post::all()->count();
-        $dashboardData['comments'] = Comment::all()->count();
+        $dashboardData['users'] = User::count();
+        $dashboardData['posts'] = Post::count();
+        $dashboardData['comments'] = Comment::count();
         $dashboardData['unReadComments'] = Comment::where('is_seen',0)->count();
 
         return Inertia::render('Dashboard',['dashboardData'=>$dashboardData]);
