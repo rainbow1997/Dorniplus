@@ -30,7 +30,7 @@
                     </div>
                 </div>
                 <div class="relative p-1 flex items-center justify-end w-1/4 ml-5 mr-4 sm:mr-0 sm:right-auto">
-                    <Link :href="route('editProfile')" class="block relative">
+                    <Link :href="route(langPrefix + '.editProfile')" class="block relative">
                         <img :src="'/storage/'+usePage().props.value.auth.user.avatar" alt="profile"
                              class="mx-auto object-cover rounded-full h-10 w-10 "/>
                     </Link>
@@ -42,7 +42,13 @@
 </template>
 
 <script setup>
-import {Link, usePage} from "@inertiajs/inertia-vue3"</script>
+import {Link, usePage} from "@inertiajs/inertia-vue3"
+import {useStore} from "vuex";
+const store = useStore();
+
+const lang = store.state.language;
+const langPrefix = lang.langName;
+</script>
 
 <style scoped>
 

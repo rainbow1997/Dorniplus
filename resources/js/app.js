@@ -14,7 +14,7 @@ import.meta.glob([
     '../fonts/**'
 ]);
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
-window.$ = window.jQuery = import('jquery');
+// window.$ = window.jQuery = import('jquery');
 const store = createStore({
     // plugins : [createPersistedState()],
     state() {

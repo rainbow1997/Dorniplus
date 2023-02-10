@@ -17,7 +17,8 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = 'admin/dashboard';
+    public const fa_IRHOME = 'fa_IR/admin/dashboard';
+    public const en_USHOME = 'en_US/admin/dashboard';
 
     /**
      * The controller namespace for the application.
@@ -36,7 +37,6 @@ class RouteServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->configureRateLimiting();
-
         $this->routes(function () {
             Route::prefix('api')
                 ->middleware('api')

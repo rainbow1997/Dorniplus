@@ -12,8 +12,8 @@
             </div>
             <nav class="mt-6">
                 <div>
-                    <Link :class="isActiveItem('dashboard')"
-                          :href="route('dashboard')">
+                    <Link :class="isActiveItem(langPrefix + '.dashboard')"
+                          :href="route(langPrefix +'.dashboard')">
                             <span class="text-left">
                                 <svg fill="currentColor" height="20" viewBox="0 0 2048 1792" width="20"
                                      xmlns="http://www.w3.org/2000/svg">
@@ -28,8 +28,8 @@
                     </Link>
 
 
-                    <Link :class="isActiveItem('users.index')"
-                          :href="route('users.index')">
+                    <Link :class="isActiveItem(langPrefix + '.users.index')"
+                          :href="route(langPrefix +'.users.index')">
                             <span class="text-left">
                                 <svg class="h-5 w-5" fill="currentColor" stroke="currentColor"
                                      viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -43,8 +43,8 @@
                                 کاربران
                             </span>
                     </Link>
-                    <Link :class="isActiveItem('categories.index')"
-                          :href="route('categories.index')">
+                    <Link :class="isActiveItem(langPrefix + '.categories.index')"
+                          :href="route(langPrefix +'.categories.index')">
                             <span class="text-left">
                                 <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20"
                                      xmlns="http://www.w3.org/2000/svg">
@@ -57,8 +57,8 @@
                             </span>
                     </Link>
 
-                    <Link :class="isActiveItem('posts.index')"
-                          :href="route('posts.index')">
+                    <Link :class="isActiveItem(langPrefix + '.posts.index')"
+                          :href="route(langPrefix +'.posts.index')">
                             <span class="text-left">
                                 <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20"
                                      xmlns="http://www.w3.org/2000/svg">
@@ -71,8 +71,8 @@
                             </span>
                     </Link>
 
-                    <Link :class="isActiveItem('comments.index')"
-                          :href="route('comments.index')">
+                    <Link :class="isActiveItem(langPrefix + '.comments.index')"
+                          :href="route(langPrefix +'.comments.index')">
                             <span class="text-left">
                                 <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20"
                                      xmlns="http://www.w3.org/2000/svg">
@@ -86,8 +86,8 @@
                             </span>
                     </Link>
 
-                    <Link :class="isActiveItem('permissions.index')"
-                          :href="route('permissions.index')">
+                    <Link :class="isActiveItem(langPrefix + '.permissions.index')"
+                          :href="route(langPrefix +'.permissions.index')">
                             <span class="text-left">
                                 <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20"
                                      xmlns="http://www.w3.org/2000/svg">
@@ -102,8 +102,8 @@
                     </Link>
 
 
-                    <Link :class="isActiveItem('roles.index')"
-                          :href="route('roles.index')">
+                    <Link :class="isActiveItem(langPrefix + '.roles.index')"
+                          :href="route(langPrefix +'.roles.index')">
                             <span class="text-left">
                                 <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20"
                                      xmlns="http://www.w3.org/2000/svg">
@@ -116,8 +116,8 @@
                             </span>
                     </Link>
 
-                    <Link :class="isActiveItem('site_admin.index')"
-                          :href="route('site_admin.index')">
+                    <Link :class="isActiveItem(langPrefix + '.site_admin.index')"
+                          :href="route(langPrefix +'.site_admin.index')">
                             <span class="text-left">
                                 <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20"
                                      xmlns="http://www.w3.org/2000/svg">
@@ -130,8 +130,8 @@
                             </span>
                     </Link>
 
-                    <Link :class="isActiveItem('regions.index')"
-                          :href="route('regions.index')">
+                    <Link :class="isActiveItem(langPrefix + '.regions.index')"
+                          :href="route(langPrefix +'.regions.index')">
                             <span class="text-left">
                                 <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20"
                                      xmlns="http://www.w3.org/2000/svg">
@@ -143,8 +143,8 @@
                                 مناطق
                             </span>
                     </Link>
-                    <Link :class="isActiveItem('logs')"
-                          :href="route('logs')">
+                    <Link :class="isActiveItem(langPrefix + '.logs')"
+                          :href="route(langPrefix +'.logs')">
                             <span class="text-left">
                                 <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20"
                                      xmlns="http://www.w3.org/2000/svg">
@@ -156,8 +156,8 @@
                                 گزارشات (لاگ ها)
                             </span>
                     </Link>
-                    <form @submit.prevent="logoutForm.post(route('logout'))">
-                        <button :class="isActiveItem('logout')" :href="route('logout')"
+                    <form @submit.prevent="logoutForm.post(route(langPrefix +'.logout'))">
+                        <button :class="isActiveItem(langPrefix + '.logout')" :href="route(langPrefix +'.logout')"
                                 type="submit">
                             <span class="text-left">
                                 <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20"
@@ -196,6 +196,12 @@
 
 <script setup>
 import {Link, useForm} from '@inertiajs/inertia-vue3'
+import {useStore} from "vuex";
+import {computed} from 'vue'
+
+const store = useStore();
+const lang = store.state.language;
+const langPrefix = lang.langName;
 
 const isActiveItem = (routeName) => {
     const url = window.location.href;

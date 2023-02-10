@@ -127,7 +127,7 @@
             <div class="mt-4">
                 <BreezeLabel :value="lang.security_code + '*'" for="captcha"/>
 
-                <img id="captcha" class="" src="/captcha2">
+                <img id="captcha" class="" :src="route(langPrefix + '.captchaImg')">
 
 
             </div>
@@ -138,7 +138,7 @@
 
             </div>
             <div class="flex items-center justify-end mt-4">
-                <Link :href="route('login')" class="underline text-sm text-gray-600 hover:text-gray-900 mx-4">
+                <Link :href="route(langPrefix + '.login')" class="underline text-sm text-gray-600 hover:text-gray-900 mx-4">
                     {{ lang.register_before_click }}
                 </Link>
 
@@ -164,6 +164,8 @@ import {useStore} from 'vuex'
 
 const store = useStore();
 const lang = store.state.language.core;
+const langPrefix = store.state.language.langName;
+
 lang.direction = store.state.language.langInfo.direction;
 const props = defineProps({
     regions: {}
@@ -205,7 +207,7 @@ const genderChange = (event) => {
 }
 
 const submit = () => {
-    Inertia.post(route('register'), form);
+    Inertia.post(route(langPrefix + '.register'), form);
 }
 
 </script>

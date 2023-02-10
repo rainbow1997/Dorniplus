@@ -15,7 +15,6 @@ class HomeController extends Controller
     //
     public function index()
     {
-
         return Inertia::render('Welcome', [
             'canLogin' => Route::has('login'),
             'canRegister' => Route::has('register'),
@@ -61,7 +60,7 @@ class HomeController extends Controller
         $request->validate([
             'posted_data'=>['required','json']
         ]);
- 
+
         $d = new Data;
         $d->posted_data = $request->posted_data;
         $d->save();

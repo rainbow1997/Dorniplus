@@ -41,7 +41,7 @@ class Authenticate extends Middleware
             if (!$request->user()->is_email_verified && !$this->isInActivationPage($request) ) {
 //                if($request->url() == 'https://myapp.test/auth/code_verification')
 //                    dd($this->httpsSanitize($request->url()));
-                return Redirect::route('code_verification');
+                return Redirect::route(app()->getLocale().'.code_verification');
             } else
                 return $next($request);
         return abort(403);
@@ -51,7 +51,7 @@ class Authenticate extends Middleware
     {
 
         if (!$request->expectsJson()) {
-            return route('login');
+            return route(app()->getLocale().'.login');
         }
     }
 

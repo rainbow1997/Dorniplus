@@ -11,6 +11,8 @@ import Captcha from '../../Components/Captcha.vue'
 
 const store = useStore();
 const lang = store.state.language.core;
+const langPrefix = store.state.language.langName;
+
 lang.direction = store.state.language.langInfo.direction;
 defineProps({
     canResetPassword: Boolean,
@@ -29,7 +31,7 @@ const receiveCaptcha = (code) => {
 
 }
 const submit = () => {
-    form.post(route('login'), {
+    form.post(route(langPrefix + '.login'), {
         onFinish: () => form.reset('password'),
     });
 };
@@ -72,7 +74,7 @@ const submit = () => {
             </div>
 
             <div class="flex items-center justify-end mt-4">
-                <Link v-if="canResetPassword" :href="route('password.request')"
+                <Link v-if="canResetPassword" :href="route(langPrefix + '.password.request')"
                       class="underline text-sm text-gray-600 hover:text-gray-900">
                     {{ lang.forget_password }}
                 </Link>

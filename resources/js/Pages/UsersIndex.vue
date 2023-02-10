@@ -12,7 +12,7 @@
                             </h2>
 
                             <div class="my-2 flex flex-row justify-between ">
-                                <Link :href="route('site_admin.create')"
+                                <Link :href="route(langPrefix + 'site_admin.create')"
                                       class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                                       type="button">
                                     افزودن مدیر
@@ -294,13 +294,13 @@
                                         class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium  text-sm px-5  text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                                         type="button">
 
-                                        <Link :href="route('users.show',user.id)" class="btn btn-info">مشاهده</Link>
+                                        <Link :href="route(langPrefix + 'users.show',user.id)" class="btn btn-info">مشاهده</Link>
                                     </button>
                                     <button
                                         class="text-white bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium  text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:focus:ring-yellow-900"
                                         type="button">
 
-                                        <a :href="route('users.edit',user.id)" class="btn btn-primary">ویرایش</a>
+                                        <a :href="route(langPrefix + 'users.edit',user.id)" class="btn btn-primary">ویرایش</a>
                                     </button>
                                     <button
                                         class="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium  text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
@@ -339,7 +339,12 @@ import Pagination from '@/Layouts/pagination.vue'
 import DatePicker from 'vue3-persian-datetime-picker'
 import 'flowbite'
 import Masterpage from "@/Layouts/AdminPanel/Layout/Masterpage.vue";
+import {useStore} from 'vuex'
 
+const store = useStore();
+
+const lang = computed(() => store.state.language);
+const langPrefix = lang.langName;
 const ourData = useForm({
     chosenUser: {},
     ali: [1, 2, 5],
@@ -385,7 +390,7 @@ watch(ourData.search, (newValue, oldValue) => {
 
 const setUser = (user) => {
 
-    Inertia.visit(route('site_admin.create', {
+    Inertia.visit(route(langPrefix + 'site_admin.create', {
         replace: true,
         data: {
             chosenUser: user
@@ -401,7 +406,7 @@ const refreshPage = (e) => {
 
 const submitReportGenerator = () => {
 
-    this.report.post(route('users.report'), {
+    this.report.post(route(langPrefix+'users.report'), {
         preserveState: true,
         preserveScroll: true,
         onFinish: () => {
@@ -415,7 +420,7 @@ const submitReportGenerator = () => {
 };
 
 const destroyUser = (id) => {
-    Inertia.delete(route("users.destroy", id));
+    Inertia.delete(route(langPrefix + "users.destroy", id));
 
 }
 

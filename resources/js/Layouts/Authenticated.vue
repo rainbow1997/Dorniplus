@@ -6,6 +6,12 @@ import BreezeDropdownLink from '@/Components/DropdownLink.vue'
 import BreezeNavLink from '@/Components/NavLink.vue'
 import BreezeResponsiveNavLink from '@/Components/ResponsiveNavLink.vue'
 import {Link} from '@inertiajs/inertia-vue3'
+import {useStore} from "vuex";
+
+const store = useStore();
+
+const lang =  store.state.language;
+const langPrefix = lang.langName;
 
 const showingNavigationDropdown = ref(false);
 </script>
@@ -20,7 +26,7 @@ const showingNavigationDropdown = ref(false);
                         <div class="flex">
                             <!-- Logo -->
                             <div class="shrink-0 flex items-center">
-                                <Link :href="route('dashboard')">
+                                <Link :href="route(langPrefix + '.dashboard')">
                                     <BreezeApplicationLogo class="block h-9 w-auto"/>
                                 </Link>
 
@@ -28,40 +34,40 @@ const showingNavigationDropdown = ref(false);
 
                             <!-- Navigation Links -->
                             <div class="text-right hidden space-x-8 sm:-my-px sm:m-10 sm:flex">
-                                <BreezeNavLink :active="route().current('dashboard')" :href="route('dashboard')">
+                                <BreezeNavLink :active="route().current(langPrefix + '.dashboard')" :href="route(langPrefix + '.dashboard')">
                                     داشبورد
                                 </BreezeNavLink>
-                                <BreezeNavLink :href="route('regions.index')">
+                                <BreezeNavLink :href="route(langPrefix + '.regions.index')">
                                     مناطق
                                 </BreezeNavLink>
-                                <BreezeNavLink :href="route('roles.index')">
+                                <BreezeNavLink :href="route(langPrefix + '.roles.index')">
                                     نقش های کاربری
                                 </BreezeNavLink>
-                                <BreezeNavLink :href="route('permissions.index')" class="">
+                                <BreezeNavLink :href="route(langPrefix + '.permissions.index')" class="">
                                     دسترسی و مجوز ها
                                 </BreezeNavLink>
-                                <BreezeNavLink :href="route('site_admin.index')">
+                                <BreezeNavLink :href="route(langPrefix + '.site_admin.index')">
                                     مدیران سایت
                                 </BreezeNavLink>
-                                <BreezeNavLink :href="route('users.index')">
+                                <BreezeNavLink :href="route(langPrefix + '.users.index')">
                                     کاربران
                                 </BreezeNavLink>
-                                <BreezeNavLink :href="route('categories.index')">
+                                <BreezeNavLink :href="route(langPrefix + '.categories.index')">
                                     موضوعات
                                 </BreezeNavLink>
-                                <BreezeNavLink :href="route('posts.index')">
+                                <BreezeNavLink :href="route(langPrefix + '.posts.index')">
                                     مطالب
                                 </BreezeNavLink>
-                                <BreezeNavLink :href="route('chart')">
+                                <BreezeNavLink :href="route(langPrefix + '.chart')">
                                     نمودار
                                 </BreezeNavLink>
-                                <BreezeNavLink :href="route('comments.index')">
+                                <BreezeNavLink :href="route(langPrefix + '.comments.index')">
                                     نظرات
                                 </BreezeNavLink>
-                                <BreezeNavLink :href="route('logs')">
+                                <BreezeNavLink :href="route(langPrefix + '.logs')">
                                     گزارشات(لاگ)
                                 </BreezeNavLink>
-                                <BreezeNavLink :href="route('homepage')">
+                                <BreezeNavLink :href="route(langPrefix + '.homepage')">
                                     مشاهده سایت اصلی
                                 </BreezeNavLink>
 
@@ -90,17 +96,17 @@ const showingNavigationDropdown = ref(false);
                                     </template>
 
                                     <template #content>
-                                        <BreezeDropdownLink :active="route().current('editProfile')"
-                                                            :href="route('editProfile')" as="button"
+                                        <BreezeDropdownLink :active="route().current(langPrefix + '.editProfile')"
+                                                            :href="route(langPrefix + '.editProfile')" as="button"
                                                             method="get">
                                             ویرایش پروفایل
                                         </BreezeDropdownLink>
-                                        <BreezeDropdownLink :active="route().current('changePassword')"
-                                                            :href="route('changePassword')" as="button"
+                                        <BreezeDropdownLink :active="route().current(langPrefix + '.changePassword')"
+                                                            :href="route(langPrefix + '.changePassword')" as="button"
                                                             method="get">
                                             تغییر رمز عبور
                                         </BreezeDropdownLink>
-                                        <BreezeDropdownLink :href="route('logout')" as="button" method="post">
+                                        <BreezeDropdownLink :href="route(langPrefix + '.logout')" as="button" method="post">
                                             خروج
                                         </BreezeDropdownLink>
                                     </template>
@@ -132,7 +138,7 @@ const showingNavigationDropdown = ref(false);
                 <div :class="{'block': showingNavigationDropdown, 'hidden': ! showingNavigationDropdown}"
                      class="sm:hidden">
                     <div class="pt-2 pb-3 space-y-1">
-                        <BreezeResponsiveNavLink :active="route().current('dashboard')" :href="route('dashboard')">
+                        <BreezeResponsiveNavLink :active="route().current(langPrefix + '.dashboard')" :href="route(langPrefix + '.dashboard')">
                             داشبورد
                         </BreezeResponsiveNavLink>
                     </div>
@@ -145,7 +151,7 @@ const showingNavigationDropdown = ref(false);
                         </div>
 
                         <div class="mt-3 space-y-1">
-                            <BreezeResponsiveNavLink :href="route('logout')" as="button" method="post">
+                            <BreezeResponsiveNavLink :href="route(langPrefix + '.logout')" as="button" method="post">
                                 خروج
                             </BreezeResponsiveNavLink>
                         </div>

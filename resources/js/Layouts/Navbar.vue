@@ -2,38 +2,39 @@
 import BreezeApplicationLogo from '@/Components/ApplicationLogo.vue';
 import {Link, usePage} from '@inertiajs/inertia-vue3';
 import {Inertia} from '@inertiajs/inertia'
-import {computed} from 'vue'
-
 import NavLink from '@/Components/NavLink.vue'
-import {useStore} from 'vuex'
+import {useStore} from "vuex";
+import {computed} from 'vue'
+const store = useStore();
 
-let store = useStore();
-let lang = computed(() => store.state.language.core);
+const lang = store.state.language;
+console.log(lang);
+const langPrefix = lang.langName;
 
 const props = defineProps({
     smWidthClass: {type: String, default: 'max-w-md'}
 });
 
-const changeLangInVuex = async (site_locale) => {
-
-    try {
-        const langsFromInertia = await usePage().props.value.langs;
-        await store.commit('setLangName', langsFromInertia.site_locale);
-        await store.commit('setLang', langsFromInertia[store.state.language.langName]);//what is the anothe
-    } catch (e) {
-
-    }
-};
-const changeLang = async (site_locale) => {
-    Inertia.visit(route('setLang', site_locale),
-        {
-            forceFormData: true, replace: true, onFinish: () => {
-                changeLangInVuex(site_locale)
-            }
-        });
-
-
-}
+// const changeLangInVuex = async (site_locale) => {
+//
+//     try {
+//         const langsFromInertia = await usePage().props.value.langs;
+//         await store.commit('setLangName', langsFromInertia.site_locale);
+//         await store.commit('setLang', langsFromInertia[store.state.language.langName]);//what is the anothe
+//     } catch (e) {
+//
+//     }
+// };
+// const changeLang = async (site_locale) => {
+//     Inertia.visit(route('setLang', site_locale),
+//         {
+//             forceFormData: true, replace: true, onFinish: () => {
+//                 changeLangInVuex(site_locale)
+//             }
+//         });
+//
+//
+// }
 </script>
 
 <template>
@@ -45,10 +46,10 @@ const changeLang = async (site_locale) => {
 
                 <div class="self-center order-1">
 
-                    <nav-link :href="route('homepage')"
+                    <nav-link :href="route(lang.langName + '.homepage')"
                               aria-current="page"
                               class="focus:outline-none text-white focus:text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900">
-                        {{ lang.homepage }}
+                        {{ lang.core.homepage }}
                     </nav-link>
 
                 </div>
@@ -56,19 +57,17 @@ const changeLang = async (site_locale) => {
 
                 <div class="flex items-center order-2 justify-between gap-x-4">
                     <div class="flex gap-x-4 ">
-                        <button
-                            class=" "
-                            @click="changeLang('fa_IR')">
+                        <a
+                            :href="route('setLang','fa_IR')">
                             <img alt="Iran" class="w-full h-10" src="/img/flag-for-iran-svgrepo-com.svg">
-                        </button>
+                        </a>
 
-                        <nav-link
-                            class=" "
-                            @click="changeLang('en_US')">
+                        <a
+                            :href="route('setLang','en_US')">
 
                             <img alt="United states of America" class="w-full h-10"
                                  src="/img/united-states-of-america-svgrepo-com.svg">
-                        </nav-link>
+                        </a>
 
                     </div>
                     <Link href="/">
@@ -76,7 +75,7 @@ const changeLang = async (site_locale) => {
                     </Link>
                     <span
                         class="m-2 self-center text-xl font-semibold whitespace-nowrap dark:text-white">
-                    {{ lang.appName }}</span>
+                    {{ lang.core.appName }}</span>
                     <div class="flex">
                         <button aria-controls="navbar-sticky" aria-expanded="false"
                                 class=" focus:text-white m-2 inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
@@ -101,14 +100,14 @@ const changeLang = async (site_locale) => {
 
                             <nav-link
                                 class="  focus:outline-none focus:text-white text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm md:px-5  dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900"
-                                href="/register">{{ lang.register }}
+                                :href="route(langPrefix + '.register')">{{ lang.core.register }}
                             </nav-link>
 
 
                             <nav-link v-if="!$page.props.auth.user"
                                       class="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm md:px-5  dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900 focus:text-white"
-                                      href="/login">
-                                {{ lang.login }}
+                                      :href="route(langPrefix + '.login')">
+                                {{ lang.core.login }}
                             </nav-link>
 
 
@@ -121,8 +120,8 @@ const changeLang = async (site_locale) => {
                             <nav-link
                                 class="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 mx-2  dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900 focus:text-white"
 
-                                href="/admin/dashboard">
-                                {{ lang.panel }}
+                                :href="route(langPrefix + '.dashboard')">
+                                {{ lang.core.panel }}
                             </nav-link>
 
                         </li>

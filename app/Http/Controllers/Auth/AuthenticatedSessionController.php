@@ -41,7 +41,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        return redirect()->route(app()->getLocale().'.dashboard');
     }
 
     /**
@@ -72,10 +72,10 @@ class AuthenticatedSessionController extends Controller
 
         if ($user->emailVerificationCode->token == $request->token) {
             $this->setVerification($user);
-            return redirect()->route('dashboard')
+            return redirect()->route(app()->getLocale().'.dashboard')
                 ->with('status', 'اکانت شما با موفقیت فعال سازی شد');
         }
-        return redirect()->route('code_verification')
+        return redirect()->route(app()->getLocale().'.code_verification')
             ->with('status', 'اکانت شما فعال سازی نگردید.');
 
 

@@ -81,6 +81,8 @@ return [
     */
 
     'locale' => 'en_US',
+    'locales_array' => ['en_US','fa_IR'],
+    'language_session_name'=>'language',
 
 
     /*

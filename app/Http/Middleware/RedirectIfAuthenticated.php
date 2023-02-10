@@ -25,7 +25,7 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check() &&  !in_array($request->url(),getAuthCheckingUrls()) ) {
-                return redirect(RouteServiceProvider::HOME);
+                return redirect()->route(app()->getLocale().'.dashboard');
             }
         }
 

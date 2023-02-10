@@ -76,7 +76,7 @@ if (!function_exists('captchaMaking')) {
 
     function getAuthCheckingUrls()
     {
-        return [route('code_verification'), route('checking_verification')];
+        return [route(app()->getLocale().'.code_verification'), route(app()->getLocale().'.checking_verification')];
     }
     function convertToEngNums($string)
     {

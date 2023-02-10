@@ -5,7 +5,11 @@ import BreezeInput from '@/Components/Input.vue'
 import BreezeLabel from '@/Components/Label.vue'
 import BreezeValidationErrors from '@/Components/ValidationErrors.vue'
 import {Head, useForm} from '@inertiajs/inertia-vue3'
+import {useStore} from 'vuex'
 
+const store = useStore();
+const lang = store.state.language.core;
+const langPrefix = lang.langName;
 const props = defineProps({
     email: String,
     token: String,
@@ -19,7 +23,7 @@ const form = useForm({
 });
 
 const submit = () => {
-    form.post(route('password.update'), {
+    form.post(route(langPrefix + 'password.update'), {
         onFinish: () => form.reset('password', 'password_confirmation'),
     });
 };

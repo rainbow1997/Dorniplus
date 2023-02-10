@@ -8,6 +8,10 @@ import {Head, Link, useForm} from '@inertiajs/inertia-vue3'
 import {reactive} from 'vue'
 import DatePicker from 'vue3-persian-datetime-picker'
 import Masterpage from "@/Layouts/AdminPanel/Layout/Masterpage.vue";
+import {useStore} from 'vuex'
+import {computed} from 'vue'
+
+
 
 export default {
     components: {
@@ -20,7 +24,9 @@ export default {
         BreezeInput,
         BreezeLabel,
         BreezeValidationErrors,
-        DatePicker
+        DatePicker,
+        useStore,
+        computed
 
 
     },
@@ -37,6 +43,10 @@ export default {
             ourProvince: {},
             url: ''
         });
+        const store = useStore();
+
+        const lang = computed(() => store.state.language);
+        const langPrefix = lang.langName;
 
         const form = useForm('EditProfile', {
             _method: 'put',
@@ -88,13 +98,14 @@ export default {
         };
         const submit = () => {
 
-            form.post(route('storeProfile', props.user.id), {
+            form.post(route(langPrefix + 'storeProfile', props.user.id), {
                 onSuccess: () => form.reset('password', 'avatar'),
                 preserveState: true
             });
         };
-        return {form, provinceChange, genderChange, previewImage, submit, needs}
+        return {form, provinceChange, genderChange, previewImage, submit, needs,lang,langPrefix}
     },
+
 };
 
 
@@ -230,7 +241,7 @@ export default {
             </div>
 
             <div class="flex items-center justify-end mt-2 gap-x-4">
-                <Link :href="route('dashboard')" class="underline text-sm text-gray-600 hover:text-gray-900">
+                <Link :href="route(langPrefix + 'dashboard')" class="underline text-sm text-gray-600 hover:text-gray-900">
                     بازگشت به داشبورد
                 </Link>
 

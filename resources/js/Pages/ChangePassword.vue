@@ -6,6 +6,13 @@ import BreezeLabel from '@/Components/Label.vue'
 import BreezeValidationErrors from '@/Components/ValidationErrors.vue'
 import {Head, useForm} from '@inertiajs/inertia-vue3'
 import {Inertia} from '@inertiajs/inertia'
+import {useStore} from "vuex";
+import {computed} from 'vue'
+
+const store = useStore();
+
+const lang = computed(() => store.state.language);
+const langPrefix = lang.langName;
 
 const props = defineProps({
     user: {}
@@ -17,7 +24,7 @@ const form = useForm({
 });
 const submit = () => {
     form.user_id = props.user.id;
-    Inertia.post(route('changePassword.save'), form);
+    Inertia.post(route(langPrefix +'changePassword.save'), form);
 }
 </script>
 

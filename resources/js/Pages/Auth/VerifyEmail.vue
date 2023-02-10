@@ -3,7 +3,11 @@ import {computed} from 'vue'
 import BreezeButton from '@/Components/Button.vue'
 import BreezeGuestLayout from '@/Layouts/Guest.vue'
 import {Head, Link, useForm} from '@inertiajs/inertia-vue3'
+import {useStore} from 'vuex'
 
+const store = useStore();
+const lang = store.state.language.core;
+const langPrefix = lang.langName;
 const props = defineProps({
     status: String,
 });
@@ -11,7 +15,7 @@ const props = defineProps({
 const form = useForm();
 
 const submit = () => {
-    form.post(route('verification.send'));
+    form.post(route(langPrefix + 'verification.send'));
 };
 
 const verificationLinkSent = computed(() => props.status === 'verification-link-sent');
@@ -36,7 +40,7 @@ const verificationLinkSent = computed(() => props.status === 'verification-link-
                     Resend Verification Email
                 </BreezeButton>
 
-                <Link :href="route('logout')" as="button" class="underline text-sm text-gray-600 hover:text-gray-900"
+                <Link :href="route(langPrefix + 'logout')" as="button" class="underline text-sm text-gray-600 hover:text-gray-900"
                       method="post">Log Out
                 </Link>
             </div>
