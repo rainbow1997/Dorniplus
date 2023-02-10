@@ -32,7 +32,7 @@
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
-        "@tinymce/tinymce-vue": "^4.0.7",
+          "@tinymce/tinymce-vue": "^4.0.7",
         "@vitejs/plugin-basic-ssl": "^0.1.2",
         "flowbite-vue": "^0.0.5",
         "jalali-moment": "^3.3.11",
