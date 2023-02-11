@@ -64,7 +64,12 @@
 import {useForm} from '@inertiajs/inertia-vue3'
 import BreezeValidationErrors from '@/Components/ValidationErrors.vue'
 import Captcha from '../../../Components/Captcha.vue'
+import {useStore} from "vuex";
 
+
+const store = useStore();
+const lang = store.state.language.core;
+const langPrefix = store.state.language.langName;
 const props = defineProps({
     post: {},
 });
@@ -83,7 +88,7 @@ const receiveCaptcha = (code) => {
 }
 const submit = () => {
 
-    form.post(route('sendNewComment', form.post_id), {
+    form.post(route(langPrefix + '.sendNewComment', form.post_id), {
         preserveScroll: true,
         replace: true,
         forceFormData: true,
