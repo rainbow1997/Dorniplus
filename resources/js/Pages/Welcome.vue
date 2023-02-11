@@ -19,6 +19,7 @@ const props = defineProps({
     Navbar,
 
 });
+console.log('t',langPrefix);
 </script>
 
 <template>
