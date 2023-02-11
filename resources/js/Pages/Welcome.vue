@@ -7,7 +7,7 @@ import {useStore} from 'vuex'
 
 const store = useStore();
 
-const lang = computed(() => store.state.language);
+const lang = store.state.language;
 const langPrefix = lang.langName;
 const props = defineProps({
     canLogin: Boolean,
@@ -19,6 +19,7 @@ const props = defineProps({
     Navbar,
 
 });
+console.log('t',langPrefix);
 </script>
 
 <template>
@@ -39,7 +40,7 @@ const props = defineProps({
                         <article
                             class=" shadow flex flex-col  my-2 bg-slate-50 gap-1 overflow-hidden h-full w-full relative ">
                             <div class="">
-                                <Link :href="route(langPrefix + 'home.post.show',{post: post.id,slug: post.slug})"
+                                <Link :href="route(langPrefix + '.home.post.show',{post: post.id,slug: post.slug})"
                                       class="opacity-80 hover:opacity-100">
                                     <img :alt="post.title" :src="'/storage/'+post.post_image"
                                          class=" object-fill h-48  w-full rounded">
@@ -48,7 +49,7 @@ const props = defineProps({
                             <div class="flex flex-1 flex-col gap-x-3 gap-y-1 mt-3 relative h-10 justify-between px-2">
                                 <div
                                     class=" border-gray-200 flex    h-16 items-center justify-center  overflow-hidden relative">
-                                    <Link :href="route(langPrefix +'home.post.show',{post: post.id,slug: post.slug})"
+                                    <Link :href="route(langPrefix +'.home.post.show',{post: post.id,slug: post.slug})"
                                           class="max-w-sm text-xs text-black md:text-base font-medium box-text-color-darker paragraph-ellipsis-2 leading-relaxed">
                                         <h1 class="text-sm  text-black md:text-base font-bold box-text-color-darker paragraph-ellipsis-2 leading-relaxed">
                                             {{ post.title }}</h1>
@@ -80,7 +81,7 @@ const props = defineProps({
                                     <button
                                         class="  w-32 h-7  md:w-28 md:h-10 text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium md:rounded-lg text-sm  dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
                                         type="button">
-                                        <Link :href="route(langPrefix +'home.post.show',{post: post.id,slug: post.slug})">
+                                        <Link :href="route(langPrefix +'.home.post.show',{post: post.id,slug: post.slug})">
                                             {{ lang.core.read_more }}
                                         </Link>
 
