@@ -1,5 +1,5 @@
 @import "Shabnam.css";
-@import "/node_modules/vue-multiselect/dist/dist/vue-multiselect.css";
+@import "/node_modules/vue-multiselect/dist/vue-multiselect.css";
 
 @tailwind base;
 @tailwind components;
