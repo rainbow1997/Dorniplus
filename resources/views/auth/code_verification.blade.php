@@ -13,7 +13,7 @@
                     <div class="flex flex-col text-right justify-center">
                         <x-auth-validation-errors class="mb-4" :errors="$errors"/>
                         @dump($errors)
-                        <form action="{{route('checking_verification')}}" method="post">
+                        <form action="{{route(getLocaleName().'.checking_verification')}}" method="post">
                             @csrf
                             <div class="flex flex-col m-3">
                                 <label for="token"

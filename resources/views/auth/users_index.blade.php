@@ -17,7 +17,7 @@
                             </div>
                             <button
                                 class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
-                                <a href="{{ route('reporting','pdf') }}">
+                                <a href="{{ route(getLocaleName().'.reporting','pdf') }}">
                                     گزارش گیری PDF
                                 </a>
 
@@ -101,7 +101,7 @@
 
                                             <a class="btn btn-primary"
                                                href="{{ route('users.edit',$user->id) }}">ویرایش</a></button>
-                                        {!! Form::open(['method' => 'DELETE','route' => ['users.destroy', $user->id],'style'=>'display:inline']) !!}
+                                        {!! Form::open(['method' => 'DELETE','route' => [getLocaleName().'.users.destroy', $user->id],'style'=>'display:inline']) !!}
                                         {!! Form::submit('حذف', ['class' => 'text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900']) !!}
                                         {!! Form::close() !!}
                                     </td>

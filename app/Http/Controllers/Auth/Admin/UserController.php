@@ -182,7 +182,7 @@ class UserController extends Controller
             'user_id' => Auth::id(),
             'description' => 'just .zip file'
         ]);
-        return Inertia::location(route('downloading', $tempFile2->id));
+        return Inertia::location(route(getLocaleName().'.downloading', $tempFile2->id));
         //then user should go /downloading with below method to complete download the file.
 
     }
@@ -223,7 +223,7 @@ class UserController extends Controller
         activity()->performedOn($user)
             ->causedBy(Auth::user())
             ->log("کاربری جدید با ایمیل $user->email ساخته شده است. ");
-        return redirect()->route('users.index')
+        return redirect()->route(getLocaleName().'.users.index')
             ->with('success', 'User created successfully');
     }
 
@@ -296,7 +296,7 @@ class UserController extends Controller
             ->causedBy(Auth::user())
             ->log("کاربر با ایمیل $user->email ویرایش شده است. ");
 
-        return redirect()->route('users.index')
+        return redirect()->route(getLocaleName().'.users.index')
             ->with('success', 'کاربر با موفقیت ویرایش گردید.');
     }
 
@@ -314,7 +314,7 @@ class UserController extends Controller
             ->log("کاربر با ایمیل $user->email  حذف شد. ");
         $user->delete();// or $user->syncRoles([]);
 
-        return redirect()->route('users.index')
+        return redirect()->route(getLocaleName().'.users.index')
             ->with('success', 'حذف کاربر موفقیت آمیز بود.');
     }
 }

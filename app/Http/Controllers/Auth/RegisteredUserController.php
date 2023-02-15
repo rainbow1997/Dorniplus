@@ -153,7 +153,7 @@ class RegisteredUserController extends Controller
         ]);
         $user->password = Hash::make($request->password);
         $user->save();
-        return redirect()->route('dashboard')
+        return redirect()->route(getLocaleName().'.dashboard')
             ->with('message', 'گذرواژه با موفقیت تغییر کرد');
     }
 
@@ -178,7 +178,7 @@ class RegisteredUserController extends Controller
 
         $user->update($validData->toArray());
 
-        return redirect()->route('dashboard')
+        return redirect()->route(getLocaleName().'.dashboard')
             ->with('message', 'پروفایل با موفقیت تغییر کرد');
     }
 

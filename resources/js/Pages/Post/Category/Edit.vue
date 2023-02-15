@@ -58,7 +58,11 @@
 import {Inertia} from '@inertiajs/inertia'
 import {Head, useForm} from "@inertiajs/inertia-vue3"
 import Masterpage from "@/Layouts/AdminPanel/Layout/Masterpage.vue";
+import {useStore} from "vuex";
+const store = useStore();
 
+const lang =  store.state.language;
+const langPrefix = lang.langName;
 const props = defineProps({
     category: {}
 
@@ -68,6 +72,6 @@ const form = useForm({
     title: props.category.title,
 });
 const submit = () => {
-    Inertia.put(route("categories.update", props.category.id), form);
+    Inertia.put(route(langPrefix + ".categories.update", props.category.id), form);
 };
 </script>

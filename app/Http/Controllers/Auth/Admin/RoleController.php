@@ -54,7 +54,7 @@ class RoleController extends Controller
         $role = Role::create(['name' => $request->input('name')]);
         $role->syncPermissions($request->input('permission'));
 
-        return redirect()->route('roles.index')
+        return redirect()->route(getLocaleName().'.roles.index')
             ->with('success', 'نقش کاربری با موفقیت افزوده شد');
     }
 
@@ -122,7 +122,7 @@ class RoleController extends Controller
 
         $role->syncPermissions($request->input('permission'));
 
-        return redirect()->route('roles.index')
+        return redirect()->route(getLocaleName().'.roles.index')
             ->with('success', 'نقش جدید با موفقیت ساخته شد');
     }
 
@@ -135,7 +135,7 @@ class RoleController extends Controller
     public function destroy($id)
     {
         DB::table("roles")->where('id', $id)->delete();
-        return redirect()->route('roles.index')
+        return redirect()->route(getLocaleName().'.roles.index')
             ->with('success', 'نقش کاربری با موفقیت حذف گردید');
     }
 }

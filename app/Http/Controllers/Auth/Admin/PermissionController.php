@@ -42,7 +42,7 @@ class PermissionController extends Controller
         activity()->performedOn($permission)
             ->causedBy(Auth::user())
             ->log("مجوز جدید با نام $permission->name افزوده شد. ");
-        return redirect()->route('permissions.index')
+        return redirect()->route(getLocaleName().'.permissions.index')
             ->with('message', 'مجوز با موفقیت افزوده گردید');
     }
 
@@ -102,7 +102,7 @@ class PermissionController extends Controller
             ->causedBy(Auth::user())
             ->log("مجوز جدید با نام $permission->name ویرایش شد. ");
         $permission->save();
-        return redirect()->route('permissions.index')
+        return redirect()->route(getLocaleName().'.permissions.index')
             ->with('message', 'مجوز با موفقیت بروزرسانی گردید');
     }
 
@@ -119,7 +119,7 @@ class PermissionController extends Controller
             ->causedBy(Auth::user())
             ->log("مجوز جدید با نام $permission->name حذف شد. ");
         $permission->delete();
-        return redirect()->route('permissions.index')
+        return redirect()->route(getLocaleName().'.permissions.index')
             ->with('message', 'مجوز با موفقیت حذف گردید');
     }
 
@@ -129,7 +129,7 @@ class PermissionController extends Controller
             ->causedBy(Auth::user())
             ->log("مجوز $permissio->name از نقش کاربری $role->name سلب شد.");
         $role->revokePermissionTo($permission);
-        return redirect()->route('permissions.index')
+        return redirect()->route(getLocaleName().'.permissions.index')
             ->with('message', 'نقش کاربری با موفقیت از دسترسی به این مجوز حذف گردید');
     }
 
@@ -158,7 +158,7 @@ class PermissionController extends Controller
                 ->causedBy(Auth::user())
                 ->log("مجوز $permissio->name به نقش کاربری $role->name منضم گردید.");
         }
-        return redirect()->route('permissions.index')
+        return redirect()->route(getLocaleName().'.permissions.index')
             ->with('message', 'مجوز با موفقیت به نقش های کاربری هدف ، انضمام گردید.');
     }
 }

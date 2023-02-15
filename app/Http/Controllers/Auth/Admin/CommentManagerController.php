@@ -125,7 +125,7 @@ class CommentManagerController extends Controller
             ->log(" نظر ارسالی  با نام $comment->fullname تایید شده است .");
         $comment->status = CommentStatus::PUBLIC;
         $comment->save();
-        return redirect()->route('comments.index')
+        return redirect()->route(getLocaleName().'.comments.index')
             ->with('message', 'نظر مورد نظر تایید گردید.');
     }
 
@@ -144,7 +144,7 @@ class CommentManagerController extends Controller
             ->log(" نظر ارسالی  با نام $comment->fullname حذف شده است .");
         $comment->delete();
 
-        return redirect()->route('comments.index')
+        return redirect()->route(getLocaleName().'.comments.index')
             ->with('message', 'نظر مورد نظر حذف گردید.');
     }
 }

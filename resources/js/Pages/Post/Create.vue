@@ -95,13 +95,15 @@ import {useForm} from "@inertiajs/inertia-vue3"
 import Editor from '@tinymce/tinymce-vue'
 import BreezeValidationErrors from '@/Components/ValidationErrors.vue'
 import Masterpage from "@/Layouts/AdminPanel/Layout/Masterpage.vue";
+import {useStore} from "vuex";
 
 export default {
     components: {
         Masterpage,
         BreezeValidationErrors,
         Head,
-        editor: Editor
+        editor: Editor,
+        useStore
     },
     props: {
         categories: []
@@ -114,12 +116,15 @@ export default {
             text: null,
             category_id: null,
         });
+        const store = useStore();
 
-        return {form};
+        const lang =  store.state.language;
+        const langPrefix = lang.langName;
+        return {form,lang,langPrefix};
     },
     methods: {
         submit() {
-            this.form.post(route("posts.store"), {forceFormData: true});
+            this.form.post(route(this.langPrefix + ".posts.store"), {forceFormData: true});
         },
     },
 };

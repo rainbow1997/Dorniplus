@@ -101,13 +101,14 @@ import {useForm} from "@inertiajs/inertia-vue3"
 import Editor from '@tinymce/tinymce-vue'
 import BreezeValidationErrors from '@/Components/ValidationErrors.vue'
 import Masterpage from "@/Layouts/AdminPanel/Layout/Masterpage.vue";
-
+import {useStore} from "vuex";
 export default {
     components: {
         Masterpage,
         BreezeValidationErrors,
         Head,
-        editor: Editor
+        editor: Editor,
+        useStore
     },
     props: {
         categories: [],
@@ -124,8 +125,12 @@ export default {
             category_id: props.post.category_id,
 
         });
+        const store = useStore();
 
-        return {form, ourPost: props.post, url};
+        const lang =  store.state.language;
+        const langPrefix = lang.langName;
+
+        return {form, ourPost: props.post, url,lang,langPrefix};
     },
     methods: {
         previewImage(e) {
@@ -133,7 +138,7 @@ export default {
             this.url = URL.createObjectURL(file);
         },
         submit() {
-            this.form.post(route("posts.update", {
+            this.form.post(route(this.langPrefix + ".posts.update", {
                 id: this.ourPost.id
                 //_method:'put' this is wrong,we should use it when creating with useForm
             }, {

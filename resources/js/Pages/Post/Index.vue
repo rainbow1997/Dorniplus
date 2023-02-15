@@ -15,7 +15,7 @@
 
                         <button
                             class="mx-2 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
-                            <a :href="route('posts.create')">
+                            <a :href="route(langPrefix + '.posts.create')">
                                 افزودن مطلب جدید
                             </a>
 
@@ -107,7 +107,7 @@
                                             class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                                             type="button">
 
-                                            <Link :href="route('posts.show',{post: post.id,slug:post.slug})"
+                                            <Link :href="route(langPrefix + '.posts.show',{post: post.id,slug:post.slug})"
                                                   class="btn btn-info">مشاهده
                                             </Link>
                                         </button>
@@ -115,7 +115,7 @@
                                             class="text-white bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:focus:ring-yellow-900"
                                             type="button">
 
-                                            <a :href="route('posts.edit',post.id)" class="btn btn-primary">ویرایش</a>
+                                            <a :href="route(langPrefix + '.posts.edit',post.id)" class="btn btn-primary">ویرایش</a>
                                         </button>
                                         <button
                                             class="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
@@ -144,7 +144,11 @@ import Pagination from '@/Layouts/pagination.vue'
 import DatePicker from 'vue3-persian-datetime-picker'
 import {ref, watch} from 'vue'
 import Masterpage from "@/Layouts/AdminPanel/Layout/Masterpage.vue";
+import {useStore} from "vuex";
+const store = useStore();
 
+const lang =  store.state.language;
+const langPrefix = lang.langName;
 const ourData = useForm({
     test: {},
     newPosts: {},
@@ -163,6 +167,7 @@ const props = defineProps({
     posts: Object,//afterwards, delete it and use Inertia attr
 
 });
+
 watch(ourData.search, (newValue, oldValue) => {
 
     Inertia.reload({
@@ -172,7 +177,7 @@ watch(ourData.search, (newValue, oldValue) => {
     });
 });
 const destroyUser = (id) => {
-    Inertia.delete(route('posts.destroy', id));
+    Inertia.delete(route(langPrefix + '.posts.destroy', id));
 }
 
 </script>

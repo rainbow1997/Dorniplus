@@ -15,7 +15,7 @@
                                 <h2>مدیریت مطالب</h2>
                             </div>
                             <div class="pull-right">
-                                <a class="btn btn-success" href="{{ route('posts.index') }}"> بازگشت</a>
+                                <a class="btn btn-success" href="{{ route(getLocaleName().'.posts.index') }}"> بازگشت</a>
                             </div>
                         </div>
                     </div>

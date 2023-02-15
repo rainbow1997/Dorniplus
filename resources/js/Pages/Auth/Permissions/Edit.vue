@@ -65,7 +65,11 @@ import BreezeValidationErrors from '@/Components/ValidationErrors.vue'
 import {ref, reactive, computed} from 'vue'
 import {Inertia} from '@inertiajs/inertia'
 import Masterpage from "@/Layouts/AdminPanel/Layout/Masterpage.vue";
+import {useStore} from "vuex";
+const store = useStore();
 
+const lang =  store.state.language;
+const langPrefix = lang.langName;
 const props = defineProps({
     permission: {}
 });
@@ -73,7 +77,7 @@ const form = reactive({
     name: props.permission.name
 });
 const submit = () => {
-    Inertia.put(route("permissions.update", props.permission.id), {
+    Inertia.put(route(langPrefix + ".permissions.update", props.permission.id), {
         method: 'put',
         data: form
     })

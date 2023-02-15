@@ -11,7 +11,7 @@
                     <h2>ساخت کاربر جدید</h2>
                 </div>
                 <div class="pull-right">
-                    <a class="btn btn-primary" href="{{ route('users.index') }}"> Back</a>
+                    <a class="btn btn-primary" href="{{ route(getLocaleName().'.users.index') }}"> Back</a>
                 </div>
             </div>
         </div>

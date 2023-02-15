@@ -15,7 +15,7 @@
                                 <h2>ویرایش مطلب</h2>
                             </div>
                             <div class="pull-right">
-                                <a class="btn btn-success" href="{{ route('posts.index') }}"> بازگشت</a>
+                                <a class="btn btn-success" href="{{ route(getLocaleName().'.posts.index') }}"> بازگشت</a>
                             </div>
                         </div>
                     </div>
@@ -33,7 +33,7 @@
                     @endif
 
 
-                    <form action="{{route('posts.update',$post->id)}}" method="post" enctype="multipart/form-data">
+                    <form action="{{route(getLocaleName().'.posts.update',$post->id)}}" method="post" enctype="multipart/form-data">
                         @method('put')
                         @csrf
                         <div class="mt-4">

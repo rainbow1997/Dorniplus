@@ -14,7 +14,7 @@
                     <div class="p-6 bg-white border-b border-gray-200">
                         <div class="mb-4">
                             <Link
-                                :href="route('permissions.create')"
+                                :href="route(langPrefix + '.permissions.create')"
                                 class="
                                     px-6
                                     py-2
@@ -47,7 +47,7 @@
                                     </BreezeButton> <!-- remember that , link try to remount and it makes conflicts-->
 
                                     <Link
-                                        :href="route('permissions.edit', permission.id)"
+                                        :href="route(langPrefix + '.permissions.edit', permission.id)"
                                         class="text-white bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:focus:ring-yellow-900"
                                     >
                                         ویرایش
@@ -69,7 +69,7 @@
                             <h3 class="mb-3">نقش های کاربری</h3>
 
                             <Link
-                                :href="route('addRoleToPermission',needs.selectedPermission.id)"
+                                :href="route(langPrefix + '.addRoleToPermission',needs.selectedPermission.id)"
                                 class="
                                     px-6
                                     py-2
@@ -115,9 +115,13 @@ import BreezeButton from '@/Components/Button.vue'
 import {Head} from "@inertiajs/inertia-vue3"
 import {Link} from "@inertiajs/inertia-vue3"
 import {useForm} from '@inertiajs/inertia-vue3'
+const store = useStore();
 
+const lang =  store.state.language;
+const langPrefix = lang.langName;
 import {Inertia} from '@inertiajs/inertia'
 import Masterpage from "@/Layouts/AdminPanel/Layout/Masterpage.vue";
+import {useStore} from "vuex";
 
 defineProps({
     permissions: {}
@@ -131,12 +135,12 @@ let needs = useForm({
 });
 
 const destroy = (id) => {
-    Inertia.delete(route("permissions.destroy", id));
+    Inertia.delete(route(langPrefix + ".permissions.destroy", id));
 };
 
 const destroyPermissionFromRole = (id) => {
 
-    Inertia.delete(route("destroyRoleFromPermission", {
+    Inertia.delete(route(langPrefix + ".destroyRoleFromPermission", {
         permission: needs.selectedPermission.id,
         role: id
     }), {

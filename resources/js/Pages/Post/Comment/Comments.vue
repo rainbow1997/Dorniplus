@@ -292,7 +292,7 @@
                                             class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                                             type="button">
 
-                                            <Link :href="route('posts.show',comment.commentable.id)"
+                                            <Link :href="route(langPrefix + '.posts.show',comment.commentable.id)"
                                                   class="btn btn-info">مشاهده
                                             </Link>
                                         </button>
@@ -333,6 +333,11 @@ import Pagination from '@/Layouts/pagination.vue'
 import DatePicker from 'vue3-persian-datetime-picker'
 import 'flowbite'
 import Masterpage from "@/Layouts/AdminPanel/Layout/Masterpage.vue";
+import {useStore} from "vuex";
+const store = useStore();
+
+const lang =  store.state.language;
+const langPrefix = lang.langName;
 
 const ourData = useForm({
     chosenComment: {},
@@ -392,7 +397,7 @@ const refreshPage = (e) => {
 
 const submitReportGenerator = () => {
 
-    this.report.post(route('comments.report'), {
+    this.report.post(route(langPrefix + '.comments.report'), {
         preserveState: true,
         preserveScroll: true,
         onFinish: () => {
@@ -406,11 +411,11 @@ const submitReportGenerator = () => {
 };
 
 const destroyComment = (id) => {
-    Inertia.delete(route("comments.destroy", id));
+    Inertia.delete(route(langPrefix + ".comments.destroy", id));
 
 }
 const ApproveComment = (id) => {
-    Inertia.put(route("comments.update", id));
+    Inertia.put(route(langPrefix + '.comments.update', id));
 
 }
 

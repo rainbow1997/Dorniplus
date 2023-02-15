@@ -97,7 +97,7 @@ class SiteAdminController extends Controller
         activity()->performedOn($user)
             ->causedBy(Auth::user())
             ->log("مدیر جدید با ایمیل $user->email افزوده شد. ");
-        return redirect()->route('site_admin.index')->with('message', 'مدیر جدید با موفقیت افزوده گردید');
+        return redirect()->route(getLocaleName().'.site_admin.index')->with('message', 'مدیر جدید با موفقیت افزوده گردید');
     }
 
     /**

@@ -64,7 +64,7 @@ class CategoryController extends Controller
         activity()->performedOn($category)
             ->causedBy(Auth::user())
             ->log("موضوع  با نام $category->title ساخته شده است .");
-        return redirect()->route('categories.index')
+        return redirect()->route(getLocaleName().'.categories.index')
             ->with('message', 'موضوع مورد نظر با موفقیت افزوده شد.');
     }
 
@@ -126,7 +126,7 @@ class CategoryController extends Controller
         activity()->performedOn($category)
             ->causedBy(Auth::user())
             ->log("موضوع  با نام $category->title ویرایش شده است .");
-        return redirect()->route('categories.index')
+        return redirect()->route(getLocaleName().'.categories.index')
             ->with('message', 'موضوع مورد نظر با موفقیت ویرایش گردید.');
     }
 
@@ -158,7 +158,7 @@ class CategoryController extends Controller
             ->causedBy(Auth::user())
             ->log("موضوع  با نام $category->title حذف شده است .");
         $category->delete();
-        return redirect()->route('categories.index')
+        return redirect()->route(getLocaleName().'.categories.index')
             ->with('message', 'موضوع مورد نظر حذف گردید.');
     }
 }

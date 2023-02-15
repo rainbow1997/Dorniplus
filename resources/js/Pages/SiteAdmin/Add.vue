@@ -13,7 +13,11 @@
 import UsersIndex from '../UsersIndex.vue'
 import {reactive} from 'vue'
 import {Inertia} from '@inertiajs/inertia'
+import {useStore} from "vuex";
+const store = useStore();
 
+const lang =  store.state.language;
+const langPrefix = lang.langName;
 const props = defineProps({
     users: [],
 });
@@ -30,7 +34,7 @@ const callback = (n) => {
 
 };
 const storeNewAdmin = () => {
-    Inertia.visit(route('site_admin.store'), {
+    Inertia.visit(route(langPrefix + '.site_admin.store'), {
         method: 'post',
         data: {id: chosenUser.user_id}
     });

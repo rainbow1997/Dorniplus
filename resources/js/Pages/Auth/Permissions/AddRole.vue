@@ -49,7 +49,11 @@ import {Inertia} from '@inertiajs/inertia'
 import Multiselect from 'vue-multiselect'
 import "vue-multiselect/dist/vue-multiselect.css"
 import Masterpage from "@/Layouts/AdminPanel/Layout/Masterpage.vue";
+import {useStore} from "vuex";
+const store = useStore();
 
+const lang =  store.state.language;
+const langPrefix = lang.langName;
 const props = defineProps({
     permission: {},
     roles: []
@@ -64,7 +68,7 @@ const getIdFromValues = (value, index, array) => {
 const submit = () => {
 
     let copyOfFormValues = form.values.map(getIdFromValues);
-    Inertia.put(route("setRoleToPermission", props.permission.id), {
+    Inertia.put(route(langPrefix + ".setRoleToPermission", props.permission.id), {
         method: 'put',
         data: copyOfFormValues
     })

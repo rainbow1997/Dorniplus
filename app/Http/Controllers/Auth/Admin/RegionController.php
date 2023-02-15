@@ -43,7 +43,7 @@ class RegionController extends Controller
         activity()->performedOn($province)
             ->causedBy(Auth::user())
             ->log("استان جدید با نام $province->title ساخته شده است. ");
-        return redirect()->route('regions.index')
+        return redirect()->route(getLocaleName().'.regions.index')
             ->with('message', 'استان جدید با موفقیت افزوده شد.');
     }
 
@@ -63,7 +63,7 @@ class RegionController extends Controller
         activity()->performedOn($province)
             ->causedBy(Auth::user())
             ->log("شهر جدید با نام $city->title ساخته شده است. ");
-        return redirect()->route('regions.index')
+        return redirect()->route(getLocaleName().'.regions.index')
             ->with('message', 'شهر جدید با موفقیت افزوده شد.');
 
     }
@@ -95,7 +95,7 @@ class RegionController extends Controller
         activity()->performedOn($province)
             ->causedBy(Auth::user())
             ->log("استان با نام $province->title ویرایش شده است. ");
-        return redirect()->route('regions.index')
+        return redirect()->route(getLocaleName().'.regions.index')
             ->with('message', 'استان مورد نظر با موفقیت ویرایش گردید.');
     }
 
@@ -105,7 +105,7 @@ class RegionController extends Controller
         activity()->performedOn($province)
             ->causedBy(Auth::user())
             ->log("استان با نام $province->title حذف شده است. ");
-        return redirect()->route('regions.index')
+        return redirect()->route(getLocaleName().'.regions.index')
             ->with('message', 'استان مورد نظر حذف گردید.');
     }
 
@@ -130,7 +130,7 @@ class RegionController extends Controller
         activity()->performedOn($city)
             ->causedBy(Auth::user())
             ->log("شهر با نام $city->title ویرایش شده است. ");
-        return redirect()->route('regions.index')
+        return redirect()->route(getLocaleName().'.regions.index')
             ->with('message', 'شهر مورد نظر با موفقیت ویرایش گردید.');
     }
 
@@ -140,7 +140,7 @@ class RegionController extends Controller
             ->causedBy(Auth::user())
             ->log("شهر با نام $city->title حذف شده است. ");
         $city->delete();
-        return redirect()->route('regions.index')
+        return redirect()->route(getLocaleName().'.regions.index')
             ->with('message', 'شهر مورد نظر حذف گردید.');
     }
 }

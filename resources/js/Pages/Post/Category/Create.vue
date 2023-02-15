@@ -57,22 +57,28 @@
 import {Head} from "@inertiajs/inertia-vue3"
 import {useForm} from "@inertiajs/inertia-vue3"
 import Masterpage from "@/Layouts/AdminPanel/Layout/Masterpage.vue";
+import {useStore} from "vuex";
 
 export default {
     components: {
         Masterpage,
         Head,
+        useStore
     },
     setup() {
+        const store = useStore();
+
+        const lang =  store.state.language;
+        const langPrefix = lang.langName;
         const form = useForm({
             title: null,
         });
 
-        return {form};
+        return {form,lang,langPrefix};
     },
     methods: {
         submit() {
-            this.form.post(route("categories.store"));
+            this.form.post(route(this.langPrefix + ".categories.store"));
         },
     },
 };

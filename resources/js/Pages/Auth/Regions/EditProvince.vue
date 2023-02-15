@@ -64,7 +64,11 @@ import {useForm} from "@inertiajs/inertia-vue3"
 import {Inertia} from '@inertiajs/inertia'
 import BreezeValidationErrors from '@/Components/ValidationErrors.vue'
 import Masterpage from "@/Layouts/AdminPanel/Layout/Masterpage.vue";
+import {useStore} from "vuex";
+const store = useStore();
 
+const lang =  store.state.language;
+const langPrefix = lang.langName;
 const props = defineProps({
     province: {}
 });
@@ -75,6 +79,6 @@ const states = {
     })
 }
 const submit = () => {
-    Inertia.put(route("regions.province.update", props.province.id), states.form);
+    Inertia.put(route(langPrefix + ".regions.province.update", props.province.id), states.form);
 }
 </script>

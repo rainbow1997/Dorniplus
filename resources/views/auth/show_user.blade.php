@@ -11,7 +11,7 @@
                     <h2> مشاهده کاربر</h2>
                 </div>
                 <div class="pull-right">
-                    <a class="btn btn-primary" href="{{ route('users.index') }}"> بازگشت</a>
+                    <a class="btn btn-primary" href="{{ route(getLocaleName().'.users.index') }}"> بازگشت</a>
                 </div>
             </div>
         </div>

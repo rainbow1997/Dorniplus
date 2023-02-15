@@ -24,7 +24,7 @@
                 });
             </script>
         @endpush
-        <form method="POST" action="{{ route('register')}}" class="rtl text-right" enctype="multipart/form-data"
+        <form method="POST" action="{{ route(getLocaleName().'.register')}}" class="rtl text-right" enctype="multipart/form-data"
               style="font-family:'Shabnam'">
             @csrf
 

@@ -66,12 +66,17 @@ import {useForm} from '@inertiajs/inertia-vue3'
 
 import {Inertia} from '@inertiajs/inertia'
 import Masterpage from "@/Layouts/AdminPanel/Layout/Masterpage.vue";
+import {useStore} from "vuex";
+const store = useStore();
+
+const lang =  store.state.language;
+const langPrefix = lang.langName;
 
 const form = useForm({
     name: ''
 });
 const submit = () => {
-    Inertia.post(route("permissions.store"), {
+    Inertia.post(route(langPrefix + ".permissions.store"), {
 
         data: form
     })

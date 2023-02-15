@@ -64,23 +64,28 @@ import {Head} from "@inertiajs/inertia-vue3"
 import {useForm} from "@inertiajs/inertia-vue3"
 import BreezeValidationErrors from '@/Components/ValidationErrors.vue'
 import Masterpage from "@/Layouts/AdminPanel/Layout/Masterpage.vue";
+import {useStore} from "vuex";
 
 export default {
     components: {
         Masterpage,
         BreezeAuthenticatedLayout,
         Head,
+        useStore
     },
     setup() {
         const form = useForm({
             title: null,
         });
+        const store = useStore();
 
-        return {form};
+        const lang =  store.state.language;
+        const langPrefix = lang.langName;
+        return {form,lang,langPrefix};
     },
     methods: {
         submit() {
-            this.form.post(route("regions.province.store"));
+            this.form.post(route(this.langPrefix + ".regions.province.store"));
         },
     },
 };

@@ -20,7 +20,7 @@
                                 <button type="button"
                                         class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
 
-                                    <a class="btn btn-success" href="{{ route('roles.create') }}"> ساخت نقش و دسترسی
+                                    <a class="btn btn-success" href="{{ route(getLocaleName().'.roles.create') }}"> ساخت نقش و دسترسی
                                         جدید</a>
                                 </button>
                             </div>
@@ -55,18 +55,18 @@
                                         <button type="button"
                                                 class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                             <a class="btn btn-info"
-                                               href="{{ route('roles.show',$role->id) }}">مشاهده</a></button>
+                                               href="{{ route(getLocaleName().'.roles.show',$role->id) }}">مشاهده</a></button>
 
                                         @can('role-edit')
                                             <!-- remember to clear laravel permission cache to get permissions correctly. -->
                                             <button type="button"
                                                     class="text-white bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:focus:ring-yellow-900">
 
-                                                <a class="btn btn-primary" href="{{ route('roles.edit',$role->id) }}">ویرایش</a>
+                                                <a class="btn btn-primary" href="{{ route(getLocaleName().'.roles.edit',$role->id) }}">ویرایش</a>
                                             </button>
                                         @endcan
                                         @can('role-delete')
-                                            {!! Form::open(['method' => 'DELETE','route' => ['roles.destroy', $role->id],'style'=>'display:inline']) !!}
+                                            {!! Form::open(['method' => 'DELETE','route' => [getLocaleName().'.roles.destroy', $role->id],'style'=>'display:inline']) !!}
                                             {!! Form::submit('حذف', ['class' => 'text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900']) !!}
                                             {!! Form::close() !!}
                                         @endcan

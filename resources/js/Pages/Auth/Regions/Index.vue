@@ -14,7 +14,7 @@
                     <div class="p-6 bg-white border-b border-gray-200">
                         <div class="mb-4">
                             <Link
-                                :href="route('regions.province.create')"
+                                :href="route(langPrefix + '.regions.province.create')"
                                 class="
                                     px-6
                                     py-2
@@ -47,7 +47,7 @@
                                     </BreezeButton> <!-- remember that , link try to remount and it makes conflicts-->
 
                                     <Link
-                                        :href="route('regions.province.edit', province.id)"
+                                        :href="route(langPrefix + '.regions.province.edit', province.id)"
                                         class="text-white bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium  text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:focus:ring-yellow-900"
                                     >
                                         ویرایش
@@ -70,7 +70,7 @@
                             <h3 class="mb-3">شهر ها</h3>
 
                             <Link
-                                :href="route('regions.city.create',states.selectedProvince.id)"
+                                :href="route(langPrefix +'.regions.city.create',states.selectedProvince.id)"
                                 class="
                                     px-6
                                     py-2
@@ -122,7 +122,11 @@ import {Inertia} from '@inertiajs/inertia'
 
 import BreezeButton from '@/Components/Button.vue'
 import Masterpage from "@/Layouts/AdminPanel/Layout/Masterpage.vue";
+import {useStore} from "vuex";
+const store = useStore();
 
+const lang =  store.state.language;
+const langPrefix = lang.langName;
 const props = defineProps({
     provinces: {},
 });
@@ -131,10 +135,10 @@ const states = reactive({
     canShow: false
 });
 const destroy = (id) => {
-    Inertia.delete(route("regions.province.destroy", id));
+    Inertia.delete(route(langPrefix + ".regions.province.destroy", id));
 }
 const destroyCity = (id) => {
-    Inertia.delete(route("regions.city.destroy", id), {replace: true});
+    Inertia.delete(route(langPrefix +".regions.city.destroy", id), {replace: true});
     states.selectedProvince = null;
 
 }

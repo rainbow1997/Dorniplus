@@ -92,7 +92,7 @@ class PostController extends Controller
         activity()->performedOn($post)
             ->causedBy(Auth::user())
             ->log("پست جدید با نام $post->title ساخته شده است .");
-        return redirect()->route('posts.index')
+        return redirect()->route(getLocaleName().'.posts.index')
             ->with('message', 'پست جدید با موفقیت افزوده شد.');
 
     }
@@ -187,7 +187,7 @@ class PostController extends Controller
             ->causedBy(Auth::user())
             ->log("پست  با نام $post->title ویرایش شده است .");
 
-        return redirect()->route('posts.index')
+        return redirect()->route(getLocaleName().'.posts.index')
             ->with('message', 'پست ویرایش شد');
 
 
@@ -215,7 +215,7 @@ class PostController extends Controller
             ->log("پست  با نام $post->title حذف شده است .");
         $post->delete();
 
-        return redirect()->route('posts.index')
+        return redirect()->route(getLocaleName().'.posts.index')
             ->with('message', 'مطلب مورد نظر حذف گردید.');
     }
 

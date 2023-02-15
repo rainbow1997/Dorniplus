@@ -11,7 +11,7 @@
                     <h2> نمایش نقش</h2>
                 </div>
                 <div class="pull-right">
-                    <a class="btn btn-primary" href="{{ route('roles.index') }}"> بازگشت</a>
+                    <a class="btn btn-primary" href="{{ route(getLocaleName().'.roles.index') }}"> بازگشت</a>
                 </div>
             </div>
         </div>

@@ -11,7 +11,7 @@
                     <h2>ویرایش اعضا</h2>
                 </div>
                 <div class="pull-right">
-                    <a class="btn btn-primary" href="{{ route('users.index') }}"> بازگشت</a>
+                    <a class="btn btn-primary" href="{{ route(getLocaleName().'.users.index') }}"> بازگشت</a>
                 </div>
             </div>
         </div>
@@ -29,7 +29,7 @@
         @endif
 
 
-        {!! Form::model($user, ['method' => 'PATCH','route' => ['users.update', $user->id]]) !!}
+        {!! Form::model($user, ['method' => 'PATCH','route' => [getLocaleName().'.users.update', $user->id]]) !!}
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">

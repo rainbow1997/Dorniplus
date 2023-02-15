@@ -73,7 +73,10 @@ if (!function_exists('captchaMaking')) {
         echo $imageContent;
     }
 
-
+    function getLocaleName():string
+    {
+        return app()->getLocale();
+    }
     function getAuthCheckingUrls()
     {
         return [route(app()->getLocale().'.code_verification'), route(app()->getLocale().'.checking_verification')];
