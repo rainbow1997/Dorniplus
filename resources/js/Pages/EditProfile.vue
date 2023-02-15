@@ -45,7 +45,7 @@ export default {
         });
         const store = useStore();
 
-        const lang = computed(() => store.state.language);
+        const lang =  store.state.language;
         const langPrefix = lang.langName;
 
         const form = useForm('EditProfile', {
@@ -241,7 +241,7 @@ export default {
             </div>
 
             <div class="flex items-center justify-end mt-2 gap-x-4">
-                <Link :href="route(langPrefix + 'dashboard')" class="underline text-sm text-gray-600 hover:text-gray-900">
+                <Link :href="route(langPrefix + '.dashboard')" class="underline text-sm text-gray-600 hover:text-gray-900">
                     بازگشت به داشبورد
                 </Link>
 
