@@ -17,6 +17,8 @@ return [
     'email_address' => 'ایمیل',
     'forgot_password' => 'فراموشی رمز عبور',
     'remember_me' => 'مرا به یاد داشته باش؟',
+    'fullname'=> 'نام نام خانوادگی',
+
     'fname' => 'نام',
     'lname' => 'نام خانوادگی',
     'national_code' => 'کد ملی',
@@ -26,6 +28,8 @@ return [
     'male' => 'مذکر',
     'female' => 'مونث',
     'upload_avatar' => 'آپلود عکس',
+    'leave_comment' => 'متن نظر شما ...',
+
     'username' => 'نام کاربری',
     'password_confirmation' => 'تکرار رمز عبور',
     'province' => 'استان',

@@ -11,7 +11,6 @@ if (!function_exists('captchaMaking')) {
 
     function captchaMaking()
     {
-        refreshSession();
         setCaptchaSession();
         if (app()->getLocale() == 'fa_IR')
             return captchaImageMaking();
@@ -30,7 +29,7 @@ if (!function_exists('captchaMaking')) {
 
     function getCaptchaCode()
     {
-        return session('captcha_num');
+        return session()->get('captcha_num');
     }
 
     function setCaptchaSession()
@@ -57,6 +56,7 @@ if (!function_exists('captchaMaking')) {
 
     function captchaImageMaking()
     {
+        \Illuminate\Support\Facades\Log::debug("code : " . getCaptchaCode());
         $gdTool = new Quince\PersianGD\GDTool();
         $imageContent = $gdTool->setOutputImage(false)
             ->addLine(getCaptchaCode())

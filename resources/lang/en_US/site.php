@@ -18,12 +18,14 @@ return [
     'forgot_password' => 'Forgot password?',
     'remember_me' => 'Remember me?',
     'fname' => 'First name',
-    'lname'=> 'Last name',
+    'lname' => 'Last name',
+    'fullname' => 'Full name',
+    'leave_comment' => 'Leave a comment...',
     'national_code' => 'NationalCode',
     'phone' => 'Phone',
     'birth' => 'Birthdate',
     'gender' => 'Gender',
-    'male'=> 'Male',
+    'male' => 'Male',
     'female' => 'Female',
     'upload_avatar' => 'Upload Avatar',
     'username' => 'Username',
@@ -40,8 +42,7 @@ return [
     'solve_errors' => 'Sorry!Please Solve the below problems.',
     'code_verification' => 'Code Verification',
     'enter_code_verification' => 'Enter your verification code, please.',
-    'submit'=>'Submit'
-
+    'submit' => 'Submit'
 
 
 ];

@@ -4,45 +4,32 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Log;
 
 class LangChecker
 {
-    /**
-     * Handle an incoming request.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse) $next
-     * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
-     */
+    private string $languageParamInUrl;
 
-    private function hasLanguageSession(Request $request): bool
+    public function __construct()
     {
-        if ($request->session()->has(config('app.language_session_name')))
-            return true;
-        return false;
+        $this->languageParamInUrl = request()->segment(1) ?? '';
     }
 
-    private function getLanguageSession(Request $request): string
+    public function handle(Request $request, Closure $next)
     {
-        return $request->session()->get('language');
-    }
-
-    private function setLanguageSession(Request $request): bool
-    {
-        try {
-            $request->session()->put('language', config('app.locale'));
-            return true;
-        } catch (\Exception $e) {
-            Log::critical($e);
-        }
+        if ($this->checkLanguage($request))
+            return $next($request);
     }
 
     private function checkLanguage(Request $request): string|bool
     {
         if (!$this->hasLanguageSession($request))
-            $this->setLanguageSession($request);
+            $this->setLanguageByDefault($request);
+
+        if ($this->hasLanguageInUrl())
+            $this->setLanguageByUrl($request);
+
         try {
             App::setLocale($this->getLanguageSession($request));
             return true;
@@ -52,10 +39,41 @@ class LangChecker
         }
     }
 
-    public function handle(Request $request, Closure $next)
+    private function hasLanguageSession(Request $request): bool
     {
-
-        if($this->checkLanguage($request))
-            return $next($request);
+        if ($request->session()->has(config('app.language_session_name')))
+            return true;
+        return false;
     }
+
+    private function setLanguageByDefault(Request $request): void
+    {
+        try {
+            $request->session()->put('language', config('app.locale'));
+        } catch (\Exception $e) {
+            Log::critical($e);
+        }
+    }
+
+
+    private function getLanguageSession(Request $request): string
+    {
+        return $request->session()->get('language') ?? '';
+    }
+
+    private function hasLanguageInUrl(): bool
+    {
+        if (in_array($this->languageParamInUrl, config('app.locales_array')))
+            return true;
+
+        return false;
+    }
+
+    private function setLanguageByUrl(Request $request): void
+    {
+        if ($this->hasLanguageInUrl())
+            $request->session()->put('language', $this->languageParamInUrl);
+
+    }
+
 }

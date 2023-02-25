@@ -10,39 +10,33 @@
                 <div class="relative z-0 mb-6 w-full group">
                     <input id="fullname" v-model="form.fullname"
                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                           placeholder=" " required type="text"/>
-                    <label
-                        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                        for="floating_first_name">Full
-                        name</label>
+                           :placeholder="lang.fullname" required type="text"/>
+
+
+
                 </div>
 
                 <div class="relative z-0 mb-6 w-full group">
                     <input id="email" v-model="form.email"
                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                           placeholder=" " required type="email"/>
-                    <label
-                        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                        for="floating_first_name">Email</label>
+                           :placeholder="lang.email_address" required type="email"/>
+
                 </div>
             </div>
             <div class="grid md:grid-cols-2 md:gap-6">
                 <div class="relative z-0 mb-6 w-full group">
                     <input id="phone" v-model="form.phone"
                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                           placeholder=" " required type="tel"/>
-                    <label
-                        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                        for="floating_first_name">Phone(optional)</label>
+                           :placeholder="lang.phone" required type="tel"/>
+
                 </div>
                 <captcha @entered-captcha="receiveCaptcha"></captcha>
 
                 <div>
-                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400" for="message">Your
-                        message</label>
+
                     <textarea id="text" v-model="form.text"
                               class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                              placeholder="Leave a comment..." rows="4"></textarea>
+                              :placeholder="lang.leave_comment" rows="4"></textarea>
 
                 </div>
 
@@ -77,7 +71,7 @@ const form = useForm({
     fullname: null,
     email: null,
     text: null,
-    phone: '+98',
+    phone: '',
     post_id: props.post.id,
     captcha_status: false,
     captcha_num: null
