@@ -4,14 +4,13 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
-use App\Providers\RouteServiceProvider;
+use App\Notifications\ActivationNotif;
 use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
-use App\Notifications\ActivationNotif;
 use Inertia\Response;
 
 class AuthenticatedSessionController extends Controller
@@ -24,7 +23,7 @@ class AuthenticatedSessionController extends Controller
     public function create()
     {
         return Inertia::render('Auth/Login', [
-            'canResetPassword' => Route::has(getLocaleName().'.password.request'),
+            'canResetPassword' => Route::has(getLocaleName() . '.password.request'),
             'status' => session('status'),
         ]);
     }
@@ -41,7 +40,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->route(app()->getLocale().'.dashboard');
+        return redirect()->route(app()->getLocale() . '.dashboard');
     }
 
     /**
@@ -60,10 +59,12 @@ class AuthenticatedSessionController extends Controller
 
         return redirect('/');
     }
+
     public function code_verification(Request $request)
     {
         return Inertia::render('Auth/CodeVerification');
     }
+
     public function checkingCode(Request $request)
     {
         $user = $request->user();
@@ -72,10 +73,10 @@ class AuthenticatedSessionController extends Controller
 
         if ($user->emailVerificationCode->token == $request->token) {
             $this->setVerification($user);
-            return redirect()->route(app()->getLocale().'.dashboard')
+            return redirect()->route(app()->getLocale() . '.dashboard')
                 ->with('status', 'اکانت شما با موفقیت فعال سازی شد');
         }
-        return redirect()->route(app()->getLocale().'.code_verification')
+        return redirect()->route(app()->getLocale() . '.code_verification')
             ->with('status', 'اکانت شما فعال سازی نگردید.');
 
 

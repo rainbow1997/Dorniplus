@@ -8,7 +8,6 @@ import {computed} from 'vue'
 const store = useStore();
 
 const lang = store.state.language;
-console.log(lang);
 const langPrefix = lang.langName;
 
 const props = defineProps({
