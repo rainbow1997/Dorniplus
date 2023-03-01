@@ -18,7 +18,6 @@ use App\Http\Controllers\HomeController;
 use App\Notifications\RegisterNotification;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,16 +29,16 @@ use Inertia\Inertia;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/',function(){
-   return redirect()->route(app()->getLocale().'.homepage');
+Route::get('/', function () {
+    return redirect()->route(app()->getLocale() . '.homepage');
 });
 Route::get('/setLang/{lang}', function ($lang) {
     request()->session()->put('language', $lang);
-    return redirect()->route($lang .'.homepage');
+    return redirect()->route($lang . '.homepage');
     //return Redirect::route('homepage');
 })->name('setLang');
-foreach( config('app.locales_array') as $locale) {
-    Route::prefix($locale)->name("$locale.")->middleware(['language'])->group(function () {
+foreach (config('app.locales_array') as $locale) {
+    Route::prefix($locale)->name("$locale.")->group(function () {
         Route::get('/', [HomeController::class, 'index'])->name('homepage');
         Route::get('/posts/{post}/title/{slug}', [HomeController::class, 'showPost'])->name('home.post.show');
         Route::post('/sendComment/{post}', [CommentController::class, 'store'])->name('sendNewComment');

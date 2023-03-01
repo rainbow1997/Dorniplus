@@ -60,10 +60,11 @@ class Kernel extends HttpKernel
             AddQueuedCookiesToResponse::class,
             StartSession::class,
             // \Illuminate\Session\Middleware\AuthenticateSession::class,
+            LangChecker::class,
+
             ShareErrorsFromSession::class,
             VerifyCsrfToken::class,
             SubstituteBindings::class,
-            LangChecker::class,
             HandleInertiaRequests::class,
         ],
 

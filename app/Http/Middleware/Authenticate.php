@@ -7,6 +7,7 @@ use Closure;
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+
 class Authenticate extends Middleware
 {
     /**
@@ -15,33 +16,34 @@ class Authenticate extends Middleware
      * @param Request $request
      * @return string|null
      */
-    private function httpsSanitize(string $url):string|bool
+    private function httpsSanitize(string $url): string|bool
     {
-        if(!str_contains($url,'https'))
-            return str_replace("http","https",$url);
+        if (!str_contains($url, 'https'))
+            return str_replace("http", "https", $url);
         return true;// if the request is based on https we don't need to change it!
     }
-    private function basedOnHttps(Request $request):bool
+
+    private function basedOnHttps(Request $request): bool
     {
-        if($request->secure())
+        if ($request->secure())
             return true;
         return false;
 
     }
-    private function isInActivationPage(Request $request):bool
+
+    private function isInActivationPage(Request $request): bool
     {
-        if($this->basedOnHttps($request))
-            return in_array($request->url(),getAuthCheckingUrls());
-        return in_array($this->httpsSanitize($request->url()),getAuthCheckingUrls());//to convert http to https
+        if ($this->basedOnHttps($request))
+            return in_array($request->url(), getAuthCheckingUrls());
+        return in_array($this->httpsSanitize($request->url()), getAuthCheckingUrls());//to convert http to https
 
     }
+
     public function handle($request, Closure $next, ...$guards)
     {
         if (Auth::check())
-            if (!$request->user()->is_email_verified && !$this->isInActivationPage($request) ) {
-//                if($request->url() == 'https://myapp.test/auth/code_verification')
-//                    dd($this->httpsSanitize($request->url()));
-                return Redirect::route(app()->getLocale().'.code_verification');
+            if (!$request->user()->is_email_verified && !$this->isInActivationPage($request)) {
+                return Redirect::route(app()->getLocale() . '.code_verification');
             } else
                 return $next($request);
         return abort(403);
@@ -51,7 +53,7 @@ class Authenticate extends Middleware
     {
 
         if (!$request->expectsJson()) {
-            return route(app()->getLocale().'.login');
+            return route(app()->getLocale() . '.login');
         }
     }
 
