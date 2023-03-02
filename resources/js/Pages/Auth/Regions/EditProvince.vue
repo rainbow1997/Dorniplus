@@ -59,9 +59,9 @@
 
 <script setup>
 
-import {Head} from "@inertiajs/inertia-vue3"
-import {useForm} from "@inertiajs/inertia-vue3"
-import {Inertia} from '@inertiajs/inertia'
+import {Head} from "@inertiajs/vue3"
+import {useForm} from "@inertiajs/vue3"
+import { router } from '@inertiajs/vue3'
 import BreezeValidationErrors from '@/Components/ValidationErrors.vue'
 import Masterpage from "@/Layouts/AdminPanel/Layout/Masterpage.vue";
 import {useStore} from "vuex";

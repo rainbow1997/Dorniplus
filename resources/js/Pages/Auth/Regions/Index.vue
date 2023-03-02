@@ -113,12 +113,12 @@
 
 <script setup>
 
-import {Head, Link, useForm} from '@inertiajs/inertia-vue3'
+import {Head, Link, useForm} from '@inertiajs/vue3'
 
 import {ref, reactive} from 'vue'
 import Pagination from '@/Layouts/pagination.vue'
 
-import {Inertia} from '@inertiajs/inertia'
+import { router } from '@inertiajs/vue3'
 
 import BreezeButton from '@/Components/Button.vue'
 import Masterpage from "@/Layouts/AdminPanel/Layout/Masterpage.vue";

@@ -41,11 +41,11 @@
 <script setup>
 import BreezeButton from '@/Components/Button.vue'
 
-import {Head} from "@inertiajs/inertia-vue3"
-import {useForm} from '@inertiajs/inertia-vue3'
+import {Head} from "@inertiajs/vue3"
+import {useForm} from '@inertiajs/vue3'
 import BreezeValidationErrors from '@/Components/ValidationErrors.vue'
 
-import {Inertia} from '@inertiajs/inertia'
+import { router } from '@inertiajs/vue3';
 import Multiselect from 'vue-multiselect'
 import "vue-multiselect/dist/vue-multiselect.css"
 import Masterpage from "@/Layouts/AdminPanel/Layout/Masterpage.vue";

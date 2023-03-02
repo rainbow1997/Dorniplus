@@ -12,7 +12,7 @@
 <script setup>
 import UsersIndex from '../UsersIndex.vue'
 import {reactive} from 'vue'
-import {Inertia} from '@inertiajs/inertia'
+import { router } from '@inertiajs/vue3'
 import {useStore} from "vuex";
 const store = useStore();
 

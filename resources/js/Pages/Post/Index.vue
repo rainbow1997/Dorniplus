@@ -137,9 +137,8 @@
     </masterpage>
 </template>
 <script setup>
-import {Inertia} from '@inertiajs/inertia'
-
-import {Head, Link, useForm} from '@inertiajs/inertia-vue3'
+import { router } from '@inertiajs/vue3'
+import {Head, Link, useForm} from '@inertiajs/vue3'
 import Pagination from '@/Layouts/pagination.vue'
 import DatePicker from 'vue3-persian-datetime-picker'
 import {ref, watch} from 'vue'

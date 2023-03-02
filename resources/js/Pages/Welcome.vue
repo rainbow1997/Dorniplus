@@ -1,5 +1,5 @@
 <script setup>
-import {Head, Link} from '@inertiajs/inertia-vue3'
+import {Head, Link} from '@inertiajs/vue3'
 import Pagination from '@/Layouts/pagination.vue'
 import {computed} from 'vue'
 import Navbar from '@/Layouts/Navbar.vue'

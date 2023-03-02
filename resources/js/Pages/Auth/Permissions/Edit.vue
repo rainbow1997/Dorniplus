@@ -59,11 +59,11 @@
 </template>
 
 <script setup>
-import {Head} from "@inertiajs/inertia-vue3"
+import {Head} from "@inertiajs/vue3"
 import BreezeValidationErrors from '@/Components/ValidationErrors.vue'
 
 import {ref, reactive, computed} from 'vue'
-import {Inertia} from '@inertiajs/inertia'
+import { router } from '@inertiajs/vue3'
 import Masterpage from "@/Layouts/AdminPanel/Layout/Masterpage.vue";
 import {useStore} from "vuex";
 const store = useStore();

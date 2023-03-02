@@ -1,10 +1,10 @@
 <script setup>
 import BreezeApplicationLogo from '@/Components/ApplicationLogo.vue';
-import {Link, usePage} from '@inertiajs/inertia-vue3';
-import {Inertia} from '@inertiajs/inertia'
-import NavLink from '@/Components/NavLink.vue'
+import {Link, usePage} from '@inertiajs/vue3';
+import { router } from '@inertiajs/vue3';
+import NavLink from '@/Components/NavLink.vue';
 import {useStore} from "vuex";
-import {computed} from 'vue'
+import {computed} from 'vue';
 const store = useStore();
 
 const lang = store.state.language;

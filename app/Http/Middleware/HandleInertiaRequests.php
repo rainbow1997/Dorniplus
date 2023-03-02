@@ -61,6 +61,7 @@ class HandleInertiaRequests extends Middleware
                 'site_locale' => app()->getLocale(),
 
             ],
+            'storage_url' =>  config('app.storage_url'),
             'ziggy' => function () {
                 return (new Ziggy)->toArray();
             },

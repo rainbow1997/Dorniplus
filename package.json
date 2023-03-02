@@ -6,9 +6,6 @@
     },
     "devDependencies": {
         "@babel/plugin-syntax-top-level-await": "^7.14.5",
-        "@inertiajs/inertia": "^0.11.0",
-        "@inertiajs/inertia-vue3": "^0.6.0",
-        "@inertiajs/progress": "^0.2.7",
         "@popperjs/core": "^2.10.2",
         "@tailwindcss/forms": "^0.5.0",
         "@vitejs/plugin-vue": "^3.0.1",
@@ -32,7 +29,8 @@
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
-          "@tinymce/tinymce-vue": "^4.0.7",
+        "@inertiajs/vue3": "^1.0.2",
+        "@tinymce/tinymce-vue": "^4.0.7",
         "@vitejs/plugin-basic-ssl": "^0.1.2",
         "flowbite-vue": "^0.0.5",
         "jalali-moment": "^3.3.11",

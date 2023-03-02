@@ -55,8 +55,8 @@
 </template>
 
 <script setup>
-import {Inertia} from '@inertiajs/inertia'
-import {Head, useForm} from "@inertiajs/inertia-vue3"
+import { router } from '@inertiajs/vue3'
+import {Head, useForm} from "@inertiajs/vue3"
 import Masterpage from "@/Layouts/AdminPanel/Layout/Masterpage.vue";
 import {useStore} from "vuex";
 const store = useStore();

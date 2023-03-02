@@ -195,7 +195,7 @@
 </template>
 
 <script setup>
-import {Link, useForm} from '@inertiajs/inertia-vue3'
+import {Link, useForm} from '@inertiajs/vue3'
 import {useStore} from "vuex";
 import {computed} from 'vue'
 

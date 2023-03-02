@@ -58,8 +58,8 @@
 <script>
 import BreezeAuthenticatedLayout from "@/Layouts/Authenticated.vue"
 import BreezeLabel from "@/Components/Label.vue"
-import {Head} from "@inertiajs/inertia-vue3"
-import {useForm} from "@inertiajs/inertia-vue3"
+import {Head} from "@inertiajs/vue3"
+import {useForm} from "@inertiajs/vue3"
 import BreezeValidationErrors from '@/Components/ValidationErrors.vue'
 import Masterpage from "@/Layouts/AdminPanel/Layout/Masterpage.vue";
 import {useStore} from "vuex";

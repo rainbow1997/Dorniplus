@@ -323,9 +323,8 @@
     </masterpage>
 </template>
 <script setup>
-import {Inertia} from '@inertiajs/inertia'
-
-import {Head, Link, useForm} from '@inertiajs/inertia-vue3'
+import { router } from '@inertiajs/vue3'
+import {Head, Link, useForm} from '@inertiajs/vue3'
 import {ref, watch} from 'vue'
 
 import Pagination from '@/Layouts/pagination.vue'

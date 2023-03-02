@@ -54,8 +54,8 @@
     </masterpage>
 </template>
 <script>
-import {Head} from "@inertiajs/inertia-vue3"
-import {useForm} from "@inertiajs/inertia-vue3"
+import {Head} from "@inertiajs/vue3"
+import {useForm} from "@inertiajs/vue3"
 import Masterpage from "@/Layouts/AdminPanel/Layout/Masterpage.vue";
 import {useStore} from "vuex";
 

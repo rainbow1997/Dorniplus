@@ -1,7 +1,7 @@
 <script setup>
 // import BreezeAuthenticatedLayout from '@/Layouts/Authenticated.vue'
 import Index from '@/Layouts/AdminPanel/Index.vue'
-import {Head} from '@inertiajs/inertia-vue3'
+import {Head} from '@inertiajs/vue3'
 import {defineProps} from "vue";
 
 const props = defineProps({

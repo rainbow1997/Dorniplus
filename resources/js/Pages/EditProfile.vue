@@ -4,12 +4,13 @@ import BreezeGuestLayout from '@/Layouts/Guest.vue'
 import BreezeInput from '@/Components/Input.vue'
 import BreezeLabel from '@/Components/Label.vue'
 import BreezeValidationErrors from '@/Components/ValidationErrors.vue'
-import {Head, Link, useForm} from '@inertiajs/inertia-vue3'
+import {Head, Link, useForm} from '@inertiajs/vue3'
 import {reactive} from 'vue'
 import DatePicker from 'vue3-persian-datetime-picker'
 import Masterpage from "@/Layouts/AdminPanel/Layout/Masterpage.vue";
 import {useStore} from 'vuex'
 import {computed} from 'vue'
+import { usePage } from '@inertiajs/vue3'
 
 
 
@@ -26,7 +27,8 @@ export default {
         BreezeValidationErrors,
         DatePicker,
         useStore,
-        computed
+        computed,
+        usePage
 
 
     },
@@ -44,10 +46,9 @@ export default {
             url: ''
         });
         const store = useStore();
-
+        const storage_url = computed( () => usePage().props.storage_url);
         const lang =  store.state.language;
         const langPrefix = lang.langName;
-
         const form = useForm('EditProfile', {
             _method: 'put',
             fname: props.user.fname,
@@ -98,12 +99,12 @@ export default {
         };
         const submit = () => {
 
-            form.post(route(langPrefix + 'storeProfile', props.user.id), {
+            form.post(route(langPrefix + '.storeProfile', props.user.id), {
                 onSuccess: () => form.reset('password', 'avatar'),
                 preserveState: true
             });
         };
-        return {form, provinceChange, genderChange, previewImage, submit, needs,lang,langPrefix}
+        return {form, provinceChange, genderChange, previewImage, submit, needs,lang,langPrefix,storage_url}
     },
 
 };
@@ -216,7 +217,7 @@ export default {
             <img v-if="needs.url" :src="needs.url" class="max-w-full h-auto rounded-lg">
 
             <div v-if="form.avatar == null && user.avatar != null" class="flex flex-row mt-2">
-                <img :alt="user.username" :src="'storage/'+user.avatar" class="max-w-full h-auto rounded-lg">
+                <img :alt="user.username" :src="storage_url + user.avatar" class="max-w-full h-auto rounded-lg">
             </div>
             <div class="flex flex-col mt-4 justify-center">
                 <BreezeLabel for="province" value="استان"/>

@@ -90,8 +90,8 @@
 
 <script>
 
-import {Head} from "@inertiajs/inertia-vue3"
-import {useForm} from "@inertiajs/inertia-vue3"
+import {Head} from "@inertiajs/vue3"
+import {useForm} from "@inertiajs/vue3"
 import Editor from '@tinymce/tinymce-vue'
 import BreezeValidationErrors from '@/Components/ValidationErrors.vue'
 import Masterpage from "@/Layouts/AdminPanel/Layout/Masterpage.vue";

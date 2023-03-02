@@ -324,14 +324,14 @@
     </masterpage>
 </template>
 <script setup>
-import {Inertia} from '@inertiajs/inertia'
+import { router } from '@inertiajs/vue3'
 import BreezeButton from '@/Components/Button.vue'
 import BreezeAuthenticatedLayout from '@/Layouts/Authenticated.vue'
 import BreezeInput from '@/Components/Input.vue'
 import BreezeCheckbox from '@/Components/Checkbox.vue'
 import BreezeLabel from '@/Components/Label.vue'
 import BreezeValidationErrors from '@/Components/ValidationErrors.vue'
-import {Head, Link, useForm} from '@inertiajs/inertia-vue3'
+import {Head, Link, useForm} from '@inertiajs/vue3'
 import {ref, watch} from 'vue'
 
 import Pagination from '@/Layouts/pagination.vue'

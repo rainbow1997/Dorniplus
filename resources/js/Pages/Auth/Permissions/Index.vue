@@ -112,14 +112,14 @@
 
 <script setup>
 import BreezeButton from '@/Components/Button.vue'
-import {Head} from "@inertiajs/inertia-vue3"
-import {Link} from "@inertiajs/inertia-vue3"
-import {useForm} from '@inertiajs/inertia-vue3'
+import {Head} from "@inertiajs/vue3"
+import {Link} from "@inertiajs/vue3"
+import {useForm} from '@inertiajs/vue3'
 const store = useStore();
 
 const lang =  store.state.language;
 const langPrefix = lang.langName;
-import {Inertia} from '@inertiajs/inertia'
+import { router } from '@inertiajs/vue3'
 import Masterpage from "@/Layouts/AdminPanel/Layout/Masterpage.vue";
 import {useStore} from "vuex";
 

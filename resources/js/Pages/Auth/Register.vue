@@ -156,9 +156,9 @@ import BreezeGuestLayout from '@/Layouts/Guest.vue'
 import BreezeInput from '@/Components/Input.vue'
 import BreezeLabel from '@/Components/Label.vue'
 import BreezeValidationErrors from '@/Components/ValidationErrors.vue'
-import {Inertia} from '@inertiajs/inertia'
+import { router } from '@inertiajs/vue3'
 
-import {Head, Link, useForm} from '@inertiajs/inertia-vue3'
+import {Head, Link, useForm} from '@inertiajs/vue3'
 import DatePicker from 'vue3-persian-datetime-picker'
 import {useStore} from 'vuex'
 

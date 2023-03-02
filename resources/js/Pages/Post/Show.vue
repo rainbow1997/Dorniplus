@@ -28,7 +28,7 @@
 
             </div>
             <div class="flex w-full items-center justify-center text-green-500 text-center font-bold italic my-3">
-                {{ usePage().props.value.flash.message }}
+                {{ usePage().props.flash.message }}
             </div>
             <div class="container mx-auto text-left p-3">
 
@@ -42,7 +42,7 @@
 <script setup>
 import BreezeGuestLayout from '@/Layouts/Guest.vue'
 
-import {Head, usePage} from '@inertiajs/inertia-vue3'
+import {Head, usePage} from '@inertiajs/vue3'
 import {useStore} from 'vuex'
 import Comments from './Comment/Index.vue'
 import SendNewComment from "@/Pages/Post/Comment/SendNewComment.vue";

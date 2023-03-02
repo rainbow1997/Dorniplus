@@ -55,6 +55,7 @@ return [
     'url' => env('APP_URL', 'http://localhost'),
 
     'asset_url' => env('ASSET_URL', null),
+    'storage_url'=>env('APP_URL').'/storage/',
 
     /*
     |--------------------------------------------------------------------------
