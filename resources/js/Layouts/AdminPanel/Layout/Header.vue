@@ -44,6 +44,7 @@
 <script setup>
 import {Link, usePage} from "@inertiajs/vue3"
 import {useStore} from "vuex";
+
 const store = useStore();
 
 const lang = store.state.language;

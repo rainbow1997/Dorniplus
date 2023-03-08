@@ -55,7 +55,8 @@ return [
     'url' => env('APP_URL', 'http://localhost'),
 
     'asset_url' => env('ASSET_URL', null),
-    'storage_url'=>env('APP_URL').'/storage/',
+    'storage_url' => env('APP_URL') . '/storage/',
+    'description' => env('description', ''),
 
     /*
     |--------------------------------------------------------------------------
@@ -82,8 +83,8 @@ return [
     */
 
     'locale' => 'en_US',
-    'locales_array' => ['en_US','fa_IR'],
-    'language_session_name'=>'language',
+    'locales_array' => ['en_US', 'fa_IR'],
+    'language_session_name' => 'language',
 
 
     /*

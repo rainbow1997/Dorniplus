@@ -1,7 +1,7 @@
 <?php
 return [
-    'appName' => env('APP_NAME'),
-
+    'appName' => 'مصطفی جمالی',
+    'description' => 'برنامه نویس فول استک وب',
     'homepage' => 'صفحه اصلی',
     'dashboard' => 'پنل کاربری',
     'read_more' => 'ادامه مطلب',
@@ -17,7 +17,7 @@ return [
     'email_address' => 'ایمیل',
     'forgot_password' => 'فراموشی رمز عبور',
     'remember_me' => 'مرا به یاد داشته باش؟',
-    'fullname'=> 'نام نام خانوادگی',
+    'fullname' => 'نام نام خانوادگی',
 
     'fname' => 'نام',
     'lname' => 'نام خانوادگی',
@@ -29,7 +29,7 @@ return [
     'female' => 'مونث',
     'upload_avatar' => 'آپلود عکس',
     'leave_comment' => 'متن نظر شما ...',
-
+    'send' => 'ارسال',
     'username' => 'نام کاربری',
     'password_confirmation' => 'تکرار رمز عبور',
     'province' => 'استان',

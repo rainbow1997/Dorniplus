@@ -1,7 +1,6 @@
 <script setup>
 import {Head, Link} from '@inertiajs/vue3'
 import Pagination from '@/Layouts/pagination.vue'
-import {computed} from 'vue'
 import Navbar from '@/Layouts/Navbar.vue'
 import {useStore} from 'vuex'
 
@@ -80,7 +79,8 @@ const props = defineProps({
                                     <button
                                         class="  w-32 h-7  md:w-28 md:h-10 text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium md:rounded-lg text-sm  dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
                                         type="button">
-                                        <Link :href="route(langPrefix +'.home.post.show',{post: post.id,slug: post.slug})">
+                                        <Link
+                                            :href="route(langPrefix +'.home.post.show',{post: post.id,slug: post.slug})">
                                             {{ lang.core.read_more }}
                                         </Link>
 

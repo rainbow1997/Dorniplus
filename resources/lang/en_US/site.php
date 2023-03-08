@@ -1,12 +1,15 @@
 <?php
 return [
     'appName' => env('APP_NAME'),
+    'description' => env('description'),
     'homepage' => 'Home',
     'dashboard' => 'dashboard',
     'read_more' => 'Read more...',
     'author' => 'Author',
     'subject' => 'Subject',
     'estimated_time' => 'Read time',
+    'send' => 'Send',
+
     'dir' => 'ltr',
     'register' => 'Register',
     'login' => 'Login',

@@ -1,10 +1,9 @@
 <script setup>
 import BreezeApplicationLogo from '@/Components/ApplicationLogo.vue';
-import {Link, usePage} from '@inertiajs/vue3';
-import { router } from '@inertiajs/vue3';
+import {Link} from '@inertiajs/vue3';
 import NavLink from '@/Components/NavLink.vue';
 import {useStore} from "vuex";
-import {computed} from 'vue';
+
 const store = useStore();
 
 const lang = store.state.language;
@@ -72,9 +71,11 @@ const props = defineProps({
                     <Link href="/">
                         <BreezeApplicationLogo class="mr-3 h-6 text-gray-500"/>
                     </Link>
-                    <span
+                    <h1
                         class="m-2 self-center text-xl font-semibold whitespace-nowrap dark:text-white">
-                    {{ lang.core.appName }}</span>
+                        {{ lang.core.appName }}</h1>
+                    <h2 class="m-2 self-center text-large font-semibold whitespace-nowrap dark:text-white">
+                        {{ lang.core.description }}</h2>
                     <div class="flex">
                         <button aria-controls="navbar-sticky" aria-expanded="false"
                                 class=" focus:text-white m-2 inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
@@ -98,14 +99,14 @@ const props = defineProps({
 
 
                             <nav-link
-                                class="  focus:outline-none focus:text-white text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm md:px-5  dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900"
-                                :href="route(langPrefix + '.register')">{{ lang.core.register }}
+                                :href="route(langPrefix + '.register')"
+                                class="  focus:outline-none focus:text-white text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm md:px-5  dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900">{{ lang.core.register }}
                             </nav-link>
 
 
                             <nav-link v-if="!$page.props.auth.user"
-                                      class="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm md:px-5  dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900 focus:text-white"
-                                      :href="route(langPrefix + '.login')">
+                                      :href="route(langPrefix + '.login')"
+                                      class="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm md:px-5  dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900 focus:text-white">
                                 {{ lang.core.login }}
                             </nav-link>
 
@@ -117,9 +118,9 @@ const props = defineProps({
                         <li v-if="$page.props.auth.user">
 
                             <nav-link
-                                class="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 mx-2  dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900 focus:text-white"
+                                :href="route(langPrefix + '.dashboard')"
 
-                                :href="route(langPrefix + '.dashboard')">
+                                class="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 mx-2  dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900 focus:text-white">
                                 {{ lang.core.panel }}
                             </nav-link>
 
