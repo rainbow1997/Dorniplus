@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use DB;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Inertia\Inertia;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
@@ -33,11 +34,20 @@ class RoleController extends Controller
      */
     public function index(Request $request)
     {
-        $roles = Role::orderBy('id', 'DESC')->paginate(5);
-        return view('auth.roles.index', compact('roles'))
-            ->with('i', ($request->input('page', 1) - 1) * 5);
-    }
+        $roles = Role::with('permissions')->latest()->paginate(10);
 
+        return Inertia::render('Auth/Roles/Index', ['roles' => $roles]);
+
+    }
+    public function addPermission(Role $role)
+    {
+        $permission = Permission::select(['name', 'id'])->get()->toArray();
+
+        return Inertia::render('Auth/Permissions/AddRole', [
+            'permission' => $permission,
+            'roles' => Role::all()
+        ]);
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -48,11 +58,11 @@ class RoleController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|unique:roles,name',
-            'permission' => 'required',
+            'permissions' => 'required',
         ]);
 
         $role = Role::create(['name' => $request->input('name')]);
-        $role->syncPermissions($request->input('permission'));
+        $role->syncPermissions($request->input('permissions'));
 
         return redirect()->route(getLocaleName().'.roles.index')
             ->with('success', 'نقش کاربری با موفقیت افزوده شد');
@@ -65,9 +75,10 @@ class RoleController extends Controller
      */
     public function create()
     {
-        $permission = Permission::get();
-        return view('auth.roles.create', compact('permission'));
-    }
+        $permissions = Permission::all();
+        return Inertia::render('Add.vue', [
+            'permissions' => $permissions
+        ]);    }
 
     /**
      * Display the specified resource.

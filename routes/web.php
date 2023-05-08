@@ -152,11 +152,18 @@ foreach (config('app.locales_array') as $locale) {
 
             Route::get('/addRoleToPermission/{permission}', [PermissionController::class, 'addRole'])
                 ->name('addRoleToPermission');
+
+
+
             Route::put('/setRoleToPermission/{permission}', [PermissionController::class, 'setRoleToPermission'])
                 ->name('setRoleToPermission');
 
             Route::delete('/destroyRoleFromPermission/role/{role}/permission/{permission}', [PermissionController::class, 'destroyRoleFromPermission'])
                 ->name('destroyRoleFromPermission');
+
+            Route::get('/addPermissionToRole/{role}', [RoleController::class, 'addPermission'])
+                ->name('addPermissionToRole');
+
             Route::resource('site_admin', SiteAdminController::class);
 
 
