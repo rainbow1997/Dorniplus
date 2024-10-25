@@ -30,7 +30,7 @@
     },
     "dependencies": {
         "@inertiajs/vue3": "^1.0.2",
-        "@tinymce/tinymce-vue": "^4.0.7",
+        "@tinymce/tinymce-vue": "^6.1.0",
         "@vitejs/plugin-basic-ssl": "^0.1.2",
         "flowbite-vue": "^0.0.5",
         "jalali-moment": "^3.3.11",
